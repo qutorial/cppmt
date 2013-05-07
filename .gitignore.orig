@@ -1,9 +1,11 @@
+<<<<<<< HEAD
 tumpages
 MasterThesis_ZaurMolotnikov.aux
 MasterThesis_ZaurMolotnikov.log
 MasterThesis_ZaurMolotnikov.pdf
 MasterThesis_ZaurMolotnikov.tex.backup
 MasterThesis_ZaurMolotnikov.toc
+=======
 *.acn
 *.acr
 *.alg
@@ -36,3 +38,4 @@ MasterThesis_ZaurMolotnikov.toc
 *.vrb
 *.xdy
 *.tdo
+>>>>>>> origin/master

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  7 MAY 2013 16:17
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  7 MAY 2013 16:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -109,18 +109,18 @@ TextBlockOrigin set to 0mm x 0mm
 ) (./MasterThesis_ZaurMolotnikov.aux)
 \openout1 = `MasterThesis_ZaurMolotnikov.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
  ABD: EveryShipout initializing macros
 (/usr/local/texlive/2011/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -185,60 +185,76 @@ e
 <logotum.pdf, id=1, 85.41913pt x 45.5303pt>
 File: logotum.pdf Graphic file (type pdf)
  <use logotum.pdf>
-Package pdftex.def Info: logotum.pdf used on input line 16.
+Package pdftex.def Info: logotum.pdf used on input line 17.
 (pdftex.def)             Requested size: 133.46965pt x 71.13188pt.
 
 <logoinf.pdf, id=2, 42.67845pt x 46.8922pt>
 File: logoinf.pdf Graphic file (type pdf)
  <use logoinf.pdf>
-Package pdftex.def Info: logoinf.pdf used on input line 16.
+Package pdftex.def Info: logoinf.pdf used on input line 17.
 (pdftex.def)             Requested size: 64.74164pt x 71.13188pt.
  [1{/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
  <./logotum.pdf> <./logoinf.pdf>]
 File: logotum.pdf Graphic file (type pdf)
  <use logotum.pdf>
-Package pdftex.def Info: logotum.pdf used on input line 17.
+Package pdftex.def Info: logotum.pdf used on input line 18.
 (pdftex.def)             Requested size: 133.46965pt x 71.13188pt.
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¤ in font cmr12!
 File: logoinf.pdf Graphic file (type pdf)
  <use logoinf.pdf>
-Package pdftex.def Info: logoinf.pdf used on input line 17.
+Package pdftex.def Info: logoinf.pdf used on input line 18.
 (pdftex.def)             Requested size: 64.74164pt x 71.13188pt.
  [2
 
 ]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 18.
+(Font)              <12> on input line 19.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 18.
+(Font)              <8> on input line 19.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 18.
+(Font)              <6> on input line 19.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 18.
+(Font)              <7> on input line 19.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 18.
+(Font)              <5> on input line 19.
  [3
+
+]
+(./MasterThesis_ZaurMolotnikov.toc)
+\tf@toc=\write3
+\openout3 = `MasterThesis_ZaurMolotnikov.toc'.
+
+ [4
+
+
+] [5
+
+] [6
 
 ]
 (./MasterThesis_ZaurMolotnikov.aux) ) 
 Here is how much of TeX's memory you used:
- 1711 strings out of 493629
- 24682 string characters out of 3143343
- 81753 words of memory out of 3000000
- 5005 multiletter control sequences out of 15000+200000
- 8488 words of font info for 30 fonts, out of 3000000 for 9000
+ 1721 strings out of 493629
+ 24813 string characters out of 3143343
+ 83753 words of memory out of 3000000
+ 5009 multiletter control sequences out of 15000+200000
+ 9403 words of font info for 33 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  37i,11n,23p,276b,306s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2011/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (3 pages, 48386 bytes).
+type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2011/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2011/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr9.pfb>
+Output written on MasterThesis_ZaurMolotnikov.pdf (6 pages, 99762 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 101 PDF objects out of 1000 (max. 8388607)
+ 60 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
