@@ -1,0 +1,416 @@
+%#######################################################################################################################
+%
+%   A package that generates the first three mandatory pages of a Bachelor's or Master's Thesis at
+%   the "Fakulaet fuer Informatik" of the "Technische Universitaet Muenchen" (TUM). This package uses
+%   absolute positioning to maintain a perfect page layout independent of the page's content.
+%
+%
+%   Author:    Andreas Wandinger (wandinge@in.tum.de)
+%   Date:      $Date: 2012-06-14 09:41:08 +0200 (Do, 14. Jun 2012) $
+%   Revision:  $Rev: 94 $
+%   License:   Copyright (c) 2012 by Andreas Wandinger (wandinge@in.tum.de).
+%              This work is made available under the terms of the
+%              Creative Commons Attribution-ShareAlike 3.0 Germany License,
+%              http://creativecommons.org/licenses/by-sa/3.0/de/.
+%
+%
+%   For the guidelines, please refer to:
+%     http://www.in.tum.de/en
+%       -> 'For Current Students'
+%         -> 'Announcements of the Examination Board'
+%           -> 'Thesis Style and Submission'
+%
+%
+%   Arguments:
+%
+%     \tumcoverpage requires \type \lang \title \author
+%     \tumtitlepage requires \type \lang \title \foreigntitle \author \supervisor \advisor \date
+%     \tumdeclrpage requires \type \lang \author \date
+%
+%
+%   Field description:
+%
+%     % Import this package.
+%     \usepackage{tumpages}
+%
+%     % Set the necessary information.
+%     \type{Currently 'bachelor' or 'master' are possible.}
+%     \lang{Currently 'english' or 'german' are possible.}
+%     \title{The title in the language of writing.}
+%     \foreigntitle{The title in the foreign language.}
+%     \author{The author of this thesis.}
+%     \supervisor{The professor who supplied this thesis.}
+%     \advisor{The advisor of this work.}
+%     \date{The date when this thesis will be submitted.}
+%
+%     % Prints the cover page.
+%     \tumcoverpage
+%
+%     % Prints the title page.
+%     \tumtitlepage
+%
+%     % Prints the declaration page page.
+%     \tumdeclrpage
+%
+%
+%   Usage example:
+%
+%     % Import this package.
+%     \usepackage{tumpages}
+%
+%     % Set the necessary information.
+%     \type
+%         {bachelor}
+%     \lang
+%         {english}
+%     \title
+%         {Lorem ipsum dolor sit amet, consectetur adipisici elit,
+%         sed eiusmod tempor incidunt ut labore et dolore magna aliqua.}
+%     \foreigntitle
+%         {Lorem ipsum dolor sit amet, consectetur adipisici elit,
+%         sed eiusmod tempor incidunt ut labore et dolore magna aliqua.}
+%     \author
+%         {Stefan Standardstudent}
+%     \supervisor
+%         {Prof. Dr. Michaela Musterfrau}
+%     \advisor
+%         {Dr. Michael Mustermann}
+%     \date
+%         {15. August 2012}
+%
+%     % Prints the cover page.
+%     \tumcoverpage
+%
+%     % Prints the title page.
+%     \tumtitlepage
+%
+%     % Prints the declaration page page.
+%     \tumdeclrpage
+%
+%#######################################################################################################################
+
+% Package declarations.
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{tumpages}[2012/04/25 - G1R0 - "Title pages for a B.Sc.- or M.Sc.-Thesis in Informatics at the TUM".]
+\typeout{Package: "Title pages for a B.Sc.- or M.Sc.-Thesis in Informatics at the TUM".}
+\RequirePackage[absolute]{textpos}
+\RequirePackage{graphicx}
+\RequirePackage{ifthen}
+\RequirePackage{calc}
+
+%=======================================================================================================================
+%
+%   Global definitions.
+%
+%=======================================================================================================================
+
+% Create new commands.
+\let\origtitle\title
+\renewcommand{\title}[1]{
+	\newcommand{\custtitle}{#1}
+	\origtitle{#1}
+}
+\let\origauthor\author
+\renewcommand{\author}[1]{
+	\newcommand{\custauthor}{#1}
+	\origauthor{#1}
+}
+\let\origdate\date
+\renewcommand{\date}[1]{
+	\newcommand{\custdate}{#1}
+	\origdate{#1}
+}
+\newcommand{\type}[1]{
+	\newcommand{\custtype}{#1}
+}
+\newcommand{\lang}[1]{
+	\newcommand{\custlang}{#1}
+}
+\newcommand{\foreigntitle}[1]{
+	\newcommand{\custforeigntitle}{#1}
+}
+\newcommand{\supervisor}[1]{
+	\newcommand{\custsupervisor}{#1}
+}
+\newcommand{\advisor}[1]{
+	\newcommand{\custadvisor}{#1}
+}
+\newcommand{\valuenotseterror}[3]{
+	\PackageError{tumpages}
+		{The command '#1' requires a valid value of argument '#2'}
+		{Please set the argument '#2' before invoking '#1' to resolve this issue. Possible values are: #3.}
+}
+
+% Configure the page.
+\setlength{\TPHorizModule}{\pdfpagewidth}
+\textblockorigin{0mm}{0mm}
+
+%=======================================================================================================================
+%
+%   Cover page.
+%
+%=======================================================================================================================
+
+% Create the cover page.
+\newcommand{\tumcoverpage}{{
+	% Check arguments.
+	\ifthenelse
+		{\isundefined{\custtype} \OR \NOT \equal{\custtype}{bachelor} \AND \NOT \equal{\custtype}{master}}
+		{\valuenotseterror{\protect\tumcoverpage}{\protect\type}{'bachelor', 'master'}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custlang} \OR \NOT \equal{\custlang}{english} \AND \NOT \equal{\custlang}{german}}
+		{\valuenotseterror{\protect\tumcoverpage}{\protect\lang}{'english', 'german'}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custtitle}}
+		{\valuenotseterror{\protect\tumcoverpage}{\protect\title}{<STRING>}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custauthor}}
+		{\valuenotseterror{\protect\tumcoverpage}{\protect\author}{<STRING>}}
+		{\relax}
+	% Front side.
+	\thispagestyle{empty}
+		% Header logo.
+		\begin{textblock*}{60mm}[0.5, 0.0](0.5\pdfpagewidth, 25mm)
+			\centerline{\includegraphics[height=2.5cm]{logotum}}
+		\end{textblock*}
+		% Faculty header.
+		\begin{textblock*}{120mm}[0.5, 1.0](0.5\pdfpagewidth, 70mm)
+			\centerline{\Huge \sc Fakult{\"a}t f{\"u}r Informatik}
+		\end{textblock*}
+		% TUM header.
+		\begin{textblock*}{140mm}[0.5, 1.0](0.5\pdfpagewidth, 80mm)
+			\centerline{\Large \sc Der Technischen Universit{\"a}t M{\"u}nchen}
+		\end{textblock*}
+		% Master's Thesis header.
+		\begin{textblock*}{120mm}[0.5, 1.0](0.5\pdfpagewidth, 110mm)
+			\ifthenelse
+				{\equal{\custtype}{bachelor}}
+				{\ifthenelse
+					{\equal{\custlang}{english}}
+					{\centerline{\Large \textbf{Bachelor's Thesis in Informatics}}}
+					{\centerline{\Large \textbf{Bachelorarbeit in Informatik}}}}
+				{\ifthenelse
+					{\equal{\custlang}{english}}
+					{\centerline{\Large \textbf{Master's Thesis in Informatics}}}
+					{\centerline{\Large \textbf{Masterarbeit in Informatik}}}}
+		\end{textblock*}
+		% Title of the thesis.
+		\begin{textblock*}{170mm}[0.5, 0.5](0.5\pdfpagewidth, 150mm)
+			\renewcommand{\baselinestretch}{1.5}\normalsize
+				\begin{center}
+					{\LARGE \textbf{\custtitle}}
+				\end{center}
+			\renewcommand{\baselinestretch}{1.0}\normalsize
+		\end{textblock*}
+		% First and last name of the author.
+		\begin{textblock*}{160mm}[0.5, 1.0](0.5\pdfpagewidth, 230mm)
+			\centerline{\large \custauthor}
+		\end{textblock*}
+		% Footer logo.
+		\begin{textblock*}{40mm}[0.5, 1.0](0.5\pdfpagewidth, 270mm)
+			\centerline{\includegraphics[height=2.5cm]{logoinf}}
+		\end{textblock*}
+	\leavevmode\newpage
+	% Back side.
+	\thispagestyle{empty}
+	\cleardoublepage
+}}
+
+%=======================================================================================================================
+%
+%   Title page.
+%
+%=======================================================================================================================
+
+% Create the title page.
+\newcommand{\tumtitlepage}{{
+	% Check arguments.
+	\ifthenelse
+		{\isundefined{\custtype} \OR \NOT \equal{\custtype}{bachelor} \AND \NOT \equal{\custtype}{master}}
+		{\valuenotseterror{\protect\tumcoverpage}{\protect\type}{'bachelor', 'master'}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custlang} \OR \NOT \equal{\custlang}{english} \AND \NOT \equal{\custlang}{german}}
+		{\valuenotseterror{\protect\tumcoverpage}{\protect\lang}{'english', 'german'}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custtitle}}
+		{\valuenotseterror{\protect\tumtitlepage}{\protect\title}{<STRING>}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custauthor}}
+		{\valuenotseterror{\protect\tumtitlepage}{\protect\author}{<STRING>}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custdate}}
+		{\valuenotseterror{\protect\tumtitlepage}{\protect\date}{<STRING>}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custforeigntitle}}
+		{\valuenotseterror{\protect\tumtitlepage}{\protect\foreigntitle}{<STRING>}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custsupervisor}}
+		{\valuenotseterror{\protect\tumtitlepage}{\protect\supervisor}{<STRING>}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custadvisor}}
+		{\valuenotseterror{\protect\tumtitlepage}{\protect\advisor}{<STRING>}}
+		{\relax}
+	% Front side.
+	\thispagestyle{empty}
+		% Header logo.
+		\begin{textblock*}{60mm}[0.5, 0.0](0.5\pdfpagewidth, 25mm)
+			\centerline{\includegraphics[height=2.5cm]{logotum}}
+		\end{textblock*}
+		% Faculty header.
+		\begin{textblock*}{120mm}[0.5, 1.0](0.5\pdfpagewidth, 70mm)
+			\centerline{\Huge \sc Fakult{\"a}t f{\"u}r Informatik}
+		\end{textblock*}
+		% TUM header.
+		\begin{textblock*}{140mm}[0.5, 1.0](0.5\pdfpagewidth, 80mm)
+			\centerline{\Large \sc Der Technischen Universit{\"a}t M{\"u}nchen}
+		\end{textblock*}
+		% Master's Thesis header.
+		\begin{textblock*}{120mm}[0.5, 1.0](0.5\pdfpagewidth, 100mm)
+			\ifthenelse
+				{\equal{\custtype}{bachelor}}
+				{\ifthenelse
+					{\equal{\custlang}{english}}
+					{\centerline{\Large \textbf{Bachelor's Thesis in Informatics}}}
+					{\centerline{\Large \textbf{Bachelorarbeit in Informatik}}}}
+				{\ifthenelse
+					{\equal{\custlang}{english}}
+					{\centerline{\Large \textbf{Master's Thesis in Informatics}}}
+					{\centerline{\Large \textbf{Masterarbeit in Informatik}}}}
+		\end{textblock*}
+		% Title of the thesis in the language of writing.
+		\begin{textblock*}{170mm}[0.5, 0.5](0.5\pdfpagewidth, 130mm)
+			\renewcommand{\baselinestretch}{1.5}\normalsize
+				\begin{center}
+					{\LARGE \textbf{\custtitle}}
+				\end{center}
+			\renewcommand{\baselinestretch}{1.0}\normalsize
+		\end{textblock*}
+		% Title of the thesis in the foreign language.
+		\begin{textblock*}{170mm}[0.5, 0.5](0.5\pdfpagewidth, 170mm)
+			\renewcommand{\baselinestretch}{1.5}\normalsize
+				\begin{center}
+					{\LARGE \textbf{\custforeigntitle}}
+				\end{center}
+			\renewcommand{\baselinestretch}{1.0}\normalsize
+		\end{textblock*}
+		% Additional information.
+		\begin{textblock*}{170mm}[0.5, 1.0](0.5\pdfpagewidth, 240mm)
+			\begin{large}
+				\begin{center}
+					\ifthenelse
+						{\equal{\custlang}{english}}
+						{\begin{tabbing}
+							key \hspace{4cm}	\= value			\kill
+							Author:				\> \custauthor		\\[1mm]
+							Supervisor:			\> \custsupervisor	\\[1mm]
+							Advisor:			\> \custadvisor 	\\[1mm]
+							Submission Date:	\> \custdate 		\relax
+						\end{tabbing}}
+						{\begin{tabbing}
+							key \hspace{4cm}	\= value			\kill
+							Bearbeiter/in:		\> \custauthor		\\[1mm]
+							Aufgabensteller/in:	\> \custsupervisor	\\[1mm]
+							Betreuer/in:		\> \custadvisor 	\\[1mm]
+							Abgabedatum:		\> \custdate 		\relax
+						\end{tabbing}}
+				\end{center}
+			\end{large}
+		\end{textblock*}
+		% Footer logo.
+		\begin{textblock*}{40mm}[0.5, 1.0](0.5\pdfpagewidth, 270mm)
+			\centerline{\includegraphics[height=2.5cm]{logoinf}}
+		\end{textblock*}
+	\leavevmode\newpage
+	% Back side.
+	\thispagestyle{empty}
+	\cleardoublepage
+}}
+
+%=======================================================================================================================
+%
+%   Declaration page.
+%
+%=======================================================================================================================
+
+% Create the declaration page.
+\newcommand{\tumdeclrpage}{{
+	% Check arguments.
+	\ifthenelse
+		{\isundefined{\custtype} \OR \NOT \equal{\custtype}{bachelor} \AND \NOT \equal{\custtype}{master}}
+		{\valuenotseterror{\protect\tumcoverpage}{\protect\type}{'bachelor', 'master'}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custlang} \OR \NOT \equal{\custlang}{english} \AND \NOT \equal{\custlang}{german}}
+		{\valuenotseterror{\protect\tumcoverpage}{\protect\lang}{'english', 'german'}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custauthor}}
+		{\valuenotseterror{\protect\tumdeclrpage}{\protect\author}{<STRING>}}
+		{\relax}
+	\ifthenelse
+		{\isundefined{\custdate}}
+		{\valuenotseterror{\protect\tumdeclrpage}{\protect\date}{<STRING>}}
+		{\relax}
+	% Front side.
+	\thispagestyle{empty}
+		% Print declaration at the bottom of the page.
+		\begin{textblock*}{170mm}[0.5, 1.0](0.5\pdfpagewidth, 260mm)
+			\begin{center}
+				\begin{minipage}{15cm}
+					\ifthenelse
+						{\equal{\custlang}{english}}
+						{\large{
+							I assure the single handed composition of this
+							\ifthenelse
+								{\equal{\custtype}{bachelor}}
+								{bachelor's thesis}
+								{master's thesis}
+							only supported by declared resources.
+						}}
+						{\large{
+							Ich versichere, dass ich diese
+							\ifthenelse
+								{\equal{\custtype}{bachelor}}
+								{Bachelorarbeit}
+								{Masterarbeit}
+							selbst{\"a}ndig verfasst und nur die angegebenen
+							Quellen und Hilfsmittel verwendet habe.
+						}}
+					\vskip 2cm
+					\ifthenelse
+						{\equal{\custlang}{english}}
+						{\begin{tabular}{p{8cm}c}
+							Garching, \custdate		& \rule{6cm}{1pt}	\\
+							\relax					& \custauthor		\\
+						\end{tabular}}
+						{\begin{tabular}{p{8cm}c}
+							Garching, den \custdate	& \rule{6cm}{1pt}	\\
+							\relax					& \custauthor		\\
+						\end{tabular}}
+				\end{minipage}
+			\end{center}
+		\end{textblock*}
+	\leavevmode\newpage
+	% Back side.
+	\thispagestyle{empty}
+	\cleardoublepage
+}}
+
+%=======================================================================================================================
+%
+%   End of package.
+%
+%=======================================================================================================================
+
+% Close input.
+\endinput
