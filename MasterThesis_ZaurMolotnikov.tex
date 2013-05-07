@@ -1,101 +1,86 @@
-\documentclass{article}
-%\documentclass{report}
-\usepackage{tumpages}
-\type{master}
-\lang{english}
-\title{Adding C++ support to MBEDDR project}
-\foreigntitle{}
-\author{Zaur Molotnikov}
-\supervisor{Dr. Bernhard Schätz}
-\advisor{Dr. Daniel Ratiu}
-\date{15. September 2013}
+\documentclass[11pt,a4paper,bibtotoc,idxtotoc,headsepline,footsepline,footexclude,BCOR12mm,DIV13]{scrbook}
+
+
+% Second template
+\input{components/info}
+% include settings
+\input{components/settings}
+% include commands
+\input{components/commands}
+
+
+\makeglossary
 
 \begin{document}
 
+	\frontmatter
+	
+	
+	\input{components/cover}
+%	\clearemptydoublepage
+%	
+%	\input{components/titlepage}
+	
+	
+%	\input{components/cover_maschmeyer}
+	\clearemptydoublepage
+	
+	\input{components/titlepage}
+	
+	
+	\input{components/disclaimer}
+	
+	\input{components/acknowledgements}
+	
+	\input{components/abstract}
 
-
-\tumcoverpage
-\tumtitlepage
-\tumdeclrpage
-
-
-\clearpage
-
-\tableofcontents
-
-
-\clearpage
-
-\begin{abstract}
-My abstract goes here...
-\end{abstract}
-
-\clearpage
-
-\section{Introduction}
-My introduction goes here
-
-\section{Structure}
-
-Structure, now as a list
-
-\begin{enumerate}
+	\tableofcontents
   
-  \item Problem description
+  \input{components/outline}
+
+	\mainmatter
+	
+	
+		% ---------------------------------------------------------------------------
+		%
+		%Introduction and Background Theory
+		%
+		% ---------------------------------------------------------------------------
+		\part[Introduction and Theory]{Introduction and Theory}
+		\label{part:introAndBackgroundTheory}
+		\input{chapters/Introduction}
+		
+		
+		%
+		%% ---------------------------------------------------------------------------
+		%%
+		%% Fully Automated Calibration for Ultrasound
+		%%
+		%%% ---------------------------------------------------------------------------
+		\part[The 2nd Part]{The Second Part}
+		\label{part:secondP}
+		\input{chapters/Structure}
+		
+		
+		% ---------------------------------------------------------------------------
+		%
+		% Appendix
+		%
+		% ---------------------------------------------------------------------------
+		
+		\part*{Appendix}
+		\addcontentsline{toc}{part}{Appendix}
+		
+		\appendix %---------------------------------------
+		
+		\input{chapters/oneAppendix}
+		
+	
+
+
+  \clearemptydoublepage
   
-  \begin{enumerate}
-    \item DSLs and Projectional Editing
-    \item MBEDDR Project
-    \item C++ Support in MBEDDR (motivation)
-    \item Related Work
-  \end{enumerate}
-  
-  \item C++ Implementation
-    \begin{enumerate}
-      \item Differences between C and C++
-	\begin{enumerate}
-	 \item Reference Type and Boolean Type
-	 \item Modules Support
-	 \item Object Oriented Approach Support
-	\end{enumerate}
-      
-      \item Classes and Member Access Control
-	\begin{enumerate}
-	 \item Access Control in Class
-	 \item Inheritance and Access Control
-	 \item Friends	 
-	\end{enumerate}
-
-      
-      \item Namespaces
-	\begin{enumerate}
-	 \item Namespace Resolution Operation
-	 \item Member Search Strategy
-	 \item Reenterability
-	\end{enumerate}
-
-      \item Operator Overloading
-	\begin{enumerate}
-	 \item Extension of Type System
-	 \item ... More here ...
-	\end{enumerate}
-
-      
-      
-      \item Templates  
-      \begin{enumerate}
-       \item Textual Nature of Templates in C++
-       \item Concepts
-      \end{enumerate}
-
-    
-    \end{enumerate}
-  
-  \item Conclusion 
-  
-\end{enumerate}
-
-
-
-
+	\bibliography{bibliography/literature}
+	
+ 
 \end{document}
