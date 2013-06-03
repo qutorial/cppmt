@@ -32,12 +32,7 @@ to rename a method. Every usage of the method, being renamed, has to be found an
 must take into account various possible name collisions, as well as presume a compilable state of the program to even start
 the refactoring.
 
-Not to mention the parsing problem itself. Parsing a program in a complex language like C++ is a difficult problem, it involves 
-the need to resolve correctly scoping and typing, templates and related issues, work with pre-processor directives incorporated
-in the code. In this regard different compilers treat C++ in a different way, creating dialects, which may represent obstacles for
-the code to be purely cross-platform.
 
-Another approach towards building 
 
 
  
