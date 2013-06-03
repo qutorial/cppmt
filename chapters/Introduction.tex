@@ -5,6 +5,11 @@ Here I introduce the main concepts and existing work, relevant to this \MT.
 
  
 \section{Projectional Editing}
+
+This section compares the traditional approach to build textual editors for the program code with
+the projectional approach, bringing up  motivation for the least.
+
+\subsection{Traditional Approach}
 Traditionally programming languages are used in a textual form in text files, forming programs.
 However the textual nature is not typical for the structure of programs themselves, being rather low-level
 representation of code. Parsers are used to construct so called abstract syntax trees (ASTs) from the textual 
@@ -37,9 +42,18 @@ the need to resolve correctly scoping and typing, templates and related issues, 
 in the code. In this regard different compilers treat C++ in a different way, creating dialects, which may represent obstacles for
 the code to be purely cross-platform.
 
-Another approach towards building 
+\cpp{Closing several blocks}{blocks}
 
+The textual representation of program code, involves the need in formatting and preserving syntax. These both tasks, indeed,  
+have nothing to do with program functionality, and addtionally load the developer, reducing productivity. As an example, here
+I can mention the need to close several blocks ending at the same point correctly, identing the closing brace symmetrically 
+to opening one, and putting in the exact amount of braces. The \rl{blocks} demonstrates it in the last few lines.
 
- 
+\subsection{Projectional Approach}
+
+Another approach which can be taken in the editor for a language is called projectional approach. Projectional editors
+do not work with a low-level textual representation of a program, but rather with a higher level concept, ASTs.
+
+Working with ASTs directly has several advantages over conventional text editing.
 
 

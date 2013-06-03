@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  3 JUN 2013 12:40
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  3 JUN 2013 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -518,7 +518,7 @@ File: pd1enc.def 2011/10/01 v6.82j Hyperref: PDFDocEncoding definition (HO)
 (/usr/local/texlive/2011/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 3925.
+Package hyperref Info: Option `colorlinks' set `false' on input line 3925.
 Package hyperref Info: Option `bookmarks' set `true' on input line 3925.
 Package hyperref Info: Option `bookmarksopen' set `true' on input line 3925.
 
@@ -548,7 +548,7 @@ Package hyperref Info: Hyper figures OFF on input line 5723.
 Package hyperref Info: Link nesting OFF on input line 5728.
 Package hyperref Info: Hyper index OFF on input line 5733.
 Package hyperref Info: backreferencing OFF on input line 5738.
-Package hyperref Info: Link coloring ON on input line 5741.
+Package hyperref Info: Link coloring OFF on input line 5743.
 Package hyperref Info: Link coloring with OCG OFF on input line 5748.
 Package hyperref Info: PDF/A mode OFF on input line 5753.
 LaTeX Info: Redefining \ref on input line 5793.
@@ -571,9 +571,34 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip61
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count119
+\lst@gtempboxa=\box32
+\lst@token=\toks27
+\lst@length=\count120
+\lst@currlwidth=\dimen123
+\lst@column=\count121
+\lst@pos=\count122
+\lst@lostspace=\dimen124
+\lst@width=\dimen125
+\lst@newlines=\count123
+\lst@lineno=\count124
+\lst@maxwidth=\dimen126
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count125
+\lst@skipnumbers=\count126
+\lst@framebox=\box33
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+)
 (./components/commands.tex
-\c@theorem=\count119
+\c@theorem=\count127
 ) (./components/abbreviations.tex)
 \@glossaryfile=\write3
 \openout3 = `MasterThesis_ZaurMolotnikov.glo'.
@@ -611,17 +636,17 @@ File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
 (/usr/local/texlive/2011/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count120
-\scratchdimen=\dimen123
-\scratchbox=\box32
-\nofMPsegments=\count121
-\nofMParguments=\count122
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count123
-\MPscratchDim=\dimen124
-\MPnumerator=\count124
-\makeMPintoPDFobject=\count125
-\everyMPtoPDFconversion=\toks28
+\scratchcounter=\count128
+\scratchdimen=\dimen127
+\scratchbox=\box34
+\nofMPsegments=\count129
+\nofMParguments=\count130
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count131
+\MPscratchDim=\dimen128
+\MPnumerator=\count132
+\makeMPintoPDFobject=\count133
+\everyMPtoPDFconversion=\toks29
 ) (/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -636,8 +661,8 @@ Package grfext Info: Graphics extension search list:
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring ON on input line 16.
+\AtBeginShipoutBox=\box35
+Package hyperref Info: Link coloring OFF on input line 16.
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
@@ -645,7 +670,7 @@ Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 (/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count126
+\c@section@level=\count134
 )
 LaTeX Info: Redefining \ref on input line 16.
 LaTeX Info: Redefining \pageref on input line 16.
@@ -655,11 +680,12 @@ LaTeX Info: Redefining \nameref on input line 16.
 \@outlinefile=\write4
 \openout4 = `MasterThesis_ZaurMolotnikov.out'.
 
+\c@lstlisting=\count135
 
 (./components/cover.tex
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 43.
- <styles/informat.png, id=38, 355.3275pt x 355.3275pt>
+ <styles/informat.png, id=46, 355.3275pt x 355.3275pt>
 File: styles/informat.png Graphic file (type png)
 
 <use styles/informat.png>
@@ -754,11 +780,52 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              Support for \float@addtolists may be removed from
 (scrbook)              `scrbook' soon .
 
-) [3
+[3
 
-] [4
+] (/usr/local/texlive/2011/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 42.
 
-] [5] [6] (./chapters/oneAppendix.tex
+(./listings/blocks.cpp
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 1.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/omsppl.fd
+File: omsppl.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1.
+)
+Overfull \hbox (506.79733pt too wide) in paragraph at lines 51--54
+\OT1/ppl/m/n/10.95 SomethingSomethingSomethingSomethingSomethingSomethingSometh
+ingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSomethingSome
+thingSomethingSomething
+ []
+
+
+Overfull \hbox (506.79733pt too wide) in paragraph at lines 51--54
+\OT1/ppl/m/n/10.95 Some-thing-Some-thing-Some-thing-Some-thing-Some-thing-Some-
+thing-Some-thingSomethingSomethingSomethingSomethingSomethingSomethingSomething
+SomethingSomethingSomethingSomething
+ []
+
+
+Overfull \hbox (506.79733pt too wide) in paragraph at lines 51--54
+\OT1/ppl/m/n/10.95 Some-thing-Some-thing-Some-thing-Some-thing-Some-thing-Some-
+thing-Some-thingSomethingSomethingSomethingSomethingSomethingSomethingSomething
+SomethingSomethingSomethingSomething 
+ []
+
+) [4] [5
+
+] [6] (./chapters/oneAppendix.tex
 Appendix A.
 ) [7
 
@@ -780,24 +847,26 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 88.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 88.
 Package rerunfilecheck Info: File `MasterThesis_ZaurMolotnikov.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: 467C9F64E14C87EE446FC40FBBFE7F75;486.
+(rerunfilecheck)             Checksum: 6EBE5DF8A9659EDFB9E86E353F55A0A7;637.
  ) 
 Here is how much of TeX's memory you used:
- 8991 strings out of 493629
- 134399 string characters out of 3143343
- 236650 words of memory out of 3000000
- 12035 multiletter control sequences out of 15000+200000
- 21450 words of font info for 56 fonts, out of 3000000 for 9000
+ 10823 strings out of 493629
+ 158871 string characters out of 3143343
+ 283321 words of memory out of 3000000
+ 13823 multiletter control sequences out of 15000+200000
+ 22515 words of font info for 58 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 39i,10n,55p,285b,351s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,10n,63p,285b,1516s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2011/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/
-2011/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/te
-xmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (23 pages, 64728 bytes).
+exlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
+xlive/2011/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2
+011/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/tex
+mf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist
+/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on MasterThesis_ZaurMolotnikov.pdf (23 pages, 79639 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 143 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
- 78 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 211 PDF objects out of 1000 (max. 8388607)
+ 177 compressed objects within 2 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 94 words of extra memory for PDF output out of 10000 (max. 10000000)
 
