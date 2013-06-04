@@ -46,7 +46,7 @@ the code to be purely cross-platform.
 
 The textual representation of program code, involves the need in formatting and preserving syntax. These both tasks, indeed,  
 have nothing to do with program functionality, and addtionally load the developer, reducing productivity. As an example, here
-I can mention the need to close several blocks ending at the same point correctly, identing the closing brace symmetrically 
+I can mention the need to close several blocks ending at the same point correctly, indenting the closing brace symmetrically 
 to opening one, and putting in the exact amount of braces. The \rl{blocks} demonstrates it in the last few lines.
 
 \subsection{Projectional Approach}
@@ -54,6 +54,85 @@ to opening one, and putting in the exact amount of braces. The \rl{blocks} demon
 Another approach which can be taken in the editor for a language is called projectional approach. Projectional editors
 do not work with a low-level textual representation of a program, but rather with a higher level concept, ASTs.
 
-Working with ASTs directly has several advantages over conventional text editing.
+Working with ASTs directly has several advantages over the conventional text editing. Firstly, all syntax errors are no longer
+possible, as there is no syntax. Secondly, there is no need to format the code anyhow, since it is only typical for textual code.
+Thirdly, all features, which in textual approach require parsing, can be implemented without parser, because AST is always known to the editor.
+
+Projectional editors have to display somehow the AST to the developer, in order for him/her to work with it. Such visualization
+of an AST is called ``projection'', giving a name to the editor class.
+
+The model of code is stored as AST in the projectional editor. As in the Model-View-Controller pattern (\cite{GOF95}) the view for
+the model can be implemented separately. Thus the code may look in a many different ways to the user. For example, the AST can be
+visualized as a graph, similar to control flow graph. This visualization, however, is not always advantageous being sometimes not compact and
+complicated to overview.
+
+\ms{constructor}{Example projection of an AST, ``source code'' view.}
+
+One of the well-accepted way to visualize AST is buy visualizing its textual representation, as if it would was written 
+as a code in the programming language, see \fig{constructor}. The statements in the projectional are only selected as whole.
+There is now way to just select the ``while'' word for cut or copy, without selecting the condition and the block belonging
+to the statement. This behavior represents the position of the condition and while-body in the AST as children of the while
+statement. The statement can be selected all, only with children.
+
+Additionally, each block delimiters are just a part of block visualization. They are organized in a proper way automatically,
+and there is no way to delete or confuse them, as well as type them initially. Each closing brace is marked with the 
+parent statement name (not a problem to implement such behavior in viewing AST), enhancing navigation through the AST's projection.
+
+As one can see the projection to text in a projectional editor looks almost the same, as the conventional textual editor.
+This can cause some confusion for the developer at first, as attempts to edit this textual visualization as a real text
+will fail. Eventually, however, advantages of such visualization overwhelm the disadvantages. Among the benefits of the 
+textual projection over text are quicker code construction after short learning, better way to select code fragments,
+since not individual characters or lines, but rather AST nodes or groups of nodes are selected, plus all the advantages,
+the projectional editing brings by itself, as discussed above.
 
 
+\section{C++ in Projection}
+
+The goal of this \MT\ is to research different aspects connected with implementation of the \cpppl\ in a projectional editor.
+As a tool base for this \jbmps\ has been selected together with the based on it \mbdr\ project. This section overviews the technologies.
+
+\subsection{\jbmps}
+
+\jbmps\ stands for Jetbrains Meta Programming System. In this IDE-like software it is possible to develop domain specific languages.
+The approach taken in the \jbmps\ is rather unique. One defines a language in it not through the canonical grammar approach, but instead
+through defining so called concepts, and relationships between them similar to those in ER diagrams. A logical part of a language can be made 
+a concept. Related to C++, class, method declaration, field declaration can be represented as a concept. 
+
+Each concept can have children, which should be assigned with a role and cardinality. For example, the class concept can have children of method concept,
+with a role called ``methods'', and cardinality 0..n.
+
+Concepts can form hierarchies as classes normally do in object oriented programming languages. For this each concept should have a base concept (inheritance),
+and can implement several interface concepts (interface implementation). Concepts can be abstract, for the use purely only in inheritance to create other 
+non-abstract concepts with a common parent.
+
+Each concept is described by several views on it. Among such views there are editor, behavior, constraints, type system, generator and few more views.
+
+The editor view is designed to give a look for a concept, and a way to input it. This is where the projection of an AST node is defined. As editors 
+are mostly defined to look like text, a program in the \cpppl implemented in MPS looks almost like a regular C++ code.
+
+The behavior view, can be used to define certain behavioral methods for a concept. A concept is represented there similar to a java class, and
+it is possible to define the methods in a Java-like language.
+
+The constraints view can be used, to limit in a desirable way relationships the concept can have to other concepts.
+
+The type system view is used mainly to define a type for each instance of a concept. The type is used later (for example, in the constraints), to 
+determine suitability of the concept instance for a place, where it is used.
+
+The generator view, as well as the textgen view, is used to define the way, the concept instance is going to be transformed when generation of the AST
+is invoked by the MPS user. In general, the generation is needed in the end of the programming, to obtain the source code from the AST in a textual representation.
+This textual representation is needed because all existing tools (like compilers) expect text code nowadays. It is worth mentioning that, in theory, one
+could implement a compiler, which works directly from the AST in the editor, eliminating thus the need in generators to text.
+
+The representation of a new language created in concepts and views to them, present a seamless approach to creating a new language with a projectional editor.
+Thus \jbmps\ is a good suitable technology for the practical implementation of the \MT\ goal.
+
+\subsection{mbeddr Project}
+
+The \mbdr\ project represent mainly an implementation of the C programming language in the \jbmps\ environment. Having embedded systems
+and software for them as a main focus, \mbdr\ provides certain language extensions to empower the programmer in the mentioned domain. 
+
+Being a different language the \cpppl\ shares a lot of commonality with C. As \jbmps\ allows to some extent incremental language construction,
+as the basis for the \cpppl\ implementation in \jbmps\ the \mbdr\ project was considered to be suitable. 
+
+The use of \mbdr\, however, could not be purely incremental, and required some changes to the \mbdr\ itself. The changes were introduced however,
+in a way to make \mbdr\ simply more extensible, without creating a dedicated branch working as a basis for the \cpppl\ only.
