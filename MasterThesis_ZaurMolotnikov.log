@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  4 JUN 2013 17:31
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  6 JUN 2013 21:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -685,7 +685,7 @@ LaTeX Info: Redefining \nameref on input line 16.
 (./components/cover.tex
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 43.
- <styles/informat.png, id=70, 355.3275pt x 355.3275pt>
+ <styles/informat.png, id=86, 355.3275pt x 355.3275pt>
 File: styles/informat.png Graphic file (type png)
 
 <use styles/informat.png>
@@ -792,7 +792,7 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 45.
+nput line 44.
 
 (./listings/blocks.cpp
 LaTeX Font Info:    Try loading font information for OMS+ppl on input line 1.
@@ -811,34 +811,41 @@ Package epstopdf Info: Source file: <figures/constructor.eps>
 (epstopdf)                    size: 10121 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/constructor-eps-co
 nverted-to.pdf figures/constructor.eps>
-(epstopdf)             \includegraphics on input line 69.
+(epstopdf)             \includegraphics on input line 68.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/constructor-eps-converted-to.pdf, id=170, 920.43875pt x 433.62pt>
+<figures/constructor-eps-converted-to.pdf, id=190, 920.43875pt x 433.62pt>
 File: figures/constructor-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/constructor-eps-converted-to.pdf>
 Package pdftex.def Info: figures/constructor-eps-converted-to.pdf used on input
- line 69.
+ line 68.
 (pdftex.def)             Requested size: 276.13376pt x 130.087pt.
- [4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5 <./figures/constructor-eps-converted-to.pdf>] [6])
-Overfull \hbox (5.17104pt too wide) in paragraph at lines 137--54
+ [4] [5 <./figures/constructor-eps-converted-to.pdf>] [6]
+Overfull \hbox (5.17104pt too wide) in paragraph at lines 136--139
 []\OT1/ppl/m/n/10.95 The use of mbeddr how-ever, could not be purely in-cre-men
 -tal, and re-quired some changes
  []
 
-[7] [8
+) [7] [8
 
 ] [9] [10] (./chapters/CAndCpp.tex
 Chapter 2.
-) [11
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 15.
+(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+(./listings/copyconstructor.cpp) [11
 
-] [12
+]
+Overfull \hbox (0.67499pt too wide) in paragraph at lines 43--46
+[]\OT1/ppl/m/n/10.95 Among lim-i-ta-tions of this ap-proach one can take as an 
+ex-am-ple \OT1/pcr/m/n/10.95 std::vectoor<bool>\OT1/ppl/m/n/10.95 .
+ []
 
-] [13] [14] (./chapters/oneAppendix.tex
+) [12] [13
+
+] [14] (./chapters/oneAppendix.tex
 Appendix A.
 ) [15
 
@@ -856,26 +863,27 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 88.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 88.
 Package rerunfilecheck Info: File `MasterThesis_ZaurMolotnikov.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: 3AF8D12FCA4E41D15B45D2ED9E1FC5A6;1012.
+(rerunfilecheck)             Checksum: 65073567D51EEEA59B90E7D4F950C620;1272.
  ) 
 Here is how much of TeX's memory you used:
- 10875 strings out of 493629
- 159552 string characters out of 3143343
- 287923 words of memory out of 3000000
- 13847 multiletter control sequences out of 15000+200000
- 22515 words of font info for 58 fonts, out of 3000000 for 9000
+ 10944 strings out of 493629
+ 160602 string characters out of 3143343
+ 287198 words of memory out of 3000000
+ 13898 multiletter control sequences out of 15000+200000
+ 23030 words of font info for 60 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 39i,10n,63p,285b,1516s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,11n,63p,285b,1516s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
-xlive/2011/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2
-011/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/tex
-mf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist
-/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (31 pages, 108945 bytes).
+xlive/2011/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/20
+11/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2011/texm
+f-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/
+fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
+ype1/urw/palatino/uplri8a.pfb>
+Output written on MasterThesis_ZaurMolotnikov.pdf (31 pages, 126574 bytes).
 PDF statistics:
- 297 PDF objects out of 1000 (max. 8388607)
- 246 compressed objects within 3 object streams
- 70 named destinations out of 1000 (max. 500000)
- 147 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 333 PDF objects out of 1000 (max. 8388607)
+ 281 compressed objects within 3 object streams
+ 80 named destinations out of 1000 (max. 500000)
+ 179 words of extra memory for PDF output out of 10000 (max. 10000000)
 

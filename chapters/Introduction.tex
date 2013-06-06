@@ -1,8 +1,7 @@
 \chapter{Introduction}
 \label{chapter:Introduction}
 
-Here I introduce the main concepts and existing work, relevant to this \MT.
-
+Here I introduce the main concepts and existing work, relevant to this \MT, as well as present the motivation for the topic.
  
 \section{Projectional Editing}
 
@@ -49,7 +48,7 @@ have nothing to do with program functionality, and addtionally load the develope
 I can mention the need to close several blocks ending at the same point correctly, indenting the closing brace symmetrically 
 to opening one, and putting in the exact amount of braces. The \rl{blocks} demonstrates it in the last few lines.
 
-\subsection{Projectional Approach}
+\section{Projectional Approach}
 
 Another approach which can be taken in the editor for a language is called projectional approach. Projectional editors
 do not work with a low-level textual representation of a program, but rather with a higher level concept, ASTs.
@@ -89,7 +88,7 @@ the projectional editing brings by itself, as discussed above.
 \section{C++ in Projection}
 
 The goal of this \MT\ is to research different aspects connected with implementation of the \cpppl\ in a projectional editor.
-As a tool base for this \jbmps\ has been selected together with the based on it \mbdr\ project. This section overviews the technologies.
+As a tool base for this \jbmps\ has been selected together with the based on it \mbdrp. This section overviews the technologies.
 
 \subsection{\jbmps}
 
@@ -128,11 +127,28 @@ Thus \jbmps\ is a good suitable technology for the practical implementation of t
 
 \subsection{mbeddr Project}
 
-The \mbdr\ project represent mainly an implementation of the C programming language in the \jbmps\ environment. Having embedded systems
+The \mbdrp\ represent mainly an implementation of the C programming language in the \jbmps\ environment. Having embedded systems
 and software for them as a main focus, \mbdr\ provides certain language extensions to empower the programmer in the mentioned domain. 
 
 Being a different language the \cpppl\ shares a lot of commonality with C. As \jbmps\ allows to some extent incremental language construction,
-as the basis for the \cpppl\ implementation in \jbmps\ the \mbdr\ project was considered to be suitable. 
+as the basis for the \cpppl\ implementation in \jbmps\ the \mbdrp\ was considered to be suitable. 
 
-The use of \mbdr\, however, could not be purely incremental, and required some changes to the \mbdr\ itself. The changes were introduced however,
-in a way to make \mbdr\ simply more extensible, without creating a dedicated branch working as a basis for the \cpppl\ only.
+The use of \mbdr\, however, could not be purely incremental, and required some changes to the \mbdr\ itself. 
+The changes were introduced however, in a way to make \mbdr\ simply more extensible, 
+without creating a dedicated branch working as a basis for the \cpppl\ only.
+
+\subsection{Motivation}
+
+The selection of the topic for the \MT can be motivated in several ways.
+
+At first, the author is not aware of any implementations of C++ editing in a projectional editor. The goal to research
+such opportunities for one of the most complicated, traditionally highly text-oriented, object oriented languages is
+new.
+
+Secondly, extending the \mbdrp\ with the \cpppl\ has a practical interest for the \mbdrp\ users. Being comparatively lightweight,
+the \cpppl\ supports object-oriented programming paradigms and more. It is thus of a high interest for embedded domain developers, using \mbdr,
+to be able to have the \cpppl\ in the arsenal.
+
+Being an extension for the \mbp\ the discussed in this \MT\ C++ implementation is following the general \mb\ goals. Among this goals are targeting
+the embedded programming domain, and making the language, when possible, more supportive to the user. Both goals have some influence on the implementation,
+which are discussed in the following chapters.
