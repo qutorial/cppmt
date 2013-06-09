@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  9 JUN 2013 17:23
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  9 JUN 2013 18:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -845,11 +845,28 @@ ex-am-ple \OT1/pcr/m/n/10.95 std::vectoor<bool>\OT1/ppl/m/n/10.95 .
 
 ) (./chapters/Classes.tex [12]
 Chapter 3.
+Package epstopdf Info: Source file: <figures/webpage.eps>
+(epstopdf)                    date: 2013-06-09 18:15:51
+(epstopdf)                    size: 757320 bytes
+(epstopdf)             Output file: <figures/webpage-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-06-09 18:22:07
+(epstopdf)                    size: 15154 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/webpage-eps-conver
+ted-to.pdf figures/webpage.eps>
+(epstopdf)             \includegraphics on input line 30.
+Package epstopdf Info: Output file is already uptodate.
+<figures/webpage-eps-converted-to.pdf, id=295, 1226.5825pt x 494.84875pt>
+File: figures/webpage-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/webpage-eps-converted-to.pdf>
+Package pdftex.def Info: figures/webpage-eps-converted-to.pdf used on input lin
+e 30.
+(pdftex.def)             Requested size: 367.97758pt x 148.45576pt.
 )) [13
 
-] [14
+] [14 <./figures/webpage-eps-converted-to.pdf>] [15
 
-] [15] [16] (./chapters/Conclusion.tex) [17] [18
+] [16] (./chapters/Conclusion.tex) [17] [18
 
 ] [19] [20]
 (./chapters/oneAppendix.tex
@@ -873,10 +890,10 @@ nged.
 (rerunfilecheck)             Checksum: 8F4D80B5BA621909B4ED5D75FDD65D14;1576.
  ) 
 Here is how much of TeX's memory you used:
- 10980 strings out of 493629
- 161189 string characters out of 3143343
- 288271 words of memory out of 3000000
- 13914 multiletter control sequences out of 15000+200000
+ 10987 strings out of 493629
+ 161386 string characters out of 3143343
+ 288329 words of memory out of 3000000
+ 13919 multiletter control sequences out of 15000+200000
  23030 words of font info for 60 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  39i,11n,63p,307b,1516s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -887,10 +904,10 @@ xlive/2011/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/20
 f-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/
 fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
 ype1/urw/palatino/uplri8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (37 pages, 131980 bytes).
+Output written on MasterThesis_ZaurMolotnikov.pdf (37 pages, 145337 bytes).
 PDF statistics:
- 388 PDF objects out of 1000 (max. 8388607)
- 329 compressed objects within 4 object streams
- 91 named destinations out of 1000 (max. 500000)
- 219 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 402 PDF objects out of 1000 (max. 8388607)
+ 332 compressed objects within 4 object streams
+ 92 named destinations out of 1000 (max. 500000)
+ 224 words of extra memory for PDF output out of 10000 (max. 10000000)
 
