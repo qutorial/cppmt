@@ -70,11 +70,6 @@ The class concept has the visibility sections as children. Each section is given
 and can appear 0 or 1 times. The editor for the class concept orders the visibility sections so,
 that the public section always comes first, followed by the private and protected sections.
 
-The creation of a section is made with the use of so called \emph{intention} in MPS. The user
-uses \emph{Alt+Enter} combination on the class declaration to create visibility sections.
-It should be more practical and fast for the user, compared to typing the keyword, colon and
-indenting the result.
-
 % Limitation
 A question arises on how to support another way to represent a class, so that it will reflect
 requirements from a different coding standard. And as a way to resolve it a definition of 
@@ -85,13 +80,6 @@ is addressed in the newer 3.0 version.
 
 \subsection{Constructors}
 \label{classconstructors}
-
-Constructors are special methods of a class, used to construct the class instances. 
-
-% TODO Continue here!
-
-% COOL  DISALLOW_COPY_AND_ASSIGN MACRO!
-
 
 % It is also considered to be 
 % a ``complicated'' language to learn. This is true due to the various language constructions, which are many,

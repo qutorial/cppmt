@@ -15,6 +15,15 @@
   timestamp = {2012.12.11}
 }
 
+@BOOK{alexandrescu,
+  title = {Modern C++ Design: Generic Programming and Design Patterns Applied},
+  publisher = {Addison-Wesley Professional},
+  year = {2001},
+  author = {Andrei Alexandrescu},
+  owner = {zaur},
+  timestamp = {2013.06.14}
+}
+
 @INPROCEEDINGS{2011_alglave_making_software_verification_tools_really_work,
   author = {Alglave, Jade and Donaldson, Alastair F. and Kroening, Daniel and
 	Tautschnig, Michael},
@@ -2648,6 +2657,20 @@
   institution = {IEC},
   owner = {zaur},
   timestamp = {2013.06.06}
+}
+
+@ELECTRONIC{cppclasslayout,
+  title = {Class layout recomendations, Possibility.com},
+  url = {http://www.possibility.com/Cpp/CppCodingStandard.html#classlayout},
+  owner = {zaur},
+  timestamp = {2013.06.14}
+}
+
+@ELECTRONIC{googlecppstyle,
+  title = {Google style recomendations for C++},
+  url = {http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Classes},
+  owner = {zaur},
+  timestamp = {2013.06.14}
 }
 
 @MISC{jessiebug,

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  9 JUN 2013 18:22
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  14 JUN 2013 21:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -685,7 +685,7 @@ LaTeX Info: Redefining \nameref on input line 16.
 (./components/cover.tex
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 43.
- <styles/informat.png, id=106, 355.3275pt x 355.3275pt>
+ <styles/informat.png, id=114, 355.3275pt x 355.3275pt>
 File: styles/informat.png Graphic file (type png)
 
 <use styles/informat.png>
@@ -814,7 +814,7 @@ nverted-to.pdf figures/constructor.eps>
 (epstopdf)             \includegraphics on input line 68.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/constructor-eps-converted-to.pdf, id=215, 920.43875pt x 433.62pt>
+<figures/constructor-eps-converted-to.pdf, id=225, 920.43875pt x 433.62pt>
 File: figures/constructor-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/constructor-eps-converted-to.pdf>
@@ -845,39 +845,40 @@ ex-am-ple \OT1/pcr/m/n/10.95 std::vectoor<bool>\OT1/ppl/m/n/10.95 .
 
 ) (./chapters/Classes.tex [12]
 Chapter 3.
+[13
+
+]
 Package epstopdf Info: Source file: <figures/webpage.eps>
-(epstopdf)                    date: 2013-06-09 18:15:51
-(epstopdf)                    size: 757320 bytes
+(epstopdf)                    date: 2013-06-14 20:30:21
+(epstopdf)                    size: 740335 bytes
 (epstopdf)             Output file: <figures/webpage-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-06-09 18:22:07
-(epstopdf)                    size: 15154 bytes
+(epstopdf)                    date: 2013-06-14 21:34:23
+(epstopdf)                    size: 15077 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/webpage-eps-conver
 ted-to.pdf figures/webpage.eps>
-(epstopdf)             \includegraphics on input line 30.
+(epstopdf)             \includegraphics on input line 65.
 Package epstopdf Info: Output file is already uptodate.
-<figures/webpage-eps-converted-to.pdf, id=295, 1226.5825pt x 494.84875pt>
+ <figures/webpage-eps-converted-to.pdf, id=315, 1206.5075pt x 491.8375pt>
 File: figures/webpage-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/webpage-eps-converted-to.pdf>
 Package pdftex.def Info: figures/webpage-eps-converted-to.pdf used on input lin
-e 30.
-(pdftex.def)             Requested size: 367.97758pt x 148.45576pt.
-)) [13
+e 65.
+(pdftex.def)             Requested size: 361.95505pt x 147.55238pt.
+)) [14] [15 <./figures/webpage-eps-converted-to.pdf>] [16
 
-] [14 <./figures/webpage-eps-converted-to.pdf>] [15
+] [17] [18] (./chapters/Conclusion.tex) [19] [20
 
-] [16] (./chapters/Conclusion.tex) [17] [18
-
-] [19] [20]
-(./chapters/oneAppendix.tex
+] [21]
+[22] (./chapters/oneAppendix.tex
 Appendix A.
-) [21
+) [23
 
-] [22
+] [24
 
 ] (./MasterThesis_ZaurMolotnikov.bbl)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
- [23
+ [25
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
@@ -887,13 +888,13 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 100.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 100.
 Package rerunfilecheck Info: File `MasterThesis_ZaurMolotnikov.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: 8F4D80B5BA621909B4ED5D75FDD65D14;1576.
+(rerunfilecheck)             Checksum: B0F92DE72E797D98973130A618EC2276;1725.
  ) 
 Here is how much of TeX's memory you used:
- 10987 strings out of 493629
- 161386 string characters out of 3143343
- 288329 words of memory out of 3000000
- 13919 multiletter control sequences out of 15000+200000
+ 11001 strings out of 493629
+ 161608 string characters out of 3143343
+ 288551 words of memory out of 3000000
+ 13926 multiletter control sequences out of 15000+200000
  23030 words of font info for 60 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  39i,11n,63p,307b,1516s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -904,10 +905,10 @@ xlive/2011/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/20
 f-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/
 fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
 ype1/urw/palatino/uplri8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (37 pages, 145337 bytes).
+Output written on MasterThesis_ZaurMolotnikov.pdf (39 pages, 150288 bytes).
 PDF statistics:
- 402 PDF objects out of 1000 (max. 8388607)
- 332 compressed objects within 4 object streams
- 92 named destinations out of 1000 (max. 500000)
- 224 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 428 PDF objects out of 1000 (max. 8388607)
+ 356 compressed objects within 4 object streams
+ 99 named destinations out of 1000 (max. 500000)
+ 240 words of extra memory for PDF output out of 10000 (max. 10000000)
 
