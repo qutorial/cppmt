@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  16 JUN 2013 00:33
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  16 JUN 2013 00:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -900,12 +900,33 @@ File: figures/copyable-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/copyable-eps-converted-to.pdf used on input li
 ne 137.
 (pdftex.def)             Requested size: 405.6185pt x 113.82613pt.
- [16])) [17 <./figures/copyable-eps-converted-to.pdf>] [18
+ [16]
+Package epstopdf Info: Source file: <figures/notcopyable.eps>
+(epstopdf)                    date: 2013-06-16 00:46:31
+(epstopdf)                    size: 639451 bytes
+(epstopdf)             Output file: <figures/notcopyable-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-06-16 00:48:06
+(epstopdf)                    size: 13666 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/notcopyable-eps-co
+nverted-to.pdf figures/notcopyable.eps>
+(epstopdf)             \includegraphics on input line 149.
+Package epstopdf Info: Output file is already uptodate.
 
-] [19] [20] (./chapters/Conclusion.tex) [21] [22
+<figures/notcopyable-eps-converted-to.pdf, id=408, 1271.75125pt x 401.5pt>
+File: figures/notcopyable-eps-converted-to.pdf Graphic file (type pdf)
 
-]
-[23] [24] (./chapters/oneAppendix.tex
+<use figures/notcopyable-eps-converted-to.pdf>
+Package pdftex.def Info: figures/notcopyable-eps-converted-to.pdf used on input
+ line 149.
+(pdftex.def)             Requested size: 381.52832pt x 120.45091pt.
+)) [17 <./figures/copyable-eps-converted-to.pdf> <./figures/notcopyable-eps-con
+verted-to.pdf>] [18
+
+] [19]
+[20] (./chapters/Conclusion.tex) [21] [22
+
+] [23] [24]
+(./chapters/oneAppendix.tex
 Appendix A.
 ) [25
 
@@ -948,10 +969,10 @@ nged.
 (rerunfilecheck)             Checksum: AF79E5A61AC1A42B15B2D466AC50B2C3;1786.
  ) 
 Here is how much of TeX's memory you used:
- 11190 strings out of 493629
- 164635 string characters out of 3143343
- 302946 words of memory out of 3000000
- 14038 multiletter control sequences out of 15000+200000
+ 11197 strings out of 493629
+ 164856 string characters out of 3143343
+ 303032 words of memory out of 3000000
+ 14043 multiletter control sequences out of 15000+200000
  24177 words of font info for 64 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  39i,11n,63p,307b,1904s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -963,10 +984,10 @@ live/2011/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/201
 -dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/f
 onts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/ty
 pe1/urw/palatino/uplri8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (41 pages, 183382 bytes).
+Output written on MasterThesis_ZaurMolotnikov.pdf (41 pages, 195765 bytes).
 PDF statistics:
- 527 PDF objects out of 1000 (max. 8388607)
- 442 compressed objects within 5 object streams
- 155 named destinations out of 1000 (max. 500000)
- 253 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 540 PDF objects out of 1000 (max. 8388607)
+ 446 compressed objects within 5 object streams
+ 156 named destinations out of 1000 (max. 500000)
+ 258 words of extra memory for PDF output out of 10000 (max. 10000000)
 

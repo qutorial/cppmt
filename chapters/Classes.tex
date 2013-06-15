@@ -141,6 +141,20 @@ The projectional editor allows for another solution, different from macros.  In 
 programmer regarding the copying issue, the projectional C++ implementation hints on the class declaration its 
 assignable and copyable properties, \fig{copyable}, and generates by default the declarations of copy-constructor and assignment operator.
 
+The copy constructor and the assignment operator are detected automatically. Two intentions are provided on the Class concept to
+forbid or allow copying. The forbidding intention imitate the macros mentioned above, but displaying and explaining the 
+implementation to the user\fig{notcopyable}. The implementation consists of moving the declarations of two functions to the private section of
+the class. Implementation is not required for such functions.
+
+\ms{notcopyable}{Class made not copyable by the \emph{Forbid copying} intention}
+
+The \jbmps\ supports the implementation by providing read-only model accesses, special parts of editor concept, 
+by which the hinting is implemented. The intentions allowed manipulations on a class, which made it possible to 
+automate the allowing or forbidding of copying/assignment, making the implementation clear to the user, without the 
+use of macros. The whole work to forbid copying and assignment contains of a call to an intention, one key-stroke.
+There is no need to include a header file with macros, and look up the documentation for them (symmetric macro requires
+exactly one parameter - the class name, and it has to go in the private class section).
+
 
 % TODO Continue here!
 

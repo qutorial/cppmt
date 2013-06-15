@@ -108,7 +108,6 @@ declaration.
 The described problematic motivated the following decision. When a new constructor is created, it is by default declared to be explicit,
 the user must intentionally change it to get the type conversion behavior. Such behavior is safer by default.
 
-
 \subsection{Copying}
 \label{classcopying}
 
@@ -135,15 +134,19 @@ features to the language. Macros bear pure textual nature, and are processed by 
 come out: need to pre-process reduces the speed of compilation and hides the resulting code from a programmer, macros lead
 to error prone programming, as no type checks are possible, macros make code less analyzable by automatic analyzers.
 
+\ms{copyable}{Hinting about copyable and assignable class properties}
+
+
 The projectional editor allows for another solution, different from macros.  In order to provide some support for the 
 programmer regarding the copying issue, the projectional C++ implementation hints on the class declaration its 
-assignable and copyable properties, and generates by default the declarations of copy-constructor and assignment operator.
+assignable and copyable properties, \fig{copyable}, and generates by default the declarations of copy-constructor and assignment operator.
 
+The copy constructor and the assignment operator are detected automatically. Two intentions are provided on the Class concept to
+forbid or allow copying. The forbidding intention imitate the macros mentioned above, but displaying and explaining the 
+implementation to the user\fig{notcopyable}. The implementation consists of moving the declarations of two functions to the private section of
+the class. Implementation is not required for such functions.
 
-
-
-
-
+\ms{notcopyable}{Class made not copyable by the \emph{Forbid copying} intention}
 
 
 % TODO Continue here!
