@@ -2680,13 +2680,6 @@
   timestamp = {2013.06.15}
 }
 
-@ELECTRONIC{qobjref,
-  title = {Qt Project Documentation Page, contains Q\_DISABLE\_COPY macro. http://qt-project.org/doc/qt-5.0/qtcore/qobject.html},
-  url = {http://qt-project.org/doc/qt-5.0/qtcore/qobject.html},
-  owner = {zaur},
-  timestamp = {2013.06.16}
-}
-
 @MISC{jessiebug,
   title = {Why3 Community, Frama-C Jessie bug in handling structs, https://gforge.inria.fr/tracker/,
 	ticket 14885},

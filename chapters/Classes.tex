@@ -108,9 +108,38 @@ declaration.
 The described problematic motivated the following decision. When a new constructor is created, it is by default declared to be explicit,
 the user must intentionally change it to get the type conversion behavior. Such behavior is safer by default.
 
+\subsection{Copying}
+\label{classcopying}
+
+In the \cpppl\ the programmer controls memory allocation fully on his/her own. This affect the way of copying the object.
+In C++ a programmer should define two methods for a class: a copy constructor and an assignment operator.
+These two methods work when assignment like \cc{a = b} happens, when instances of a class are passed by value to a function, 
+when one object is initialized with a value of another object and so on.
+
+C++ serves here sometimes dangerously generating default copy constructor and assignment operator, which by default represent
+a bitwise cloning of an object. This can lead to problems.
+
+\cpp{Need in custom copy constructor}{copydeath}
+
+The \rl{copydeath} demonstrates a program which crashes upon execution as destructors of \cc{a} and \cc{b} are deallocating 
+memory with the same address, after default copy-constructor copies the address from \cc{a} into \cc{b}.
+
+To avoid the described problem, the programmer has to either define proper copy-constructor or forbid copying of the objects of
+the class. The same applies to the assignment operator. Many standards require the two functions to be implemented in sync, \cite{ooocpp}.
+This can be performed be implementing the assignment operator first and reusing it in the copy-constructor. To simplify the first,
+specialized macros exist, for example \cc{DISALLOW\_COPY\_AND\_ASSIGN} or \cc{Q\_DISABLE\_COPY}, \cite{googlecppstyle}, \cite{qobjref}.
+
+The use of macros in C++ appears often in similar cases, in order to perform some language-engineering tasks to add the missing
+features to the language. Macros bear pure textual nature, and are processed by the pre-processor. Some negative effects may 
+come out: need to pre-process reduces the speed of compilation and hides the resulting code from a programmer, macros lead
+to error prone programming, as no type checks are possible, macros make code less analyzable by automatic analyzers.
+
+\ms{copyable}{Hinting about copyable and assignable class properties}
 
 
-
+The projectional editor allows for another solution, different from macros.  In order to provide some support for the 
+programmer regarding the copying issue, the projectional C++ implementation hints on the class declaration its 
+assignable and copyable properties, \fig{copyable}, and generates by default the declarations of copy-constructor and assignment operator.
 
 
 % TODO Continue here!
