@@ -88,6 +88,31 @@ is addressed in the newer 3.0 version.
 
 Constructors are special methods of a class, used to construct the class instances. 
 
+Constructors have special syntax and no return type, being similar to class methods. Additional 
+value, however, the constructors gain, when participating in type transformations. Namely, when
+a constructor of a class B exist from a type T, instances of the type T can be used whenever
+the B class instance is required. The constructor will be \emph{implicitly} called and a temporary object
+of class B is going to be created as a mediator. 
+
+Thus constructors extend the type system. Since this type extension can not be easily observed, it is 
+highly possible to get various \emph{run-time} errors or unexpected behavior. 
+
+\cpp{Example of implicit constructor error}{implicit}
+
+The \rl{implicit} demonstrates a simplified use case where the function \cc{print()} is invoked on \cc{int} without 
+any compiler error, and the resulting behavior is unexpected.
+
+To avoid similar, it is possible to deprecate participation of a constructor in type conversions, adding a word \cc{explicit} to the constructor
+declaration.
+
+The described problematic motivated the following decision. When a new constructor is created, it is by default declared to be explicit,
+the user must intentionally change it to get the type conversion behavior. Such behavior is safer by default.
+
+
+
+
+
+
 % TODO Continue here!
 
 % COOL  DISALLOW_COPY_AND_ASSIGN MACRO!
