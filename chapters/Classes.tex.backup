@@ -148,22 +148,26 @@ the class. Implementation is not required for such functions.
 
 \ms{notcopyable}{Class made not copyable by the \emph{Forbid copying} intention}
 
+The \jbmps\ supports the implementation by providing read-only model accesses, special parts of editor concept, 
+by which the hinting is implemented. The intentions allowed manipulations on a class, which made it possible to 
+automate the allowing or forbidding of copying/assignment, making the implementation clear to the user, without the 
+use of macros. The whole work to forbid copying and assignment contains of a call to an intention, one key-stroke.
+There is no need to include a header file with macros, and look up the documentation for them (symmetric macro requires
+exactly one parameter - the class name, and it has to go in the private class section).
 
-% TODO Continue here!
-
-% COOL  DISALLOW_COPY_AND_ASSIGN MACRO!
-
-
-% It is also considered to be 
-% a ``complicated'' language to learn. This is true due to the various language constructions, which are many,
-% and which are all important to use the language. 
+\section{Encapsulation and Inheritance}
+\input{chapters/Encapsulation}
 
 
-% To be used later when discussing inheritance
 
-% Although
-% the three inheritance modifiers are named in the same way as in-class access modifiers
 
+
+
+
+
+
+
+\section{Polymorphism}
 
 % To be used later when writing about type conversion.
 
@@ -173,10 +177,4 @@ the class. Implementation is not required for such functions.
 % similar, any object of the class \cc{A} can participate in places, where an object of the 
 % class \cc{B} is requested originally, as implicit type conversion takes place, invoking the 
 % \cc{B(A obj)} constructor.
-
-
-
-\section{Encapsulation and Inheritance}
-
-\section{Polymorphism}
 

@@ -1,0 +1,83 @@
+\section{Encapsulation and Inheritance}
+
+% what to support in C++
+
+Encapsulation and inheritance are considered here together, because from the language-engineering point of view, 
+they just decide the access for class members. In other words, the projectional C++ implementation has to track
+encapsulation and inheritance related definitions and provide access to the class members accordingly.
+
+% Problem
+
+\subsection{Various Cases of Access Control}
+
+In the \cpppl\ exists a number of ways to govern access control to class members. Before discussing 
+the implementation of them in a projectional C++, I briefly review them with an example.
+
+All members, a class has, are either declared in the class, or inherited from its base classes. 
+
+The members can be accessed in a number of different locations in the code, which differ by the level of access they have
+to the class members. Among these locations are the class methods, friend functions, belonging to the class and
+external to the class code. 
+
+Each member can be declared with a certain visibility/access type, and the inheritance
+of the member can happen with one of the three inheritance modifiers. 
+
+The access depends on the object, on which the member is requested, and on its type as well.
+
+\ms{inhdecl}{Declaration of two classes with a friend function}
+
+The \fig{inhdecl} shows a declaration of two classes. The class \cc{A} has all three
+public, protected and private fields. A function \cc{compare()} is declared to be a
+friend function. The visibility plays no role for the friend function declarations, 
+that is why a decision was made to create a special section for friends, it is not 
+generated anyhow in the resulting C++ textual code.
+
+The class \cc{B} in the \fig{inhdecl} is inheriting publicly from A, which means,
+that public members of \cc{A} remain being public in \cc{B}. The class \cc{B} declares
+a copy constructor.
+
+Such declaration can be utilized as shown in the figure \fig{inhusage}.
+
+\ms{inhusage}{Visibility resolution}
+
+In the copy-constructor the visibility resolution happens after \cc{this} pointer
+and after the \cc{original} object. Arrow expression and dot expression are used for
+this. The first and second lines are making use of public and protected fields of 
+the base class \cc{A}. The use of the private field is however not possible, since
+private fields of a class are only accessible to methods of the same class and
+friend functions. 
+
+It is even not possible to input the not-allowed member, as the projectional editor
+does not bind the text to anything, and it remains red, invalid, not usable further.
+
+
+The \cc{compare()} function is declared in advance (\fig{inhdecl}) to be a friend 
+function of the class \cc{A}. Thus, it is not a problem for this function to access
+even private fields of \cc{A}, for comparison purposes in this example case.
+
+The function \cc{external()} is not related anyhow to classes declared. Thus,
+it represent ``external'' from the class point of view code. Only public members
+are accessible, but not protected or private. The attempt to input them, simply
+fails, they are highlighted red, and not bound to anything.
+
+
+\subsection{Expressions to Address Class Members}
+
+% MPS support
+
+Members are usually accessed relatively to some object. The object can be designated as an expression of type class or a pointer to class,
+in particular, \cc{this} expression. The resulting access represent nothing else, but expression itself. 
+One of the greatest ideas in \jbmps\ to allow extensibility is concept inheritance. Once a need to create a new concept arises, serving as a 
+concept known before, the new concept has to inherit from the existing one, and this is almost all what has to be done.
+Thus inheriting the OoDotOrArrowExpression concept from the Expression concept, we get the ability to use the expression, designed for member 
+access, wherever an expression can be used. 
+
+The abstract concept OoDotOrArrowExpression serves as a parent for OoDotExpression and OoArrowExpression. The commonality between the two, is
+that an object is accessed in the left part, and a member is selected in the right part, as well as the way to decide the access to members.
+The access is defined then, which left part is going to be possible in such expressions.
+
+
+% Limitation
+Within the class methods it is also possible in C++ to address class members as local variables. In the projectional implementation
+described, it is not possible. Instead, \cc{this} expression has to be used. It makes typing a little bit slower, but allows to
+easily distinguish between members of the class and other variables or functions.
