@@ -27,15 +27,25 @@ has to be used in constructor to give it a special meaning of a copy constructor
 The \cpppl\ has a special \cc{bool} type to represent the two logical values. There is no such type in C.
 
 %Implementation
-No matter, the \cc{bool} type is not present in C, for the convenience of the user the \mb\ C implementation introduced a type \cc{bool}.
+No matter, the \cc{bool} type is not present in C, for the convenience of the user the \mb\ C implementation introduced a type \cc{bool},
+which is translated to \cc{int8\_t}, together with \cc{true} and \cc{false} values, converting to \cc{1} and \cc{0} respectively.
+This implementation can be considered better than the original C++ \cc{bool} type present in the generated code, because the \cpppl\ standard
+does not define explicitly the size of the \cc{bool} type \cite{cpp11}.
+
+In the context of embedded systems, which we target, see \ref{g1}, it is often very important to 
+know precisely, with which type the user is operating, as the limited resources
+are important to consider. Substituting the \cc{bool} type with the \cc{int8\_t} type ensures that the size of the \cc{bool} variables is known.
+Also, it can be changed as needed in the \cc{TypeSizeConfiguration} in each model created with \mb\ separately.
+
+The C++ standard explicitly allows the \cc{bool} type to participate in integer promotions. This ensures further the compatibility of the custom-written
+text code, which may use actual \cc{bool} type, with the code generated with substitution of \cc{bool} to \cc{int8\_t}, as the user \cc{bool} will be promoted.
 
 %Limitations
-
-
-
+Among limitations of this approach one can take as an example \cc{std::vectoor<bool>}. Since the word ``bool'' itself is never generated, 
+it is not possible to use the specialization of template, which ensures storage optimization, through, though, higher processing load when
+extracting a value from such vector.
 
 \section{Modules}
-
 
 %In C++
 %Implicit Assignment from void*

@@ -32,7 +32,8 @@ which is translated to \cc{int8\_t}, together with \cc{true} and \cc{false} valu
 This implementation can be considered better than the original C++ \cc{bool} type present in the generated code, because the \cpppl\ standard
 does not define explicitly the size of the \cc{bool} type \cite{cpp11}.
 
-In the context of embedded systems, it is often very important to know precisely, with which type the user is operating, as the limited resources
+In the context of embedded systems, which we target, see \ref{g1}, it is often very important to 
+know precisely, with which type the user is operating, as the limited resources
 are important to consider. Substituting the \cc{bool} type with the \cc{int8\_t} type ensures that the size of the \cc{bool} variables is known.
 Also, it can be changed as needed in the \cc{TypeSizeConfiguration} in each model created with \mb\ separately.
 
@@ -45,6 +46,13 @@ it is not possible to use the specialization of template, which ensures storage 
 extracting a value from such vector.
 
 \section{Modules}
+
+
+\section{Memory Allocation}
+
+%TODO Write about new and delete for arrays
+
+
 
 %In C++
 %Implicit Assignment from void*
@@ -72,16 +80,17 @@ extracting a value from such vector.
 
 
 
-    \begin{enumerate}
-      \item Differences between C and C++
-	\begin{enumerate}
-	 \item Reference Type and Boolean Type
-	 \item Modules Support
-	 \item Object Oriented Approach Support
-	\end{enumerate}
+%     \begin{enumerate}
+%       \item Differences between C and C++
+% 	\begin{enumerate}
+% 	 \item Reference Type and Boolean Type
+% 	 \item Modules Support
+% 	 \item Object Oriented Approach Support
+% 	\end{enumerate}
+%     \end{enumerate}
+
+
 % Need in C++
 % Challenge to implement
 % MPS support
 % Comprosises - trade of's
-    \end{enumerate}
-  

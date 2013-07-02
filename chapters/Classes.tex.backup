@@ -155,19 +155,11 @@ use of macros. The whole work to forbid copying and assignment contains of a cal
 There is no need to include a header file with macros, and look up the documentation for them (symmetric macro requires
 exactly one parameter - the class name, and it has to go in the private class section).
 
-\section{Encapsulation and Inheritance}
 \input{chapters/Encapsulation}
 
-
-
-
-
-
-
-
-
-
 \section{Polymorphism}
+
+There are several to achieve polymorphic behavior in C++. 
 
 % To be used later when writing about type conversion.
 

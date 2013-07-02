@@ -48,7 +48,7 @@ have nothing to do with program functionality, and addtionally load the develope
 I can mention the need to close several blocks ending at the same point correctly, indenting the closing brace symmetrically 
 to opening one, and putting in the exact amount of braces. The \rl{blocks} demonstrates it in the last few lines.
 
-\section{Projectional Approach}
+\subsection{Projectional Approach}
 
 Another approach which can be taken in the editor for a language is called projectional approach. Projectional editors
 do not work with a low-level textual representation of a program, but rather with a higher level concept, ASTs.
@@ -149,6 +149,41 @@ Secondly, extending the \mbdrp\ with the \cpppl\ has a practical interest for th
 the \cpppl\ supports object-oriented programming paradigms and more. It is thus of a high interest for embedded domain developers, using \mbdr,
 to be able to have the \cpppl\ in the arsenal.
 
-Being an extension for the \mbp\ the discussed in this \MT\ C++ implementation is following the general \mb\ goals. Among this goals are targeting
-the embedded programming domain, and making the language, when possible, more supportive to the user. Both goals have some influence on the implementation,
-which are discussed in the following chapters. 
+\subsection{Special Goals}
+
+This work strives for some special goals, which are described below. These goals are targeted to either enhance
+the user experience, or to make the implementation more technically elegant. All the goals have some influence on the implementation,
+which is discussed in the following chapters, mentioning the goals.
+
+\subsubsection{Special Goal 1: Embedded-Programming Domain}
+\label{g1}
+
+Being an extension for the \mbp\ the discussed in this \MT\ C++ implementation is following the general \mb\ goals. Among these goals are targeting
+the embedded-programming domain.
+
+\subsubsection{Special Goal 2: Enhancing the C++ Experience}
+\label{g2}
+
+It is hard to improve on one of the most beautiful programming languages. However, the usage of it can be improved
+with special features of the editor, making the language, when possible, more supportive to the user. This can focus
+towards an experience user-in-a-hurry, or to a novice, who is learning C++.
+
+\subsubsection{Special Goal 3: Not-invasive Language Extending}
+\label{g3}
+
+The implementation of the \cpppl\ discussed in this work is an extension of the \mbp. 
+Developing ``on top of'' the \mbp\ was not always possible through just the us of the \mbp\ 
+as a layer of abstraction, one down to the layer, representing C++. However such a layered architecture
+was desirable. Due to this sometimes modifications to the \mbp\ were required. 
+
+The current goal consists of implementing all modifications to the \mbp\ in such a way, that only 
+the C++ implementation has to be aware of the \mbp\ implementation details, but not the opposite! 
+This is required to allow a separate development of the  \mbp\ without a look back to the C++ extension 
+and still remaining the C++ extension working with a newer mbeddr versions. 
+
+Such architecture is similar to layered architecture, but does not exactly represents one. The difference
+is that the usage of the underlying \mbp\ can not be described only as the use of the interfaces, provided
+by it. Sometimes there is simply no interfaces as such, and other ways have to be applied to make use of the
+\mbp\ in a needed way. All the cases where the pure use of the mbeddr layer is not possible are discussed
+separately in the work below. Thus, this work researches also the practical modularity and extensibility aspects of 
+the language development and its support in \jbmps.
