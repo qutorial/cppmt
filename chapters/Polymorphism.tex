@@ -33,7 +33,7 @@ and interface in Java or C\#, where the approach is ``all or none'' regarding th
 functions.
 
 In order to implement a declared in a base class function the descendant must declare and implement
-a virtual function, matching the full (with return type) signature of the declared function. The connection 
+a virtual function, matching the full (with return type) signature of the declared function, \rl{override}. The connection 
 to the ``interface'' function declaration stays subtle, and it is not immediately clear, whether the 
 declared implementation is an override or a new independent declaration. This knowledge affects the 
 changing process greatly, as the override should change from the interface, together with all the implementation.
@@ -80,7 +80,35 @@ In the \rpart{extensibility} I discuss more on the approach taken here, its limi
 the potential ways to overcome them.
 
 \subsection{Overriding a Virtual Function}
-%Not finished subsection
+
+The \rl{override} demonstrates, how overriding of a virtual function happens in C++.
+The function \cc{getArea()} is initially defined in the class \cc{Shape} and is then overridden
+in the class \cc{Circle}. The \rl{override} demonstrates as well the ``override syntax absence'' in C++.
+
+\cpp{Example of an Overridden Function - Text Code}{override}
+
+In the \fig{override} the same example is demonstrated, but in the projectional C++ implementation.
+Indeed, the \rl{override} is the generation result part from the demonstrated projectional sample.
+
+When a method declaration is created, it can be set to be an override of a method in a base class.
+Only when an empty method declaration is created, it can be set to be an override, so that the only
+thing which stays, is to pick a method from a base class to be overridden. The override is automatically
+named, the parameters and the return type are set accordingly, the \cc{virtual} property is immediately
+set. 
+
+After the override has been linked to the overridden method, the projectional editor checks, if 
+the override full signature stays precisely the same as the one of the overridden method. 
+The overridden method is shown next to the override declaration \fig{override}, which 
+compensates on the override syntax absence.
+
+\ms{override}{Example of an Overridden Function - Projection}
+
+The additional syntax on the projectional view, should not confuse the reader. It is only 
+present in the projectional editor, and, when the AST is generated into code, the regular
+C++ syntax is achieved. However in this case the AST stores \emph{more} than needed to 
+generate and compile the C++ code. This subsection demonstrates, why it can be useful.
+
+
 
 \subsection{Pure Virtual Functions}
 %Not finished subsection
