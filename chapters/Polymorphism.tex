@@ -111,10 +111,58 @@ generate and compile the C++ code. This subsection demonstrates, why it can be u
 
 
 \subsection{Pure Virtual Functions}
-%Not finished subsection
+
+In the example above one improvement to the code can be made. As the \cc{getArea()} for a random shape can not 
+be determined, it makes sense to make the \cc{getArea()} function pure virtual. A pure virtual function has no 
+implementation in the declaring class, and serves only overriding purpose. Semantically in C++ it sets the 
+pointer in \cc{vptr} to 0 and thus has reflecting this syntax, see the similar example in \rl{purevirtual}.
+
+This syntax can be seen as not obvious, as it reflect more the under-the-hood implementation of the mechanism,
+rather then the original programmer intention to built a basis for an overrides chain. 
+
+Additionally, as discussed above, declaring a pure virtual function requires a significant amount of the syntactical
+overhead.
+
+In the projectional C++ implementation, one intention is reserved to make a function pure virtual. The intention automatically
+sets the needed pure virtual and virtual flags of the function declaration, and the projection changes. That is why out of the 
+statement \cc{virtual double getArea() = 0;} the programmer has to input only the name \cc{getArea}, pick the type \cc{double}, and
+toggle the pure virtual intention for the declaration. 
+
+The result of the intention work in projection can be seen in the \fig{purevirtual}.
+
+\ms{purevirtual}{Example of a Pure Virtual Method - Projection}
+
+The word \cc{pure} is added by the projection editor. This makes the reading of the code easy and natural.
+The \cc{ = 0} part is preserved for the C++ programmer, used to this syntax. And, as in many other cases, 
+the semicolon is omitted as it is nothing but syntactic help to the compiler, which does not have to appear 
+in the projection.
 
 \subsection{Abstract Classes}
-%Not finished subsection
 
-%TODO forbid construction of abstract classes
+If any of the pure virtual functions in the inheritance chain leading to a class is not implemented by this chain, 
+or inside the class itself, the class is called abstract. It is not possible to construct an instance of an
+abstract class, as such classes are partially implemented. The programmer has to know which classes are abstract,
+and are intended for inheritance and further implementation only.
 
+Above I discuss the absence of the abstract class syntax in C++. It leads to the need for the programmer to 
+determine somehow him/herself if a given class is abstract. 
+
+And editor can however perform an analysis and determine if the class is abstract. In the case of the projectional
+editor, this analysis is especially computationally efficient, as the AST is readily available, and the quick 
+analysis can be performed by a simple recursive algorithm on the inheritance chains.
+
+After an abstract class is determined, it is possible to modify the editor representation for it, and show that it is 
+abstract, \fig{abstract}.
+
+In this example a typical class hierarchy is created to support user interface programming. A user of this API, when 
+searching for a button, could try using the \cc{Button} class, which is designed to be abstract, and serve as a 
+base for the further implementation, e.g. \cc{PushButton} in the example, or check boxes, radio buttons and similar,
+later.
+
+\ms{abstract}{Determining Abstract Classes}
+
+The projectional editor, however, checks on the fly, if a certain class is abstract, adding a special \cc{abstract} word 
+in front of its declaration. This makes the reading easier, and allows for quicker understanding of the code. 
+
+Additionally, the creation and usage of abstract class instances is checked, and forbidden by type analysis. This is 
+described separately in the \rchap{advanced}.

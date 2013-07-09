@@ -1,15 +1,82 @@
 \chapter{Advanced Editor Functionality}
+\label{chapter:advanced}
+
+As the projectional editor work directly with an  AST, it is possible to provide some programming on the AST
+to improve the user experience. I call this additional programming as advanced editor functionality, and 
+discuss it in this chapter.
+
+\section{Renaming Refactoring}
+Directly from the nature of the projectional editor, without any additional effort, comes a feature to 
+perform the renaming refactorings.
+
+If a node of an AST gets to be referenced somewhere else, it is referenced by the use of its unique
+identifier. The name of the node is a property of the node, which is not playing any role in the
+referencing the node from somewhere else. Thus renaming, dislike the way it is performed in text
+editors, does not involve replacing of the name all around the code. Instead, just the name property 
+of a node is changed.
+
+As an example - renaming a class or a method would mean just changing its name where it is declared first.
+
+As a disadvantage here one can think of moving a code from one place to another. For example, moving 
+a method from one class to another. The member fields of the source class, even if present in the destination
+class, will not immediately fit into the copied new code, as it is still referencing not available anymore
+identifiers of the source class member fields. This effect is also mentioned in the \rchap{comparison}.
+
+% Primitive renaming refactorings out of the box
+
+\section{Getter and Setter Generation}
+
+In order to provide access to encapsulated class properties, usually expressed as member fields in C++, 
+two access functions are defined, known as a getter and a setter. The getter is used to read the property,
+and the setter is used to set the property to a new value, after checking the validity of the new value.
+
+The job of declaring and prototyping the two functions can be automated with an MPS intention, \fig{getterandsetterintention}.
+
+\msnozoom{getterandsetterintention}{Calling the Generation of Getter and Setter}
+
+The result of the intention work is, as expected, two methods declared and prototyped, \fig{getterandsetter}.
+
+\msnozoom{getterandsetter}{Getter and Setter Generated}
+
+The way the editor names the getter and setter can be controlled through Naming Conventions concept, which
+is discussed in the \rsec{namingconventions}.
+
+The getter and setter are declared in the public section of the class, which is automatically created, if
+not found there already.
+
+The getter is rather simple, it just returns the value of the member field.
+
+The setter is somewhat more complicated. Firstly, it designed to return \cc{boolean} by default. This is made
+to remind the programmer, to include checking of the value and return \cc{false}. Secondly, the parameter of the
+getter is typed appropriately. As C++ by itself and the \rsgoal{1} imply the performance maximization, the type
+of the parameter for the setter depends on the member field type. And when the type represents a composite
+structure, like a class, it is passed by a constant reference, instead of value, \fig{compositesetter}.
+
+\ms{compositesetter}{Setter Works with a Constant Reference for Classes}
+
+Passing a composite parameter as a value involves an overhead of allocating the necessary memory and 
+then copying the contents in the newly allocated memory. To access the parameter in both cases pointer
+arithmetic is going to follow.
 
 
 
 
+% Getter and setter generation
 % Getter and setter do not keep name synch for compatibility with of interfaces with referencing text code
 
 
-% What about abstract classes? A check?
+\section{Naming Conventions}
+\label{section:namingconventions}
+
+% Naming conventions
+% Improvement idea: Regular Expressions
+
+% Check for the method implemented
+
+% Check for abstract classes construction
 
 %TODO Deafault constructable and arrays! Require constructor by default
 
 %TODO Check for Virtual Destructor 
 
-%TODO Check that an Abstract class is not created
+% Describe Abstract class check Abstract class is not created
