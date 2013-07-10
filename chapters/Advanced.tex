@@ -1,5 +1,5 @@
 \chapter{Advanced Editor Functionality}
-\label{chapter:advanced}
+\lchap{advanced}
 
 As the projectional editor work directly with an  AST, it is possible to provide some programming on the AST
 to improve the user experience. I call this additional programming as advanced editor functionality, and 
@@ -25,6 +25,7 @@ identifiers of the source class member fields. This effect is also mentioned in 
 % Primitive renaming refactorings out of the box
 
 \section{Getter and Setter Generation}
+\label{section:getterandsetter}
 
 In order to provide access to encapsulated class properties, usually expressed as member fields in C++, 
 two access functions are defined, known as a getter and a setter. The getter is used to read the property,
@@ -58,9 +59,6 @@ Passing a composite parameter as a value involves an overhead of allocating the 
 then copying the contents in the newly allocated memory. To access the parameter in both cases pointer
 arithmetic is going to follow.
 
-
-
-
 % Getter and setter generation
 % Getter and setter do not keep name synch for compatibility with of interfaces with referencing text code
 
@@ -68,6 +66,45 @@ arithmetic is going to follow.
 \section{Naming Conventions}
 \label{section:namingconventions}
 
+In the C++ development projects some code writing conventions are usually agreed upon. For example, 
+in Google coding style guide for C++ \cite{googlecppstyle} the member fields must end up with ``\_'' sign.
+For the consistency and uniformity purposes each project has to have some agreements on code  composing.
+They can include code formatting rules and naming rules. 
+
+To some extent the formatting conventions are fixed
+by the way the projectional editor shows the AST, see, for example, the Section \ref{visibilitysections}.
+
+The naming rules, however, should be additionally controlled. The naming rules accepted in a project I call 
+naming conventions here.
+
+In order to perform this a new concept has been introduced, called C++ Naming Conventions, \fig{namingconventions}.
+
+\ms{namingconventions}{C++ Naming Conventions Concept}
+
+In the naming conventions one can give a standard prefixes for getters and setters, which are used during the code 
+generation for them, see the \rsec{getterandsetter}. The argument prefix is also used in the generation, to name the
+setter argument.
+
+The member prefix is used on the member fields to check their naming. It possible to change the prefix and the editor will control
+each of the member field names to comply.
+
+The naming conventions concept was created to demonstrate some new possibilities, which can be added to the projectional C++.
+Few remarks are needed to explain potential changes to the concept and its difference from the similar functionality taken
+in the conventional text editors.
+
+First, the marking of special variables or object, keywords or type names, can be performed be changing editors for them. The special
+naming will not be needed then. Such way would mean however no opportunity to introduce a project-dependent marking, as it starts to be
+common for all projects, being a part of the projectional C++ implementation.
+
+Second, the naming checks can be generalized to use compliance to regular expressions, instead of just prefixes. As an advantage comes the
+ability to adopt a much broader set of different naming conventions. Disadvantageous is the increase
+of the computational load in the projectional editor, this is discussed also in the \rchap{analysisandcomplexity}.
+
+Third, the naming conventions in projectional C++ is just a concept in an MPS model. It is no different from a C++ Implementation Module
+or Build Configuration. Dislike many conventional editors, which store such settings as a workspace, project or IDE configuration, the
+projectional C++ makes it a part of the program code itself. It is advantageous, since all the programmers in a team have to follow the 
+same naming conventions set up once in a project, and no environment (re-)configuration is needed to work on the project. The porjectional
+approach is also discussed and compared to the conventional one in the \rchap{comparison}.
 % Naming conventions
 % Improvement idea: Regular Expressions
 

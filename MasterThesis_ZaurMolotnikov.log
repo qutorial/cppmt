@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  9 JUL 2013 16:40
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  10 JUL 2013 15:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1034,7 +1034,7 @@ rted-to.pdf>
 (epstopdf)                    size: 27612 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/getterandsetterint
 ention-eps-converted-to.pdf figures/getterandsetterintention.eps>
-(epstopdf)             \includegraphics on input line 35.
+(epstopdf)             \includegraphics on input line 36.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/getterandsetterintention-eps-converted-to.pdf, id=753, 383.4325pt x 21
@@ -1043,7 +1043,7 @@ File: figures/getterandsetterintention-eps-converted-to.pdf Graphic file (type
 pdf)
  <use figures/getterandsetterintention-eps-converted-to.pdf>
 Package pdftex.def Info: figures/getterandsetterintention-eps-converted-to.pdf 
-used on input line 35.
+used on input line 36.
 (pdftex.def)             Requested size: 295.24394pt x 166.17131pt.
  [29]
 Package epstopdf Info: Source file: <figures/getterandsetter.eps>
@@ -1055,7 +1055,7 @@ df>
 (epstopdf)                    size: 6437 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/getterandsetter-ep
 s-converted-to.pdf figures/getterandsetter.eps>
-(epstopdf)             \includegraphics on input line 39.
+(epstopdf)             \includegraphics on input line 40.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/getterandsetter-eps-converted-to.pdf, id=761, 480.79625pt x 253.94875p
@@ -1063,7 +1063,7 @@ t>
 File: figures/getterandsetter-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/getterandsetter-eps-converted-to.pdf>
 Package pdftex.def Info: figures/getterandsetter-eps-converted-to.pdf used on i
-nput line 39.
+nput line 40.
 (pdftex.def)             Requested size: 370.21425pt x 195.54112pt.
  [30 <./figures/getterandsetterintention-eps-converted-to.pdf> <./figures/gette
 randsetter-eps-converted-to.pdf>]
@@ -1076,7 +1076,7 @@ df>
 (epstopdf)                    size: 7377 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/compositesetter-ep
 s-converted-to.pdf figures/compositesetter.eps>
-(epstopdf)             \includegraphics on input line 55.
+(epstopdf)             \includegraphics on input line 56.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/compositesetter-eps-converted-to.pdf, id=781, 1181.41376pt x 185.69376
@@ -1084,14 +1084,34 @@ pt>
 File: figures/compositesetter-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/compositesetter-eps-converted-to.pdf>
 Package pdftex.def Info: figures/compositesetter-eps-converted-to.pdf used on i
-nput line 55.
+nput line 56.
 (pdftex.def)             Requested size: 318.98598pt x 50.13797pt.
-)) [31 <./figures/compositesetter-eps-converted-to.pdf>] [32
+Package epstopdf Info: Source file: <figures/namingconventions.eps>
+(epstopdf)                    date: 2013-07-10 15:01:36
+(epstopdf)                    size: 73070 bytes
+(epstopdf)             Output file: <figures/namingconventions-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2013-07-10 15:24:11
+(epstopdf)                    size: 44195 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/namingconventions-
+eps-converted-to.pdf figures/namingconventions.eps>
+(epstopdf)             \includegraphics on input line 82.
+Package epstopdf Info: Output file is already uptodate.
 
-] [33] [34] (./chapters/Extensibility.tex)
-[35
+<figures/namingconventions-eps-converted-to.pdf, id=785, 679.53876pt x 219.8212
+4pt>
+File: figures/namingconventions-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/namingconventions-eps-converted-to.pdf>
+Package pdftex.def Info: figures/namingconventions-eps-converted-to.pdf used on
+ input line 82.
+(pdftex.def)             Requested size: 183.47792pt x 59.35252pt.
+ [31 <./figures/compositesetter-eps-converted-to.pdf> <./figures/namingconventi
+ons-eps-converted-to.pdf>])) [32] [33
 
-] [36] (./chapters/MoreProjection.tex
+] [34] (./chapters/Extensibility.tex) [35
+
+] [36]
+(./chapters/MoreProjection.tex
 Chapter 5.
 [37
 
@@ -1154,10 +1174,10 @@ nged.
 (rerunfilecheck)             Checksum: 107880BB5CB79BC75FE6D6799226D6A1;3483.
  ) 
 Here is how much of TeX's memory you used:
- 11438 strings out of 493629
- 169563 string characters out of 3143343
- 303476 words of memory out of 3000000
- 14163 multiletter control sequences out of 15000+200000
+ 11448 strings out of 493629
+ 169881 string characters out of 3143343
+ 303654 words of memory out of 3000000
+ 14171 multiletter control sequences out of 15000+200000
  24177 words of font info for 64 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  42i,11n,63p,307b,1927s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1169,10 +1189,10 @@ live/2011/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/201
 -dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/f
 onts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/ty
 pe1/urw/palatino/uplri8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (65 pages, 450002 bytes).
+Output written on MasterThesis_ZaurMolotnikov.pdf (65 pages, 494053 bytes).
 PDF statistics:
- 959 PDF objects out of 1000 (max. 8388607)
- 745 compressed objects within 8 object streams
- 248 named destinations out of 1000 (max. 500000)
- 482 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 974 PDF objects out of 1000 (max. 8388607)
+ 752 compressed objects within 8 object streams
+ 249 named destinations out of 1000 (max. 500000)
+ 487 words of extra memory for PDF output out of 10000 (max. 10000000)
 
