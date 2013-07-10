@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  10 JUL 2013 15:24
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  10 JUL 2013 18:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1105,8 +1105,30 @@ File: figures/namingconventions-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/namingconventions-eps-converted-to.pdf used on
  input line 82.
 (pdftex.def)             Requested size: 183.47792pt x 59.35252pt.
+Package epstopdf Info: Source file: <figures/renameconventionally.eps>
+(epstopdf)                    date: 2013-07-10 18:09:06
+(epstopdf)                    size: 51320 bytes
+(epstopdf)             Output file: <figures/renameconventionally-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2013-07-10 18:10:01
+(epstopdf)                    size: 38631 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/renameconventional
+ly-eps-converted-to.pdf figures/renameconventionally.eps>
+(epstopdf)             \includegraphics on input line 93.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/renameconventionally-eps-converted-to.pdf, id=788, 408.52625pt x 265.9
+9374pt>
+File: figures/renameconventionally-eps-converted-to.pdf Graphic file (type pdf)
+
+ <use figures/renameconventionally-eps-converted-to.pdf>
+Package pdftex.def Info: figures/renameconventionally-eps-converted-to.pdf used
+ on input line 93.
+(pdftex.def)             Requested size: 314.56618pt x 204.81581pt.
  [31 <./figures/compositesetter-eps-converted-to.pdf> <./figures/namingconventi
-ons-eps-converted-to.pdf>])) [32] [33
+ons-eps-converted-to.pdf>])) [32 <./figures/renameconventionally-eps-converted-
+to.pdf>]
+[33
 
 ] [34] (./chapters/Extensibility.tex) [35
 
@@ -1174,10 +1196,10 @@ nged.
 (rerunfilecheck)             Checksum: 107880BB5CB79BC75FE6D6799226D6A1;3483.
  ) 
 Here is how much of TeX's memory you used:
- 11448 strings out of 493629
- 169881 string characters out of 3143343
- 303654 words of memory out of 3000000
- 14171 multiletter control sequences out of 15000+200000
+ 11455 strings out of 493629
+ 170156 string characters out of 3143343
+ 303730 words of memory out of 3000000
+ 14176 multiletter control sequences out of 15000+200000
  24177 words of font info for 64 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  42i,11n,63p,307b,1927s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1189,10 +1211,10 @@ live/2011/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/201
 -dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/f
 onts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/ty
 pe1/urw/palatino/uplri8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (65 pages, 494053 bytes).
+Output written on MasterThesis_ZaurMolotnikov.pdf (65 pages, 531685 bytes).
 PDF statistics:
- 974 PDF objects out of 1000 (max. 8388607)
- 752 compressed objects within 8 object streams
- 249 named destinations out of 1000 (max. 500000)
- 487 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 986 PDF objects out of 1000 (max. 8388607)
+ 758 compressed objects within 8 object streams
+ 250 named destinations out of 1000 (max. 500000)
+ 492 words of extra memory for PDF output out of 10000 (max. 10000000)
 
