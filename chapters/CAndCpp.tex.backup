@@ -49,9 +49,9 @@ extracting a value from such vector.
 \lsec{modules}
 
 In C++ as well as in C there is no clear concept of a module. The \mbp\ improves on it, defining 
-modules. A C module is a concept, from which the header and the .c files are generated in mbeddr.
+modules, \cite{Voelter:MoDELS:2010}. A C module is a concept, from which the header and the .c files are generated in mbeddr.
 Flagging an object (function, variable, structure, etc.) in a module as \cc{exported} causes the declaration of the object to appear
-in the header, and thus the object starts to be usable by other modules. 
+in the header, and thus the object starts to be usable by other modules.
 
 Another issue with the C language is the one and only global namespace. The \mbp\ improves on it 
 by introducing so-called name mangling. All names of the module contents are prefixed with the module name,
@@ -79,10 +79,15 @@ each other. For example, changing an interface of a class would require at first
 and introducing the changes in the declaration, and then rewriting the corresponding part of the .cpp file 
 in strong connection with the header.
 
-% Method implemented check relies on the fact that one class is in the one module with all methods.
+Namespaces are introduced in the projectional C++ to avoid inter-modular name clashes, they work similar to 
+the namespaces in C++.
 
-% How to implement different CPP for linux mac os and windows?
-
+As auto-completion works very effective in the projectional editor, the need in \cc{using} directive does
+not emerge the same as in plain text editors. The long names of namespaces are appended to the end of function 
+declarations, to be exact about the namespace, but the declarations are kept looking short, with only 
+the last namespace shown. In general, the generator is responsible in generating correct namespace 
+resolution, and the projectional C++ programmer can benefit from short and clear namespace
+presentations, which are also quite handy to input.
 
 \section{Memory Allocation}
 

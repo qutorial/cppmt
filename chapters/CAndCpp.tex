@@ -91,13 +91,23 @@ presentations, which are also quite handy to input.
 
 \section{Memory Allocation}
 
-%TODO Write about new and delete for arrays
+In the C programming language memory (de-)allocation on the heap is happening via calls to the dedicated library functions. 
+C++ instead introduces separate language construction for memory allocation and de-allocation. 
 
+The \cc{new} and \cc{delete} together with their array versions are simply an expression and a statement correspondingly,
+which perform the required operations.
+
+Creating them is relatively easily possible by inheriting from the Expression and Statement concepts,
+and introducing the corresponding typing.
+
+When a segment of memory is allocated as an array, it has to be de-allocated as an array either.
+As it is stated in the C++ standard (\cite{cpp11}) the behavior of simple de-allocation of an 
+memory segment, allocated as an array, results into undefined behavior. A simple check is introduced
+in order to control this, see the \rsec{deallocchek}. 
 
 
 %In C++
 %Implicit Assignment from void*
-%Freeing arrays: new[] and delete[]
 %declare functions before use
 
 
