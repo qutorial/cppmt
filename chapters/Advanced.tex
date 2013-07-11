@@ -107,21 +107,62 @@ of the computational load in the projectional editor, this is discussed also in 
 Third, the naming conventions in projectional C++ is just a concept in an MPS model. It is no different from a C++ Implementation Module
 or Build Configuration. Dislike many conventional editors, which store such settings as a workspace, project or IDE configuration, the
 projectional C++ makes it a part of the program code itself. It is advantageous, since all the programmers in a team have to follow the 
-same naming conventions set up once in a project, and no environment (re-)configuration is needed to work on the project. The porjectional
+same naming conventions set up once in a project, and no environment (re-)configuration is needed to work on the project. The projectional
 approach is also discussed and compared to the conventional one in the \rchap{comparison}.
 
 And last, the naming conventions can of-course be extended to incorporate class names, function names, additional naming for methods,
 like ``is''- prefix for the boolean return type. 
-% Naming conventions
-% Improvement idea: Regular Expressions
 
 
-% Check for the method implemented
+\section{Method Implemented Check}
 
+When using the \cpppl\ it is possible to declare a class in one file, and then implement its methods in other, potentially
+several, files. As there is no clear concept of module in the language itself (more on this in the \rsec{modules}) usually 
+different coding standards improve on it, requiring, for example in the Qt Project \cite{qtcodingguide}, one class to be 
+declared in a the-same-named header file, and the implementation for it to be in one .cpp file.
+
+As the language itself does not argue about the place for the method, IDEs usually do not check if the method is implemented.
+Neither do compilers. And only at the linking stage it can appear, that the linker is not able to locate the method. The error
+message from the linker can be rather obscure, as the linker operates on a lover abstraction level, rather than the programmer 
+using the C++ language. 
+
+After introducing the new module concept as in the \rsec{modules}, it is possible to check each method and find out if they all 
+are implemented. 
+
+A check is introduced in the projectional C++, which respects inheritance chains, with overloaded functions and pure virtual functions,
+and creates a warning for the programmer hinting that a certain method has not been implemented. Together with the class declaration, 
+generating the assignment operator declaration and a copy constructor, the method implemented check makes the programmer to 
+fully define the class together with the most important methods, affecting the memory operations behind the class instances life-cycle.
+
+
+\section{Abstract Class Construction Check}
 % Check for abstract classes construction
 
-%TODO Deafault constructable and arrays! Require constructor by default
+In this work I have already defined the notion of abstract classes in C++ and some related to them questions in \ref{abstractclasses} and
+in \ref{cpppolydefs}. Mainly the absence of syntax for the abstract classes and the problem of determination those was discussed.
+
+
+\msnozoom{abstractinstance}{The Abstract Class Construction Check Signaling an Error}
+
+An opened question which stayed, however, is providing some help to the programmer in the usage of such classes. Namely, any instantiation
+of an abstract class has to be forbidden. The abstract class as a type, however, should stay, and the pointer type to it should not
+be anyhow affected by the fact that the class is abstract.
+
+The decision was taken to check the places, where an instance of an abstract class can appear, and deprecate such situations.
+MPS supports so-called non-type-system checks, which come useful in this situation. Any node on the AST can be analyzed, and 
+if the error happens to be detected, there is a chance to associate it with the node and a textual error message, which will
+clarify the programmer, what exactly went wrong. 
+
+Among the places, where a class can be instantiated are variable declarations field declarations, method and function arguments,
+return types of those. For each of such places a check is performed, and if the class type is detected, it is checked against
+being abstract. Error message appears to indicate the problem if found, \fig{abstractinstance}. 
+
+The procedure of determining if a class is abstract, can happen every time, when the check is performed. These are all 
+variable declarations, function and method arguments and return types, and memory allocations. The amount of computational
+load can be significant. The question of this complexity is discussed in the \rchap{analysisandcomplexity}.
+
+
+
+%TODO Default constructable and arrays! Require constructor by default
 
 %TODO Check for Virtual Destructor 
-
-% Describe Abstract class check Abstract class is not created

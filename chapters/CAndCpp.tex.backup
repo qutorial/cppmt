@@ -1,5 +1,5 @@
 \chapter{C and C++}
-\label{chapter:CAndCpp}
+\lchap{CAndCpp}
 
 Initially C++ appeared to be an extesnion to the C language, called ``C with Classes'' \cite{cwithclasses}. Till now the high degree
 of commonality can be found between the two languages. Mainly, the most of the C code is going to be valid C++ code. 
@@ -46,6 +46,49 @@ it is not possible to use the specialization of template, which ensures storage 
 extracting a value from such vector.
 
 \section{Modules}
+\lsec{modules}
+
+In C++ as well as in C there is no clear concept of a module. The \mbp\ improves on it, defining 
+modules. A C module is a concept, from which the header and the .c files are generated in mbeddr.
+Flagging an object (function, variable, structure, etc.) in a module as \cc{exported} causes the declaration of the object to appear
+in the header, and thus the object starts to be usable by other modules. 
+
+Another issue with the C language is the one and only global namespace. The \mbp\ improves on it 
+by introducing so-called name mangling. All names of the module contents are prefixed with the module name,
+when generated to the C text code. Thus the object with the same name but from different modules do
+not cause a name clash.
+
+The \cpppl\ is an improvement over the C language by itself. There is, however, no concept of a module,
+which can bring certain advantages and disadvantages. As a disadvantage can be named a potential disorder
+in placing implementations for classes and functions, as the language itself does not enforce a clear
+one place for them. As an advantage, conditional compilation can be used to include different files
+with different implementations, which is often used to create cross-platform code. Additionally, classes
+can be used analogously to modules.
+
+The name clash problem is solved in C++ by introducing the namespaces. The programmer defines a namespace 
+and then places there all the exported code. The nodes with equal names from different namespaces do not clash.
+
+When comparing the two approaches of mbeddr and of the \cpppl\ to improve on C, the hybrid approach
+has been picked. Firstly, the C++ implementation modules has been introduced. And secondly, the namespaces
+can be defined and used.
+
+Modules are convenient program modular elements, where a programmer declares and implements C++ classes,
+and the header and .cpp files are automatically generated from them. This eliminates the need to 
+create and control two files for each logical program element, like a class, and keep them synchronized with
+each other. For example, changing an interface of a class would require at first opening the header file, 
+and introducing the changes in the declaration, and then rewriting the corresponding part of the .cpp file 
+in strong connection with the header.
+
+% Method implemented check relies on the fact that one class is in the one module with all methods.
+
+% How to implement different CPP for linux mac os and windows?
+
+
+\section{Memory Allocation}
+
+%TODO Write about new and delete for arrays
+
+
 
 %In C++
 %Implicit Assignment from void*
@@ -73,16 +116,17 @@ extracting a value from such vector.
 
 
 
-    \begin{enumerate}
-      \item Differences between C and C++
-	\begin{enumerate}
-	 \item Reference Type and Boolean Type
-	 \item Modules Support
-	 \item Object Oriented Approach Support
-	\end{enumerate}
+%     \begin{enumerate}
+%       \item Differences between C and C++
+% 	\begin{enumerate}
+% 	 \item Reference Type and Boolean Type
+% 	 \item Modules Support
+% 	 \item Object Oriented Approach Support
+% 	\end{enumerate}
+%     \end{enumerate}
+
+
 % Need in C++
 % Challenge to implement
 % MPS support
 % Comprosises - trade of's
-    \end{enumerate}
-  

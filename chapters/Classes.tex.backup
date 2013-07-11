@@ -97,7 +97,7 @@ of class B is going to be created as a mediator.
 Thus constructors extend the type system. Since this type extension can not be easily observed, it is 
 highly possible to get various \emph{run-time} errors or unexpected behavior. 
 
-\cpp{Example of implicit constructor error}{implicit}
+\cpp{Example of an Implicit Constructor Error}{implicit}
 
 The \rl{implicit} demonstrates a simplified use case where the function \cc{print()} is invoked on \cc{int} without 
 any compiler error, and the resulting behavior is unexpected.
@@ -119,7 +119,7 @@ when one object is initialized with a value of another object and so on.
 C++ serves here sometimes dangerously generating default copy constructor and assignment operator, which by default represent
 a bitwise cloning of an object. This can lead to problems.
 
-\cpp{Need in custom copy constructor}{copydeath}
+\cpp{Need in a Custom Copy constructor}{copydeath}
 
 The \rl{copydeath} demonstrates a program which crashes upon execution as destructors of \cc{a} and \cc{b} are deallocating 
 memory with the same address, after default copy-constructor copies the address from \cc{a} into \cc{b}.
@@ -134,7 +134,7 @@ features to the language. Macros bear pure textual nature, and are processed by 
 come out: need to pre-process reduces the speed of compilation and hides the resulting code from a programmer, macros lead
 to error prone programming, as no type checks are possible, macros make code less analyzable by automatic analyzers.
 
-\ms{copyable}{Hinting about copyable and assignable class properties}
+\ms{copyable}{Hinting about Copyable and Assignable Class Properties}
 
 
 The projectional editor allows for another solution, different from macros.  In order to provide some support for the 
@@ -146,7 +146,7 @@ forbid or allow copying. The forbidding intention imitate the macros mentioned a
 implementation to the user\fig{notcopyable}. The implementation consists of moving the declarations of two functions to the private section of
 the class. Implementation is not required for such functions.
 
-\ms{notcopyable}{Class made not copyable by the \emph{Forbid copying} intention}
+\ms{notcopyable}{Class Made not Copyable by the \emph{Forbid Copying} Intention}
 
 The \jbmps\ supports the implementation by providing read-only model accesses, special parts of editor concept, 
 by which the hinting is implemented. The intentions allowed manipulations on a class, which made it possible to 
@@ -158,19 +158,7 @@ exactly one parameter - the class name, and it has to go in the private class se
 \input{chapters/Encapsulation}
 
 
-\section{Polymorphism}
-
-There are several ways to achieve polymorphic behavior in C++. The purists of the language differentiate 
-between the polymorphism based on virtual functions or on templates. More general opinion can include
-in the notion of the polymorphism also functions overloading and operator overloading, also called 
-\emph{ad hoc} polymorphism. Occasionally various operations with \cc{void *} are also classified as 
-the polymorphic programming.
-
-In this section I am writing only about the class-related virtual functions polymorphism.
-
-\subsection{Pointer to Class Special Typing}
-
-%TODO Pure virtual functions
+\input{chapters/Polymorphism}
 
 % To be used later when writing about type conversion.
 
