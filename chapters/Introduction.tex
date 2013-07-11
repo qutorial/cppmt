@@ -94,13 +94,13 @@ As a tool base for this \jbmps\ has been selected together with the based on it 
 \subsection{\jbmps}
 
 \jbmps\ stands for Jetbrains Meta Programming System. In this IDE-like software it is possible to develop domain specific languages.
-The approach taken in the \jbmps\ is rather unique. One defines a language in it not through the canonical grammar approach, but instead
+The approach taken in the \jbmps\ is rather unique, and it is considered to be advantageous in many ways, \cite{Voelter:MoDELS:2010}. One defines a language in it not through the canonical grammar approach, but instead
 through defining so called concepts, and relationships between them similar to those in ER diagrams. A logical part of a language can be made 
 a concept. Related to C++, class, method declaration, field declaration can be represented as a concept. 
 
 Each concept can have children, which should be assigned with a role and cardinality. For example, the class concept can have children of method concept,
 with a role called ``methods'', and cardinality 0..n.
-
+m
 Concepts can form hierarchies as classes normally do in object oriented programming languages. For this each concept should have a base concept (inheritance),
 and can implement several interface concepts (interface implementation). Concepts can be abstract, for the use purely only in inheritance to create other 
 non-abstract concepts with a common parent.
@@ -129,7 +129,8 @@ Thus \jbmps\ is a good suitable technology for the practical implementation of t
 \subsection{mbeddr Project}
 
 The \mbdrp\ represent mainly an implementation of the C programming language in the \jbmps\ environment. Having embedded systems
-and software for them as a main focus, \mbdr\ provides certain language extensions to empower the programmer in the mentioned domain. 
+and software for them as a main focus, \mbdr\ provides certain language extensions to empower the programmer in the mentioned domain \cite{mbeddr-wave}, 
+\cite{Voelter:MoDELS:2010}. 
 
 Being a different language the \cpppl\ shares a lot of commonality with C. As \jbmps\ allows to some extent incremental language construction,
 as the basis for the \cpppl\ implementation in \jbmps\ the \mbdrp\ was considered to be suitable. 

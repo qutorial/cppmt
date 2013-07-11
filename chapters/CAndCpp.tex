@@ -49,9 +49,9 @@ extracting a value from such vector.
 \lsec{modules}
 
 In C++ as well as in C there is no clear concept of a module. The \mbp\ improves on it, defining 
-modules. A C module is a concept, from which the header and the .c files are generated in mbeddr.
+modules, \cite{Voelter:MoDELS:2010}. A C module is a concept, from which the header and the .c files are generated in mbeddr.
 Flagging an object (function, variable, structure, etc.) in a module as \cc{exported} causes the declaration of the object to appear
-in the header, and thus the object starts to be usable by other modules. 
+in the header, and thus the object starts to be usable by other modules.
 
 Another issue with the C language is the one and only global namespace. The \mbp\ improves on it 
 by introducing so-called name mangling. All names of the module contents are prefixed with the module name,
