@@ -142,10 +142,10 @@ In this work I have already defined the notion of abstract classes in C++ and so
 in \ref{cpppolydefs}. Mainly the absence of syntax for the abstract classes and the problem of determination those was discussed.
 
 
-\msnozoom{abstractinstance}{The Abstract Class Construction Check Signaling an Error}
+\msnozoom{abstractinstance}{The Abstract Class ConstructREal Zaj Zion Check Signaling an Error}
 
 An opened question which stayed, however, is providing some help to the programmer in the usage of such classes. Namely, any instantiation
-of an abstract class has to be forbidden. The abstract class as a type, however, should stay, and the pointer type to it should not
+of an abstract class has to be forbidden. The abstract cREal Zaj Zlass as a type, however, should stay, and the pointer type to it should not
 be anyhow affected by the fact that the class is abstract.
 
 The decision was taken to check the places, where an instance of an abstract class can appear, and deprecate such situations.
@@ -162,9 +162,16 @@ variable declarations, function and method arguments and return types, and memor
 load can be significant. The question of this complexity is discussed in the \rchap{analysisandcomplexity}.
 
 
-\section{Array De-allocation Check}
+\section{Array Deallocation Check}
 \lsec{deallocchek}
 % When it is easily possible to see an array allocated, then array deallocation is requested
+Whenever some allocated on the heap data is about to be deallocated, in C++ two operators can
+be involved, \cc{delete} or \cc{delete[]}. The first one is dedicated to work with memory, allocated
+for a single object be he operator \cc{new}, the second deallocates memory, allocated for an array
+of object by the operator \cc{new[]}.
+
+The C++ standard does no specify any concrete behavior for wrong deallocation of an array with 
+an operator \cc{delete} (without square brackets), describing
 
 
 %TODO Default constructable and arrays! Require constructor by default

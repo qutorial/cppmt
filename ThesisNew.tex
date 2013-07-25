@@ -1,0 +1,131 @@
+\documentclass[11pt,a4paper,bibtotoc,idxtotoc,headsepline,footsepline,footexclude,BCOR12mm,DIV13,hidelinks]{scrbook}
+
+
+% Second template
+\input{components/info}
+% include settings
+\input{components/settings}
+% include commands
+\input{components/commands}
+% include custom abbreviations
+\input{components/abbreviations}
+
+% include the glossary
+\input{components/glossary}
+\makeglossaries
+
+\begin{document}
+
+	\frontmatter
+	
+	
+	\input{components/cover}
+%	\clearemptydoublepage
+%	
+%	\input{components/titlepage}
+	
+	
+%	\input{components/cover_maschmeyer}
+	\clearemptydoublepage
+	
+	\input{components/titlepage}
+		
+	\input{components/disclaimer}
+	
+	\input{components/acknowledgements}
+	
+	\input{components/abstract}
+
+	\tableofcontents
+  
+  %\input{components/outline}
+
+	\mainmatter
+	
+	
+		% ---------------------------------------------------------------------------
+		%
+		% Introduction to the problem
+		%
+		% ---------------------------------------------------------------------------
+		%\part[Introduction and Theory]{Introduction and Theory}
+		%\label{part:intro}
+		\input{newchapters/Introduction}
+		
+		
+		% ---------------------------------------------------------------------------
+		%
+		% Theoretical foundations
+		%
+		% ---------------------------------------------------------------------------
+		%\part[C++ and Projectional Editing]{C++ and Projectional Editing}
+		%\label{part:implementation}
+		\input{newchapters/Foundations}
+		
+		
+		
+		% ---------------------------------------------------------------------------
+		%
+		% Technologies, MPS and C++ themselves
+		%
+		% ---------------------------------------------------------------------------
+		%\part[MPS Language Extensibility]{MPS Language Extensibility}
+		%\label{part:extensibility}
+		\input{newchapters/Technologies}
+		
+				
+		
+		% ---------------------------------------------------------------------------
+		%
+		% Implementation, Projectional C++
+		%
+		% ---------------------------------------------------------------------------
+		%\part[Comparison of Projectional and Traditional Approaches]{Comparison of Projectional and Traditional Approaches}
+		%\label{part:comparison}
+		\input{newchapters/CPP}
+		
+		
+		% ---------------------------------------------------------------------------
+		%
+		% Different extensibility, projection, analysis and complexity
+		%
+		% ---------------------------------------------------------------------------
+		%\part[More on the Projectional Approach]{More on the Projectional Approach}
+		%\label{part:moreprojection}
+		\input{newchapters/Evaluation}
+		
+		
+		
+		% ---------------------------------------------------------------------------
+		%
+		% Conclusions. Sum-ups, Evaluations.
+		%
+		% ---------------------------------------------------------------------------
+		%\part[Conclusion]{Conclusion}
+		%\label{part:conclusion}
+		\input{newchapters/Conclusion}
+		
+		
+		
+		% ---------------------------------------------------------------------------
+		%
+		% Appendix
+		%
+		% ---------------------------------------------------------------------------
+		
+		\part*{Appendix}
+		\addcontentsline{toc}{part}{Appendix}
+		
+		\appendix %---------------------------------------
+		
+		\input{newchapters/Glossary}
+		
+	
+
+
+  \clearemptydoublepage
+  
+	\bibliography{bibliography/literature_mbeddr}
+	
+ 
+\end{document}
