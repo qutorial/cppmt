@@ -6,29 +6,50 @@ In embedded programming the C++ programming language is widely spread, \cite{emb
 programming language, C++ does not provide any special support for an embedded systems programmer. 
 
 By changing  the language itself, together with a tool set for it, it is possible to get a better environment 
-for specifically embedded programming. As an example, a subset of C++, called \Gls{emcpp} can be brought, \cite{emcpp}.
-The approach taken in Embedded C++, namely, stripping very many core features of C++ off, allows for a higher degree of
-optimizations by compiler possible. Simpler C++ was intended to (\cite{stripepp}) allow higher software quality through
-better understanding of the limited C++ by programmers, higher quality of compilers, better suitability for the embedded
-domain. This approach, however, has been criticized by the C++ community (\cite{stremcpp}), specifically for the inability 
-of the limited language to take advantage of the C++ standard library, which requires the C++ language features, absent in 
+for specifically embedded programming. 
+
+The first possible approach is stripping some language features of, to get the language, which is simpler. 
+As an example, a subset of C++, called \Gls{emcpp} can be brought, \cite{emcpp}. The approach taken in Embedded C++ is 
+stripping very many core features of C++ off, allows for a higher degree of optimizations by compiler possible. 
+Embedded C++ was intended to (\cite{stripepp}) allow higher software quality through better understanding of the limited 
+C++ by programmers, higher quality of compilers, better suitability for the embedded domain. 
+This approach, however, has been criticized by the C++ community (\cite{stremcpp}), specifically for the inability of the 
+limited language to take advantage of the C++ standard library, which requires the C++ language features, absent in 
 Embedded C++.
 
-Another approach to modify a language, to get it more suitable for the embedded development, is the opposite to the one,
-taken in Embedded C++. It consists of extending the language with constructions specific to the domain. Such approach is
-taken, for example, in the \gls{mbeddr} (\cite{2012_voelter_mbeddr_extensible_c_based_language_and_ide_for_embedded}),
-for C programming language. As an example of extensions to C language state machines and decision tables can be brought.
+The second approach to modify a language, to get it more suitable for the embedded development, consists of extending 
+the language with constructions specific to the domain. Such approach is taken, for example, in the \gls{mbeddr} 
+(\cite{2012_voelter_mbeddr_extensible_c_based_language_and_ide_for_embedded}), for C programming language. 
+Extensions to C language developed in \gls{mbeddr} include state machines and decision tables.
 
-Additionally, the integrated development environment (\gls{ide}) can be improved to support domain specific development. 
-Various analyses can be built in into the code editor in order to detect inconsistencies, or simply ``dangerous'' constructs.
-Certain code formatting, or standard requirements could be enforced, and many more.
+A special language engineering environment can be used to support modular and incremental language development, e.g. \Gls{mps}.
+A language is split in a special class-like items, called \glspl{concept}. As an example of a concept expression can be taken. Over 
+the inheritance mechanisms, it is possible to extend languages, providing new concepts. For example, expression concept can
+be extended to support new sort of expressions. Building a general purpose programming language in a language engineering
+environment brings a basis to develop domain specific extensions to a well-known general purpose language.
+
+Additionally to the language modification, the integrated development environment (\gls{ide}) can 
+be improved to support domain specific development. Various analyses can be built in into the code 
+editor in order to detect inconsistencies, or, simply, ``dangerous'' constructs, and inform the programmer.
+Certain code formatting, or standard requirements could be enforced as well, and many more.
 
 % Problem 
-A mixture of all three techniques could be combined in an attempt to achieve a ``better'' C++ for embedded development.
+A mixture of the three techniques could be used in an attempt to achieve a ``better'' C++ for embedded development.
 A special \gls{ide} can be created together with a new C++ language flavor, which prohibits the most ``dangerous'' C++
 constructs, and allows for modular creation of extensions.
 
-Before the chance to create extensions to the C++ language, the C++ language limited flavor itself together with a special \gls{ide}
-have to be created. This is the problem to be solved in this Master Thesis.
+Before the chance to create extensions to the C++ language, the C++ language itself together with a special \gls{ide} for it
+has to be created. This is the problem to be solved by this Master Thesis.
 
 % Approach
+The approach taken in this work goes even further into exploring the language modularity. While building the \cpppl\ itself 
+with the goal of extensions for it in mind, the C++ itself is being build as extension to the C language itself.
+
+Although the C++ is a separate from C language, the high degree of similarity allows to make use of the C programming language,
+implemented by the \gls{mbeddr} as a foundation.
+
+This work explores further the support, provided by \jbmps\ for the modular language construction, \cite{2012_ratiu_modular_dsls_and_analyses},
+and reviews it from the architectural point of view.
+
+The \cpppl\ is provided with a number of analyses for it. The question of analyses run-time and complexity is discussed.
+
