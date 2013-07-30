@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  25 JUL 2013 16:34
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  30 JUL 2013 13:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -706,37 +706,37 @@ Package: glossary-tree 2011/03/28 v3.0 (NLCT)
 ))) (./components/commands.tex
 \c@theorem=\count137
 ) (./components/abbreviations.tex)
+(./components/glossary.tex)
 \glo@main@file=\write4
 \openout4 = `MasterThesis_ZaurMolotnikov.glo'.
 
 Package glossaries Info: Writing glossary file MasterThesis_ZaurMolotnikov.glo 
-on input line 14.
-
-(./MasterThesis_ZaurMolotnikov.aux)
+on input line 15.
+ (./MasterThesis_ZaurMolotnikov.aux)
 \openout1 = `MasterThesis_ZaurMolotnikov.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 16.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 17.
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
@@ -769,7 +769,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box40
-Package hyperref Info: Link coloring OFF on input line 16.
+Package hyperref Info: Link coloring OFF on input line 17.
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
@@ -779,9 +779,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count144
 )
-LaTeX Info: Redefining \ref on input line 16.
-LaTeX Info: Redefining \pageref on input line 16.
-LaTeX Info: Redefining \nameref on input line 16.
+LaTeX Info: Redefining \ref on input line 17.
+LaTeX Info: Redefining \pageref on input line 17.
+LaTeX Info: Redefining \nameref on input line 17.
 
 (./MasterThesis_ZaurMolotnikov.out) (./MasterThesis_ZaurMolotnikov.out)
 \@outlinefile=\write5
@@ -796,7 +796,7 @@ Dictionary: glossaries-dictionary, Language: English
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 43.
 
-<styles/informat.png, id=231, 355.3275pt x 355.3275pt>
+<styles/informat.png, id=54, 355.3275pt x 355.3275pt>
 File: styles/informat.png Graphic file (type png)
 
 <use styles/informat.png>
@@ -858,20 +858,16 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 39.
  (./MasterThesis_ZaurMolotnikov.toc
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 7.
- [11])
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 15.
+)
 \tf@toc=\write6
 \openout6 = `MasterThesis_ZaurMolotnikov.toc'.
 
- (./components/outline.tex)
-[12]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 51.
- [1
+ [11] [12
 
 
-
-] [2] (./chapters/Introduction.tex
+]
+(./newchapters/Introduction.tex
 Chapter 1.
 
 Class scrbook Warning: \float@addtolists detected!
@@ -880,455 +876,75 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              Support for \float@addtolists may be removed from
 (scrbook)              `scrbook' soon .
 
-[3
+[1
 
-] (/usr/local/texlive/2011/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-)
-(/usr/local/texlive/2011/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-)
-(/usr/local/texlive/2011/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 44.
-
-(./listings/blocks.cpp
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 1.
-
-(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/omsppl.fd
-File: omsppl.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1.
-)
-Package epstopdf Info: Source file: <figures/constructor.eps>
-(epstopdf)                    date: 2013-06-03 18:22:37
-(epstopdf)                    size: 502907 bytes
-(epstopdf)             Output file: <figures/constructor-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-06-03 18:26:44
-(epstopdf)                    size: 10121 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/constructor-eps-co
-nverted-to.pdf figures/constructor.eps>
-(epstopdf)             \includegraphics on input line 68.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/constructor-eps-converted-to.pdf, id=361, 920.43875pt x 433.62pt>
-File: figures/constructor-eps-converted-to.pdf Graphic file (type pdf)
-
-<use figures/constructor-eps-converted-to.pdf>
-Package pdftex.def Info: figures/constructor-eps-converted-to.pdf used on input
- line 68.
-(pdftex.def)             Requested size: 248.52179pt x 117.07896pt.
- [4] [5 <./figures/constructor-eps-converted-to.pdf>] [6]
-Overfull \hbox (5.17104pt too wide) in paragraph at lines 138--141
-[]\OT1/ppl/m/n/10.95 The use of mbeddr how-ever, could not be purely in-cre-men
--tal, and re-quired some changes
- []
-
-[7]) [8] [9] [10
-
-] [11] [12] (./chapters/Implementation.tex
-(./chapters/CAndCpp.tex
+]) (./newchapters/Foundations.tex [2]
 Chapter 2.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 15.
-(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-(./listings/copyconstructor.cpp) [13
+(./newchapters/MPS.tex) (./newchapters/MBEDDR.tex))
+(./newchapters/Technologies.tex [3
 
-]
-Overfull \hbox (0.67499pt too wide) in paragraph at lines 44--47
-[]\OT1/ppl/m/n/10.95 Among lim-i-ta-tions of this ap-proach one can take as an 
-ex-am-ple \OT1/pcr/m/n/10.95 std::vectoor<bool>\OT1/ppl/m/n/10.95 .
- []
-
-
-Overfull \hbox (1.56071pt too wide) in paragraph at lines 82--84
-[]\OT1/ppl/m/n/10.95 Namespaces are in-tro-duced in the pro-jec-tional C++ to a
-void inter-modular name clashes,
- []
-
-[14]) (./chapters/Classes.tex [15] [16
+] [4
 
 ]
 Chapter 3.
-[17]
-Package epstopdf Info: Source file: <figures/webpage.eps>
-(epstopdf)                    date: 2013-06-14 20:30:21
-(epstopdf)                    size: 740335 bytes
-(epstopdf)             Output file: <figures/webpage-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-06-14 21:34:23
-(epstopdf)                    size: 15077 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/webpage-eps-conver
-ted-to.pdf figures/webpage.eps>
-(epstopdf)             \includegraphics on input line 65.
-Package epstopdf Info: Output file is already uptodate.
- <figures/webpage-eps-converted-to.pdf, id=476, 1206.5075pt x 491.8375pt>
-File: figures/webpage-eps-converted-to.pdf Graphic file (type pdf)
-
-<use figures/webpage-eps-converted-to.pdf>
-Package pdftex.def Info: figures/webpage-eps-converted-to.pdf used on input lin
-e 65.
-(pdftex.def)             Requested size: 325.76138pt x 132.7979pt.
- (./listings/implicit.cpp
-LaTeX Font Info:    Try loading font information for OML+ppl on input line 1.
-
-(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/omlppl.fd
-File: omlppl.fd 
-)
-LaTeX Font Info:    Font shape `OML/ppl/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1.
- [18 <./figures/webpage-eps-converted-to.pdf>]
-LaTeX Font Info:    Try loading font information for TS1+ppl on input line 4.
-
-(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ts1ppl.fd
-File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-)) [19]
-(./listings/copydeath.cpp)
-Package epstopdf Info: Source file: <figures/copyable.eps>
-(epstopdf)                    date: 2013-06-16 00:09:49
-(epstopdf)                    size: 641785 bytes
-(epstopdf)             Output file: <figures/copyable-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-06-16 00:09:57
-(epstopdf)                    size: 13536 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/copyable-eps-conve
-rted-to.pdf figures/copyable.eps>
-(epstopdf)             \includegraphics on input line 137.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/copyable-eps-converted-to.pdf, id=539, 1352.05125pt x 379.4175pt>
-File: figures/copyable-eps-converted-to.pdf Graphic file (type pdf)
-
-<use figures/copyable-eps-converted-to.pdf>
-Package pdftex.def Info: figures/copyable-eps-converted-to.pdf used on input li
-ne 137.
-(pdftex.def)             Requested size: 365.05872pt x 102.44409pt.
- [20]
-Package epstopdf Info: Source file: <figures/notcopyable.eps>
-(epstopdf)                    date: 2013-06-16 00:50:01
-(epstopdf)                    size: 663721 bytes
-(epstopdf)             Output file: <figures/notcopyable-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-06-16 23:38:05
-(epstopdf)                    size: 14039 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/notcopyable-eps-co
-nverted-to.pdf figures/notcopyable.eps>
-(epstopdf)             \includegraphics on input line 149.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/notcopyable-eps-converted-to.pdf, id=565, 1276.77pt x 414.54875pt>
-File: figures/notcopyable-eps-converted-to.pdf Graphic file (type pdf)
-
-<use figures/notcopyable-eps-converted-to.pdf>
-Package pdftex.def Info: figures/notcopyable-eps-converted-to.pdf used on input
- line 149.
-(pdftex.def)             Requested size: 344.73251pt x 111.92966pt.
- (./chapters/Encapsulation.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [21 <./figures/copyable-eps-converted-to.pdf> <./figures/notcopyable-eps-conve
-rted-to.pdf>]
-Package epstopdf Info: Source file: <figures/inhdecl.eps>
-(epstopdf)                    date: 2013-06-16 23:48:33
-(epstopdf)                    size: 1069216 bytes
-(epstopdf)             Output file: <figures/inhdecl-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-06-16 23:57:49
-(epstopdf)                    size: 18648 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/inhdecl-eps-conver
-ted-to.pdf figures/inhdecl.eps>
-(epstopdf)             \includegraphics on input line 27.
-Package epstopdf Info: Output file is already uptodate.
- <figures/inhdecl-eps-converted-to.pdf, id=594, 1320.935pt x 647.41875pt>
-File: figures/inhdecl-eps-converted-to.pdf Graphic file (type pdf)
-
-<use figures/inhdecl-eps-converted-to.pdf>
-Package pdftex.def Info: figures/inhdecl-eps-converted-to.pdf used on input lin
-e 27.
-(pdftex.def)             Requested size: 356.65721pt x 174.80539pt.
-Package epstopdf Info: Source file: <figures/inhusage.eps>
-(epstopdf)                    date: 2013-06-16 23:24:24
-(epstopdf)                    size: 225875 bytes
-(epstopdf)             Output file: <figures/inhusage-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-06-17 00:19:52
-(epstopdf)                    size: 122951 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/inhusage-eps-conve
-rted-to.pdf figures/inhusage.eps>
-(epstopdf)             \includegraphics on input line 41.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/inhusage-eps-converted-to.pdf, id=598, 1022.82124pt x 711.65875pt>
-File: figures/inhusage-eps-converted-to.pdf Graphic file (type pdf)
-
-<use figures/inhusage-eps-converted-to.pdf>
-Package pdftex.def Info: figures/inhusage-eps-converted-to.pdf used on input li
-ne 41.
-(pdftex.def)             Requested size: 276.16542pt x 192.15042pt.
- [22 <./figures/inhdecl-eps-converted-to.pdf>] [23 <./figures/inhusage-eps-conv
-erted-to.pdf>])
-(./chapters/Polymorphism.tex (./listings/purevirtual.cpp) [24]
-(./listings/polycall.cpp) [25] (./listings/override.cpp) [26]
-Package epstopdf Info: Source file: <figures/override.eps>
-(epstopdf)                    date: 2013-07-08 01:17:39
-(epstopdf)                    size: 835524 bytes
-(epstopdf)             Output file: <figures/override-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-07-08 01:22:04
-(epstopdf)                    size: 17176 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/override-eps-conve
-rted-to.pdf figures/override.eps>
-(epstopdf)             \includegraphics on input line 105.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/override-eps-converted-to.pdf, id=721, 1180.41pt x 568.1225pt>
-File: figures/override-eps-converted-to.pdf Graphic file (type pdf)
-
-<use figures/override-eps-converted-to.pdf>
-Package pdftex.def Info: figures/override-eps-converted-to.pdf used on input li
-ne 105.
-(pdftex.def)             Requested size: 318.71497pt x 153.39511pt.
-Package epstopdf Info: Source file: <figures/purevirtual.eps>
-(epstopdf)                    date: 2013-07-08 15:35:50
-(epstopdf)                    size: 49404 bytes
-(epstopdf)             Output file: <figures/purevirtual-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-07-08 15:44:04
-(epstopdf)                    size: 3937 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/purevirtual-eps-co
-nverted-to.pdf figures/purevirtual.eps>
-(epstopdf)             \includegraphics on input line 134.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/purevirtual-eps-converted-to.pdf, id=724, 774.895pt x 48.18pt>
-File: figures/purevirtual-eps-converted-to.pdf Graphic file (type pdf)
-
-<use figures/purevirtual-eps-converted-to.pdf>
-Package pdftex.def Info: figures/purevirtual-eps-converted-to.pdf used on input
- line 134.
-(pdftex.def)             Requested size: 209.22444pt x 13.00876pt.
- [27 <./figures/override-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <figures/abstract.eps>
-(epstopdf)                    date: 2013-07-08 16:43:28
-(epstopdf)                    size: 1388461 bytes
-(epstopdf)             Output file: <figures/abstract-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-07-08 16:48:59
-(epstopdf)                    size: 26758 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/abstract-eps-conve
-rted-to.pdf figures/abstract.eps>
-(epstopdf)             \includegraphics on input line 164.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/abstract-eps-converted-to.pdf, id=744, 1413.28pt x 791.95876pt>
-File: figures/abstract-eps-converted-to.pdf Graphic file (type pdf)
-
-<use figures/abstract-eps-converted-to.pdf>
-Package pdftex.def Info: figures/abstract-eps-converted-to.pdf used on input li
-ne 164.
-(pdftex.def)             Requested size: 381.5907pt x 213.83173pt.
- [28 <./figures/purevirtual-eps-converted-to.pdf>])) (./chapters/OperatorOverlo
-ading.tex [29 <./figures/abstract-eps-converted-to.pdf>] [30
+) (./newchapters/CPP.tex [5] [6
 
 ]
 Chapter 4.
-) (./chapters/Templates.tex [31] [32
+) (./newchapters/Evaluation.tex [7] [8
 
 ]
 Chapter 5.
-) (./chapters/Advanced.tex [33] [34
+) (./newchapters/Conclusion.tex [9] [10
 
 ]
 Chapter 6.
-Package epstopdf Info: Source file: <figures/getterandsetterintention.eps>
-(epstopdf)                    date: 2013-07-09 15:45:46
-(epstopdf)                    size: 36573 bytes
-(epstopdf)             Output file: <figures/getterandsetterintention-eps-conve
-rted-to.pdf>
-(epstopdf)                    date: 2013-07-09 15:52:52
-(epstopdf)                    size: 27612 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/getterandsetterint
-ention-eps-converted-to.pdf figures/getterandsetterintention.eps>
-(epstopdf)             \includegraphics on input line 36.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/getterandsetterintention-eps-converted-to.pdf, id=802, 383.4325pt x 21
-5.80624pt>
-File: figures/getterandsetterintention-eps-converted-to.pdf Graphic file (type 
-pdf)
- <use figures/getterandsetterintention-eps-converted-to.pdf>
-Package pdftex.def Info: figures/getterandsetterintention-eps-converted-to.pdf 
-used on input line 36.
-(pdftex.def)             Requested size: 295.24394pt x 166.17131pt.
- [35]
-Package epstopdf Info: Source file: <figures/getterandsetter.eps>
-(epstopdf)                    date: 2013-07-09 16:05:48
-(epstopdf)                    size: 158516 bytes
-(epstopdf)             Output file: <figures/getterandsetter-eps-converted-to.p
-df>
-(epstopdf)                    date: 2013-07-09 16:06:36
-(epstopdf)                    size: 6437 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/getterandsetter-ep
-s-converted-to.pdf figures/getterandsetter.eps>
-(epstopdf)             \includegraphics on input line 40.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/getterandsetter-eps-converted-to.pdf, id=809, 480.79625pt x 253.94875p
-t>
-File: figures/getterandsetter-eps-converted-to.pdf Graphic file (type pdf)
- <use figures/getterandsetter-eps-converted-to.pdf>
-Package pdftex.def Info: figures/getterandsetter-eps-converted-to.pdf used on i
-nput line 40.
-(pdftex.def)             Requested size: 370.21425pt x 195.54112pt.
- [36 <./figures/getterandsetterintention-eps-converted-to.pdf> <./figures/gette
-randsetter-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <figures/compositesetter.eps>
-(epstopdf)                    date: 2013-07-09 16:27:59
-(epstopdf)                    size: 275094 bytes
-(epstopdf)             Output file: <figures/compositesetter-eps-converted-to.p
-df>
-(epstopdf)                    date: 2013-07-09 16:39:05
-(epstopdf)                    size: 7377 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/compositesetter-ep
-s-converted-to.pdf figures/compositesetter.eps>
-(epstopdf)             \includegraphics on input line 56.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/compositesetter-eps-converted-to.pdf, id=828, 1181.41376pt x 185.69376
-pt>
-File: figures/compositesetter-eps-converted-to.pdf Graphic file (type pdf)
- <use figures/compositesetter-eps-converted-to.pdf>
-Package pdftex.def Info: figures/compositesetter-eps-converted-to.pdf used on i
-nput line 56.
-(pdftex.def)             Requested size: 318.98598pt x 50.13797pt.
-Package epstopdf Info: Source file: <figures/namingconventions.eps>
-(epstopdf)                    date: 2013-07-10 15:01:36
-(epstopdf)                    size: 73070 bytes
-(epstopdf)             Output file: <figures/namingconventions-eps-converted-to
-.pdf>
-(epstopdf)                    date: 2013-07-10 15:24:11
-(epstopdf)                    size: 44195 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/namingconventions-
-eps-converted-to.pdf figures/namingconventions.eps>
-(epstopdf)             \includegraphics on input line 82.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/namingconventions-eps-converted-to.pdf, id=832, 679.53876pt x 219.8212
-4pt>
-File: figures/namingconventions-eps-converted-to.pdf Graphic file (type pdf)
- <use figures/namingconventions-eps-converted-to.pdf>
-Package pdftex.def Info: figures/namingconventions-eps-converted-to.pdf used on
- input line 82.
-(pdftex.def)             Requested size: 183.47792pt x 59.35252pt.
-Package epstopdf Info: Source file: <figures/renameconventionally.eps>
-(epstopdf)                    date: 2013-07-10 18:09:06
-(epstopdf)                    size: 51320 bytes
-(epstopdf)             Output file: <figures/renameconventionally-eps-converted
--to.pdf>
-(epstopdf)                    date: 2013-07-10 18:10:01
-(epstopdf)                    size: 38631 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/renameconventional
-ly-eps-converted-to.pdf figures/renameconventionally.eps>
-(epstopdf)             \includegraphics on input line 93.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/renameconventionally-eps-converted-to.pdf, id=835, 408.52625pt x 265.9
-9374pt>
-File: figures/renameconventionally-eps-converted-to.pdf Graphic file (type pdf)
-
- <use figures/renameconventionally-eps-converted-to.pdf>
-Package pdftex.def Info: figures/renameconventionally-eps-converted-to.pdf used
- on input line 93.
-(pdftex.def)             Requested size: 314.56618pt x 204.81581pt.
- [37 <./figures/compositesetter-eps-converted-to.pdf> <./figures/namingconventi
-ons-eps-converted-to.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [38 <./figures/renameconventionally-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <figures/abstractinstance.eps>
-(epstopdf)                    date: 2013-07-11 17:13:17
-(epstopdf)                    size: 33555 bytes
-(epstopdf)             Output file: <figures/abstractinstance-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2013-07-11 17:15:07
-(epstopdf)                    size: 21839 bytes
-(epstopdf)             Command: <repstopdf --outfile=figures/abstractinstance-e
-ps-converted-to.pdf figures/abstractinstance.eps>
-(epstopdf)             \includegraphics on input line 145.
-Package epstopdf Info: Output file is already uptodate.
-
-<figures/abstractinstance-eps-converted-to.pdf, id=877, 370.38374pt x 154.5775p
-t>
-File: figures/abstractinstance-eps-converted-to.pdf Graphic file (type pdf)
- <use figures/abstractinstance-eps-converted-to.pdf>
-Package pdftex.def Info: figures/abstractinstance-eps-converted-to.pdf used on 
-input line 145.
-(pdftex.def)             Requested size: 285.19635pt x 119.02502pt.
- [39 <./figures/abstractinstance-eps-converted-to.pdf>])) [40] [41
-
-] [42] (./chapters/Extensibility.tex)
-[43
-
-] [44] (./chapters/Comparison.tex
-Chapter 7.
-) [45
-
-] [46
-
-] [47] [48] (./chapters/MoreProjection.tex
-Chapter 8.
-[49
-
-] [50
+) [11] [12
 
 ]
-Chapter 9.
-) [51] [52
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 116.
+ [13] [14] (./newchapters/Glossary.tex
+(./MasterThesis_ZaurMolotnikov.gls
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 5.
 
-] [53] [54] (./chapters/Conclusion.tex
-Chapter 10.
-) [55
+(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 5.
+)) [15
 
-] [56
 
-] [57] [58] (./chapters/oneAppendix.tex
-Appendix A.
-) [59
+] [16
 
-] [60
-
-] (./MasterThesis_ZaurMolotnikov.bbl
-Overfull \hbox (102.02513pt too wide) in paragraph at lines 4--6
-[]\OT1/ppl/m/n/10.95 Class lay-out re-comen-da-tions, pos-si-bil-ity.com. http:
-//www.possibility.com/cpp/cppcodingstandard.html. 
+]
+(./MasterThesis_ZaurMolotnikov.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 4--7
+[]\OT1/ppl/m/n/10.95 Embedded C++.  Ob-jec-tives be-hind limit-ting c++,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--10
-[]\OT1/ppl/m/n/10.95 Google style re-comen-da-tions for c++, http://google-
+Underfull \hbox (badness 10000) in paragraph at lines 19--22
+[]\OT1/ppl/m/n/10.95 VDC Re-search.  Sur-vey on em-bed-ded pro-gram-ming lan-gu
+ages,
  []
 
 
-Overfull \hbox (25.0265pt too wide) in paragraph at lines 12--14
-[]\OT1/ppl/m/n/10.95 Open of-fice c++ cod-ing stan-dard, http://wiki.openoffice
-.org/wiki/cpp[]coding[]standards. 
+Underfull \hbox (badness 10000) in paragraph at lines 19--22
+\OT1/ppl/m/n/10.95 http://blog.vdcresearch.com/embedded[]sw/2010/09/what-langua
+ges-do-you-
  []
 
 
-Underfull \hbox (badness 7796) in paragraph at lines 16--18
-[]\OT1/ppl/m/n/10.95 Qt project doc-u-men-ta-tion page, con-tains q[]disable[]c
-opy macro. http://qt-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 35--38
-[]\OT1/ppl/m/n/10.95 Qt Project.  The qt project cod-ing guide-lines, http://qt
--
+Overfull \hbox (30.44653pt too wide) in paragraph at lines 24--26
+[]\OT1/ppl/m/n/10.95 Bjarne Strous-trup.  Quote on em-bed-ded c++, http://www.s
+troustrup.com/bs[]faq.html#ec++. 
  []
 
 )
-
-Package glossaries Warning: No \printglossary or \printglossaries found.
-This document will not have a glossary.
-
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 131.
-[61
+ [17
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
@@ -1337,28 +953,26 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 131.
 Package rerunfilecheck Info: File `MasterThesis_ZaurMolotnikov.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: 992D19D22ED8264D2D06B9110958BEB5;3843.
+(rerunfilecheck)             Checksum: 97C558F3AB1227887C29D3CFB1361591;669.
  ) 
 Here is how much of TeX's memory you used:
- 13660 strings out of 493629
- 203823 string characters out of 3143343
- 355138 words of memory out of 3000000
- 16297 multiletter control sequences out of 15000+200000
- 23045 words of font info for 62 fonts, out of 3000000 for 9000
+ 12859 strings out of 493629
+ 192131 string characters out of 3143343
+ 318633 words of memory out of 3000000
+ 15775 multiletter control sequences out of 15000+200000
+ 23622 words of font info for 59 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 57i,11n,102p,1350b,2012s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,10n,55p,1350b,405s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
-xlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
-live/2011/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/201
-1/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2011/texmf
--dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/f
-onts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/ty
-pe1/urw/palatino/uplri8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (73 pages, 564113 bytes).
+exlive/2011/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/
+2011/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2011/te
+xmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dis
+t/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts
+/type1/urw/palatino/uplri8a.pfb>
+Output written on MasterThesis_ZaurMolotnikov.pdf (29 pages, 105509 bytes).
 PDF statistics:
- 1072 PDF objects out of 1200 (max. 8388607)
- 831 compressed objects within 9 object streams
- 265 named destinations out of 1000 (max. 500000)
- 537 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 284 PDF objects out of 1000 (max. 8388607)
+ 243 compressed objects within 3 object streams
+ 58 named destinations out of 1000 (max. 500000)
+ 110 words of extra memory for PDF output out of 10000 (max. 10000000)
 

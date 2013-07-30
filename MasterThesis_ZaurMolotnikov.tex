@@ -10,8 +10,9 @@
 % include custom abbreviations
 \input{components/abbreviations}
 
-
-\makeglossary
+% include the glossary
+\input{components/glossary}
+\makeglossaries
 
 \begin{document}
 
@@ -28,8 +29,7 @@
 	\clearemptydoublepage
 	
 	\input{components/titlepage}
-	
-	
+		
 	\input{components/disclaimer}
 	
 	\input{components/acknowledgements}
@@ -38,61 +38,61 @@
 
 	\tableofcontents
   
-  \input{components/outline}
+  %\input{components/outline}
 
 	\mainmatter
 	
 	
 		% ---------------------------------------------------------------------------
 		%
-		% Introduction and Problematic
+		% Introduction to the problem
 		%
 		% ---------------------------------------------------------------------------
-		\part[Introduction and Theory]{Introduction and Theory}
-		\label{part:intro}
-		\input{chapters/Introduction}
+		%\part[Introduction and Theory]{Introduction and Theory}
+		%\label{part:intro}
+		\input{newchapters/Introduction}
 		
 		
 		% ---------------------------------------------------------------------------
 		%
-		% Description of implementation in MPS
+		% Theoretical foundations
 		%
 		% ---------------------------------------------------------------------------
-		\part[C++ and Projectional Editing]{C++ and Projectional Editing}
-		\label{part:implementation}
-		\input{chapters/Implementation}
+		%\part[C++ and Projectional Editing]{C++ and Projectional Editing}
+		%\label{part:implementation}
+		\input{newchapters/Foundations}
 		
 		
 		
 		% ---------------------------------------------------------------------------
 		%
-		% Discussion on extensibility in MPS
+		% Technologies, MPS and C++ themselves
 		%
 		% ---------------------------------------------------------------------------
-		\part[MPS Language Extensibility]{MPS Language Extensibility}
-		\label{part:extensibility}
-		\input{chapters/Extensibility}
+		%\part[MPS Language Extensibility]{MPS Language Extensibility}
+		%\label{part:extensibility}
+		\input{newchapters/Technologies}
 		
 				
 		
 		% ---------------------------------------------------------------------------
 		%
-		% Comparison with traditional approach
+		% Implementation, Projectional C++
 		%
 		% ---------------------------------------------------------------------------
-		\part[Comparison of Projectional and Traditional Approaches]{Comparison of Projectional and Traditional Approaches}
-		\label{part:comparison}
-		\input{chapters/Comparison}
+		%\part[Comparison of Projectional and Traditional Approaches]{Comparison of Projectional and Traditional Approaches}
+		%\label{part:comparison}
+		\input{newchapters/CPP}
 		
 		
 		% ---------------------------------------------------------------------------
 		%
-		% More on projectional approach and common techniques
+		% Different extensibility, projection, analysis and complexity
 		%
 		% ---------------------------------------------------------------------------
-		\part[More on the Projectional Approach]{More on the Projectional Approach}
-		\label{part:moreprojection}
-		\input{chapters/MoreProjection}
+		%\part[More on the Projectional Approach]{More on the Projectional Approach}
+		%\label{part:moreprojection}
+		\input{newchapters/Evaluation}
 		
 		
 		
@@ -101,9 +101,9 @@
 		% Conclusions. Sum-ups, Evaluations.
 		%
 		% ---------------------------------------------------------------------------
-		\part[Conclusion]{Conclusion}
-		\label{part:conclusion}
-		\input{chapters/Conclusion}
+		%\part[Conclusion]{Conclusion}
+		%\label{part:conclusion}
+		\input{newchapters/Conclusion}
 		
 		
 		
@@ -118,7 +118,7 @@
 		
 		\appendix %---------------------------------------
 		
-		\input{chapters/oneAppendix}
+		\input{newchapters/Glossary}
 		
 	
 
