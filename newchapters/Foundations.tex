@@ -1,10 +1,114 @@
-\declchap{Technical Foundations}{found}
+\declchap{Foundations}{found}
 
-The C++ programming language developed through out this \MT\ is based on two technologies, which are 
-introduced in this chapter. The first technology is the \jbmps\ language engineering environment, which 
-provides the core foundations and means for incremental language construction. The second technology is
-the \mbdp\ 
+Before describing the technologies on which the current work is based, as well as the work itself,
+it makes sense to describe more general foundations and principles, around which the technology is built.
 
-\input{newchapters/MPS}
+\declsec{Projectional Editing}{projectionalediting}
 
-\input{newchapters/MBEDDR}
+This section compares the traditional approach to build textual editors for the program code with
+the projectional approach, bringing up  motivation for the least.
+
+\subsection{Traditional Approach}
+Traditionally programming languages are used in a textual form in text files, forming programs.
+However the textual nature is not typical for the structure of programs themselves, being rather a low-level code representation, especially when talking abut syntax, which is only necessary for 
+parsers to produce correct results, and not for the program intended semantics.
+
+% About syntax trash here
+
+Parsers are used to construct so-called \rg{ast}s from the textual 
+program representation. \rg{ast}s are structures in memory, usually graph-alike, 
+reminding a control flow graph, where nodes are different statements and edges are 
+the ways control passes from one statement to the next one.
+
+For the developer, using an editor, the degree to which the editor can support the development
+process is important. For this, the editor has to recognize the programming language constructions and provide possible assistance. Among such assistance can be code formatting, syntax validation,
+source code transformations (including refactoring support), code analyses and verification, 
+source code generation and others. Many of these operation rely indeed on the higher than text level notions related to program such as a method, a variable, a statement. 
+A good editor has to be aware of these higher level program structures, to provide meaningful automations for the operations mentioned above.
+
+Nowadays, most of the editors work with text, and, to provide assistance to a programmer, integrate
+with a parser/compiler front-end for the programming language. Such way to extract the program
+structure during editing is not perfect for several reasons. 
+
+First of all, the program being edited as text is not syntactically correct at every moment, 
+being incomplete, for example. Under such circumstances the parsing front-end can not be
+successfully invoked and returns error messages which are either not related to the program, when
+the code is completed, or false-positive warning and errors. 
+
+Secondly, after a minor editing of the code, usually the whole text file has to be processed again. Such compiler calls are usually computationally expensive, they slow down, sometimes significantly, the performance of the developer machine. Various techniques exist to speed it up, including partial 
+and pre- compilation, but the problem is still relevant to a large extent. 
+
+Moreover, the textual nature of the code complicates certain operations additionally. As an example, we can take a refactoring
+to rename a method. Every usage of the method, being renamed, has to be found and changed. To implement it correctly an editor must take into account various possible name collisions, as well 
+as presume a compilable state of the program prior to the start of the refactoring.
+
+Not to mention the parsing problem itself. Parsing a program in a complex language like C++ is a difficult problem, it involves 
+the need to resolve correctly scoping and typing, templates and related issues, work with pre-processor directives incorporated
+in the code. In this regard different compilers treat C++ in a different way, creating dialects, which may represent obstacles for
+the code to be purely cross-platform.
+
+\cpp{Closing several blocks}{blocks}
+
+The textual representation of program code, involves the need in formatting and preserving syntax. These both tasks, indeed,  have nothing to do with the functionality program, and additionally 
+load the developer, reducing productivity. As an example, here I can mention the need to close
+several blocks ending at the same point correctly, indenting the closing brace symmetrically 
+to opening one. The \rl{blocks} demonstrates it in the last few lines.
+
+\subsection{Projectional Approach}
+
+Another approach which can be taken in the organization of an editor for a programming language is called \rg{projectionalapproach}. Projectional editors do not work with a low-level textual representation of a program, but rather with a higher level concept, \rg{ast}s.
+
+Working with \rg{ast}s directly has several advantages over the conventional textual code editing.
+
+Firstly, all syntax errors are no longer possible, as there is no syntax. 
+
+Secondly, there is no need to format the code on the level of indentation and look, since it is only
+needed for textual code.
+
+Thirdly, all features, which in textual approach require parsing, can be implemented without a parser involved, because \rg{ast} is always known to the editor.
+
+Additionally, as the compilers still expect a code in a textual form, code generation is used to
+convert the \rg{ast} into the text code for the further use. The code generation step can be 
+customized to provide support for a variety of compilers, when the compilers differ.
+
+Projectional editors have to display the \rg{ast} to the developer, in order for him/her to work with it. Such visualization
+of an \rg{ast} is called ``projection'', giving a name to the editor class.
+
+The model of code is stored as an \rg{ast} in the projectional editor. As in the Model-View-Controller pattern the view for
+the model can be implemented separately, \cite{GOF95}. Thus the code may be presented in a number of different ways to the user. For example, the \rg{ast} can be visualized as a graph, similar to control flow graph. This visualization, however, is not always advantageous being sometimes not compact and
+complicated to overview.
+
+\ms{constructor}{Example projection of an \rg{ast}, ``source code'' view}
+
+One of the well-accepted way to visualize \rg{ast} is by visualizing its textual representation, as if
+it would be written as a text code in the programming language, see \fig{constructor}. There can be in  principle many such textual visualizations, supporting different ways the code looks. Normally in 
+the traditional approach this has to be achieved by reformatting, and thus changing, the source code.
+This is performed for the code to look similar across the developed software, and standards or coding 
+guidelines are written to enforce the way to format the text code. Compare to the projectional approach,
+where such formatting guidelines are not needed, when arguing about the low-level code formatting,
+like indentation.
+
+The textual projection of the \rg{ast} looks similar to the text code. However the projectional 
+nature of it has certain outcomes, which may be unusual for a programmer, who is used to editing
+the code as text.
+
+The statements in the projectional editor are only selected as whole. There is now way to just select 
+the ``while'' word for cut or copy, without selecting the condition and the block belonging to the statement. This behavior represents the position of the condition and \cc{while}-body in the \rg{ast} as children of the \cc{while} statement. The statement can be selected all together only, including all of its children. Alternatively, one could select just an expression in the condition part.
+
+Every block delimiters are just a part of the block visualization. They are organized in a proper way
+automatically, and there is no way to delete or confuse them, as well as to type them initially. Each
+closing brace can marked with the parent statement name (through implementing such behavior in the
+\rg{ast} visualization), enhancing navigation through the displayed code.
+
+As one can see, the textual projection of the \rg{ast} looks almost the same, as a text code in a 
+conventional textual editor. This can cause some confusion for the developer at first, 
+as attempts to edit this textual visualization as a real text will sometimes fail. 
+
+Eventually, however, advantages of such visualization overwhelm the disadvantages. 
+Among the benefits of the textual projection over text code are quicker code construction 
+after short learning, better way to select code fragments, since not individual 
+characters or lines, but rather \rg{ast} nodes or groups of nodes are selected, 
+plus, all the advantages, the projectional editing brings by itself, as discussed above.
+
+I discuss additionally the projectional approach and some of its basic 
+principles in the \rpart{moreprojection}.

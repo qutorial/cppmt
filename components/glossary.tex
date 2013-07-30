@@ -2,12 +2,13 @@
 
 \newacronym{ast}{AST}{Abstract Syntax Tree}
 
-\newglossaryentry{mps}
+\newglossaryentry{concept}
 {
-  name=JetBrains MPS,
-  description={ is a language engineering environment 
-  allowing to construct incrementally defined domain specific languages}
+  name=concept,
+  description={ is a class-like item, representing a modularity base of a language, e.g. expression, statement,
+  method, etc.}
 }
+
 
 \newglossaryentry{emcpp}
 {
@@ -16,6 +17,9 @@
   support embedded software development}
 }
 
+\newacronym{ide}{IDE}{Integrated Development Environment}
+
+
 \newglossaryentry{mbeddr}
 {
   name=MBEDDR Project,
@@ -23,12 +27,18 @@
   extensions for the embedded software development}
 }
 
-\newacronym{ide}{IDE}{Integrated Development Environment}
 
-\newglossaryentry{concept}
+\newglossaryentry{mps}
 {
-  name=concept,
-  description={ is a class-like item, representing a modularity base of a language, e.g. expression, statement,
-  method, etc.}
+  name=JetBrains MPS,
+  description={ is a language engineering environment 
+  allowing to construct incrementally defined domain specific languages}
 }
 
+\newglossaryentry{projectionalapproach}
+{
+  name=projectional approach,
+  description={ is an approach to create an editor for a language, when the editor is 
+  aware of the AST for the code, and shows the code to the user, projecting the 
+  AST itself, and allowing to edit the AST directly}
+}
