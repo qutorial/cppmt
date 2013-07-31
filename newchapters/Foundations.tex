@@ -89,7 +89,7 @@ the model can be implemented separately, \cite{GOF95}. Thus the code may be pres
 complicated to overview.
 
 \ms{constructor}{Example projection of an \rg{ast}, ``source code'' view}
-modularlang
+
 One of the well-accepted way to visualize \rg{ast} is by visualizing its textual representation, as if
 it would be written as a text code in the programming language, see \fig{constructor}. There can be in  
 principle many such textual visualizations, supporting different ways the code looks. Normally in 
@@ -127,6 +127,8 @@ plus, all the advantages, the projectional editing brings by itself, as discusse
 I discuss additionally the projectional approach and some of its basic 
 principles in the \rpart{moreprojection}.
 
+\declsec{Modular Language Engineering}{modularlang}
+
 \subsection{Describing a Language in Projection}
 
 When  building a projectional editor for a language, the language must be given as a certain description of the \Rg{ast}.
@@ -159,13 +161,26 @@ transform \Rgp{ast} given in a language. Text generators can be defined to gener
 Behavior can be defined for a concept, to provide some method-like functionality to it. Additionally, some user-invokable functions can be described, to
 perform manipulations with the \Rg{ast}.
 
-\declsec{Modular Language Engineering}{modularlang}
+The process of defining a modular language in the \jbmps\ environment is described additionally with practical details in the \rsec{mps}.
+
+\subsection{Language Modularity}
 
 As \rgp{concept} feature inheritance, it is possible\footnote{to some extent, the extensibility is described separately in one of the following chapters} 
-to use a child concept at a place where a parent concept could be used. The inheritance works over the language borders, allowing to create the child concept
+to use a child concept at a place where a parent concept could be used. 
+
+The inheritance works over the language borders, allowing to create the child concept
 in a language L2, separate from the language L1, where the original parent concept has been described. Thus the language L2 can be seen as a modular extension to the
-language L1. The modular \Rg{DSL} creation is discussed in \cite{1998_hudak_modular_dsl_and_tools}, \cite{2006_wyk_modular_dsl_extensions}. 
+language L1. 
+
+The modular \Rg{dsl} creation is discussed in \cite{1998_hudak_modular_dsl_and_tools}, \cite{2006_wyk_modular_dsl_extensions}. 
 The language modularity, in a context of \jbmps\ is described in \cite{2012_ratiu_modular_dsls_and_analyses}, \cite{Voelter2011}.
 
+The main focus of this work is a construction of the \cpppl\ on top of the \mbdr\ C implementation. Thus the modularity in the language engineering 
+plays a key role in the work.
+
+While extending the C language of the \mbdr\ with C++ specific \rgp{concept}, all the aspects of the language description (see previous subsection) have
+to be extended. The newly introduced \rgp{concept} for nodes of the \rg{ast}, typical for C++, must inherit from some \rgp{concept} of the original 
+\mbp\ C language. Not only new nodes and edges are introduced, but also constraints and other language description aspects have to be made incorporating the
+newly introduced concepts. The practical side of the language modularity and extensibility is discussed throughout this work.
 
 

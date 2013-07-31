@@ -1,1 +1,74 @@
 \declsec{Jetbains MPS}{mps}
+
+\jbmps\ stands for Jetbrains Meta Programming System. In this \Rg{ide}-like software it is possible to develop \Rgp{dsl}.
+The approach taken in the \jbmps\ is rather unique, and it is considered to be advantageous in many ways, \cite{Voelter:MoDELS:2010}.
+
+% No way to extend mbeddr otherwise
+% Thus \jbmps\ is a good suitable technology for the practical implementation of the \MT\ goal.
+
+In general, the way the language is describe in \jbmps\ coresponds to the way, described in the \rsec{modularlang}.
+Here I will describe the process in practical details, as it is crucial for understanding the practical part of this \MT.
+
+In this section I will go through a definition of one \rg{concept}, describing the facilities, \jbmps\ provides to support
+it. Each concept is described by several views on it. 
+Among such views there are editor, behavior, constraints, type system, generator and few more.
+The representation of a new language created in concepts and views to them, present a seamless approach to creating 
+a new language with a projectional editor for it.
+
+The \mbp\ is a software, separate from \jbmps\, but based on it, representing an extensible C language implementation with extensions.
+I will use \rgp{concept} from the \mbp' throughout this section as examples to demonstrate MPS. Different C language parts are going to be 
+decomposed into \rgp{concept} and these concepts are going to be defined using \jbmps. The reader should not confuse though the \mbp\ and 
+\jbmps\ itself: the former is a software, developed in the latter and is used to demonstrate the latter.
+
+\subsection{Concept Declaration}
+
+\Rgp{concept}, as it is described in the \rsec{modularlang} represent a class-like types for nodes of an \rg{ast}. This terminology is kept in \jbmps\ and 
+MPS concept has the same meaning as \rg{concept} term used in the \rsec{modularlang}. I use the term concept both in general, to describe an \rg{ast} node type,
+and in particular referring to an MPS concept.
+
+% Repeats \rsec{modularlang}
+%
+% One defines a language in it not through the canonical grammar approach, but instead through defining so called concepts, and relationships 
+% between them similar to those in ER diagrams. A logical part of a language can be made a concept. 
+% Related to C++, class, method declaration, field declaration can be represented as a concept. 
+
+Each concept can have children, which should be assigned with a role and cardinality. For example, the class concept can have children of method concept,
+with a role called ``methods'', and cardinality 0..n.
+
+Concepts can form hierarchies as classes normally do in object oriented programming languages. For this each concept should have a base concept (inheritance),
+and can implement several interface concepts (interface implementation). Concepts can be abstract, for the use purely only in inheritance to create other 
+non-abstract concepts with a common parent.
+
+\subsection{Editor View}
+
+The editor view is designed to give a look for a concept, and a way to input it. This is where the projection of an AST node is defined. As editors 
+are mostly defined to look like text, a program in the \cpppl implemented in MPS looks almost like a regular C++ code.
+
+\subsection{Behavior View}
+The behavior view, can be used to define certain behavioral methods for a concept. A concept is represented there similar to a java class, and
+it is possible to define the methods in a Java-like language.
+
+\subsection{Constraints View}
+The constraints view can be used, to limit in a desirable way relationships the concept can have to other concepts.
+
+\subsection{Type System View}
+The type system view is used mainly to define a type for each instance of a concept. The type is used later (for example, in the constraints), to 
+determine suitability of the concept instance for a place, where it is used.
+
+\subsection{Generator View}
+The generator view, as well as the textgen view, is used to define the way, the concept instance is going to be transformed when generation of the AST
+is invoked by the MPS user. In general, the generation is needed in the end of the programming, to obtain the source code from the AST in a textual representation.
+This textual representation is needed because all existing tools (like compilers) expect text code nowadays. It is worth mentioning that, in theory, one
+could implement a compiler, which works directly from the AST in the editor, eliminating thus the need in generators to text.
+
+\subsection{Textgen View}
+
+\subsection{Action View}
+
+\subsection{Intentions}
+
+\subsection{Other MPS Instruments}
+
+
+
+
