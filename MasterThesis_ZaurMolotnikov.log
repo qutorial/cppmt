@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  30 JUL 2013 16:23
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  31 JUL 2013 12:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -796,7 +796,7 @@ Dictionary: glossaries-dictionary, Language: English
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 43.
 
-<styles/informat.png, id=66, 355.3275pt x 355.3275pt>
+<styles/informat.png, id=74, 355.3275pt x 355.3275pt>
 File: styles/informat.png Graphic file (type png)
 
 <use styles/informat.png>
@@ -858,7 +858,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 39.
  (./MasterThesis_ZaurMolotnikov.toc
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 18.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 20.
 )
 \tf@toc=\write6
 \openout6 = `MasterThesis_ZaurMolotnikov.toc'.
@@ -881,7 +881,7 @@ Class scrbook Warning: \float@addtolists detected!
 ]) (./newchapters/Foundations.tex [2]
 Chapter 2.
 
-Overfull \hbox (0.48769pt too wide) in paragraph at lines 18--22
+Overfull \hbox (0.48769pt too wide) in paragraph at lines 26--30
 [][]\OT1/ppl/m/it/10.95 AST[]\OT1/ppl/m/n/10.95 s are struc-tures in mem-ory, u
 su-ally graph-alike, re-mind-ing a con-trol flow graph, where
  []
@@ -898,7 +898,7 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 50.
+nput line 58.
 
 (./listings/blocks.cpp
 LaTeX Font Info:    Try loading font information for OMS+ppl on input line 1.
@@ -917,25 +917,30 @@ Package epstopdf Info: Source file: <figures/constructor.eps>
 (epstopdf)                    size: 10121 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/constructor-eps-co
 nverted-to.pdf figures/constructor.eps>
-(epstopdf)             \includegraphics on input line 81.
+(epstopdf)             \includegraphics on input line 91.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/constructor-eps-converted-to.pdf, id=222, 920.43875pt x 433.62pt>
+<figures/constructor-eps-converted-to.pdf, id=239, 920.43875pt x 433.62pt>
 File: figures/constructor-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/constructor-eps-converted-to.pdf>
 Package pdftex.def Info: figures/constructor-eps-converted-to.pdf used on input
- line 81.
+ line 91.
 (pdftex.def)             Requested size: 248.52179pt x 117.07896pt.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 96.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 108.
+
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [5 <./figures/constructor-eps-converted-to.pdf>]
 
 LaTeX Warning: Reference `part:moreprojection' on page 6 undefined on input lin
-e 109.
+e 128.
 
+LaTeX Font Info:    External font `yhcmex10' loaded for size
+(Font)              <9> on input line 135.
+LaTeX Font Info:    External font `yhcmex10' loaded for size
+(Font)              <5> on input line 135.
 ) (./newchapters/Technologies.tex [6]
 Chapter 3.
 (./newchapters/MPS.tex) (./newchapters/MBEDDR.tex)) (./newchapters/CPP.tex
@@ -1007,18 +1012,18 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 131.
 Package rerunfilecheck Info: File `MasterThesis_ZaurMolotnikov.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: AAFE5C64E4F65D08D20048C951F79A29;885.
+(rerunfilecheck)             Checksum: F789F87B44608FA3862D4C3056EAFC93;1051.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 13448 strings out of 493629
- 199406 string characters out of 3143343
- 344751 words of memory out of 3000000
- 16318 multiletter control sequences out of 15000+200000
- 24137 words of font info for 61 fonts, out of 3000000 for 9000
+ 13507 strings out of 493629
+ 200105 string characters out of 3143343
+ 345644 words of memory out of 3000000
+ 16365 multiletter control sequences out of 15000+200000
+ 29181 words of font info for 74 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  52i,11n,102p,1350b,1598s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -1029,10 +1034,10 @@ f-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2011/texmf-dist/
 fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
 ype1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/ur
 w/palatino/uplri8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (31 pages, 139510 bytes).
+Output written on MasterThesis_ZaurMolotnikov.pdf (31 pages, 142326 bytes).
 PDF statistics:
- 372 PDF objects out of 1000 (max. 8388607)
- 317 compressed objects within 4 object streams
- 78 named destinations out of 1000 (max. 500000)
- 139 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 396 PDF objects out of 1000 (max. 8388607)
+ 341 compressed objects within 4 object streams
+ 82 named destinations out of 1000 (max. 500000)
+ 155 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -175,5 +175,8 @@
 \newcommand{\rsgoal}[1]{Special Goal #1 (see \ref{g#1})}
 
 %Glossary things
-\newcommand{\rg}[1]{\emph{\gls{#1}}}
-\newcommand{\Rg}[1]{\emph{\Gls{#1}}}
+\newcommand{\gmarkup}[1]{\emph{#1}}
+\newcommand{\rg}[1]{\gmarkup{\gls{#1}}}
+\newcommand{\Rg}[1]{\gmarkup{\Gls{#1}}}
+\newcommand{\rgp}[1]{\gmarkup{\glspl{#1}}}
+\newcommand{\Rgp}[1]{\gmarkup{\Glspl{#1}}}
