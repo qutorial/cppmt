@@ -12,7 +12,7 @@ Here I will describe the process in practical details, as it is crucial for unde
 In this section I will go through a definition of one \rg{concept}, describing the facilities, \jbmps\ provides to support
 it. Each \rg{concept} is described by several views on it. 
 
-\msnozoom{mpsif}{\jbmps\ User Interface, \cc{if} Statement Concept}
+\msnozoom{mpsif}{\jbmps\ User Interface, \cc{if} Statement \Rg{concept}}
 
 Among such views there are \rg{concept} declaration (or language structure) view, editor view, behavior view, constraints view, type system view,
 generator view and few more views. As a language consists mostly of the included in it concepts, 
@@ -42,7 +42,7 @@ and in particular referring to an MPS concept.
 The \fig{mpsif} on the right part demonstrates a declaration of \mpsid{IfStatement} concept from the \mbdr\ \mpslang{statements} language.
 It corresponds to the \cc{if} statement of the C language.
 
-At first, the \rg{concept} is named, and the inheritance is defined. The \mpsid{IfStatment} \rg{concept} inherits from the \mpsid{Statement} \rg{concept}.
+At first, the \rg{concept} is named, and a \rg{baseconcept} is defined. The \mpsid{IfStatment} \rg{concept} inherits from the \mpsid{Statement} \rg{concept}.
 This allows the \mpsid{IfStatement} to be used at any place at which the \mpsid{Statement} could be used, and inherits like in object oriented programming
 all data and behavior of the \mpsid{Statement}.
 
@@ -69,36 +69,110 @@ name a \rg{concept} in a short way, to allow for quick instantiation in the edit
 alias meaning. A \rg{concept} can be made abstract in the ``concept properties'' section. Abstract \rgp{concept} are purely used in inheritance 
 to create other non-abstract concepts with a common parent.
 
+\jbmps\ separately allows to define so-called \rgp{interfaceconcept}. Interface concepts are \rgp{concept} which can not be instantiated, but 
+which serve as a base for inheritance and implementing and interfaces as Java classes do. A \rg{concept} can have only one base concept, but can
+inherit from/implement many interface concepts.
+
 \subsection{Editor View}
 
-The editor view is designed to give a look for a concept, and a way to input it. This is where the projection of an AST node is defined. As editors 
-are mostly defined to look like text, a program in the \cpppl implemented in MPS looks almost like a regular C++ code.
+The editor view, \fig{mpsifeditor}, is designed to give a look for a node of a \rg{concept}, and a way to input it. This is where the projection of an \rg{ast} node is defined. 
+As editors are mostly defined to look like text, a program in the \cpppl implemented in MPS looks almost like a regular C++ code.
+
+In the editor view one defines an editor for a \rg{concept}. \jbmps\ introduces here a bit confusing terminology, calling one editor for a given
+\rg{concept} concept an ``editor concept''. Thus an error message ``An editor concept not found for a concept X'' would mean that no editor
+has been defined for the \rg{concept} \mpsid{X} in the editor view for it. In this work I call the content in the editor view for a \rg{concept} \mpsid{X} an 
+``editor for the \rg{concept} \mpsid{X}''. The same terminology applies to all the following views related to a single \rg{concept}.
+
+\msnozoom{mpsifeditor}{Editor View for the \mpsid{IfStatement} \Rg{concept}}
+
+The editor for a \rg{concept} defines the visual representation for a node of the concept, using special syntax. For example, \fig{mpsifeditor} defines
+and editor for the \mpsid{IfStatement}. At first the ``constant'' non-changeable by a programmer text is given, which is ``if'' and ``(''. Then
+the child \mpsid{condition} is referenced, so that after the ``if('' the user will be able to input an expression for the condition of the \cc{if} statement.
+The editor can be configured to show or hide some parts of a node, depending on some condition, e.g. hiding \cc{else} part of the \cc{if} statement, if it 
+is not defined anyhow. Editor are also responsible for all the interaction, a user experiences when editing a code in \jbmps.
 
 \subsection{Behavior View}
-The behavior view, can be used to define certain behavioral methods for a concept. A concept is represented there similar to a java class, and
-it is possible to define the methods in a Java-like language.
+The behavior view, can be used to define certain behavioral methods for a concept. A concept is represented there similar to a Java class, and
+it is possible to define the methods in a Java-like language. \Rg{concept} inheritance is taken into account like in Java. 
+
+A \rg{concept} constructor can be defined there to initialize by default a newly created node of a \rg{concept}.
+
+\msnozoom{mpslocvarrefbeh}{Behavior View for the \mpsid{LocalVarRef} \Rg{concept}}
+
+The \fig{mpslocvarrefbeh} shows the behavior of the \mpsid{LocalVarRef} \rg{concept}. This \rg{concept} represents in the
+\mbp\ C language an expression, referencing a local variable. The local variable declaration is stored as a reference \mpsid{var}
+in the \rg{concept} nodes.
+
+Two convenience methods are defined for the \mpsid{LocalVarRef} \rg{concept}, to get an easy access to the local variable properties.
+
 
 \subsection{Constraints View}
-The constraints view can be used, to limit in a desirable way relationships the concept can have to other concepts.
+The constraints view can be used, to limit in a desirable way \rg{concept} property values and relationships, a node of the \rg{concept} can 
+have to other nodes.
+
+\msnozoom{mpsidnameconstr}{Editor View for the \mpsid{IfStatement} \Rg{concept}}
+
+The \fig{mpsidnameconstr} shows constraints defined for a property \mpsid{name} of the \mpsid{IIdentifierNamedConcept} \rg{interfaceconcept}.
+All \rgp{concept} which have a name, which must confirm to the identifier naming restrictions, can implement the \mpsid{IIdentifierNamedConcept},
+to immediately get the desired characteristic.
+
+The \mpsid{name} property is programmatically restricted by the use of Java-like code snippet, \fig{mpsidnameconstr}. In a similar way
+relationships to children and referents can be restricted.
+
+It is possible to create a pure Java class withing an \jbmps\ language, and use it in almost any \rg{concept} view in the \jbmps. 
+In the \mpsid{IIdentifierNamedConcept} \rg{interfaceconcept} constraints the \cc{CIdentifierHelper} class was used to check the
+name property on collision with the C language keywords.
 
 \subsection{Type System View}
-The type system view is used mainly to define a type for each instance of a concept. The type is used later (for example, in the constraints), to 
-determine suitability of the concept instance for a place, where it is used.
+\jbmps\ has a special support for creation of typed languages. Types are mainly used in expressions. An expressions may count on 
+a certain sub-expression to have a given type, or a type, compatible with it. Whenever the expectation does not meet the reality,
+a warning or error can be displayed to a programmer. 
+
+\msnozoom{mpsternaryts}{Type System View for the \mpsid{TernaryExpression} \Rg{concept}}
+
+A \rg{concept} representing nodes which can have type in \mbdr\ inherits from \mpsid{ITyped} interface concept. In the type system view
+certain rules must be defined with the use of a special language, which define the type or type comparison rules for a \rg{concept}.
+Moreover, the type system language can be used to infer a type for a given node, \fig{mpsternaryts}.
+
+The \fig{mpsternaryts}, demonstrates the use of the \jbmps\ type system language to infer a type of the \mpsid{TernaryExpression} \Rg{concept}
+node. The syntax is on the one hand self-explanatory when reading, but on the other hand could be rather confusing when crafting.
+
+\subsection{TextGen View}
+
+To make use of the code in the projectional editor, further tools must be invoked on it, e.g. parser, compiler, etc.
+Normally they work with a textual representation of the same code. In order to obtain the textual code from the \rg{ast} in the projectional
+editor generators are invoked. 
+
+Generators can be of two kinds. The kind of generator is dedicated to transform an \rg{ast} in one \rg{dsl} into
+another \rg{ast} represented in a, usually, lower-level language. The second kind of generators is dedicated to transform an \rg{ast} into text.
+Such generators are called ``\rgp{textgen}'' in \jbmps.
+
+\msnozoom{mpsbinexptextgen}{TextGen View for the \mpsid{BinaryExpression} \Rg{concept}}
+
+The \fig{mpsbinexptextgen} demonstrates how a node of a \mpsid{BinaryExpression} \Rg{concept} is converted to text. It is noteworthy 
+to say, that when rendering to text the \mpsid{left} and \mpsid{right} sub-expressions, the corresponding \rgp{textgen} are invoked,
+making the text generation recursive.
+
 
 \subsection{Generator View}
-The generator view, as well as the textgen view, is used to define the way, the concept instance is going to be transformed when generation of the AST
-is invoked by the MPS user. In general, the generation is needed in the end of the programming, to obtain the source code from the AST in a textual representation.
-This textual representation is needed because all existing tools (like compilers) expect text code nowadays. It is worth mentioning that, in theory, one
-could implement a compiler, which works directly from the AST in the editor, eliminating thus the need in generators to text.
-
-\subsection{Textgen View}
-
-\subsection{Action View}
+The generator view is one of the most complex \jbmps\ views. It servers the transformation purposes of one \jbmps\ language into another one.
+This view does not have a strong connection to the present work, as the generation of the projectional \cpppl\ is mostly performed by \rgp{textgen}.
 
 \subsection{Intentions}
+\jbmps\ \rgp{intention} are special procedures which can be used for automatic manipulations on the \rg{ast} with a node of a given \rg{concept}.
+
+\msnozoom{mpsconstintention}{Toggle Const Property for a \mpsid{Type} \Rg{intention}}
+
+The \fig{mpsconstintention} demonstrates an intention, used to modify the \cc{const} property of a given type. 
+
+For an \rg{intention} to be defined, one has to name it, specify a \rg{concept}, to which the \rg{intention} is applicable,
+provide a textual description for it, and finally specify the desired effect.
+
+Intentions are accessible in the projectional editor from a context menu, when focused on a target node. They represent 
+a useful mechanism to support a programmer with various automations, including automatic code generation.
 
 \subsection{Other MPS Instruments}
 
-
-
-
+% TODO 
+% Refactorings
+% Actions

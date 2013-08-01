@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  1 AUG 2013 12:39
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  1 AUG 2013 14:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -796,7 +796,7 @@ Dictionary: glossaries-dictionary, Language: English
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 43.
 
-<styles/informat.png, id=118, 355.3275pt x 355.3275pt>
+<styles/informat.png, id=114, 355.3275pt x 355.3275pt>
 File: styles/informat.png Graphic file (type png)
 
 <use styles/informat.png>
@@ -858,7 +858,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 39.
  (./MasterThesis_ZaurMolotnikov.toc
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 31.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
 )
 \tf@toc=\write6
 \openout6 = `MasterThesis_ZaurMolotnikov.toc'.
@@ -920,7 +920,7 @@ nverted-to.pdf figures/constructor.eps>
 (epstopdf)             \includegraphics on input line 91.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/constructor-eps-converted-to.pdf, id=294, 920.43875pt x 433.62pt>
+<figures/constructor-eps-converted-to.pdf, id=289, 920.43875pt x 433.62pt>
 File: figures/constructor-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/constructor-eps-converted-to.pdf>
@@ -957,7 +957,7 @@ d-to.pdf figures/mpsif.eps>
 (epstopdf)             \includegraphics on input line 15.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mpsif-eps-converted-to.pdf, id=382, 646.415pt x 546.04pt>
+<figures/mpsif-eps-converted-to.pdf, id=377, 646.415pt x 546.04pt>
 File: figures/mpsif-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/mpsif-eps-converted-to.pdf>
@@ -971,24 +971,151 @@ il-dren on the [][]\OT1/ppl/m/it/10.95 AST[] \OT1/ppl/m/n/10.95 of the \OT1/pcr
 /m/n/10.95 IfStatement\OT1/ppl/m/n/10.95 .
  []
 
-[11]) (./newchapters/MBEDDR.tex)) (./newchapters/CPP.tex [12] [13] [14
+[11]
+Package epstopdf Info: Source file: <figures/mpsifeditor.eps>
+(epstopdf)                    date: 2013-08-01 12:45:16
+(epstopdf)                    size: 62540 bytes
+(epstopdf)             Output file: <figures/mpsifeditor-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-08-01 12:48:56
+(epstopdf)                    size: 45827 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/mpsifeditor-eps-co
+nverted-to.pdf figures/mpsifeditor.eps>
+(epstopdf)             \includegraphics on input line 86.
+Package epstopdf Info: Output file is already uptodate.
 
-]
+<figures/mpsifeditor-eps-converted-to.pdf, id=473, 579.16376pt x 211.79124pt>
+File: figures/mpsifeditor-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/mpsifeditor-eps-converted-to.pdf>
+Package pdftex.def Info: figures/mpsifeditor-eps-converted-to.pdf used on input
+ line 86.
+(pdftex.def)             Requested size: 382.24925pt x 139.78265pt.
+ [12 <./figures/mpsifeditor-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/mpslocvarrefbeh.eps>
+(epstopdf)                    date: 2013-08-01 13:07:30
+(epstopdf)                    size: 81768 bytes
+(epstopdf)             Output file: <figures/mpslocvarrefbeh-eps-converted-to.p
+df>
+(epstopdf)                    date: 2013-08-01 13:11:08
+(epstopdf)                    size: 63084 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/mpslocvarrefbeh-ep
+s-converted-to.pdf figures/mpslocvarrefbeh.eps>
+(epstopdf)             \includegraphics on input line 100.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/mpslocvarrefbeh-eps-converted-to.pdf, id=496, 579.16376pt x 309.155pt>
+File: figures/mpslocvarrefbeh-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/mpslocvarrefbeh-eps-converted-to.pdf>
+Package pdftex.def Info: figures/mpslocvarrefbeh-eps-converted-to.pdf used on i
+nput line 100.
+(pdftex.def)             Requested size: 382.24925pt x 204.04292pt.
+Package epstopdf Info: Source file: <figures/mpsidnameconstr.eps>
+(epstopdf)                    date: 2013-08-01 13:15:42
+(epstopdf)                    size: 119599 bytes
+(epstopdf)             Output file: <figures/mpsidnameconstr-eps-converted-to.p
+df>
+(epstopdf)                    date: 2013-08-01 13:25:17
+(epstopdf)                    size: 94700 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/mpsidnameconstr-ep
+s-converted-to.pdf figures/mpsidnameconstr.eps>
+(epstopdf)             \includegraphics on input line 113.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/mpsidnameconstr-eps-converted-to.pdf, id=507, 616.3025pt x 386.44376pt
+>
+File: figures/mpsidnameconstr-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/mpsidnameconstr-eps-converted-to.pdf>
+Package pdftex.def Info: figures/mpsidnameconstr-eps-converted-to.pdf used on i
+nput line 113.
+(pdftex.def)             Requested size: 406.76091pt x 255.05367pt.
+ [13 <./figures/mpslocvarrefbeh-eps-converted-to.pdf>]
+Overfull \hbox (50.67279pt too wide) in paragraph at lines 115--118
+[]\OT1/ppl/m/n/10.95 The Fig-ure []3.4[] shows con-straints de-fined for a prop
+-erty \OT1/pcr/m/n/10.95 name \OT1/ppl/m/n/10.95 of the \OT1/pcr/m/n/10.95 IIde
+ntifierNamedConcept
+ []
+
+Package epstopdf Info: Source file: <figures/mpsternaryts.eps>
+(epstopdf)                    date: 2013-08-01 13:49:54
+(epstopdf)                    size: 70610 bytes
+(epstopdf)             Output file: <figures/mpsternaryts-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2013-08-01 14:25:08
+(epstopdf)                    size: 55353 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/mpsternaryts-eps-c
+onverted-to.pdf figures/mpsternaryts.eps>
+(epstopdf)             \includegraphics on input line 131.
+Package epstopdf Info: Output file is already uptodate.
+<figures/mpsternaryts-eps-converted-to.pdf, id=536, 499.8675pt x 247.92625pt>
+File: figures/mpsternaryts-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/mpsternaryts-eps-converted-to.pdf>
+Package pdftex.def Info: figures/mpsternaryts-eps-converted-to.pdf used on inpu
+t line 131.
+(pdftex.def)             Requested size: 329.91356pt x 163.63182pt.
+ [14 <./figures/mpsidnameconstr-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/mpsbinexptextgen.eps>
+(epstopdf)                    date: 2013-08-01 14:28:47
+(epstopdf)                    size: 88880 bytes
+(epstopdf)             Output file: <figures/mpsbinexptextgen-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2013-08-01 14:33:39
+(epstopdf)                    size: 68427 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/mpsbinexptextgen-e
+ps-converted-to.pdf figures/mpsbinexptextgen.eps>
+(epstopdf)             \includegraphics on input line 150.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/mpsbinexptextgen-eps-converted-to.pdf, id=571, 564.1075pt x 301.125pt>
+File: figures/mpsbinexptextgen-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/mpsbinexptextgen-eps-converted-to.pdf>
+Package pdftex.def Info: figures/mpsbinexptextgen-eps-converted-to.pdf used on 
+input line 150.
+(pdftex.def)             Requested size: 372.31209pt x 198.7431pt.
+ [15 <./figures/mpsternaryts-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <figures/mpsconstintention.eps>
+(epstopdf)                    date: 2013-08-01 14:43:36
+(epstopdf)                    size: 160541 bytes
+(epstopdf)             Output file: <figures/mpsconstintention-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2013-08-01 14:48:10
+(epstopdf)                    size: 126004 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/mpsconstintention-
+eps-converted-to.pdf figures/mpsconstintention.eps>
+(epstopdf)             \includegraphics on input line 164.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/mpsconstintention-eps-converted-to.pdf, id=599, 714.67pt x 475.7775pt>
+File: figures/mpsconstintention-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/mpsconstintention-eps-converted-to.pdf>
+Package pdftex.def Info: figures/mpsconstintention-eps-converted-to.pdf used on
+ input line 164.
+(pdftex.def)             Requested size: 471.68365pt x 314.01411pt.
+
+Overfull \hbox (38.32623pt too wide) in paragraph at lines 164--164
+ [][] 
+ []
+
+[16 <./figures/mpsbinexptextgen-eps-converted-to.pdf>] [17 <./figures/mpsconsti
+ntention-eps-converted-to.pdf>]) (./newchapters/MBEDDR.tex))
+(./newchapters/CPP.tex [18]
 Chapter 4.
-) (./newchapters/Evaluation.tex [15] [16
+) (./newchapters/Evaluation.tex [19
+
+] [20
 
 ]
 Chapter 5.
-) (./newchapters/Conclusion.tex [17] [18
+) (./newchapters/Conclusion.tex [21] [22
 
 ]
 Chapter 6.
-) [19] [20
+) [23] [24
 
 ]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 116.
- [21] [22] (./newchapters/Glossary.tex
+ [25] [26] (./newchapters/Glossary.tex
 (./MasterThesis_ZaurMolotnikov.gls
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 5.
 
@@ -997,10 +1124,10 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 5.
-)) [23
+)) [27
 
 
-] [24
+] [28
 
 ]
 (./MasterThesis_ZaurMolotnikov.bbl
@@ -1028,7 +1155,7 @@ troustrup.com/bs[]faq.html#ec++.
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 131.
- [25
+ [29
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
@@ -1037,17 +1164,17 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 131.
 Package rerunfilecheck Info: File `MasterThesis_ZaurMolotnikov.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: 27701E6CBA3896C6DDCF7D9AC9B96F63;1808.
+(rerunfilecheck)             Checksum: E5BE258031D9648A9D787937E6DA14B7;1742.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 13553 strings out of 493629
- 200945 string characters out of 3143343
- 345881 words of memory out of 3000000
- 16387 multiletter control sequences out of 15000+200000
+ 13713 strings out of 493629
+ 204882 string characters out of 3143343
+ 349067 words of memory out of 3000000
+ 16528 multiletter control sequences out of 15000+200000
  29181 words of font info for 74 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  52i,12n,102p,1350b,1598s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1059,10 +1186,10 @@ f-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2011/texmf-dist/
 fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
 ype1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/ur
 w/palatino/uplri8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (37 pages, 311920 bytes).
+Output written on MasterThesis_ZaurMolotnikov.pdf (41 pages, 766062 bytes).
 PDF statistics:
- 602 PDF objects out of 1000 (max. 8388607)
- 520 compressed objects within 6 object streams
- 105 named destinations out of 1000 (max. 500000)
- 248 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 796 PDF objects out of 1000 (max. 8388607)
+ 640 compressed objects within 7 object streams
+ 118 named destinations out of 1000 (max. 500000)
+ 270 words of extra memory for PDF output out of 10000 (max. 10000000)
 
