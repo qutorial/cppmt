@@ -10,8 +10,15 @@ In general, the way the language is describe in \jbmps\ coresponds to the way, d
 Here I will describe the process in practical details, as it is crucial for understanding the practical part of this \MT.
 
 In this section I will go through a definition of one \rg{concept}, describing the facilities, \jbmps\ provides to support
-it. Each concept is described by several views on it. 
-Among such views there are editor, behavior, constraints, type system, generator and few more.
+it. Each \rg{concept} is described by several views on it. 
+
+\msnozoom{mpsif}{\jbmps\ User Interface, \cc{if} Statement Concept}
+
+Among such views there are \rg{concept} declaration (or language structure) view, editor view, behavior view, constraints view, type system view,
+generator view and few more views. As a language consists mostly of the included in it concepts, 
+the whole language is presented by the mentioned views as well, where each view on the language contains all views of the kind on each language \rg{concept}. 
+Left part of the \fig{mpsif} demonstates the views on the \mpslang{statements} language.
+
 The representation of a new language created in concepts and views to them, present a seamless approach to creating 
 a new language with a projectional editor for it.
 
@@ -23,7 +30,7 @@ decomposed into \rgp{concept} and these concepts are going to be defined using \
 \subsection{Concept Declaration}
 
 \Rgp{concept}, as it is described in the \rsec{modularlang} represent a class-like types for nodes of an \rg{ast}. This terminology is kept in \jbmps\ and 
-MPS concept has the same meaning as \rg{concept} term used in the \rsec{modularlang}. I use the term concept both in general, to describe an \rg{ast} node type,
+MPS concept has the same meaning as \rg{concept} term used in the \rsec{modularlang}. I use the term ``concept'' both in general, to describe an \rg{ast} node type,
 and in particular referring to an MPS concept.
 
 % Repeats \rsec{modularlang}
@@ -32,12 +39,35 @@ and in particular referring to an MPS concept.
 % between them similar to those in ER diagrams. A logical part of a language can be made a concept. 
 % Related to C++, class, method declaration, field declaration can be represented as a concept. 
 
-Each concept can have children, which should be assigned with a role and cardinality. For example, the class concept can have children of method concept,
-with a role called ``methods'', and cardinality 0..n.
+The \fig{mpsif} on the right part demonstrates a declaration of \mpsid{IfStatement} concept from the \mbdr\ \mpslang{statements} language.
+It corresponds to the \cc{if} statement of the C language.
 
-Concepts can form hierarchies as classes normally do in object oriented programming languages. For this each concept should have a base concept (inheritance),
-and can implement several interface concepts (interface implementation). Concepts can be abstract, for the use purely only in inheritance to create other 
-non-abstract concepts with a common parent.
+At first, the \rg{concept} is named, and the inheritance is defined. The \mpsid{IfStatment} \rg{concept} inherits from the \mpsid{Statement} \rg{concept}.
+This allows the \mpsid{IfStatement} to be used at any place at which the \mpsid{Statement} could be used, and inherits like in object oriented programming
+all data and behavior of the \mpsid{Statement}.
+
+Next, it is defined, which interfaces the \rg{concept} is going to implement. For example, by implementing \mpsid{ISteppableContext}, the \mpsid{IfStatement}
+supports the \mbdr\ debugger when stepping in the body of the \mpsid{IfStatement}.
+
+The ``instance can be root'' property defines, if it is meaningful, to create a \rg{concept} without a parent \rg{concept} for it. In the case
+of the \mpsid{IfStatment} it does not make sense, as the statement should belong to some block. The \cc{true} value can be used, e.g. for modules,
+as they do not have any outer concepts, and can be seen as a document in \jbmps.
+
+The ``properties'' part defines if the described \rg{concept} instances should have some primitive type data fields (string, boolean, int).
+An example of a property could be a \mpsid{name} property of a variable declaration. The \mpsid{IfStatement} \rg{concept} does not specify any 
+properties, neither does it inherit any from the \mpsid{Statement} concept.
+
+The ``children'' section describe which nodes can be children on the \rg{ast} of the \mpsid{IfStatement}. Each child is assigned with a role and cardinality. 
+For example, the \mpsid{IfStatement} should have exactly one child of \rg{concept} \mpsid{Expression}, it has a role ``condition''.
+
+The ``references'' section describes in the similar way as in the ``children'' section, which nodes could be referenced by the node of a given \rg{concept}.
+Referencing can be used, to bind a given node, to a node, located somewhere else on the \rg{ast}. As an example, a variable usage in expression shall reference
+the variable declaration, to express precisely, which variable is used.
+
+Finally, some attributes of a \rg{concept} follow, which do not have a primary importance for the discussion here. The ``alias'' is used to 
+name a \rg{concept} in a short way, to allow for quick instantiation in the editor. The ``short description'' is shown to hint a programmer on the
+alias meaning. A \rg{concept} can be made abstract in the ``concept properties'' section. Abstract \rgp{concept} are purely used in inheritance 
+to create other non-abstract concepts with a common parent.
 
 \subsection{Editor View}
 

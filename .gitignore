@@ -40,3 +40,5 @@ vorlagetum
 *.bak
 *.backup
 bibliography/*.pdf
+C:\nppdf32Log\debuglog.txt
+*.backup

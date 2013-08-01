@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  31 JUL 2013 15:15
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  1 AUG 2013 12:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -796,7 +796,7 @@ Dictionary: glossaries-dictionary, Language: English
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 43.
 
-<styles/informat.png, id=82, 355.3275pt x 355.3275pt>
+<styles/informat.png, id=118, 355.3275pt x 355.3275pt>
 File: styles/informat.png Graphic file (type png)
 
 <use styles/informat.png>
@@ -858,7 +858,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 39.
  (./MasterThesis_ZaurMolotnikov.toc
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 22.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 31.
 )
 \tf@toc=\write6
 \openout6 = `MasterThesis_ZaurMolotnikov.toc'.
@@ -920,7 +920,7 @@ nverted-to.pdf figures/constructor.eps>
 (epstopdf)             \includegraphics on input line 91.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/constructor-eps-converted-to.pdf, id=249, 920.43875pt x 433.62pt>
+<figures/constructor-eps-converted-to.pdf, id=294, 920.43875pt x 433.62pt>
 File: figures/constructor-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/constructor-eps-converted-to.pdf>
@@ -945,25 +945,50 @@ LaTeX Font Info:    External font `yhcmex10' loaded for size
 
 ]
 Chapter 3.
-(./newchapters/MPS.tex [9]) (./newchapters/MBEDDR.tex)) (./newchapters/CPP.tex
-[10]
-Chapter 4.
-) (./newchapters/Evaluation.tex [11
+(./newchapters/MPS.tex
+Package epstopdf Info: Source file: <figures/mpsif.eps>
+(epstopdf)                    date: 2013-08-01 11:07:14
+(epstopdf)                    size: 186875 bytes
+(epstopdf)             Output file: <figures/mpsif-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-08-01 11:11:41
+(epstopdf)                    size: 147268 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/mpsif-eps-converte
+d-to.pdf figures/mpsif.eps>
+(epstopdf)             \includegraphics on input line 15.
+Package epstopdf Info: Output file is already uptodate.
 
-] [12
+<figures/mpsif-eps-converted-to.pdf, id=382, 646.415pt x 546.04pt>
+File: figures/mpsif-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/mpsif-eps-converted-to.pdf>
+Package pdftex.def Info: figures/mpsif-eps-converted-to.pdf used on input line 
+15.
+(pdftex.def)             Requested size: 426.63522pt x 360.38751pt.
+ [9] [10 <./figures/mpsif-eps-converted-to.pdf>]
+Overfull \hbox (25.10298pt too wide) in paragraph at lines 60--62
+[]\OT1/ppl/m/n/10.95 The ``chil-dren'' sec-tion de-scribe which nodes can be ch
+il-dren on the [][]\OT1/ppl/m/it/10.95 AST[] \OT1/ppl/m/n/10.95 of the \OT1/pcr
+/m/n/10.95 IfStatement\OT1/ppl/m/n/10.95 .
+ []
+
+[11]) (./newchapters/MBEDDR.tex)) (./newchapters/CPP.tex [12] [13] [14
+
+]
+Chapter 4.
+) (./newchapters/Evaluation.tex [15] [16
 
 ]
 Chapter 5.
-) (./newchapters/Conclusion.tex [13] [14
+) (./newchapters/Conclusion.tex [17] [18
 
 ]
 Chapter 6.
-) [15] [16
+) [19] [20
 
 ]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 116.
- [17] [18] (./newchapters/Glossary.tex
+ [21] [22] (./newchapters/Glossary.tex
 (./MasterThesis_ZaurMolotnikov.gls
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 5.
 
@@ -972,10 +997,10 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 5.
-)) [19
+)) [23
 
 
-] [20
+] [24
 
 ]
 (./MasterThesis_ZaurMolotnikov.bbl
@@ -1003,7 +1028,7 @@ troustrup.com/bs[]faq.html#ec++.
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 131.
- [21
+ [25
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
@@ -1012,17 +1037,17 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 131.
 Package rerunfilecheck Info: File `MasterThesis_ZaurMolotnikov.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: F131FE1B82FE8FCA4792E53D4A67C07A;1197.
+(rerunfilecheck)             Checksum: 27701E6CBA3896C6DDCF7D9AC9B96F63;1808.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 13522 strings out of 493629
- 200412 string characters out of 3143343
- 345796 words of memory out of 3000000
- 16371 multiletter control sequences out of 15000+200000
+ 13553 strings out of 493629
+ 200945 string characters out of 3143343
+ 345881 words of memory out of 3000000
+ 16387 multiletter control sequences out of 15000+200000
  29181 words of font info for 74 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  52i,12n,102p,1350b,1598s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1034,10 +1059,10 @@ f-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2011/texmf-dist/
 fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
 ype1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/ur
 w/palatino/uplri8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (33 pages, 154750 bytes).
+Output written on MasterThesis_ZaurMolotnikov.pdf (37 pages, 311920 bytes).
 PDF statistics:
- 474 PDF objects out of 1000 (max. 8388607)
- 416 compressed objects within 5 object streams
- 91 named destinations out of 1000 (max. 500000)
- 171 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 602 PDF objects out of 1000 (max. 8388607)
+ 520 compressed objects within 6 object streams
+ 105 named destinations out of 1000 (max. 500000)
+ 248 words of extra memory for PDF output out of 10000 (max. 10000000)
 
