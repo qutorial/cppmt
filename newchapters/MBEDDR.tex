@@ -1,1 +1,70 @@
 \declsec{MBEDDR Project}{mbeddr}
+
+The \mbdp\ is a software built with the use of \jbmps.
+
+The \mbdrp\ represent mainly an implementation of the C programming language in the \jbmps\ environment. Having embedded systems
+and software for them as the main focus, \mbdr\ provides certain language extensions to empower the programmer in the mentioned domain \cite{mbeddr-wave}, 
+\cite{Voelter:MoDELS:2010}. 
+
+Being a different language the \cpppl\ shares a lot of commonality with the C programming language. 
+As \jbmps\ allows, to some extent, see \ref{modularity}, incremental language construction, the \mbdrp\ represents 
+a suitable basis for the \cpppl\ implementation in \jbmps\ . 
+
+The use of \mbdr\, however, could not be purely incremental, and required some changes to the \mbdr\ itself. 
+The changes were introduced however, in a way to make \mbdr\ simply more extensible in general, and not by
+adopting it to the current work needs.
+
+In this section I describe the \mbdp, as the current work is based on it.
+
+No matter the \mbdp\ has  (one) C language with extensions as an outcome, internally, as a \jbmps\ software
+it is represented as several \jbmps\ languages. In \jbmps\ a language corresponds to a module.
+
+All \mbdr\ languages are named starting from \mpslang{com.mbeddr.} name part. In this document I usually ommit it,
+keeping the last word of the name only. E.g. \mpslang{com.mbeddr.expressions} is called simply \mpslang{expressions} here.
+
+\subsection{\mbdr\ Expressions Language}
+
+The \mpslang{expressions} language contains definitions for all expressions, possible in the \mbdr\ C language.
+As in object oriented programming languages \rgp{concept} of the \cc{expressions} language form inheritance hierarchies. 
+\jbmps\ is capable of showing a given \rg{concept} in a hierarchy. 
+
+\msnozoom{minushierarchy}{\Rg{concept} Hierarchy Example}
+
+The \fig{minushierarchy} shows a hierarchy for the \mpsid{MinusExpression} \rg{concept}. In a similar way all expressions of the 
+C programming language are implemented in the \mpslang{expressions} language.
+
+Whenever there is a need in the \cpppl\ to extend the C programming language with a new expression kind, like 
+object member reference, \mpslang{new} expression and so on, a point of inheritance has to be found in the 
+\mbdr\ \mpslang{expressions} language to base a new \rg{concept} on it.
+
+Additionally, the \mpslang{expressions} language defines  C language types. 
+
+\msnozoom{typehierarchy}{\mbdr\ Type Hierarchy Example}
+
+All \rgp{concept} corresponding to C types are based (directly or indirectly) on the \mpsid{Type} \rg{concept}.
+For example, the hierarchy of \mpsid{IntType} \rg{concept} is demonstrated in \fig{typehierarchy}. 
+
+In order to add a type to \mbdr\ C language, one should inherit from the \mpsid{Type} \rg{concept} as well.
+Such inheritance automatically allows the new type to appear at all places, where a type in general can be found
+in the C language or its extensions.
+
+
+\subsection{\mbdr\ Statements Language}
+
+\mbdr\ \mpslang{statements} language contains definitions for C language statements. The \mpsid{Statement} \rg{concept} serves as the
+base for inheritance, and represent by itself an empty line, or no-statement.
+
+In order to create a new statement, like \cc{delete} statement in C++, the inheritance should start from the \mpsid{Statement} \rg{concept}.
+
+\ms{stexprmarked}{Example of Multiple Languages Used Together}
+
+The \mpslang{statements} language actively uses the \mpslang{expressions} language, \fig{stexprmarked}. In the \mbdr\ code snippet
+the nodes coming from \mpslang{statements} language are marked green, and the nodes, coming from \mpslang{expressions} language are
+marked yellow\footnote{not marked with color is an instance of the \mpslang{Function} concept, which comes from the \mpslang{modules} language}. As the example shows, \mpsid{if} statement and \mpsid{return} statement are coming from the \mpslang{statements} language,
+but inside they contain as children expressions. This is an example of language modularity in \jbmps, used by \mbdr.
+
+% TODO continue here about modules language
+
+
+
+
