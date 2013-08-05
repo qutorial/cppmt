@@ -63,7 +63,23 @@ the nodes coming from \mpslang{statements} language are marked green, and the no
 marked yellow\footnote{not marked with color is an instance of the \mpslang{Function} concept, which comes from the \mpslang{modules} language}. As the example shows, \mpsid{if} statement and \mpsid{return} statement are coming from the \mpslang{statements} language,
 but inside they contain as children expressions. This is an example of language modularity in \jbmps, used by \mbdr.
 
-% TODO continue here about modules language
+\subsection{Modules in \mbdr}
+
+In C (and in C++ as well) there is no clear concept of a module. The \mbp\ improves on it, defining 
+modules, \cite{Voelter:MoDELS:2010}. A C module is a \rg{concept}, from which the header and the .c files are generated in mbeddr.
+Flagging an object (function, variable, structure, etc.) in a module as \cc{exported} causes the declaration of the object to appear
+in the header, and thus the object starts to be accessible by other modules.
+
+An issue with the C programming language is that there is one and only global namespace. The \mbp\ improves on it 
+by introducing so-called name mangling. All names of the module contents are prefixed with the module name,
+when generated to the C text code. Thus the object with the same name but from different modules do
+not cause a name clash.
+
+The implementation of modules in \mbdr\ can be found in the \mpslang{modules} language. Functions are described there as well,
+for the \mpsid{Function} concept example, see the \fig{stexprmarked}, not marked with colors part.
+
+\subsection{Pointers and Arrays in \mbdr}
+
 
 
 

@@ -48,15 +48,17 @@ extracting a value from such vector.
 \section{Modules}
 \lsec{modules}
 
-In C++ as well as in C there is no clear concept of a module. The \mbp\ improves on it, defining 
-modules, \cite{Voelter:MoDELS:2010}. A C module is a concept, from which the header and the .c files are generated in mbeddr.
-Flagging an object (function, variable, structure, etc.) in a module as \cc{exported} causes the declaration of the object to appear
-in the header, and thus the object starts to be usable by other modules.
+%TODO Reused in MBEDDR CHAPTER
 
-Another issue with the C language is the one and only global namespace. The \mbp\ improves on it 
-by introducing so-called name mangling. All names of the module contents are prefixed with the module name,
-when generated to the C text code. Thus the object with the same name but from different modules do
-not cause a name clash.
+% In C++ as well as in C there is no clear concept of a module. The \mbp\ improves on it, defining 
+% modules, \cite{Voelter:MoDELS:2010}. A C module is a concept, from which the header and the .c files are generated in mbeddr.
+% Flagging an object (function, variable, structure, etc.) in a module as \cc{exported} causes the declaration of the object to appear
+% in the header, and thus the object starts to be usable by other modules.
+% 
+% Another issue with the C language is the one and only global namespace. The \mbp\ improves on it 
+% by introducing so-called name mangling. All names of the module contents are prefixed with the module name,
+% when generated to the C text code. Thus the object with the same name but from different modules do
+% not cause a name clash.
 
 The \cpppl\ is an improvement over the C language by itself. There is, however, no concept of a module,
 which can bring certain advantages and disadvantages. As a disadvantage can be named a potential disorder
