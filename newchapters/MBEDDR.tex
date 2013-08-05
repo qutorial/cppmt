@@ -22,7 +22,8 @@ it is represented as several \jbmps\ languages. In \jbmps\ a language correspond
 All \mbdr\ languages are named starting from \mpslang{com.mbeddr.} name part. In this document I usually ommit it,
 keeping the last word of the name only. E.g. \mpslang{com.mbeddr.expressions} is called simply \mpslang{expressions} here.
 
-\subsection{\mbdr\ Expressions Language}
+\subsection{mbeddr Expressions Language}
+\label{expressionslang}
 
 The \mpslang{expressions} language contains definitions for all expressions, possible in the \mbdr\ C language.
 As in object oriented programming languages \rgp{concept} of the \cc{expressions} language form inheritance hierarchies. 
@@ -49,7 +50,7 @@ Such inheritance automatically allows the new type to appear at all places, wher
 in the C language or its extensions.
 
 
-\subsection{\mbdr\ Statements Language}
+\subsection{mbeddr Statements Language}
 
 \mbdr\ \mpslang{statements} language contains definitions for C language statements. The \mpsid{Statement} \rg{concept} serves as the
 base for inheritance, and represent by itself an empty line, or no-statement.
@@ -63,7 +64,8 @@ the nodes coming from \mpslang{statements} language are marked green, and the no
 marked yellow\footnote{not marked with color is an instance of the \mpslang{Function} concept, which comes from the \mpslang{modules} language}. As the example shows, \mpsid{if} statement and \mpsid{return} statement are coming from the \mpslang{statements} language,
 but inside they contain as children expressions. This is an example of language modularity in \jbmps, used by \mbdr.
 
-\subsection{Modules in \mbdr}
+\subsection{Modules in mbeddr}
+\label{mbdrmodules}
 
 In C (and in C++ as well) there is no clear concept of a module. The \mbp\ improves on it, defining 
 modules, \cite{Voelter:MoDELS:2010}. A C module is a \rg{concept}, from which the header and the .c files are generated in mbeddr.
@@ -78,7 +80,18 @@ not cause a name clash.
 The implementation of modules in \mbdr\ can be found in the \mpslang{modules} language. Functions are described there as well,
 for the \mpsid{Function} concept example, see the \fig{stexprmarked}, not marked with colors part.
 
-\subsection{Pointers and Arrays in \mbdr}
+Modules are further included into \jbmps\ \rgp{model}, which correspond to one single \jbmps\ file unit.
+Each model should have a node of \mpsid{TypeSizeConfiguration} and \mpsid{BuildConfiguration} \rgp{concept}.
+In the former, the sizes for types must be given, in the latter, all directives needed to compile the 
+generated from the \rg{model} text.
+
+\subsection{Pointers and Arrays in mbeddr}
+
+In the \mpslang{pointers} language array access and pointer dereferencing expressions are defined as \rgp{concept}.
+Similar syntax to them have overloaded operators with classes. Thus this language could also be extended by the \pcpp,
+if some reuse is possible there as well. This is discussed in detail in the \rsec{operatoroverloading}.
+
+
 
 
 

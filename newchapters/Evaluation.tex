@@ -1,1 +1,88 @@
 \declchap{Evaluation}{eval}
+
+
+
+\declsec{Comparison with Textual Approach}{comparison}
+
+% Compare work with textual editor
+% Compare the way analysis is performed
+% Compare the naturality for the programmer
+% Compare flexibility
+% About direct compilation without generating text code
+% Amount of typing and code generation
+% Extensibility and higher level construction
+% Moving code around is easy locally, but difficult from module to module
+% Compare the version control Language And Code itself - different
+% Refactorings require cool parser and are not implemented VS2010 new parser adoption
+% Compare naming conventions
+
+% .h and .cpp files vs modules - annoying to keep h and cpp in sync. Modules just do it.
+
+
+\declsec{Generalized Principles of the Projectional Approach}{genprinciples}
+
+In this chapter I formulate some of the general principles, which can be taken into
+account when designing new languages in the projectional editors.
+
+\subsection{Targeting Semantics}
+%No matter what you generate to, you should target semantics - way to cover the abstraction gap
+
+\subsection{Store More Information}
+% More information can and SHOULD be stored than is needed for generation.
+% Example is the overridden method link in the override
+
+% Disadvantage - native code compatibility
+
+\subsection{Configuration as a Part of Source Code}
+% Configuration (as naming conventions) is nice to store with code! 
+% Usually editor preferences are not shared like in eclipse, but this can enforce standards
+% Another example would be the build configuration indeed.
+
+\subsection{Hide Redundant Syntax}
+% Don't show to the programmer semicolons and similar.
+
+%TODO More?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\declsec{Projectional Language Extensibility}{extensibility}
+% Extensibility of different languages to create a concept is discussed here.
+
+
+% Structure - inheritance like (but confusion with base concept and inmplements)
+
+% Editor - one only, can't be changed, in MPS3.0 - to be researched
+
+% Constraints - no way to change nicely, but possible (IIdentifier Named concept, Cpp reserved words, get problem (find about it Markus letter) )
+% Also constrain LocVar decl to not allow abstract classes - not possible, have to use check.
+
+
+% Behavior - nice, like Java
+
+% Textgen - nicely
+
+% Generators - not related ?
+
+% Actions and Intentions - not needed ? Or? How to forbid an intention on something?
+
+
+%TODO Talk about the replacement rule
+% Typesystem - pain! Replacement rule
+
+
+%Summary in a shape of a table
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\declsec{Analyses and Complexity}{analysesandcomplexity}
+
+%Take one analysis, analyze complexity, figure out runtimes, MPS things
+
+% Analysis can go on the syntax tree
+% Which analysis can be needed in general
+% The analysis can take time, online running complexity
+% Naming conventions and regular expressions
+
+% Analysis for abstract classes instantiation can happen very often, and is complex.

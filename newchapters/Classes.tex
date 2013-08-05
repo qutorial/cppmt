@@ -1,0 +1,171 @@
+\declsec{C++ Object-Oriented Programming}{oop}
+
+The \cpppl\ is a multi-paradigm programming language. The ability to support the object-oriented programming,
+is incorporated via classes. 
+
+A class represents a new type in the \cpppl. Each class may have data in the 
+form of fields, and behavior in the form of methods. Two types of methods are special for
+C++ - constructors and destructors, they have special meaning and syntax.
+
+Encapsulation is enabled via governing access permissions to fields and methods of a class.
+The access control is governed with the creation of \cc{public}, \cc{protected} and \cc{private}
+class sections.
+
+Inheritance is implemented in C++ via allowing for each class to have one, or even many base classes.
+Inheritance from a base class is performed under a certain access control modifier. There is no pure notion 
+of an interface, but rather abstract classes are introduced.
+
+Polymorphism is implemented via pointer-to-class type compatibility over inheritance-connected classes.
+
+The implementation of these C++ features in a projectional editor environment is discussed in the
+following chapters.
+
+
+\subsection{Class declaration}
+\label{section:classes}
+
+
+% Enforcement of one section and only one.
+% Enforcement of sections order
+% Constructor markup
+% Copy constructor and constructor generation
+
+
+The \cpppl\ is a mature language, with long traditions, and high flexibility, \cite{alexandrescu} can serve as an example. 
+Although the language is also famous for being complex. It will not be possible to simplify language, removing features from 
+it, which will restrict the language use. In this work I try to research, how the editor can be more supportive for the user,
+to eliminate usual mistakes made while programming, as well as provide help in structuring the code.
+
+
+\subsubsection{Visibility Sections}
+\label{visibilitysections}
+
+
+Instead of declaring visibility type for individual class members, visibility sections are created
+in C++. 
+
+The sections can be opened with a string \cc{private:}, \cc{protected:} or \cc{public:}
+within a class declaration, and closed when another section is opened or when the class declaration
+ends. This allows the user to open and close the same section multiple times and declare sections
+without any particular order.
+
+Various coding guidelines (\cite{cppclasslayout}, \cite{googlecppstyle}) exist to enforce some 
+restrictions on the visibility sections.
+
+In particular, the sections are allowed to be opened only once. This ensures, the
+reader of the code will see interface of the class (public section) in one place,
+``contents'' of the class (private section) in one place, and opportunities to access members in
+the inheriting class (protected section) in one place, without the need to scroll through through
+the whole class declaration.
+
+Another typical requirement in coding standards, is the order of the section. Usually the public 
+section is required to be first, for the class users to see immediately the public interface,
+the class provides.
+
+\ms{webpage}{Sample class type declaration}
+
+
+The \fig{webpage}, shows an example class declaration implemented in the projectional editor.
+The class concept has the visibility sections as children. Each section is given a separate role,
+and can appear 0 or 1 times. The editor for the class concept orders the visibility sections so,
+that the public section always comes first, followed by the private and protected sections.
+
+The creation of a section is made with the use of so called \emph{intention} in MPS. The user
+uses \emph{Alt+Enter} combination on the class declaration to create visibility sections.
+It should be more practical and fast for the user, compared to typing the keyword, colon and
+indenting the result.
+
+% Limitation
+A question arises on how to support another way to represent a class, so that it will reflect
+requirements from a different coding standard. And as a way to resolve it a definition of 
+another editor for a class concept can be offered, Unfortunately, the current version of \jbmps\ 2.5
+does not support a definition of multiple editors for the same concepts. This limitation however
+is addressed in the newer 3.0 version.
+
+
+\subsubsection{Constructors}
+\label{classconstructors}
+
+Constructors are special methods of a class, used to construct the class instances. 
+
+Constructors have special syntax and no return type, being similar to class methods. Additional 
+value, however, the constructors gain, when participating in type transformations. Namely, when
+a constructor of a class B exist from a type T, instances of the type T can be used whenever
+the B class instance is required. The constructor will be \emph{implicitly} called and a temporary object
+of class B is going to be created as a mediator. 
+
+Thus constructors extend the type system. Since this type extension can not be easily observed, it is 
+highly possible to get various \emph{run-time} errors or unexpected behavior. 
+
+\cpp{Example of an Implicit Constructor Error}{implicit}
+
+The \rl{implicit} demonstrates a simplified use case where the function \cc{print()} is invoked on \cc{int} without 
+any compiler error, and the resulting behavior is unexpected.
+
+To avoid similar, it is possible to deprecate participation of a constructor in type conversions, adding a word \cc{explicit} to the constructor
+declaration.
+
+The described problematic motivated the following decision. When a new constructor is created, it is by default declared to be explicit,
+the user must intentionally change it to get the type conversion behavior. Such behavior is safer by default.
+
+\subsubsection{Copying}
+\label{classcopying}
+
+In the \cpppl\ the programmer controls memory allocation fully on his/her own. This affect the way of copying the object.
+In C++ a programmer should define two methods for a class: a copy constructor and an assignment operator.
+These two methods work when assignment like \cc{a = b} happens, when instances of a class are passed by value to a function, 
+when one object is initialized with a value of another object and so on.
+
+C++ serves here sometimes dangerously generating default copy constructor and assignment operator, which by default represent
+a bitwise cloning of an object. This can lead to problems.
+
+\cpp{Need in a Custom Copy constructor}{copydeath}
+
+The \rl{copydeath} demonstrates a program which crashes upon execution as destructors of \cc{a} and \cc{b} are deallocating 
+memory with the same address, after default copy-constructor copies the address from \cc{a} into \cc{b}.
+
+To avoid the described problem, the programmer has to either define proper copy-constructor or forbid copying of the objects of
+the class. The same applies to the assignment operator. Many standards require the two functions to be implemented in sync, \cite{ooocpp}.
+This can be performed be implementing the assignment operator first and reusing it in the copy-constructor. To simplify the first,
+specialized macros exist, for example \cc{DISALLOW\_COPY\_AND\_ASSIGN} or \cc{Q\_DISABLE\_COPY}, \cite{googlecppstyle}, \cite{qobjref}.
+
+The use of macros in C++ appears often in similar cases, in order to perform some language-engineering tasks to add the missing
+features to the language. Macros bear pure textual nature, and are processed by the pre-processor. Some negative effects may 
+come out: need to pre-process reduces the speed of compilation and hides the resulting code from a programmer, macros lead
+to error prone programming, as no type checks are possible, macros make code less analyzable by automatic analyzers.
+
+\ms{copyable}{Hinting about Copyable and Assignable Class Properties}
+
+
+The projectional editor allows for another solution, different from macros.  In order to provide some support for the 
+programmer regarding the copying issue, the projectional C++ implementation hints on the class declaration its 
+assignable and copyable properties, \fig{copyable}, and generates by default the declarations of copy-constructor and assignment operator.
+
+The copy constructor and the assignment operator are detected automatically. Two intentions are provided on the Class concept to
+forbid or allow copying. The forbidding intention imitate the macros mentioned above, but displaying and explaining the 
+implementation to the user\fig{notcopyable}. The implementation consists of moving the declarations of two functions to the private section of
+the class. Implementation is not required for such functions.
+
+\ms{notcopyable}{Class Made not Copyable by the \emph{Forbid Copying} Intention}
+
+The \jbmps\ supports the implementation by providing read-only model accesses, special parts of editor concept, 
+by which the hinting is implemented. The intentions allowed manipulations on a class, which made it possible to 
+automate the allowing or forbidding of copying/assignment, making the implementation clear to the user, without the 
+use of macros. The whole work to forbid copying and assignment contains of a call to an intention, one key-stroke.
+There is no need to include a header file with macros, and look up the documentation for them (symmetric macro requires
+exactly one parameter - the class name, and it has to go in the private class section).
+
+\input{newchapters/Encapsulation}
+
+
+\input{newchapters/Polymorphism}
+
+% To be used later when writing about type conversion.
+
+% Constructors among the special meaning of creating 
+% instances of the type class, are also participating in the type conversion mechanisms.
+% Namely, if there is a constructor a class of \cc{B} from a class \cc{A}: \cc{B(A obj)} or 
+% similar, any object of the class \cc{A} can participate in places, where an object of the 
+% class \cc{B} is requested originally, as implicit type conversion takes place, invoking the 
+% \cc{B(A obj)} constructor.
+

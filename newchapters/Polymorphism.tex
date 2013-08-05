@@ -1,0 +1,170 @@
+\subsection{Polymorphism}
+
+There are several ways to achieve polymorphic behavior in C++. The purists of the language differentiate 
+between the polymorphism based on virtual functions or on templates. More general opinion can include
+in the notion of the polymorphism also functions overloading and operator overloading, also called 
+\emph{ad hoc} polymorphism. Occasionally various operations with \cc{void *} are also classified as 
+the polymorphic programming.
+
+In this section I am writing only about the class-related virtual functions polymorphism.
+
+\subsubsection{Virtual Functions Polymorphism in C++}
+\label{cpppolydefs}
+
+Starting the description of the projectional implementation, I find it good to spend some time describing
+the way, the polymorphism is implemented in the \cpppl\ itself.
+
+Dislike many other popular object-oriented programming languages in the C++ there is no pure notion of
+an interface. Instead, a base class is used as an interface declaration for its descendants. Functions
+designated to be a part of the interface must be declared \cc{virtual} and they can be overloaded in
+the subclasses.
+
+The virtual functions in the base-interface class can be implemented as well, providing some ``default''
+implementation. Otherwise they are left \emph{pure virtual}, meaning that no implementation is provided
+and the pointer to the function in the table of pointers to virtual functions is zeroed. The syntax
+for pure virtual functions is rather not obvious, when not knowing about the zero pointer semantics,
+and a bit cumbersome requiring to type one reserved word, one punctuation sign and one number to 
+express simple fact of pure virtuality or, simply, absence of implementation, \rl{purevirtual}.
+
+\cpp{Pure Virtual Function Syntax Example}{purevirtual}
+
+Such approach is more flexible compared to languages with the notion of interface directly introduced.
+In C++ it is possible to create partially implemented base classes, what can not be done when implementing
+and interface in Java or C\#, where the approach is ``all or none'' regarding the implementation of interface
+functions.
+
+In order to implement a declared in a base class function the descendant must declare and implement
+a virtual function, matching the full (with return type) signature of the declared function, \rl{override}. The connection 
+to the ``interface'' function declaration stays subtle, and it is not immediately clear, whether the 
+declared implementation is an override or a new independent declaration. This knowledge affects the 
+changing process greatly, as the override should change from the interface, together with all the implementation.
+The absence of a clear override syntax I call here ``override syntax absence''.
+
+Whenever a class and all of its ancestors does not provide an implementation of a certain virtual function,
+created as a pure virtual in the declaring class, the class is called \emph{abstract}. It is not possible
+to construct instances of abstract classes. C++ however does not have any special syntax for abstract classes,  \rl{purevirtual}.
+The programmer usually has to be aware (from documentation, implementation, or, the worst case, compilation
+errors) whether a given class is abstract. I will call this phenomenon as ``abstract class syntax absence''.
+
+When the overriding a function interface is a active action of the programmer, and is initiated by the 
+programmer, the abstract property of the class, oppositely, can be deduced from the analysis on 
+the base classes automatically, by editor.
+
+In order to use an interface declared in some class, the using code has to get a pointer to instance
+of any implementing the interface descendant class instance. Thus typing system has to allow a pointer
+to the descendant to be treated in the way as a pointer to the base would be. The same should hold 
+normally for the reference types, but it is not used very often on practice, and omitted in the implementation.
+As this typing rule represents the core of polymorphic behavior, I will start from it, describing further the
+projectional C++ implementation.
+
+\subsubsection{Pointer to Class Special Typing}
+
+The problem solved here is enabling the usage of pointers to descendants instead of pointers to ancestors,
+\rl{polycall}.
+
+\cpp{Example Usage of a Pointer to Descendant Class}{polycall}
+
+The pointer type is implemented in a separate language in mbeddr. Following the goal of non-invasive changes to \mbeddr\
+the C++ implementation needs to add the typing rules for pointer \emph{to classes} without changing the pointer mbeddr language, where the 
+typing system for pointer type is defined.
+
+In the case when a type of a pointer to a base class is expected, a pointer to a subclass should also be accepted.
+The type system of the pointer language will try to check the compatibility of the two pointer types. It will
+fail to do so, as the mbeddr languages are not aware of the C++ extensions by design.
+
+When none of the existing type system rules can resolve the given situation, the so called replacement
+rule can be invoked in MPS. The C++ extension provides a replacement rule, which checks, whether a
+class pointed to, is a passing descendant of the class required by an expression, where the pointer was
+used.
+
+In the \rsec{extensibility} I discuss more on the approach taken here, its limitations and 
+the potential ways to overcome them.
+
+\subsubsection{Overriding a Virtual Function}
+
+The \rl{override} demonstrates, how overriding of a virtual function happens in C++.
+The function \cc{getArea()} is initially defined in the class \cc{Shape} and is then overridden
+in the class \cc{Circle}. The \rl{override} demonstrates as well the ``override syntax absence'' in C++.
+
+\cpp{Example of an Overridden Function - Text Code}{override}
+
+In the \fig{override} the same example is demonstrated, but in the projectional C++ implementation.
+Indeed, the \rl{override} is the generation result part from the demonstrated projectional sample.
+
+When a method declaration is created, it can be set to be an override of a method in a base class.
+Only when an empty method declaration is created, it can be set to be an override, so that the only
+thing which stays, is to pick a method from a base class to be overridden. The override is automatically
+named, the parameters and the return type are set accordingly, the \cc{virtual} property is immediately
+set. 
+
+After the override has been linked to the overridden method, the projectional editor checks, if 
+the override full signature stays precisely the same as the one of the overridden method. 
+The overridden method is shown next to the override declaration \fig{override}, which 
+compensates on the override syntax absence.
+
+\ms{override}{Example of an Overridden Function - Projection}
+
+The additional syntax on the projectional view, should not confuse the reader. It is only 
+present in the projectional editor, and, when the AST is generated into code, the regular
+C++ syntax is achieved. However in this case the AST stores \emph{more} than needed to 
+generate and compile the C++ code. This subsection demonstrates, why it can be useful.
+
+
+
+\subsubsection{Pure Virtual Functions}
+
+In the example above one improvement to the code can be made. As the \cc{getArea()} for a random shape can not 
+be determined, it makes sense to make the \cc{getArea()} function pure virtual. A pure virtual function has no 
+implementation in the declaring class, and serves only overriding purpose. Semantically in C++ it sets the 
+pointer in \cc{vptr} to 0 and thus has reflecting this syntax, see the similar example in \rl{purevirtual}.
+
+This syntax can be seen as not obvious, as it reflect more the under-the-hood implementation of the mechanism,
+rather then the original programmer intention to built a basis for an overrides chain. 
+
+Additionally, as discussed above, declaring a pure virtual function requires a significant amount of the syntactical
+overhead.
+
+In the projectional C++ implementation, one intention is reserved to make a function pure virtual. The intention automatically
+sets the needed pure virtual and virtual flags of the function declaration, and the projection changes. That is why out of the 
+statement \cc{virtual double getArea() = 0;} the programmer has to input only the name \cc{getArea}, pick the type \cc{double}, and
+toggle the pure virtual intention for the declaration. 
+
+The result of the intention work in projection can be seen in the \fig{purevirtual}.
+
+\ms{purevirtual}{Example of a Pure Virtual Method - Projection}
+
+The word \cc{pure} is added by the projection editor. This makes the reading of the code easy and natural.
+The \cc{ = 0} part is preserved for the C++ programmer, used to this syntax. And, as in many other cases, 
+the semicolon is omitted as it is nothing but syntactic help to the compiler, which does not have to appear 
+in the projection.
+
+\subsubsection{Abstract Classes}
+\label{abstractclasses}
+
+If any of the pure virtual functions in the inheritance chain leading to a class is not implemented by this chain, 
+or inside the class itself, the class is called abstract. It is not possible to construct an instance of an
+abstract class, as such classes are partially implemented. The programmer has to know which classes are abstract,
+and are intended for inheritance and further implementation only.
+
+Above I discuss the absence of the abstract class syntax in C++. It leads to the need for the programmer to 
+determine somehow him/herself if a given class is abstract. 
+
+And editor can however perform an analysis and determine if the class is abstract. In the case of the projectional
+editor, this analysis is especially computationally efficient, as the AST is readily available, and the quick 
+analysis can be performed by a simple recursive algorithm on the inheritance chains.
+
+After an abstract class is determined, it is possible to modify the editor representation for it, and show that it is 
+abstract, \fig{abstract}.
+
+In this example a typical class hierarchy is created to support user interface programming. A user of this API, when 
+searching for a button, could try using the \cc{Button} class, which is designed to be abstract, and serve as a 
+base for the further implementation, e.g. \cc{PushButton} in the example, or check boxes, radio buttons and similar,
+later.
+
+\ms{abstract}{Determining Abstract Classes}
+
+The projectional editor, however, checks on the fly, if a certain class is abstract, adding a special \cc{abstract} word 
+in front of its declaration. This makes the reading easier, and allows for quicker understanding of the code. 
+
+Additionally, the creation and usage of abstract class instances is checked, and forbidden by type analysis. This is 
+described separately in the \rsec{advanced}.

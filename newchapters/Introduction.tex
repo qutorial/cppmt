@@ -99,7 +99,8 @@ for this Master Thesis, and is left for further research.
 % Approach
 The approach taken in this work goes further into exploring the language modularity on the basis of \jbmps. While building 
 the \cpppl\ itself  with the goal of embedded domain specific extensions in mind, the C++ itself is being built itself as 
-an extension to the C programming language, provided by the \rg{mbeddr}. 
+an extension to the C programming language, provided by the \rg{mbeddr}. The C++ implemented in \jbmps\ and discussed in this 
+work I call the \pcpp.
 
 Although C++ is a separate from C language, the high degree of similarity allows to make use of the C programming language,
 implemented by the \rg{mbeddr} as a foundation. Not only reuse of the basic C is achieved, but also the embedded extensions from
@@ -129,3 +130,12 @@ how much of the computational resource they can take advantage of. This however 
 as the analyses complexity may be high. The question of analyses run-time and complexity is raised and discussed in 
 this work in general and in particular, taking one of the C++ specific analyses and researching on its complexity.
 Extensions to the \jbmps\ \rg{api} are proposed to get a better control over the analyses run-time.
+
+Finally, it is fair to say, that some practical foundations for the \pcpp\ have been already grounded, before the start of
+this work by the \mbdr\ team. Some of them, were kept (reference type, templates partially) and just described and analyzed 
+here, some of them were considerably reworked (classes, inheritance, encapsulation and polymorhism). 
+Couching from the \mbdr\ team made me changing some of the implementation aspects, as from I planned originally (namespaces,
+operator overloading partially). And some parts were built, of-course, new from scratch and were not (at least yet) anyhow
+influenced by \mbdr\ team at all (analyzes, construction and copying, some more). The evaluation of the experience, gained
+by me during the practical implementation part, which results into the extensibility analysis, research on complexity of
+cheks and the run-time for them, and general projectional guidelines represent my own theoretical focus and comittment.
