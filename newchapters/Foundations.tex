@@ -167,7 +167,11 @@ The process of defining a modular language in the \jbmps\ environment is describ
 \label{modularity}
 
 As \rgp{concept} feature inheritance, it is possible\footnote{to some extent, the extensibility is described separately in one of the following chapters} 
-to use a child concept at a place where a parent concept could be used. 
+to use a child concept at a place where a parent concept could be used. This creates a great opportunity for language extensibility. In order to 
+extend a language at some point, just a passing base \rg{concept} hast to be determined and inheritted from, by a new \rg{concept} which is meant
+to provide the language extension. The new concept is immediately able to be used in place of the base concept. As an example, one could think 
+of extending statements of the language. The only new statement is needed, a \rg{concept} has to be created, which represents the new statement, 
+and enabling the new statement concsist of just inheritting it from the base statement concept, which exists in the language extended.
 
 The inheritance works over the language borders, allowing to create the child concept
 in a language L2, separate from the language L1, where the original parent concept has been described. Thus the language L2 can be seen as a modular extension to the
