@@ -1,22 +1,36 @@
-\declchap{Evaluation}{eval}
+\declchap{Evaluation - (structure and sketches only) }{eval}
 
 
 
 \declsec{Comparison with Textual Approach}{comparison}
 
-% Compare work with textual editor
-% Compare the way analysis is performed
-% Compare the naturality for the programmer
-% Compare flexibility
-% About direct compilation without generating text code
-% Amount of typing and code generation
-% Extensibility and higher level construction
-% Moving code around is easy locally, but difficult from module to module
-% Compare the version control Language And Code itself - different
-% Refactorings require cool parser and are not implemented VS2010 new parser adoption
-% Compare naming conventions
+ Compare work with textual editor
 
-% .h and .cpp files vs modules - annoying to keep h and cpp in sync. Modules just do it.
+ 
+  Compare the way analysis is performed
+
+  Compare the naturality for the programmer
+
+  Compare flexibility
+
+  
+  About direct compilation without generating text code
+
+  
+  Amount of typing and code generation
+
+  Extensibility and higher level construction
+
+  Moving code around is easy locally, but difficult from module to module
+  
+
+  Compare the version control Language And Code itself - different
+
+  
+  Refactorings require cool parser and are not implemented VS2010 new parser adoption
+
+  
+  Compare naming conventions
 
 
 \declsec{Generalized Principles of the Projectional Approach}{genprinciples}
@@ -25,64 +39,107 @@ In this chapter I formulate some of the general principles, which can be taken i
 account when designing new languages in the projectional editors.
 
 \subsection{Targeting Semantics}
-%No matter what you generate to, you should target semantics - way to cover the abstraction gap
+No matter what you generate to, you should target semantics - way to cover the abstraction gap
 
 \subsection{Store More Information}
-% More information can and SHOULD be stored than is needed for generation.
-% Example is the overridden method link in the override
+ More information can and SHOULD be stored than is needed for generation.
+ Example is the overridden method link in the override
 
-% Disadvantage - native code compatibility
+ Disadvantage - native code compatibility
 
 \subsection{Configuration as a Part of Source Code}
-% Configuration (as naming conventions) is nice to store with code! 
-% Usually editor preferences are not shared like in eclipse, but this can enforce standards
-% Another example would be the build configuration indeed.
+ Configuration (as naming conventions) is nice to store with code! 
+
+ Usually editor preferences are not shared like in eclipse, but this can enforce standards
+ 
+ Another example would be the build configuration indeed.
 
 \subsection{Hide Redundant Syntax}
-% Don't show to the programmer semicolons and similar.
+
+Don't show to the programmer semicolons and similar.
+
+\subsection{Make Old Syntax Readable}
+
+instead of virtual void bla() = 0;   pure virtual void bla().
+
+\subsection{Show the Core, Hint on Details}
+ friend draw     (void draw(const bla \& this , bla \& that))
+
+\subsection{Perform Analyses and Inform the User}
+
+like with the abstract class - which is abstract - informative analysis
+
+
+or not allow to instantiate - preventive analysis
 
 %TODO More?
+TODO More?
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 \declsec{Projectional Language Extensibility}{extensibility}
-% Extensibility of different languages to create a concept is discussed here.
+
+Extensibility of different languages to create a concept is discussed here.
 
 
-% Structure - inheritance like (but confusion with base concept and inmplements)
+\subsection{Structure}
+Inheritance like (but confusion with base concept and inmplements)
 
-% Editor - one only, can't be changed, in MPS3.0 - to be researched
+\subsection{Editor} 
+One only, can't be changed, in MPS3.0 - better, but how much? - future work
 
-% Constraints - no way to change nicely, but possible (IIdentifier Named concept, Cpp reserved words, get problem (find about it Markus letter) )
-% Also constrain LocVar decl to not allow abstract classes - not possible, have to use check.
+\subsection{Constraints}
+
+No way to change nicely, but possible (IIdentifier Named concept, Cpp reserved words, get problem (to do: find about it Markus's letter) )
+Also constrain LocVar decl to not allow abstract classes - not possible, have to use check.
+
+\subsection{Behavior}
+
+Nice, like Java
+
+\subsection{TextGen}
+
+Nice, as it supports polymorhism.
+
+\subsection{Generators}
+- not related ?
+may be hard to extend... because in general hard...
+
+\subsection{Actions and Intentions}
+- not needed ? Or? How to forbid an intention on something?
 
 
-% Behavior - nice, like Java
-
-% Textgen - nicely
-
-% Generators - not related ?
-
-% Actions and Intentions - not needed ? Or? How to forbid an intention on something?
-
-
+\subsection{Type System}
+- pain! Replacement rule mentined here
 %TODO Talk about the replacement rule
-% Typesystem - pain! Replacement rule
+Similar to constraints actually.
 
 
-%Summary in a shape of a table
+\subsection{Extensibility Overview}
+Summary in a shape of a table
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Current State and Future Work}
+And finally, some ways to come over, and how MPS can be made better later.
 
 
 \declsec{Analyses and Complexity}{analysesandcomplexity}
 
-%Take one analysis, analyze complexity, figure out runtimes, MPS things
+Take one analysis, analyze complexity, figure out runtimes, MPS things
 
-% Analysis can go on the syntax tree
-% Which analysis can be needed in general
-% The analysis can take time, online running complexity
-% Naming conventions and regular expressions
+ Analysis can go on the syntax tree
 
-% Analysis for abstract classes instantiation can happen very often, and is complex.
+ Which analysis can be needed in general
+ 
+ The analysis can take time, online running complexity
+ 
+ Naming conventions and regular expressions
+
+
+ Analysis for abstract classes instantiation can happen very often, and is complex.
+ 
+ 
+ 
+ RegExes for naming conventions - hard

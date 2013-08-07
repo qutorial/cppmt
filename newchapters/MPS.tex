@@ -161,6 +161,8 @@ The generator view is one of the most complex \jbmps\ views. It servers the tran
 This view does not have a strong connection to the present work, as the generation of the projectional \cpppl\ is mostly performed by \rgp{textgen}.
 
 \subsection{Intentions}
+\label{intentions}
+
 \jbmps\ \rgp{intention} are special procedures which can be used for automatic manipulations on the \rg{ast} with a node of a given \rg{concept}.
 
 \msnozoom{mpsconstintention}{Toggle Const Property for a \mpsid{Type} \Rg{intention}}
@@ -168,7 +170,11 @@ This view does not have a strong connection to the present work, as the generati
 The \fig{mpsconstintention} demonstrates an intention, used to modify the \cc{const} property of a given type. 
 
 For an \rg{intention} to be defined, one has to name it, specify a \rg{concept}, to which the \rg{intention} is applicable,
-provide a textual description for it, and finally specify the desired effect.
+provide a textual description for it, and finally specify the desired effect. 
+
+There is also a special kind of \rgp{intention}, called ``error intensions''. They are not anyhow fundamentally different 
+from the usual \rgp{intention}, except their special purpose to fix an error when one occur. Error \rgp{intension} are
+visualized using a red bulb icon in \jbmps.
 
 Intentions are accessible in the projectional editor from a context menu, when focused on a target node. They represent 
 a useful mechanism to support a programmer with various automations, including automatic code generation.

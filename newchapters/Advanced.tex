@@ -1,101 +1,109 @@
 \declsec{Advanced Editor Functionality}{advanced}
 
-As the projectional editor work directly with an  AST, it is possible to provide some programming on the AST
-to improve the user experience. I call this additional programming as advanced editor functionality, and 
-discuss it in this chapter.
+As the projectional editor works directly with an  \rg{ast}, it is possible to provide some programming on the 
+\rg{ast} to improve the user experience. I call this additional programming as an advanced editor functionality, and 
+discuss it in this section.
 
 \subsection{Renaming Refactoring}
 Directly from the nature of the projectional editor, without any additional effort, comes a feature to 
 perform the renaming refactorings.
 
-If a node of an AST gets to be referenced somewhere else, it is referenced by the use of its unique
-identifier. The name of the node is a property of the node, which is not playing any role in the
+If a node of an \rg{ast} gets to be referenced somewhere else, it is referenced by the use of its unique internal
+identifier. The name of the node is a property of the node, which is not playing any role in
 referencing the node from somewhere else. Thus renaming, dislike the way it is performed in text
-editors, does not involve replacing of the name all around the code. Instead, just the name property 
+editors, does not involve replacing the name all around the code. Instead, just the name property 
 of a node is changed.
 
+The renaming refactoring comes out of the box, without any additional efforts, thanks to the nature of the
+projectional editing.
+
 As an example - renaming a class or a method would mean just changing its name where it is declared first.
+No search for usages and multiple replacements are going to be involved.
 
 As a disadvantage here one can think of moving a code from one place to another. For example, moving 
 a method from one class to another. The member fields of the source class, even if present in the destination
-class, will not immediately fit into the copied new code, as it is still referencing not available anymore
-identifiers of the source class member fields. This effect is also mentioned in the \rsec{comparison}.
+class, will not immediately fit into the moved code, as it is still referencing not available anymore
+identifiers of the source class. This effect is also mentioned in the \rsec{comparison}.
 
-% Primitive renaming refactorings out of the box
+%TODO MPS support for refactorrings!!! - research and at least mention
 
 \subsection{Getter and Setter Generation}
-\label{section:getterandsetter}
+\label{getterandsetter}
 
-In order to provide access to encapsulated class properties, usually expressed as member fields in C++, 
-two access functions are defined, known as a getter and a setter. The getter is used to read the property,
+In order to provide an access to encapsulated class properties, often expressed as member fields in C++, 
+two access functions are usually defined, known as a getter and a setter. The getter is used to read the property,
 and the setter is used to set the property to a new value, after checking the validity of the new value.
 
-The job of declaring and prototyping the two functions can be automated with an MPS intention, \fig{getterandsetterintention}.
+The job of declaring and prototyping the two functions can be automated with a \jbmps\ \rg{intention}, \fig{getterandsetterintention}.
 
 \msnozoom{getterandsetterintention}{Calling the Generation of Getter and Setter}
 
-The result of the intention work is, as expected, two methods declared and prototyped, \fig{getterandsetter}.
+The result of the \rg{intention} work is, as expected, two methods declared and prototyped, \fig{getterandsetter}.
 
 \msnozoom{getterandsetter}{Getter and Setter Generated}
 
-The way the editor names the getter and setter can be controlled through Naming Conventions concept, which
-is discussed in the \rsec{namingconventions}.
+The way the editor names the getter and setter can be controlled through the \mpsid{NamingConventions} \rg{concept}, which
+is discussed in \ref{namingconventions}.
 
 The getter and setter are declared in the public section of the class, which is automatically created, if
 not found there already.
 
 The getter is rather simple, it just returns the value of the member field.
+The setter is somewhat more complicated. 
 
-The setter is somewhat more complicated. Firstly, it designed to return \cc{boolean} by default. This is made
-to remind the programmer, to include checking of the value and return \cc{false}. Secondly, the parameter of the
-getter is typed appropriately. As C++ by itself imply the performance maximization, the type
+Firstly, it is designed to return a \cc{bool} value by default. This is made
+to remind the programmer, to include some checking of the value and return \cc{false}, if the check locates a wrong value passed. 
+
+Secondly, the parameter of the setter is typed appropriately. As C++ by itself imply the performance maximization, the type
 of the parameter for the setter depends on the member field type. And when the type represents a composite
 structure, like a class, it is passed by a constant reference, instead of value, \fig{compositesetter}.
 
 \ms{compositesetter}{Setter Works with a Constant Reference for Classes}
 
 Passing a composite parameter as a value involves an overhead of allocating the necessary memory and 
-then copying the contents in the newly allocated memory. To access the parameter in both cases pointer
-arithmetic is going to follow.
-
-% Getter and setter generation
-% Getter and setter do not keep name synch for compatibility with of interfaces with referencing text code
-
+then copying the contents in the newly allocated instance. To access the parameter in both cases pointer
+arithmetic is still going to follow.
 
 \subsection{Naming Conventions}
-\label{section:namingconventions}
+\label{namingconventions}
 
 In the C++ development projects some code writing conventions are usually agreed upon. For example, 
-in Google coding style guide for C++ \cite{googlecppstyle} the member fields must end up with ``\_'' sign.
-For the consistency and uniformity purposes each project has to have some agreements on code  composing.
+in Google coding style guide for C++, \cite{googlecppstyle}, it is stated that all member fields must end up with ``\_'' sign.
+
+For the consistency and uniformity purposes each project has to have some agreements on the way the code is composed.
 They can include code formatting rules and naming rules. 
 
-To some extent the formatting conventions are fixed
-by the way the projectional editor shows the AST, see, for example, the Section \ref{visibilitysections}.
+To some extent the formatting conventions are fixed by the way the projectional editor shows the 
+\rg{ast}, see, for example, \ref{visibilitysections}.
 
-The naming rules, however, should be additionally controlled. The naming rules accepted in a project I call 
+The naming rules, however, should be additionally controlled. The naming rules, accepted in a project, I call 
 naming conventions here.
 
-In order to perform this a new concept has been introduced, called C++ Naming Conventions, \fig{namingconventions}.
+In order to perform the naming conventions controll a new \rg{concept} has been introduced, called \mpsid{CppNaming Conventions}, 
+\fig{namingconventions}. It is created once per \jbmps\ \rg{model}.
 
 \ms{namingconventions}{C++ Naming Conventions Concept}
 
-In the naming conventions one can give a standard prefixes for getters and setters, which are used during the code 
-generation for them, see the \rsec{getterandsetter}. The argument prefix is also used in the generation, to name the
+In the \mpsid{CppNamingConventions} one can give a standard prefixes for getters and setters, which are used during the code 
+generation, see \ref{getterandsetter}. The argument prefix is used in the setter generation, to name the
 setter argument.
 
 The member prefix is used on the member fields to check their naming. It possible to change the prefix and the editor will control
 each of the member field names to comply.
 
-Whenever a field is not named in a proper way, an error extension is available, which automatically renames the field, \fig{renameconventionally}.
+Whenever a field is not named in a proper way, an error \rg{intention} is available, see \ref{intentions}, 
+which automatically renames the field, \fig{renameconventionally}.
 
 \msnozoom{renameconventionally}{Intension to Rename a Field - Naming Conventions}
 
-The naming conventions concept was created to demonstrate some new possibilities, which can be added to the projectional C++.
-Few remarks are needed to explain potential changes to the concept and its difference from the similar functionality taken
-in the conventional text editors.
+The \mpsid{CppNamingConventions} \rg{concept} was created to demonstrate some new possibilities, which can be added to the projectional C++.
+In this case the naming conventions can be seen as a part of project configuration, in a very common sense. This is generalized in the
+\rsec{genprinciples}.
 
-First, the marking of special variables or object, keywords or type names, can be performed be changing editors for them. The special
+Few remarks are needed to explain potential changes to the \mpsid{CppNamingConventions} \rg{concept} and its difference from the similar functionality taken
+in the regular text editors.
+
+First, the marking of special variables or object, keywords or type names, can be performed by changing editors for them. The special
 naming will not be needed then. Such way would mean however no opportunity to introduce a project-dependent marking, as it starts to be
 common for all projects, being a part of the projectional C++ implementation.
 
@@ -103,11 +111,12 @@ Second, the naming checks can be generalized to use compliance to regular expres
 ability to adopt a much broader set of different naming conventions. Disadvantageous is the increase
 of the computational load in the projectional editor, this is discussed also in the \rsec{analysesandcomplexity}.
 
-Third, the naming conventions in projectional C++ is just a concept in an MPS model. It is no different from a C++ Implementation Module
-or Build Configuration. Dislike many conventional editors, which store such settings as a workspace, project or IDE configuration, the
-projectional C++ makes it a part of the program code itself. It is advantageous, since all the programmers in a team have to follow the 
-same naming conventions set up once in a project, and no environment (re-)configuration is needed to work on the project. The projectional
-approach is also discussed and compared to the conventional one in the \rsec{comparison}.
+Third, the \mpsid{CppNamingConventions} in p\pcpp\ is just a \rg{concept} in a \jbmps\ \rg{model}. It is no different from the \mpsid{CppImplementationModule}
+or the \mpsid{BuildConfiguration} \rgp{concept}. Dislike many conventional editors, which store such settings as a workspace, project or \rg{ide} configuration, the
+\pcpp\ makes it a part of the program code itself. It is advantageous, since all the programmers in a team have to follow the 
+same naming conventions set up \emph{once} in a project on the start phase, and no environment (re-)configuration is needed to work on the project by
+any of the joining developers. This principle is generalized in the \rsec{genprinciples}. 
+The projectional approach is also discussed and compared to the conventional one in the \rsec{comparison}.
 
 And last, the naming conventions can of-course be extended to incorporate class names, function names, additional naming for methods,
 like ``is''- prefix for the boolean return type. 
@@ -117,19 +126,19 @@ like ``is''- prefix for the boolean return type.
 \label{implementedcheck}
 
 When using the \cpppl\ it is possible to declare a class in one file, and then implement its methods in other, potentially
-several, files. As there is no clear concept of module in the language itself (more on this in the \rsec{modules}) usually 
-different coding standards improve on it, requiring, for example in the Qt Project \cite{qtcodingguide}, one class to be 
-declared in a the-same-named header file, and the implementation for it to be in one .cpp file.
+several, files. As there is no clear concept of a module in the language itself (more on this in the \rsec{modules}) usually 
+different coding standards have to improve on it, requiring, for example in the Qt Project \cite{qtcodingguide}, one class to be 
+declared in a the-same-named header file, and the implementation for it to be in one similar named .cpp file.
 
-As the language itself does not argue about the place for the method, IDEs usually do not check if the method is implemented.
+As the language itself does not argue about the place for methods, \rgp{ide} usually do not check if the method is implemented.
 Neither do compilers. And only at the linking stage it can appear, that the linker is not able to locate the method. The error
-message from the linker can be rather obscure, as the linker operates on a lover abstraction level, rather than the programmer 
+message from the linker can be rather obscure, as the linker operates on a much lover abstraction level, rather than the programmer 
 using the C++ language. 
 
-After introducing the new module concept as in the \rsec{modules}, it is possible to check each method and find out if they all 
-are implemented. 
+After introducing the new module \rg{concept} as in the \rsec{modules}, it is possible to check each method and find out if they all 
+are implemented on the very early coding stage.
 
-A check is introduced in the projectional C++, which respects inheritance chains, with overloaded functions and pure virtual functions,
+A check is introduced in the \pcpp, which respects inheritance chains, with overloaded functions and \rg{purevirtual} functions,
 and creates a warning for the programmer hinting that a certain method has not been implemented. Together with the class declaration, 
 generating the assignment operator declaration and a copy constructor, the method implemented check makes the programmer to 
 fully define the class together with the most important methods, affecting the memory operations behind the class instances life-cycle.
@@ -138,26 +147,27 @@ fully define the class together with the most important methods, affecting the m
 \subsection{Abstract Class Construction Check}
 % Check for abstract classes construction
 
-In this work I have already defined the notion of abstract classes in C++ and some related to them questions in \ref{abstractclasses} and
-in \ref{cpppolydefs}. Mainly the absence of syntax for the abstract classes and the problem of determination those was discussed.
+In this work I have already defined the notion of \rg{abstract} classes in C++ and some related to them questions in \ref{abstractclasses} and
+in \ref{cpppolydefs}. Mainly the \rg{acsa} and the problem of determining \rg{abstract} classes were discussed.
 
 
 \msnozoom{abstractinstance}{The Abstract Class ConstructREal Zaj Zion Check Signaling an Error}
 
 An opened question which stayed, however, is providing some help to the programmer in the usage of such classes. Namely, any instantiation
-of an abstract class has to be forbidden. The abstract cREal Zaj Zlass as a type, however, should stay, and the pointer type to it should not
-be anyhow affected by the fact that the class is abstract.
+of an \rg{abstract} class has to be forbidden. The \rg{abstract} class as a type, however, should stay, and the pointer type to it should not
+be anyhow affected by the fact that the class is \rg{abstract}.
 
-The decision was taken to check the places, where an instance of an abstract class can appear, and deprecate such situations.
-MPS supports so-called non-type-system checks, which come useful in this situation. Any node on the AST can be analyzed, and 
+The decision was taken to check the places, where an instance of an \rg{abstract} class can appear, and deprecate such situations.
+\jbmps\ supports so-called non-type-system checks, which come useful in this situation. Any node on the \rg{ast} can be analyzed, and 
 if the error happens to be detected, there is a chance to associate it with the node and a textual error message, which will
 clarify the programmer, what exactly went wrong. 
 
-Among the places, where a class can be instantiated are variable declarations field declarations, method and function arguments,
-return types of those. For each of such places a check is performed, and if the class type is detected, it is checked against
-being abstract. Error message appears to indicate the problem if found, \fig{abstractinstance}. 
+Among the places, where a class can be instantiated are variable declarations field declarations, method and function arguments.
+The return type of the function can imply an \rg{abstract} class instantiation. For each of such places a check is performed, 
+and if the class type is detected, it is checked against being \rg{abstract}. Error message appears to indicate the problem, 
+if found, \fig{abstractinstance}. 
 
-The procedure of determining if a class is abstract, can happen every time, when the check is performed. These are all 
+The procedure of determining if a class is \rg{abstract}, can happen every time, when the check is performed. These are all 
 variable declarations, function and method arguments and return types, and memory allocations. The amount of computational
 load can be significant. The question of this complexity is discussed in the \rsec{analysesandcomplexity}.
 

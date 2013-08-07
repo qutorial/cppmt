@@ -1,3 +1,16 @@
+\newglossaryentry{abstract}
+{
+  name=abstract,
+  description={ a class in C++, having at least one method declared pure virtual in ancestors, but never implemented in the ancestors or the
+  class itself, instances of such class can not be created}
+}
+
+\newglossaryentry{acsa}
+{
+  name=abstract class syntax absence,
+  description={ a phenomenon in C++, consisting in absence of any syntax to explicitly declare a class abstract}
+}
+
 \newglossaryentry{action}
 {
   name=action,
@@ -19,7 +32,7 @@
 \newglossaryentry{concept}
 {
   name=concept,
-  description={ is a class-like type, describing a node type in the AST when talking about projectional editing}
+  description={ is a class-like type, describing a node type in the \rg{ast} when talking about projectional editing}
 }
 
 
@@ -81,6 +94,15 @@
   allowing to construct incrementally defined domain specific languages}
 }
 
+\newglossaryentry{ovsa}
+{
+  name=override syntax absece,
+  description={ a phenomenon in C++, consisting in absence of any syntax to explicitly designate a method, beeing an override
+  of another method}
+}
+
+
+
 \newglossaryentry{projectionalapproach}
 {
   name=projectional approach,
@@ -95,6 +117,12 @@
   description={ a C++ flavor introduced by this work, based on mbeddr C++ implementation in the JetBrains MPS environment}
 }
 
+\newglossaryentry{purevirtual}
+{
+  name=pure virtual,
+  description={ are methods in a C++ class, for which intentionally no implementation is provided, they serve purely for overloading purposes, 
+  describing a pure interface}
+}
 
 \newacronym{stl}{STL}{Standard Template Library}
 

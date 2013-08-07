@@ -2,7 +2,7 @@ class Shape {};
 
 class Circle: public Shape {};
 
-void draw(Shape * shape){
+void draw(Shape* shape){
   // ...
 }
 
