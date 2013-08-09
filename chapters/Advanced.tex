@@ -171,9 +171,13 @@ for a single object be he operator \cc{new}, the second deallocates memory, allo
 of object by the operator \cc{new[]}.
 
 The C++ standard does no specify any concrete behavior for wrong deallocation of an array with 
-an operator \cc{delete} (without square brackets), describing
+an operator \cc{delete} (without square brackets), describing it as undefined, \cite{cpp11}.
 
+A simple check is performed, and array dealocation is marked, when is performed wrongly. 
+
+Of-course a complete check for this can only be performed by a complex analysis of the data-flow.
+This is left for the future work.
 
 %TODO Default constructable and arrays! Require constructor by default
 
-%TODO Check for Virtual Destructor 
+%TODO Check for Virtual Destructor

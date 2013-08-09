@@ -4,42 +4,89 @@
 
 \declsec{Comparison with Textual Approach}{comparison}
 
- Compare work with textual editor
+  It is important to compare the \rg{projectionalapproach} to build editors for languages to the well-adopted 
+  textual approach. To the opinion of author the \rg{projectionalapproach} has a number of advantages, 
+  which could make it more popular in the future, as well as, naturally, some disadvantages.
+  
+  First, in a projectional editor the programmer can potentially type less, as the editor is aware \emph{completely}
+  about all the possible constructions, dislike various code-completing helpers in the textual editors, which can refuse 
+  to work at all in some cases\footnote{when a program is in unparsable state, or when there is no source code for a library,
+  sometimes, when a code base is to big to be indexed}. Thus the programmer may rely on the auto-completion much more, which
+  can make the typing itself faster.
 
+  Second, as an \rg{ast} is readily available  in a projectional editor, there is no need to pre-parse the code in order to 
+  perform analysis on it to detect mistakes or for another purpose. In a textual editor before any analysis the program has to be 
+  parsed first. Parsing is a computationally expensive operation. Repeating it after each time a piece of code is modified 
+  puts a high load on the developer's machine and can slow it down significantly. 
+
+  Third, in order to support refactoring an ultimate ``understanding'' of the code is required by the environment. 
+  It is not always possible, however, especially this problem is well-known with complicated languages like the \cpppl.
+  For example, one of the best C++ \rg{ide} Microsoft Visual C++, a problem of parsing complex C++ code and manipulating 
+  on it is well-known, and parsers behind it are constantly updated, to support more of the C++.
+    
+  
+  Fourth, is the flexibility to adopt new language constructions. 
+  As a projectional editor allows for language modularity, \ref{modularity}, it is possible to extend a language, 
+  without modifying an editor significantly, installing extensions for it or similar.
+  
+  Fifth, different naming conventions and coding standards can be replaced by decorations and the way a projectional editor
+  projects the \rg{ast}. For example, a member variable, can be shown differently from a local variable in an method. This 
+  eliminates the need in many of the coding conventions. Naming conventions are, however, usual to programmers, and their are
+  implemented in a shape of analysis in the \pcpp, \ref{namingconventions}.
+
+  Nowadays, in \jbmps\ the approach of generating a text code is taken, before the projected \rg{ast} could be further processed.
+  However, taken into account the fact, that an \rg{ast} in a projectional editor represents the same, or even more, information 
+  as an \rg{ast} resulting after parsing the text code generated, in future it is possible, to process the projected \rg{ast} itself,
+  without generating a text code at all. For example, produce object code from it directly. Thus, in future, the compilation/processing
+  of code from a projectional editor can be made much faster and effective when compared to the textual approach, where parsing takes place.
  
-  Compare the way analysis is performed
-
-  Compare the naturality for the programmer
-
-  Compare flexibility
-
+  A special problem with the projectional approach is moving the code around. As all nodes of the \rg{ast} get referenced by the use of their
+  internal identifiers, and their names do not participate in it, after a piece of code has been moved to another location on the \rg{ast}, 
+  a special processes of binding the nodes has to be executed. For example, if there was a variable \cc{x} in the code defined before the moved snippet,
+  and in the new location for the snippet another variable with the same name \cc{x} is defined, the new \cc{x} will not get referenced by the 
+  moved code snippet, as it references the old one (not available anymore) by its internal identifier. In \jbmps\ the manual process of rebinding is
+  always required, i.e. the programmer will have to go over all nodes, which reference the old context, and input them again, to connect to the
+  new context. In textual editors, there is no such problem, but another one exist - the moved code snippet can change its semantics in a wrong way
+  after being associated with a new context, and not checked entirely. For example, a reference to a variable can start to reference some another, 
+  locally defined, more close to the new code snippet location, variable with the same name as one, more global, used before. 
   
-  About direct compilation without generating text code
-
+  Another very specific issue relevant to projectional editors is the format to store the projectional code and the version control for it.
+  In \jbmps\ an \rg{ast} gets serialized as XML, and is stored in a file. The XML resulted, is, generally speaking, not a human-readable 
+  code, despite the XML nature. The line-by line merging as employed in regular text-oriented version control systems (CVS, SVN, Git, Mercurial)
+  does not apply, breaking the XML, or asking the user to merge, presenting with unreadable XML code. The approach taken in \jbmps\ is providing
+  a special merge driver, which handles merging for the projectional code in a proper way. The driver is not perfect however, still requiring 
+  the user to finish the job manually sometimes. 
   
-  Amount of typing and code generation
+  The new languages are developed themselves using a special defining projectional languages in \jbmps. So the evolution of a language under development,
+  and its version control is also an issue. Each new incremental iteration of a language in \jbmps\ gets internally an increment in the language
+  version number. When a second language is referencing the modified one, the version number is taken into account. The update for the first language
+  then requires an update to the second, using the first,  language, as well as to all other languages, which use the updated one. If two updates happened
+  at the same time for a language, then two \emph{different} versions with the same version number appear, which presents a problem for the 
+  referencing the changed language languages. All this version control issues are still up to be thoroughly though of, and are not yet 
+  implemented well enough.
 
-  Extensibility and higher level construction
-
-  Moving code around is easy locally, but difficult from module to module
-  
-
-  Compare the version control Language And Code itself - different
-
-  
-  Refactorings require cool parser and are not implemented VS2010 new parser adoption
-
-  
-  Compare naming conventions
-
+  Additionally the question of language evolution and code in it is to be researched on.  When a language defined in a projectional editor is
+  modified, the old code may turn to be not matching the language description anymore. For example, nodes may stop satisfying constraints,
+  or have a child/reference with a role, deleted in the new language version, or, vice versa, have a nothing in a place where the new
+  version language requires some child, reference or property. This renders the code in a former language version incorrect in a newer one.
+  The question of the code update to a new language version appears. For example, a script can be provided with each new language version,
+  which updates the code to the version in question. This is not automated however in \jbmps, so that the update process is seamless for the 
+  language user. This is another problem to work on in the future. The problem described, of-course, is not relevant to the text code editors,
+  as it is, since the language evolution there is rather untypical.
 
 \declsec{Generalized Principles of the Projectional Approach}{genprinciples}
 
 In this chapter I formulate some of the general principles, which can be taken into
-account when designing new languages in the projectional editors.
+account when designing new languages in the projectional editors, which are meant to represent, especially,
+the existing already text languages. The principles come out as generalizations of the practical experience,
+achieved during the work on this \MT.
 
 \subsection{Targeting Semantics}
-No matter what you generate to, you should target semantics - way to cover the abstraction gap
+
+ When implementing a language for projectional editor, one should target semantics of it, rather than an existing syntax.
+For example, extensions can be provided, which raise the abstraction level to be closer to the application of the language.
+The code in the target text language is generated then from the higher level constructions.
+%TODO continue here
 
 \subsection{Store More Information}
  More information can and SHOULD be stored than is needed for generation.
