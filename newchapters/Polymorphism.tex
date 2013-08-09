@@ -94,6 +94,7 @@ In the \rsec{extensibility} I discuss more on the approach taken here, its limit
 the potential ways to overcome them.
 
 \subsubsection{Overriding a Virtual Function}
+\label{overridefunction}
 
 The \rl{override} demonstrates, how overriding of a virtual function happens in C++.
 The function \cc{getArea()} is initially defined in the class \cc{Shape} and is then overridden
@@ -129,6 +130,7 @@ it is generalized in the \rsec{genprinciples}.
 
 
 \subsubsection{Pure Virtual Functions}
+\label{purevirtualfuncs}
 
 In the example above, \rl{override}, one improvement to the code can be made. As the \cc{getArea()} for a random shape can not 
 be determined, it makes sense to make the \cc{getArea()} function \rg{purevirtual}. As said before, a \rg{purevirtual} 

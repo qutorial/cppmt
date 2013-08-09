@@ -1,4 +1,4 @@
-\declchap{Evaluation - (structure and sketches only) }{eval}
+\declchap{Evaluation}{eval}
 
 
 
@@ -85,43 +85,76 @@ achieved during the work on this \MT.
 
  When implementing a language for projectional editor, one should target semantics of it, rather than an existing syntax.
 For example, extensions can be provided, which raise the abstraction level to be closer to the application of the language.
-The code in the target text language is generated then from the higher level constructions.
-%TODO continue here
+The code in the target text language is generated then from the higher level constructions. 
+
+Another place to think of targeting semantics is, where the target language constructions are low-level and 
+full of compiler-helping syntax. These constructions can be cleaned out, helping the programmer to focus on their
+semantics, instead of typing and syntax.
 
 \subsection{Store More Information}
- More information can and SHOULD be stored than is needed for generation.
- Example is the overridden method link in the override
 
- Disadvantage - native code compatibility
+ The language in the projectional editor can, and often should, contain \emph{more} information as it is needed 
+ to just generate a text in the target language. This information may be used to improve the generation results, or
+ analysis. Example is the overridden method link in the override in the \pcpp, \ref{overridefunction}.
+ 
+ The disadvantage of this way can be a problem to extend the information, taken from an importer of the native text language,
+ \ref{importers}.
 
 \subsection{Configuration as a Part of Source Code}
- Configuration (as naming conventions) is nice to store with code! 
-
- Usually editor preferences are not shared like in eclipse, but this can enforce standards
+ Usually a project consists not only of the source code, but of some configuration for it, like naming conventions, 
+ generator configuration, build configuration, other specific to the project information.
  
- Another example would be the build configuration indeed.
+ It presents advantageous to store this configuration together with code as a part of it. This eliminates the need 
+ to separately configure an environment of each developer before the development process may start.
+
+ Usually editor preferences are not shared among users, like in Eclipse for example, stored in a individual for each 
+ machine workspace part. This brings a need to configure each development environment separately, and maintain the similarity
+ of configuration.
+ 
+ This should exclude, however, the pure developer-machine-specific configuration.
 
 \subsection{Hide Redundant Syntax}
 
-Don't show to the programmer semicolons and similar.
+ Usually, textual languages contain a lot of syntax, which helps parsers of the language to process the code. 
+ In C-like languages these are semicolons, curly braces, braces and brackets.
+ 
+ This syntax has nothing to do usually with the code semantics, so it could be not projected at all, without changing
+ the meaning of the code. Decreasing the amount of projected symbols the code can be made more readable.
+ 
+ Formatting\footnote{it is important for some languages, like Python, and less relevant to C as syntax complication} can also be considered the redundant syntax, and addressed by projection.
 
 \subsection{Make Old Syntax Readable}
 
-instead of virtual void bla() = 0;   pure virtual void bla().
+  Whenever a syntax of the target language happened to be not well readable by itself, a projectional editor can 
+  change it. The amount of punctuation can be lowered and some phenomena named in a human language.
+  
+  As an example I am bringing here a \rg{purevirtual} method declaration, \ref{purevirtualfuncs}.
 
 \subsection{Show the Core, Hint on Details}
- friend draw     (void draw(const bla \& this , bla \& that))
+
+  Not necessarily all the information represents the core meaning of the language construction. The 
+  most important information can be shown first, and the rest can be shown as a hint, especially when
+  it can be figured out by the projectional editor automatically.
+  
+  As an example we can consider a friend function declaration in the \pcpp, \ref{accessandfriends}.
 
 \subsection{Perform Analyses and Inform the User}
 
-like with the abstract class - which is abstract - informative analysis
+Performing various analyses on the \rg{ast} in the projectional editor, it is possible to improve the overall 
+editing experience.
 
+I suggest the logical division of analyses on two types: informative and preventive.
 
-or not allow to instantiate - preventive analysis
+An informative analysis can be performed to find out more about the edited code. Various newly found properties
+can be shown as hints for the user. Abstract classes determination is an example of informative analysis, \ref{abstractclasses}. Another example
+is class copying and assignment analysis, \ref{classcopying}.
 
-%TODO More?
-TODO More?
+A preventive can be performed to prevent programming mistakes. In general, this topic can go deep, and it is considered separately in, e.g.,
+\cite{2012_ratiu_modular_dsls_and_analyses}. In this work as an example of such an analysis for C++ the detection of abstract class instantiation
+attempts can serve, \ref{preventiveabstract}.
 
+When implementing analysis, one should mind the complexity of it, and take the decision, whether to implement it as a \rg{selfrunninganalysis}, or
+on as an \rg{analysisondemand}, see the \rsec{analysesandcomplexity}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 

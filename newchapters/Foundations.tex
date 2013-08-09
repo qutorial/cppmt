@@ -191,3 +191,21 @@ newly introduced concepts. The practical side of the language modularity and ext
 % TODO
 %Quote more papers, bring an illustration
 
+\subsection{Text Language Importers}
+\label{importers}
+
+When recreating an existing text language in projection, it is natural to support some libraries with it. The libraries, or a code 
+base in another form, is present however not in the projectional form, but in the native for the language text code. Thus, for the 
+user of the language, to be able to use the code base, it has to be \emph{imported} to the projectional editor. 
+
+The import process consists of parsing the text code getting an \rg{ast} and converting the \rg{ast} in an \rg{ast}, as can
+be described by the language in projection.
+
+The task of import contains usually several principal challenges. At first, the native text language can have more 
+constructions, than the version described in the projection. This happens, due to the intentions to omit some of them
+in projection\footnote{dangerous constructions, like \cc{reinterpret\_cast}}, absence of them due to the simplicity of projectional 
+implementation of the language, no need for them in projection, because the constructions are only specific to the textual nature of 
+the code\footnote{for example, preprocessor directives}. Second, the projectional language can contain more information about the nodes,
+than is present in the textual language, thus the information has to be generated or manually added later.
+
+Additionally the technical work to create an importer can be considered significant, especially for complex languages, like the \cpppl.
