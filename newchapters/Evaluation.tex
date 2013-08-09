@@ -160,40 +160,132 @@ on as an \rg{analysisondemand}, see the \rsec{analysesandcomplexity}.
 
 \declsec{Projectional Language Extensibility}{extensibility}
 
-Extensibility of different languages to create a concept is discussed here.
+In general the extensibility and modularity are very important concepts for projectional editing, \ref{modularity}.
 
+In \jbmps\ the extensibility consists of creating a new language and there some new \rgp{concept}, which represent an extension.
+When creating \rgp{concept} in \jbmps\ one deals with several views of them, see \rsec{mps}. In this section I consider extensibility, and 
+the most important, how well it is possible in \jbmps, per view on the language.
 
 \subsection{Structure}
-Inheritance like (but confusion with base concept and inmplements)
+
+This view is the same as the view on \rg{concept} declarations.
+
+Extensibility is implemented here by inheriting from the base \rg{concept}. It is rather straightforward, 
+since it is very similar to the object oriented programming languages concept of inheritance, with one difference, 
+actually originated from the Java notion of interface, as there is one base \rg{concept}, but several \rgp{interfaceconcept}
+which could be implemented.
 
 \subsection{Editor} 
-One only, can't be changed, in MPS3.0 - better, but how much? - future work
+
+It is hard to extend a language in terms of changing an editor concept (see \ref{mpseditor}) for an existing \rg{concept} in \jbmps.
+Namely, there are no direct ways to perform inheritance there. 
+
+So, if the way a \rg{concept} is edited or displayed has to be 
+changed, one should take work around ways to achieve the needed behavior. 
+
+One way is inheritance from the \rg{concept}, and changing the editor concept for the descendant.
+
+Another way, is mixing some interface calls into the editor, and overriding the methods in the inheriting concept.
+This way limits the editor to the way it was originally programmed is limited.
+
+These both ways, however, do not change the way instances of the old \rg{concept} are presented.
+
+In the new 3.0 version of \jbmps\ an ability to have several editors for one \rg{concept} is present. It is 
+up to the future research, on how it will change the editor extensibility.
 
 \subsection{Constraints}
 
-No way to change nicely, but possible (IIdentifier Named concept, Cpp reserved words, get problem (to do: find about it Markus's letter) )
-Also constrain LocVar decl to not allow abstract classes - not possible, have to use check.
+Constraints, similar to the editor, does not extend well in \jbmps. Namely, there is no way to newly define the constraints
+for an existing \rg{concept}. When creating a new concept, there is no way to reuse constraints from existing one, as they 
+are not accessible.
+
+As an example, when extending the \mbdr\ C to the \pcpp, the naming of identifiers had to be changed, so that C++ keywords
+are accounted as well. They naming rules for identifiers are constrained in the \mpsid{IIdentifierNamedConcept} in \mbdr.
+So in its constraints concept a limiting behavior is programmed. There is, however, no way to reuse it explicitly.
+
+Another example would be the reference constraints, where a variable declaration would be forbidden to use an \rg{abstract} class
+as a type. It is not possible to redefine those constraints, just adding a language, and not editing the existing one directly.
+
+As a workaround two methods are proposed. First, the constraining behavior can be taken out into a separate code fragment in a Java-like class,
+the abstract factory pattern could be implemented, \cite{GOF95}, and the polymorphic behavior achieved in this way.  Second, is to 
+create a check, additionally constraining and marking as errors the places, where the new constraints have been violated.
+
+The first workaround is work intensive to implement originally in the base language. The second workaround does not allow for extending the 
+constraints, making them weaker, and lets the not allowed nodes in the code completion.
+
+
+In the future, a research could be made, how \jbmps\ could be improved to allow for easier constraints extensibility.
 
 \subsection{Behavior}
 
-Nice, like Java
+Behavior is very similar to Java classes and their methods. It is easy to extend behavior of a \rg{concept} in \jbmps\
+as all the object oriented methods for polymorphism can be involved in the very same way as for Java classes.
 
 \subsection{TextGen}
 
-Nice, as it supports polymorhism.
+\Rgp{textgen} are also very well extensible. When generating a text for a \rg{concept}, the children are output with 
+the textgen \mpsid{append} command, without specifying, how exactly it should be done. Polymorphically the 
+matching \rgp{textgen} are invoked, and this extends the \rg{textgen} of the previously defined \rg{concept}.
+
+For example, when generating a text for a function, each statement of the body is generated to text. 
+For each statement the \rg{textgen} of the statement itself is executed. Thus, if we add a new kind of statement,
+all we need is to define a \rg{textgen} for it, and it will be polymorphically invoked from the \rg{textgen} for the
+function. The text for the function will be generated correctly, without the need to change the function \rg{textgen}
+implementation anyhow.
 
 \subsection{Generators}
-- not related ?
-may be hard to extend... because in general hard...
 
-\subsection{Actions and Intentions}
-- not needed ? Or? How to forbid an intention on something?
+Generators perform language transformations in \jbmps, \ref{generators}. As this work does not directly 
+implement language transformations, it is left for future research, to investigate, how extensible the 
+generators are. 
 
+\subsection{Intentions}
+
+\Rgp{intention} are described in \ref{intentions}. 
+
+There may be a need to modify an \rg{intention} after extending the language. There is no direct way to do it 
+in \jbmps. 
+
+For example, there is explicit way to forbid an \rg{intention} to work on a newly defined \rg{concept}, no matter
+it is based on some \rg{concept} for which the \rg{intention} is defined.
+
+As a workaround an injection of external polymorphic code from a Java-like class can be taken, similarly to the way it is 
+described above for constraints, with the same practical outcome of a high programming intensity when creating the base language.
+
+Alternatively, an \rg{intention} can delegate its function to the \rg{concept} under question, so that the whole manipulation is 
+made by the target \rg{concept} itself. This will lead, however in a necessity to define a general behavior in the base concept, which can
+be behaving wrong in one of the particular cases, or to the need to implement the polymorphic methods called in the \rg{intention} in 
+\emph{each} of the descendant \rgp{concept}.
 
 \subsection{Type System}
-- pain! Replacement rule mentined here
-%TODO Talk about the replacement rule
-Similar to constraints actually.
+
+Type System in \jbmps\ is generally speaking another way of constraining. And exactly as in the situation with constraints 
+there is no direct way to change the type system behavior, when extending an existing language with a new one. For example, 
+when a new kind of expressions is added, which has to be typed differently, when used together with some existing expression type,
+and the existing expression ty[e system is determining the type, it is not possible to redefine this behavior or extend in
+naturally with some provided by \jbmps tools.
+
+The workarounds consist from injecting polymorphic behavior in the type system calls, or from using \jbmps own workaround, like 
+the replacement rule, as for example in \ref{pointertoclasstyping}.
+
+Hopefully, in the future versions of \jbmps\ this is going to be taken care of, and some ways to extend naturally, by the 
+means of the typing system itself will be present.
+
+\subsection{Analyses}
+
+Analyses are also subjects to challenge the language extensibility. If an analysis is relying on the exact \rgp{concept}
+to work, and is not assuming that a new language could extend those, a problem happens.
+
+For example, \mbdr\ data flow analysis, can analyse a C++ code snippet, using some class \cc{Circle}, to instantiate it \cc{Circle c;}
+and produce an error, that the variable \cc{c} has not been initialized, which is not true in the case of a class with a constructor.
+Either the analysis should delegate some features to \rg{concept}, or employ some external polymorphic calls as possible workarounds.
+In the first case the analysis stops to be a separate programming from the language itself, as delegated analysis methods are found now
+in the \rg{concept} behaviors. In the second case the development can get more complex initially, as the code should be written 
+in the very beginning polymorphic and abstract enough to allow non-invasive modification in future.
+
+
+Again, some specific support for analyses from \jbmps\ itself could improve the situation, by providing some special means 
+to develop extensible analyses.
 
 
 \subsection{Extensibility Overview}
