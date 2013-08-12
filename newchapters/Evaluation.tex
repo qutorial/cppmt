@@ -139,17 +139,18 @@ semantics, instead of typing and syntax.
   As an example we can consider a friend function declaration in the \pcpp, \ref{accessandfriends}.
 
 \subsection{Perform Analyses and Inform the User}
+\label{analysisprinciple}
 
 Performing various analyses on the \rg{ast} in the projectional editor, it is possible to improve the overall 
 editing experience.
 
-I suggest the logical division of analyses on two types: informative and preventive.
+I suggest the logical division of analyses on two types: \rg{informativeanalysis} and \rg{preventiveanalysis}.
 
-An informative analysis can be performed to find out more about the edited code. Various newly found properties
+An \rg{informativeanalysis} can be performed to find out more about the edited code. Various newly found properties
 can be shown as hints for the user. Abstract classes determination is an example of informative analysis, \ref{abstractclasses}. Another example
 is class copying and assignment analysis, \ref{classcopying}.
 
-A preventive can be performed to prevent programming mistakes. In general, this topic can go deep, and it is considered separately in, e.g.,
+A \rg{preventiveanalysis} can be performed to prevent programming mistakes. In general, this topic can go deep, and it is considered separately in, e.g.,
 \cite{2012_ratiu_modular_dsls_and_analyses}. In this work as an example of such an analysis for C++ the detection of abstract class instantiation
 attempts can serve, \ref{preventiveabstract}.
 
@@ -213,6 +214,9 @@ create a check, additionally constraining and marking as errors the places, wher
 The first workaround is work intensive to implement originally in the base language. The second workaround does not allow for extending the 
 constraints, making them weaker, and lets the not allowed nodes in the code completion.
 
+
+Additionally, it is noteworthy to mention, that it is possible to redefine a constraint for a certain role, when inheriting 
+from a \rg{concept}.
 
 In the future, a research could be made, how \jbmps\ could be improved to allow for easier constraints extensibility.
 
@@ -289,17 +293,110 @@ to develop extensible analyses.
 
 
 \subsection{Extensibility Overview}
-Summary in a shape of a table
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
+Here I summarize in a table the degree of extensibility in \jbmps, provided for languages, per view on a language,
+and the quality of known workarounds.
 
-\subsection{Current State and Future Work}
-And finally, some ways to come over, and how MPS can be made better later.
+\begin{center}
+\begin{tabular}{l|c|c}
+\textbf{View} & \textbf{Extensibility} & \textbf{Workarounds Quality} \\
+\hline
+Structure & High & -\\
+Editor & No & Poor\\
+Constraints & Low & Good\\
+Behavior & High & -\\
+TextGen & High & -\\
+Generators & - & -\\
+Intentions & No & Medium\\
+Type System & Low & Medium\\
+Analyses & No & Medium
+\end{tabular}
+\end{center}
 
+
+As an outcome it appears, that \jbmps\ does not provide a high degree of extensibility, which would allow 
+a pure modular language engineering. The views, which are not extensibility aware could be improved, and the
+task of improvement can be no trivial\footnote{the author implies does from the absence of good workarounds currently}.
 
 \declsec{Analyses and Complexity}{analysesandcomplexity}
 
-Take one analysis, analyze complexity, figure out runtimes, MPS things
+As it is stated before, \ref{analysisprinciple}, when constructing a language with an editor for it, 
+it makes sense to provide the language with some analyses. Two types of analysis by application are considered:
+\rg{informativeanalysis} and \rg{preventiveanalysis}. Two types of analysis by the way they are initiated are defined: 
+\rg{selfrunninganalysis} and \rg{analysisondemand}.
+
+A work flow of an analysis can be split into three major steps: initiation, running and reporting the result to the user.
+On each of the steps the environment (\jbmps\ in this case) can provide certain support for the analysis, making the 
+development of it easier. Below I discuss it step-by-step.
+
+\subsection{Analysis Initiation}
+
+It can be beneficial for the overall \rg{ide} performance to implement all computationally heavy analyses 
+as \rgp{analysisondemand}. Thus the user invokes them when needed, and the question of initiation is solved.
+
+For the \rgp{selfrunninganalysis} the question of automatic initiation is to be solved. In \jbmps\ there is no 
+way to define, when a certain check is to be run. Thus two problems occur: some checks run too often, and 
+decrease unnecessarily the system performance, or other checks do not happen often enough, and the user is not 
+informed on time on the results\footnote{There is a way to re-run \rgp{selfrunninganalysis} in \jbmps\ manually,
+by pressing F5}. 
+
+As a solution to this an \rg{api} extension for can be proposed: for each analysis it should be possible 
+to define an event, on which the analysis has to repeat, as well as which nodes of the \rg{ast} have to be covered.
+
+For example, for the \rg{informativeanalysis} identifying \rg{abstract} classes, \ref{abstractclasses}, the running
+event can be defined through the declaration of a new method or a new inheritance relationship established. The 
+affected nodes of the \rg{ast} can be correspondingly described as the changed by the modification classes.
+
+Thus the analysis will never run when changes made do not require it, and will always be run when 
+it has to, and only on the affected nodes.
+
+
+\subsection{Analysis Running}
+
+After an analysis has been initiated, the running phase comes. Some analyses can be computationally complex,
+as they can require external tools running, like SMT solvers, for example, \cite{2012_ratiu_modular_dsls_and_analyses},
+or involve themselves complex algorithms.
+
+As an example of a computationally intensive analysis, the \rg{preventiveanalysis} for \rg{abstract} classes 
+instantiation can be taken, \ref{preventiveabstract}. At first, the amount of nodes of an \rg{ast} is high,
+as they include local variable declarations, function parameters, function return types, class member variables
+and more. Each of the nodes is checked like this: at first the type is extracted, then the type is checked to be 
+a \mpsid{ClassType}. When an instance of the \mpsid{ClassType} is found, the \mpsid{Class} is checked on being abstract.
+For this all of its method declarations are checked on being \rg{purevirtual}, and then all the base classes are 
+checked on being abstract. If we take a reasonably big code base, like, for example the Qt library, which contains about one thousand
+classes\footnote{989 classes in Qt 5.1}, the amount of nodes to check and the associated computations can be immense\footnote{If we assume,
+that each class out of 1000 classes in a library has 1 parent, 3 member fields, 3 methods, each with 1 parameter, 1 return type, and 1 local variable,
+we get up to 100 000 nodes to be addressed by the check.}.
+
+As analyses can be started automatically, the computational load on an \rg{ide} can be increased as some analyses
+may start in parallel. 
+
+This all may present a performance problem, and a certain support from the \jbmps\ is needed to handle the task
+of efficient analysis development.
+
+First, as discussed in the previous subsection, it should be possible to control, when \rgp{selfrunninganalysis} start,
+and the scope of their work. 
+
+Second, some value caching is needed, to store the information figured out by the analyses. For example, for each
+class, it could be saved, if it was found to be an \rg{abstract} class, and the cached value should be valid, until
+the event to re-run the analysis is detected. It may be necessary, to retain the values after the \rg{ide} restart,
+
+Third, as an analysis may take some time to execute, there has to be a way, to inform the user on the background process
+running, so that the user interface is more clear about analyses and their run time. Currently, \jbmps\ does not inform
+the user about it.
+
+Fourth, there has to be a way to limit and prioritize the analyses running at the same time. For example, \rgp{preventiveanalysis}
+can be preferred over \rgp{informativeanalysis}, and the total amount of analyses running in parallel could be limited 
+to some number.
+
+
+
+Fourth, as a change in one node may cause changes in other nodes, there has to be a
+
+
+%TODO continue here
+
+Take one analysis, research its complexity, figure out runtimes, MPS things
 
  Analysis can go on the syntax tree
 

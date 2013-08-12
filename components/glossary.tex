@@ -23,6 +23,7 @@
 \newglossaryentry{analysisondemand}
 {
   name=analysis on demand,
+  plural=analyses on demand,
   description={ is an analysis, which the user must invoke explicitly in the \rg{ide}, it is usually computantionally expensive, c.f. \rg{selfrunninganalysis} }
 }
 
@@ -58,7 +59,13 @@
 \newglossaryentry{exemcpp}
 {
   name=Extended Embedded C++,
-  description={ is a improvement of Embedded C++, bringing back the omitted language features, and a memory-aware STL version}
+  description={ is a improvement of Embedded C++, bringing back the omitted language features, and a memory-aware \rg{stl} version}
+}
+
+\newglossaryentry{informativeanalysis}
+{
+  name=informative analysis,
+  description={ is performed to inform the user about some code properties, to enhance understanding of the code and its properties}
 }
 
 \newacronym{ide}{IDE}{Integrated Development Environment}
@@ -111,6 +118,11 @@
 }
 
 
+\newglossaryentry{preventiveanalysis}
+{
+  name=preventive analysis,
+  description={ is performed to inform the user about the potential mistakes in advance, in order to prevent them}
+}
 
 \newglossaryentry{projectionalapproach}
 {
@@ -137,7 +149,8 @@
 \newglossaryentry{selfrunninganalysis}
 {
   name=self-running analysis,
-  description={ is an anlysis, which determines itself the point of time, when it is performed, or this moment is determined automaticall by the \rg{ide}, 
+  plural=self-running analyses,
+  description={ is an analysis, which determines itself the point of time, when it is performed, or this moment is determined automaticall by the \rg{ide}, 
   there is no need to explicitly run such analysis}
 }
 
