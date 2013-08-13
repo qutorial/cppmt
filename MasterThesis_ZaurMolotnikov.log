@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  12 AUG 2013 18:21
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  13 AUG 2013 14:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -873,22 +873,31 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              Support for \float@addtolists may be removed from
 (scrbook)              `scrbook' soon .
 
-[1
-
-
-
-]
 LaTeX Font Info:    External font `yhcmex10' loaded for size
-(Font)              <9> on input line 75.
+(Font)              <9> on input line 32.
 LaTeX Font Info:    External font `yhcmex10' loaded for size
-(Font)              <5> on input line 75.
- [2]
-Overfull \hbox (4.19992pt too wide) in paragraph at lines 109--114
+(Font)              <5> on input line 32.
+<figures/dectab.png, id=450, 313.77225pt x 86.12175pt>
+File: figures/dectab.png Graphic file (type png)
+
+<use figures/dectab.png>
+Package pdftex.def Info: figures/dectab.png used on input line 35.
+(pdftex.def)             Requested size: 313.77147pt x 86.12154pt.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 45.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [1
+
+
+
+] [2 <./figures/dectab.png>]
+Overfull \hbox (4.19992pt too wide) in paragraph at lines 118--123
 \OT1/ppl/m/n/10.95 mod-i-fied to-wards the C++ pro-gram-ming lan-guage only, bu
 t in-stead, mak-ing, when needed,
  []
 
-) [3] (./newchapters/Foundations.tex [4]
+[3]) (./newchapters/Foundations.tex [4]
 Chapter 2.
 
 Overfull \hbox (0.48769pt too wide) in paragraph at lines 26--30
@@ -930,21 +939,15 @@ nverted-to.pdf figures/constructor.eps>
 (epstopdf)             \includegraphics on input line 91.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/constructor-eps-converted-to.pdf, id=576, 920.43875pt x 433.62pt>
+<figures/constructor-eps-converted-to.pdf, id=593, 920.43875pt x 433.62pt>
 File: figures/constructor-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/constructor-eps-converted-to.pdf>
 Package pdftex.def Info: figures/constructor-eps-converted-to.pdf used on input
  line 91.
 (pdftex.def)             Requested size: 248.52179pt x 117.07896pt.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 108.
-
-
-(/usr/local/texlive/2011/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [7 <./figures/constructor-eps-converted-to.pdf>] [8] [9]) (./newchapters/Tech
-nologies.tex
-[10]
+ [7 <./figures/constructor-eps-converted-to.pdf>] [8] [9]) (./newchapters/Techn
+ologies.tex [10]
 Chapter 3.
 (./newchapters/MPS.tex
 Package epstopdf Info: Source file: <figures/mpsif.eps>
@@ -958,7 +961,7 @@ d-to.pdf figures/mpsif.eps>
 (epstopdf)             \includegraphics on input line 15.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mpsif-eps-converted-to.pdf, id=675, 646.415pt x 546.04pt>
+<figures/mpsif-eps-converted-to.pdf, id=691, 646.415pt x 546.04pt>
 File: figures/mpsif-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/mpsif-eps-converted-to.pdf>
@@ -989,7 +992,7 @@ nverted-to.pdf figures/mpsifeditor.eps>
 (epstopdf)             \includegraphics on input line 88.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mpsifeditor-eps-converted-to.pdf, id=772, 579.16376pt x 211.79124pt>
+<figures/mpsifeditor-eps-converted-to.pdf, id=788, 579.16376pt x 211.79124pt>
 File: figures/mpsifeditor-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/mpsifeditor-eps-converted-to.pdf>
@@ -1009,7 +1012,7 @@ s-converted-to.pdf figures/mpslocvarrefbeh.eps>
 (epstopdf)             \includegraphics on input line 102.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mpslocvarrefbeh-eps-converted-to.pdf, id=795, 579.16376pt x 309.155pt>
+<figures/mpslocvarrefbeh-eps-converted-to.pdf, id=811, 579.16376pt x 309.155pt>
 File: figures/mpslocvarrefbeh-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/mpslocvarrefbeh-eps-converted-to.pdf>
 Package pdftex.def Info: figures/mpslocvarrefbeh-eps-converted-to.pdf used on i
@@ -1027,7 +1030,7 @@ s-converted-to.pdf figures/mpsidnameconstr.eps>
 (epstopdf)             \includegraphics on input line 115.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mpsidnameconstr-eps-converted-to.pdf, id=806, 616.3025pt x 386.44376pt
+<figures/mpsidnameconstr-eps-converted-to.pdf, id=822, 616.3025pt x 386.44376pt
 >
 File: figures/mpsidnameconstr-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/mpsidnameconstr-eps-converted-to.pdf>
@@ -1052,7 +1055,7 @@ Package epstopdf Info: Source file: <figures/mpsternaryts.eps>
 onverted-to.pdf figures/mpsternaryts.eps>
 (epstopdf)             \includegraphics on input line 133.
 Package epstopdf Info: Output file is already uptodate.
-<figures/mpsternaryts-eps-converted-to.pdf, id=834, 499.8675pt x 247.92625pt>
+<figures/mpsternaryts-eps-converted-to.pdf, id=850, 499.8675pt x 247.92625pt>
 File: figures/mpsternaryts-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/mpsternaryts-eps-converted-to.pdf>
@@ -1072,7 +1075,7 @@ ps-converted-to.pdf figures/mpsbinexptextgen.eps>
 (epstopdf)             \includegraphics on input line 152.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mpsbinexptextgen-eps-converted-to.pdf, id=869, 564.1075pt x 301.125pt>
+<figures/mpsbinexptextgen-eps-converted-to.pdf, id=885, 564.1075pt x 301.125pt>
 File: figures/mpsbinexptextgen-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/mpsbinexptextgen-eps-converted-to.pdf>
 Package pdftex.def Info: figures/mpsbinexptextgen-eps-converted-to.pdf used on 
@@ -1091,7 +1094,7 @@ eps-converted-to.pdf figures/mpsconstintention.eps>
 (epstopdf)             \includegraphics on input line 169.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mpsconstintention-eps-converted-to.pdf, id=897, 714.67pt x 475.7775pt>
+<figures/mpsconstintention-eps-converted-to.pdf, id=913, 714.67pt x 475.7775pt>
 File: figures/mpsconstintention-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/mpsconstintention-eps-converted-to.pdf>
 Package pdftex.def Info: figures/mpsconstintention-eps-converted-to.pdf used on
@@ -1116,7 +1119,7 @@ f>
 (epstopdf)             \includegraphics on input line 32.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/minushierarchy-eps-converted-to.pdf, id=982, 582.175pt x 109.40875pt>
+<figures/minushierarchy-eps-converted-to.pdf, id=998, 582.175pt x 109.40875pt>
 File: figures/minushierarchy-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/minushierarchy-eps-converted-to.pdf>
@@ -1135,7 +1138,7 @@ converted-to.pdf figures/typehierarchy.eps>
 (epstopdf)             \includegraphics on input line 43.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/typehierarchy-eps-converted-to.pdf, id=989, 562.1pt x 101.37875pt>
+<figures/typehierarchy-eps-converted-to.pdf, id=1005, 562.1pt x 101.37875pt>
 File: figures/typehierarchy-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/typehierarchy-eps-converted-to.pdf>
@@ -1149,7 +1152,7 @@ ains def-i-ni-tions for C lan-guage state-ments. The \OT1/pcr/b/n/10.95 Stateme
 nt
  []
 
-<figures/stexprmarked.png, id=1001, 451.6875pt x 306.01828pt>
+<figures/stexprmarked.png, id=1017, 451.6875pt x 306.01828pt>
 File: figures/stexprmarked.png Graphic file (type png)
 
 <use figures/stexprmarked.png>
@@ -1192,7 +1195,7 @@ verted-to.pdf figures/namespaces.eps>
 (epstopdf)             \includegraphics on input line 115.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/namespaces-eps-converted-to.pdf, id=1119, 1420.30624pt x 515.9275pt>
+<figures/namespaces-eps-converted-to.pdf, id=1134, 1420.30624pt x 515.9275pt>
 File: figures/namespaces-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/namespaces-eps-converted-to.pdf>
@@ -1212,7 +1215,7 @@ ted-to.pdf figures/webpage.eps>
 (epstopdf)             \includegraphics on input line 59.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/webpage-eps-converted-to.pdf, id=1145, 1206.5075pt x 491.8375pt>
+<figures/webpage-eps-converted-to.pdf, id=1161, 1206.5075pt x 491.8375pt>
 File: figures/webpage-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/webpage-eps-converted-to.pdf>
@@ -1244,7 +1247,7 @@ rted-to.pdf figures/copyable.eps>
 (epstopdf)             \includegraphics on input line 147.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/copyable-eps-converted-to.pdf, id=1223, 1352.05125pt x 379.4175pt>
+<figures/copyable-eps-converted-to.pdf, id=1238, 1352.05125pt x 379.4175pt>
 File: figures/copyable-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/copyable-eps-converted-to.pdf>
@@ -1263,7 +1266,7 @@ nverted-to.pdf figures/notcopyable.eps>
 (epstopdf)             \includegraphics on input line 162.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/notcopyable-eps-converted-to.pdf, id=1258, 1276.77pt x 414.54875pt>
+<figures/notcopyable-eps-converted-to.pdf, id=1273, 1276.77pt x 414.54875pt>
 File: figures/notcopyable-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/notcopyable-eps-converted-to.pdf>
@@ -1284,7 +1287,7 @@ ted-to.pdf figures/inhdecl.eps>
 (epstopdf)             \includegraphics on input line 28.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/inhdecl-eps-converted-to.pdf, id=1296, 1320.935pt x 647.41875pt>
+<figures/inhdecl-eps-converted-to.pdf, id=1311, 1320.935pt x 647.41875pt>
 File: figures/inhdecl-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/inhdecl-eps-converted-to.pdf>
@@ -1303,7 +1306,7 @@ rted-to.pdf figures/inhusage.eps>
 (epstopdf)             \includegraphics on input line 50.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/inhusage-eps-converted-to.pdf, id=1323, 1039.885pt x 656.4525pt>
+<figures/inhusage-eps-converted-to.pdf, id=1338, 1039.885pt x 656.4525pt>
 File: figures/inhusage-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/inhusage-eps-converted-to.pdf>
@@ -1338,7 +1341,7 @@ rted-to.pdf figures/override.eps>
 (epstopdf)             \includegraphics on input line 122.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/override-eps-converted-to.pdf, id=1461, 1180.41pt x 568.1225pt>
+<figures/override-eps-converted-to.pdf, id=1476, 1180.41pt x 568.1225pt>
 File: figures/override-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/override-eps-converted-to.pdf>
@@ -1367,7 +1370,7 @@ Package epstopdf Info: Source file: <figures/purevirtual.eps>
 nverted-to.pdf figures/purevirtual.eps>
 (epstopdf)             \includegraphics on input line 157.
 Package epstopdf Info: Output file is already uptodate.
-<figures/purevirtual-eps-converted-to.pdf, id=1496, 774.895pt x 48.18pt>
+<figures/purevirtual-eps-converted-to.pdf, id=1511, 774.895pt x 48.18pt>
 File: figures/purevirtual-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/purevirtual-eps-converted-to.pdf>
@@ -1386,7 +1389,7 @@ rted-to.pdf figures/abstract.eps>
 (epstopdf)             \includegraphics on input line 197.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/abstract-eps-converted-to.pdf, id=1535, 1413.28pt x 791.95876pt>
+<figures/abstract-eps-converted-to.pdf, id=1550, 1413.28pt x 791.95876pt>
 File: figures/abstract-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/abstract-eps-converted-to.pdf>
@@ -1409,7 +1412,7 @@ ention-eps-converted-to.pdf figures/getterandsetterintention.eps>
 (epstopdf)             \includegraphics on input line 39.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/getterandsetterintention-eps-converted-to.pdf, id=1580, 383.4325pt x 2
+<figures/getterandsetterintention-eps-converted-to.pdf, id=1595, 383.4325pt x 2
 15.80624pt>
 File: figures/getterandsetterintention-eps-converted-to.pdf Graphic file (type 
 pdf)
@@ -1429,7 +1432,7 @@ s-converted-to.pdf figures/getterandsetter.eps>
 (epstopdf)             \includegraphics on input line 43.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/getterandsetter-eps-converted-to.pdf, id=1583, 480.79625pt x 253.94875
+<figures/getterandsetter-eps-converted-to.pdf, id=1598, 480.79625pt x 253.94875
 pt>
 File: figures/getterandsetter-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/getterandsetter-eps-converted-to.pdf>
@@ -1454,7 +1457,7 @@ s-converted-to.pdf figures/compositesetter.eps>
 (epstopdf)             \includegraphics on input line 61.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/compositesetter-eps-converted-to.pdf, id=1600, 1181.41376pt x 185.6937
+<figures/compositesetter-eps-converted-to.pdf, id=1615, 1181.41376pt x 185.6937
 6pt>
 File: figures/compositesetter-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/compositesetter-eps-converted-to.pdf>
@@ -1475,7 +1478,7 @@ eps-converted-to.pdf figures/namingconventions.eps>
 (epstopdf)             \includegraphics on input line 85.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/namingconventions-eps-converted-to.pdf, id=1624, 679.53876pt x 219.821
+<figures/namingconventions-eps-converted-to.pdf, id=1639, 679.53876pt x 219.821
 24pt>
 File: figures/namingconventions-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/namingconventions-eps-converted-to.pdf>
@@ -1494,7 +1497,7 @@ ly-eps-converted-to.pdf figures/renameconventionally.eps>
 (epstopdf)             \includegraphics on input line 97.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/renameconventionally-eps-converted-to.pdf, id=1629, 408.52625pt x 265.
+<figures/renameconventionally-eps-converted-to.pdf, id=1644, 408.52625pt x 265.
 99374pt>
 File: figures/renameconventionally-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -1523,7 +1526,7 @@ ps-converted-to.pdf figures/abstractinstance.eps>
 (epstopdf)             \includegraphics on input line 155.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/abstractinstance-eps-converted-to.pdf, id=1683, 370.38374pt x 154.5775
+<figures/abstractinstance-eps-converted-to.pdf, id=1698, 370.38374pt x 154.5775
 pt>
 File: figures/abstractinstance-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/abstractinstance-eps-converted-to.pdf>
@@ -1652,10 +1655,10 @@ nged.
 (rerunfilecheck)             Checksum: B7296D610B5764BF9176D21429D18703;5197.
  ) 
 Here is how much of TeX's memory you used:
- 14752 strings out of 493629
- 225618 string characters out of 3143343
- 375090 words of memory out of 3000000
- 17254 multiletter control sequences out of 15000+200000
+ 14761 strings out of 493629
+ 225765 string characters out of 3143343
+ 375317 words of memory out of 3000000
+ 17259 multiletter control sequences out of 15000+200000
  33318 words of font info for 87 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  57i,12n,102p,1350b,2068s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1669,10 +1672,10 @@ nts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/typ
 e1/urw/palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/
 palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/palatin
 o/uplri8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (76 pages, 1387300 bytes).
+Output written on MasterThesis_ZaurMolotnikov.pdf (76 pages, 1393607 bytes).
 PDF statistics:
- 2229 PDF objects out of 2487 (max. 8388607)
- 1858 compressed objects within 19 object streams
- 365 named destinations out of 1000 (max. 500000)
- 728 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2246 PDF objects out of 2487 (max. 8388607)
+ 1873 compressed objects within 19 object streams
+ 368 named destinations out of 1000 (max. 500000)
+ 733 words of extra memory for PDF output out of 10000 (max. 10000000)
 
