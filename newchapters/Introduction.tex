@@ -9,6 +9,8 @@ By changing  the language itself, together with a tool set for it, it is possibl
 for a dedicated domain, for example, specifically for embedded programming. There are two known approaches to change
 the language itself.
 
+\subsection{Taking a Subset of a Language}
+
 The first possible approach is dropping some language features, to get the language, which is simpler. 
 As an example, a subset of C++, called \Rg{emcpp} can be brought, \cite{emcpp}. The approach taken in \Rg{emcpp} is 
 omitting very many core features of C++ like virtual base classes, exceptions, namespaces and templates. 
@@ -23,16 +25,18 @@ limited language to take advantage of the C++ \rg{stl}, which requires the C++ l
 \Rg{emcpp}, \cite{stremcpp}. As a response for it IAR Systew have developed \rg{exemcpp}, which includes many of the language features,
 omitted by \Rg{emcpp}, and a memory-aware version of \rg{stl}, \cite{extendedembeddedcpp}.
 
+\subsection{Extending a Language}
+
 The second approach to modify a language in order to get it more suitable for embedded development consists of extending 
 the language with constructions, specific to the domain. The authors of the \mbdp\ has taken such approach, to improve on
 the C programming language, \cite{2012_voelter_mbeddr_extensible_c_based_language_and_ide_for_embedded}. 
 
 Specific extensions may represent some often met idioms in the domain, for example, 
 a state table or  a state machine diagram in a specification may describe behavior of a device under the 
-programmer control. A language developer can incorporate such notions as a sate machine into a language, \fig{dectab}\footnote{Illustration is taken from \cite{2012_ratiu_modular_dsls_and_analyses} }, 
+programmer control. A language developer can incorporate such notions as a sate machine into a language, \fig{dectabtaken}\footnote{Illustration is taken from \cite{2012_ratiu_modular_dsls_and_analyses} }, 
 providing a higher abstraction level, when compared to the existing language constructs. 
 
-\gr{dectab}{Example of a Decision Table, Added to C Language}{1.0}
+\gr{dectabtaken}{Example of a Decision Table, Added to C Language}{1.0}
 
 Moreover, higher level extensions induce some higher level semantics. An \rg{ide} under construction could check 
 this higher level semantics for correctness on the programming stage. For example, an \rg{ide} can check a given decision table 
@@ -42,10 +46,12 @@ quality of the software under development.
 Extensions to C language developed in \rg{mbeddr} include state machines and decision tables, together with analyses
 for them.
 
-For example, the \fig{dectab} demonstrates a decision table. The decision table takes \cc{mode} and \cc{speed} as input parameters
+For example, the \fig{dectabtaken} demonstrates a decision table. The decision table takes \cc{mode} and \cc{speed} as input parameters
 and returns a new \cc{mode} value as determined by the input parameters. A careful reader can see, that the exact value \cc{30} of \cc{speed}
 is not taken into account, and the default value \cc{FAIL} is going to be returned. A programmer could invoke analysis\footnote{Described in detail 
 in  \cite{2012_ratiu_modular_dsls_and_analyses}}, to find out that the table is not covering itself the whole choice space.
+
+\subsection{\jbmps, \mbdr and Language Modularity}
 
 The \mbdr\ development team have used a special language engineering environment, \Rg{mps}, to support modular and incremental 
 language development.  A programmer using \jbmps\ splits a language under development into special class-like items, 
@@ -90,9 +96,23 @@ As the new \rg{ide} works internally with \rg{ast} described through the node ty
 analysis, generation, or transformation, there is no need to invoke parsers for the code, which is advantageous.
 
 \section{Problem}
-A mixture of the two approaches is used in this work in an attempt to achieve a modular C++ language, a suitable base for the 
-further language engineering, including the specialization  of C++ for embedded development, and even more general, 
-for later extension, to specialize the common base C++ language to any domain of choice. A special \rg{ide} is created 
+
+Being a powerful tool for an embedded systems developer, \mbdr\ does not support the \cpppl. Supporting C++ would be an
+advantageous argument for \mbdr, as C++ empowers the developer with additional paradigms of programming, including 
+object-oriented programming. Thus a problem appears, to support C++ within \mbdr. As \mbdr\ is itself built upon
+\jbmps\ and language modularity principles, these principles have to be taken into account while extending \mbdr.
+This means, the \cpppl\ has to be developed as a modular extension for the C language provided by \mbdr.
+
+
+\section{Approach}
+
+Above we describe the two approaches to making a language more suitable for a particular domain. In this work we use a mixture of 
+the two approaches in an  attempt to achieve a modular C++ language. On the one hand, we limit C++, trying to hide its ``dangerous'' sides 
+from the developer. On the other hand, we built C++ itself as an extension to C and as a modular base for further extending. While limiting 
+C++ we try to keep all the necessary features in it, to not to face the same problems as \Rg{emcpp} had.
+
+We built C++ as a suitable base for the further language engineering, including the specialization  of C++ for embedded development, 
+and even more general, for later extension, to specialize the common base C++ language to any domain of choice. A special \rg{ide} is created 
 together with a new C++ language flavor, which supports the C++ programmer.
 
 During the creation of the \cpppl\ in the way described, the language modularity in general is analyzed, and caveats of it
@@ -105,11 +125,11 @@ The new language together with the new \rg{ide} can later serve as a basis for e
 language with domain specific constructs for embedded programming. Creation of these extensions lies out of scope
 for this Master Thesis, and is left for further research.
 
-\section{Approach}
+
 The approach taken in this work goes further into exploring the language modularity on the basis of \jbmps. While building 
 the \cpppl\ itself  with the goal of embedded domain specific extensions in mind, the C++ itself is being built itself as 
 an extension to the C programming language, provided by the \rg{mbeddr}. The C++ implemented in \jbmps\ and discussed in this 
-work I call the \pcpp.
+work we call the \pcpp.
 
 Although C++ is a separate from C language, the high degree of similarity allows to make use of the C programming language,
 implemented by the \rg{mbeddr} as a foundation. Not only reuse of the basic C is achieved, but also the embedded extensions from
@@ -133,11 +153,13 @@ summarizing in the end the support for it, provided by \jbmps.
 
 This work contributes the \cpppl\ with a number of automations and analyses for it. The automations include code 
 generation and structuring. They are designed to compensate on some caveats of C++, or lack of support for 
-several aspects in the language itself, like coding style. The analyses are intended to increase the understanding of the constructed
-code by a novice to C++ programmer, or to provide a quick information to an experienced C++ professional. 
-Both analyses and automations are provided to achieve an improvement in quality, security and understanding of 
-the pure C++ code. The automations and analyses are mostly implemented as a programming on the \rg{ast} 
-in a Java-like programming language.
+several aspects in the language itself, like coding style. 
+
+C++ is known for a number of pitfalls a programmer can be caught by. This work tries to improve on this situation by introducing analyses.
+The analyses are intended to increase the understanding of the constructed code by a novice to C++ programmer, 
+or to provide a quick information to an experienced C++ professional. Both analyses and automations are provided to 
+achieve an improvement in quality, security and understanding of the pure C++ code. The automations and analyses 
+are mostly implemented as a programming on the \rg{ast} in a Java-like programming language.
 
 As analyses and automations grow in complexity and quantity, the question of their computational complexity arises.
 In the \jbmps\ \rg{api} it is not explicitly defined, when the analyses provided for the language take place, 
@@ -147,12 +169,14 @@ be of a high value.
 The question of analyses run-time, complexity and results presentation is raised and discussed in 
 this work in general and in particular, suggesting improvements to \jbmps \rg{api}.
 
+
+
 Finally, it is fair to say, that the \mbdr\ team\footnote{especially Markus Voelter} have already grounded some practical foundations for the \pcpp, 
 before the start of this work. Some of them, were kept (reference type, templates partially) and just described and analyzed 
 here, some of them were considerably reworked (classes, inheritance, encapsulation and polymorphism). 
 
-Couching from the \mbdr\ team made me changing some of the implementation aspects to be different from what I planned originally (namespaces,
-operator overloading partially). And, of-course, I built some parts new, from scratch, without any influence (at least at the moment of being) \mbdr\ team 
+Couching from the \mbdr\ team made me changing some of the implementation aspects to be different from what we planned originally (namespaces,
+operator overloading partially). And, of-course, we built some parts new, from scratch, without any influence (at least at the moment of being) \mbdr\ team 
 at all (all analyses, construction and copying, some more). 
 
 The evaluation of the experience, gained by me during the practical implementation part, results into the extensibility analysis, 
@@ -160,4 +184,25 @@ research on complexity of checks and the run-time for them together with suggest
 for building projectional language implementation represent my own theoretical focus and commitment.
 
 \section{Structure of the \MT}
+
+In the \rchap{found} we describe in general two approaches, \rg{ide} developers can take when
+building a new \rg{ide} for a language, together with the language itself. we describe the traditional 
+textual approach followed by the newer \rg{projectionalapproach} used in this work. The language 
+modularity and the way a language is described in a projectional environment are discussed. Finally,
+we shortly touch the problem of importing an existing code base into a projectional \rg{ide}.
+
+The \rchap{techno} is dedicated to the main technologies used in this \MT. At first an environment, providing
+all the facilities for building a projectional \rg{ide} is described, \jbmps. Then, we describe the \mbdp\
+which serves as a modular basis for the present work practical achievements. Last, we give a number of 
+references for the reader, who wants to get a better level of familiarity with the \cpppl.
+
+In the \rchap{cpp} we discuss the practical questions of the \pcpp\ implementation. At first, we align,
+why the \mbdr\ C implementation can serve as a good basis for this work, and describe primitive 
+extensions towards C++ for it. Next, we discuss all language features of C++ related to the 
+object-oriented programming, and their implementation in the \pcpp. After that, we describe the implementation
+of operator overloading and templates, as advanced C++ features. And finally advanced \rg{ide} functionality
+is described, including analyses and checks, supporting the C++ development.
+
+In the \rchap{eval} at first we compare the \rg{projectionalapproach} and the textual approach.
+
 

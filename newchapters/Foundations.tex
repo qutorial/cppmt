@@ -3,10 +3,10 @@
 Before describing the technologies on which the current work is based, as well as the work itself,
 it makes sense to describe more general foundations and principles, around which the technology is built.
 
-In the \rsec{dslsandides} I describe two approaches to create an \Rg{ide} for a certain language, and mainly the 
+In the \rsec{dslsandides} we describe two approaches to create an \Rg{ide} for a certain language, and mainly the 
 projectional approach, which originates from the area of building new \Rgp{dsl}.
 
-In the \rsec{modularlang} I describe the modular approach towards language engineering and extending, intensively
+In the \rsec{modularlang} we describe the modular approach towards language engineering and extending, intensively
 used with the projectional approach to construct languages.
 
 % TODO If more sections appear in this chapter - mention them here
@@ -36,19 +36,23 @@ A good editor has to be aware of these higher level program structures, to provi
 
 Nowadays, most of the editors work with text, and, to provide assistance to a programmer, integrate
 with a parser/compiler front-end for the programming language. Such way to extract the program
-structure during editing is not perfect for several reasons. 
+structure during editing is not perfect for several reasons:
 
-First of all, the program being edited as text is not syntactically correct at every moment, 
+\begin{enumerate}
+ \item The program being edited as text is not syntactically correct at every moment, 
 being incomplete, for example. Under such circumstances the parsing front-end can not be
 successfully invoked and returns error messages which are either not related to the program, when
 the code is completed, or false-positive warning and errors. 
-
-Secondly, after a minor editing of the code, usually the whole text file has to be processed again. Such compiler calls are usually computationally expensive, they slow down, sometimes significantly, the performance of the developer machine. Various techniques exist to speed it up, including partial 
+  
+ \item After a minor editing of the code, usually the whole text file has to be processed again. Such compiler calls are usually 
+computationally expensive, they slow down, sometimes significantly, the performance of the developer machine. Various techniques exist to speed it up, including partial 
 and pre- compilation, but the problem is still relevant to a large extent. 
 
-Moreover, the textual nature of the code complicates certain operations additionally. As an example, we can take a refactoring
+\item The textual nature of the code complicates certain operations additionally. As an example, we can take a refactoring
 to rename a method. Every usage of the method, being renamed, has to be found and changed. To implement it correctly an editor must take into account various possible name collisions, as well 
 as presume a compilable state of the program prior to the start of the refactoring.
+
+\end{enumerate}
 
 Not to mention the parsing problem itself. Parsing a program in a complex language like C++ is a difficult problem, it involves 
 the need to resolve correctly scoping and typing, templates and related issues, work with pre-processor directives incorporated
@@ -58,24 +62,24 @@ the code to be purely cross-platform.
 \cpp{Closing several blocks}{blocks}
 
 The textual representation of program code, involves the need in formatting and preserving syntax. These both tasks, indeed,  have nothing to do with the functionality program, and additionally 
-load the developer, reducing productivity. As an example, here I can mention the need to close
+load the developer, reducing productivity. As an example, here we can mention the need to close
 several blocks ending at the same point correctly, indenting the closing brace symmetrically 
 to opening one. The \rl{blocks} demonstrates it in the last few lines.
 
 \subsection{Projectional Approach}
 
-Another approach which can be taken in the organization of an editor for a programming language is called \rg{projectionalapproach}. 
+Another approach a creator can take when building an \rg{ide}  is called \rg{projectionalapproach}. 
 Projectional editors do not work with a low-level textual representation of a program, but rather with a higher level concept, \rg{ast}s.
 This approach is especially useful and used when constructing new \rg{dsl}s.
 
-Working with \rg{ast}s directly has several advantages over the conventional textual code editing.
+Working with \rg{ast}s directly has several advantages over the conventional textual code editing:
 
-Firstly, all syntax errors are no longer possible, as there is no syntax. 
-
-Secondly, there is no need to format the code on the level of indentation and look, since it is only
+\begin{enumerate}
+ \item All syntax errors are no longer possible, as there is no syntax. 
+ \item There is no need to format the code on the level of indentation and look, since it is only
 needed for textual code.
-
-Thirdly, all features, which in textual approach require parsing, can be implemented without a parser involved, because \rg{ast} is always known to the editor.
+  \item All features, which in textual approach require parsing, can be implemented without a parser involved, because \rg{ast} is always known to the editor.
+\end{enumerate}
 
 Additionally, as the compilers still expect a code in a textual form, code generation is used to
 convert the \rg{ast} into the text code for the further use. The code generation step can be 
@@ -124,8 +128,8 @@ after short learning, better way to select code fragments, since not individual
 characters or lines, but rather \rg{ast} nodes or groups of nodes are selected, 
 plus, all the advantages, the projectional editing brings by itself, as discussed above.
 
-I discuss additionally the projectional approach and some of its basic 
-principles, which I conside to be of practical value in the \rsec{genprinciples}.
+we discuss additionally the projectional approach and some of its basic 
+principles, which we consider to be of practical value in the \rsec{genprinciples}.
 
 \declsec{Modular Language Engineering}{modularlang}
 
