@@ -1,4 +1,4 @@
-\declsec{MBEDDR Project}{mbeddr}
+\declsec{mbeddr Project}{mbeddr}
 
 The \mbdp\ is a software built with the use of \jbmps.
 
@@ -10,16 +10,19 @@ Being a different language the \cpppl\ shares a lot of commonality with the C pr
 As \jbmps\ allows, to some extent, see \ref{modularity}, incremental language construction, the \mbdrp\ represents 
 a suitable basis for the \cpppl\ implementation in \jbmps\ . 
 
-The use of \mbdr\, however, could not be purely incremental, and required some changes to the \mbdr\ itself. 
-The changes were introduced however, in a way to make \mbdr\ simply more extensible in general, and not by
-adopting it to the current work needs.
+We could not  extend \mbdr\ with C++ pure incrementally. We had to perform some changes to \mbdr\ itself. 
+The changes were introduced however, in a way to make \mbdr\ more extensible in general. Compare this to creating 
+a separate branch of \mbdr\ designed only for C++. After such forking a separate team would have to support a newly
+created \mbdr\ version for C++. By making \mbdr\ more extensible, and by building C++ as a pure extension we keep
+only one \mbdr\ version, and reduce the maintenance needed in future, to keep C++ supported be \mbdr.
 
-In this section I describe the \mbdp, as the current work is based on it.
+
+In this section we describe the \mbdp, as the current work is based on it.
 
 No matter the \mbdp\ has  (one) C language with extensions as an outcome, internally, as a \jbmps\ software
-it is represented as several \jbmps\ languages. In \jbmps\ a language corresponds to a module.
+it is represented as several \jbmps\ languages.
 
-All \mbdr\ languages are named starting from \mpslang{com.mbeddr.} name part. In this document I usually ommit it,
+All \mbdr\ languages are named starting from \mpslang{com.mbeddr.} name part. In this document we usually omit it,
 keeping the last word of the name only. E.g. \mpslang{com.mbeddr.expressions} is called simply \mpslang{expressions} here.
 
 \subsection{mbeddr Expressions Language}
@@ -81,9 +84,13 @@ The implementation of modules in \mbdr\ can be found in the \mpslang{modules} la
 for the \mpsid{Function} concept example, see the \fig{stexprmarked}, not marked with colors part.
 
 Modules are further included into \jbmps\ \rgp{model}, which correspond to one single \jbmps\ file unit.
-Each model should have a node of \mpsid{TypeSizeConfiguration} and \mpsid{BuildConfiguration} \rgp{concept}.
-In the former, the sizes for types must be given, in the latter, all directives needed to compile the 
-generated from the \rg{model} text.
+After a programmer finishes the code in the projectional editor, \jbmps\ generates textual C code, 
+according to the rules, given by \mbdr. Each model is generated into a set of textual C files.
+After the files has been generated, \mbdr\ launches a compiler to get an object code.
+
+For the purpose of the code generation and compilation, every model should have a node of \mpsid{TypeSizeConfiguration} 
+and \mpsid{BuildConfiguration} \rgp{concept}. In the former, the programmer should specify all sizes for C language types, 
+in the latter, the programmer should specify, how the \mbdr\ has to invoke the compiler.
 
 \subsection{Pointers and Arrays in mbeddr}
 

@@ -7,9 +7,9 @@ The approach taken in the \jbmps\ is rather unique, and it is considered to be a
 % Thus \jbmps\ is a good suitable technology for the practical implementation of the \MT\ goal.
 
 In general, the way the language is describe in \jbmps\ coresponds to the way, described in the \rsec{modularlang}.
-Here I will describe the process in practical details, as it is crucial for understanding the practical part of this \MT.
+Here we will describe the process in practical details, as it is crucial for understanding the practical part of this \MT.
 
-In this section I will go through a definition of one \rg{concept}, describing the facilities, \jbmps\ provides to support
+In this section we will go through a definition of one \rg{concept}, describing the facilities, \jbmps\ provides to support
 it. Each \rg{concept} is described by several views on it. 
 
 \msnozoom{mpsif}{\jbmps\ User Interface, \cc{if} Statement \Rg{concept}}
@@ -19,19 +19,21 @@ generator view and few more views. As a language consists mostly of the included
 the whole language is presented by the mentioned views as well, where each view on the language contains all views of the kind on each language \rg{concept}. 
 Left part of the \fig{mpsif} demonstates the views on the \mpslang{statements} language.
 
-The representation of a new language created in concepts and views to them, present a seamless approach to creating 
-a new language with a projectional editor for it.
+% The representation of a new language created in concepts and views to them, present a seamless approach to creating 
+% a new language with a projectional editor for it.
 
 The \mbp\ is a software, separate from \jbmps\, but based on it, representing an extensible C language implementation with extensions.
-I will use \rgp{concept} from the \mbp' throughout this section as examples to demonstrate MPS. Different C language parts are going to be 
+we will use \rgp{concept} from the \mbp' throughout this section as examples to demonstrate MPS. Different C language parts are going to be 
 decomposed into \rgp{concept} and these concepts are going to be defined using \jbmps. The reader should not confuse though the \mbp\ and 
 \jbmps\ itself: the former is a software, developed in the latter and is used to demonstrate the latter.
+
+Interestingly enough, \rgp{dsl} are used in order to define new languages. Each view features a language used to describe a new \rg{concept}.
 
 \subsection{Concept Declaration}
 \label{mpsconceptdeclaration}
 
 \Rgp{concept}, as it is described in the \rsec{modularlang} represent a class-like types for nodes of an \rg{ast}. This terminology is kept in \jbmps\ and 
-MPS concept has the same meaning as \rg{concept} term used in the \rsec{modularlang}. I use the term ``concept'' both in general, to describe an \rg{ast} node type,
+MPS concept has the same meaning as \rg{concept} term used in the \rsec{modularlang}. we use the term ``concept'' both in general, to describe an \rg{ast} node type,
 and in particular referring to an MPS concept.
 
 % Repeats \rsec{modularlang}
@@ -82,7 +84,7 @@ As editors are mostly defined to look like text, a program in the \cpppl impleme
 
 In the editor view one defines an editor for a \rg{concept}. \jbmps\ introduces here a bit confusing terminology, calling one editor for a given
 \rg{concept} concept an ``editor concept''. Thus an error message ``An editor concept not found for a concept X'' would mean that no editor
-has been defined for the \rg{concept} \mpsid{X} in the editor view for it. In this work I call the content in the editor view for a \rg{concept} \mpsid{X} an 
+has been defined for the \rg{concept} \mpsid{X} in the editor view for it. In this work we call the content in the editor view for a \rg{concept} \mpsid{X} an 
 ``editor for the \rg{concept} \mpsid{X}''. The same terminology applies to all the following views related to a single \rg{concept}.
 
 \msnozoom{mpsifeditor}{Editor View for the \mpsid{IfStatement} \Rg{concept}}
@@ -94,7 +96,7 @@ The editor can be configured to show or hide some parts of a node, depending on 
 is not defined anyhow. Editor are also responsible for all the interaction, a user experiences when editing a code in \jbmps.
 
 \subsection{Behavior View}
-The behavior view, can be used to define certain behavioral methods for a concept. A concept is represented there similar to a Java class, and
+The behavior view, can be used to define certain methods for a concept. A concept is represented there similar to a Java class, and
 it is possible to define the methods in a Java-like language. \Rg{concept} inheritance is taken into account like in Java. 
 
 A \rg{concept} constructor can be defined there to initialize by default a newly created node of a \rg{concept}.
@@ -110,7 +112,7 @@ Two convenience methods are defined for the \mpsid{LocalVarRef} \rg{concept}, to
 
 \subsection{Constraints View}
 The constraints view can be used, to limit in a desirable way \rg{concept} property values and relationships, a node of the \rg{concept} can 
-have to other nodes.
+have to other nodes. It is possible to take into account any sort of context, and thus create a context-aware/sensitive \rg{concept}.
 
 \msnozoom{mpsidnameconstr}{Editor View for the \mpsid{IfStatement} \Rg{concept}}
 
@@ -158,8 +160,11 @@ making the text generation recursive.
 
 \subsection{Generator View}
 \label{generators}
-The generator view is one of the most complex \jbmps\ views. It servers the transformation purposes of one \jbmps\ language into another one.
-This view does not have a strong connection to the present work, as the generation of the projectional \cpppl\ is mostly performed by \rgp{textgen}.
+The generator view is one of the most complex \jbmps\ views. A language engineer uses this view to define, how an \rg{ast} composed
+in one language, has to be transformed into an \rg{ast} in another language in \jbmps.
+
+In this work we mostly use \Rgp{textgen} to produce a textual C++ code, when the programming in the projectional editor has completed.
+Thus, generator view does not have a strong connection to the present work. We do not describe it in details here.
 
 \subsection{Intentions}
 \label{intentions}
@@ -174,11 +179,14 @@ For an \rg{intention} to be defined, one has to name it, specify a \rg{concept},
 provide a textual description for it, and finally specify the desired effect. 
 
 There is also a special kind of \rgp{intention}, called ``error intensions''. They are not anyhow fundamentally different 
-from the usual \rgp{intention}, except their special purpose to fix an error when one occur. Error \rgp{intention} are
-visualized using a red bulb icon in \jbmps.
+from the usual \rgp{intention}, except their special purpose to fix an error, when one occur. 
 
-Intentions are accessible in the projectional editor from a context menu, when focused on a target node. They represent 
+Error \rgp{intention} are visualized using a red bulb icon in \jbmps.
+
+Intentions are accessible in the projectional editor from a context menu, when focused on a target node, \fig{classintentions}. They represent 
 a useful mechanism to support a programmer with various automations, including automatic code generation.
+
+\msnozoom{classintentions}{Intentions Available for the \mpsid{Class} \Rg{concept}}
 
 \subsection{Other MPS Instruments}
 
