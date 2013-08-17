@@ -38,7 +38,7 @@ Nowadays, most of the editors work with text, and, to provide assistance to a pr
 with a parser/compiler front-end for the programming language. Such way to extract the program
 structure during editing is not perfect for several reasons:
 
-\begin{enumerate}
+\begin{itemize}
  \item The program being edited as text is not syntactically correct at every moment, 
 being incomplete, for example. Under such circumstances the parsing front-end can not be
 successfully invoked and returns error messages which are either not related to the program, when
@@ -52,7 +52,7 @@ and pre- compilation, but the problem is still relevant to a large extent.
 to rename a method. Every usage of the method, being renamed, has to be found and changed. To implement it correctly an editor must take into account various possible name collisions, as well 
 as presume a compilable state of the program prior to the start of the refactoring.
 
-\end{enumerate}
+\end{itemize}
 
 Not to mention the parsing problem itself. Parsing a program in a complex language like C++ is a difficult problem, it involves 
 the need to resolve correctly scoping and typing, templates and related issues, work with pre-processor directives incorporated
@@ -74,12 +74,12 @@ This approach is especially useful and used when constructing new \rg{dsl}s.
 
 Working with \rg{ast}s directly has several advantages over the conventional textual code editing:
 
-\begin{enumerate}
+\begin{itemize}
  \item All syntax errors are no longer possible, as there is no syntax. 
  \item There is no need to format the code on the level of indentation and look, since it is only
 needed for textual code.
   \item All features, which in textual approach require parsing, can be implemented without a parser involved, because \rg{ast} is always known to the editor.
-\end{enumerate}
+\end{itemize}
 
 Additionally, as the compilers still expect a code in a textual form, code generation is used to
 convert the \rg{ast} into the text code for the further use. The code generation step can be 
@@ -118,13 +118,14 @@ automatically, and there is no way to delete or confuse them, as well as to type
 closing brace can marked with the parent statement name (through implementing such behavior in the
 \rg{ast} visualization), enhancing navigation through the displayed code.
 
-As one can see, the textual projection of the \rg{ast} looks almost the same, as a text code in a 
-conventional textual editor. This can cause some confusion for the developer at first, 
-as attempts to edit this textual visualization as a real text will sometimes fail. 
+% As one can see, the textual projection of the \rg{ast} looks almost the same, as a text code in a 
+% conventional textual editor. This can cause some confusion for the developer at first, 
+% as attempts to edit this textual visualization as a real text will sometimes fail. 
+% 
+% Eventually, however, advantages of such visualization overwhelm the disadvantages. 
 
-Eventually, however, advantages of such visualization overwhelm the disadvantages. 
 Among the benefits of the textual projection over text code are quicker code construction 
-after short learning, better way to select code fragments, since not individual 
+after short learning, a more structured way to select code fragments, since not individual 
 characters or lines, but rather \rg{ast} nodes or groups of nodes are selected, 
 plus, all the advantages, the projectional editing brings by itself, as discussed above.
 
@@ -135,12 +136,13 @@ principles, which we consider to be of practical value in the \rsec{genprinciple
 
 \subsection{Describing a Language in Projection}
 
-When  building a projectional editor for a language, the language must be given as a certain description of the \Rg{ast}.
-As \rg{ast} represent a graph, the nodes and edges types, as well as their possible relationships must be described\footnote{Compare this
+When  building a projectional editor for a language, the language must be given as a certain description of a possible \Rg{ast} in the language.
+As an \rg{ast} represents a graph, the nodes and edges types, as well as their possible relationships must be described\footnote{Compare this
 with the textual approach, where a grammar for the language must be built, which is generally speaking complex, and some times even not a
 possible task, which leads to the increasing parser complexity, known problem in particular in the C++ area}. 
 
-The nodes of the \rg{ast} are described through giving their types. The node type in projectional editing is called a \rg{concept}. \Rgp{concept} are very
+The nodes of an
+\rg{ast} are described through giving their types. The node type in projectional editing is called a \rg{concept}. \Rgp{concept} are very
 similar to classes in object oriented programming languages. They feature inheritance, they can implement interfaces, they can have internal data, similar
 to member fields, and they can feature behavior, similar to member functions. The difference with classes, however, is that the member fields are not 
 usually encapsulated.
@@ -175,7 +177,9 @@ to use a child concept at a place where a parent concept could be used. This cre
 extend a language at some point, just a passing base \rg{concept} hast to be determined and inheritted from, by a new \rg{concept} which is meant
 to provide the language extension. The new concept is immediately able to be used in place of the base concept. As an example, one could think 
 of extending statements of the language. The only new statement is needed, a \rg{concept} has to be created, which represents the new statement, 
-and enabling the new statement concsist of just inheritting it from the base statement concept, which exists in the language extended.
+and enabling the new statement concsist of just inheritting it from the base statement concept, which exists in the language extended, \fig{LanguageModularity}.
+
+\gr{LanguageModularity}{An Example of Modular Language Reuse and Extension}{0.6}
 
 The inheritance works over the language borders, allowing to create the child concept
 in a language L2, separate from the language L1, where the original parent concept has been described. Thus the language L2 can be seen as a modular extension to the
