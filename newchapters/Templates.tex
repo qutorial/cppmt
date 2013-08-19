@@ -1,3 +1,69 @@
-\declsec{Templates - to be written }{templates}
+\declsec{Templates}{templates}
 
-% Also indeed language engineering :)
+\cppproblem
+
+Templates represent a powerful tool in the \cpppl. 
+
+In fact, templates, especially used together with a preprocessor, represent a language engineering tool, which allows for extending C++ with additional 
+constructions, not originally present in the language, \cite{alexandrescumeta}. In this regard an approach 
+taken in projectional editing is an alternative, as projectional language modularity is considered to be 
+a basis for language extending, \ref{modularity}.
+
+However, templates have to be supported to some extent in the \pcpp, as \rg{stl} is based on templates entirely. Without 
+supporting templates, it would not be possible to provide a usual for a C++ programmer standard library. Mostly
+templates are used to abstract over some type in \rg{stl}.
+
+Templates bare a pure textual structure in C++. A template code is not even syntactically checked before instantiation,
+i.e. template code is not even parsed before an instantiation happens.
+
+When instantiating a template, the assumptions taken in the template code on a template parameter are checked against 
+a concrete template parameter, instantiating the template. These assumptions are implicit in C++. The template parameter
+is assumed to be capable of everything, which is possible in C++: participation in all types of expressions and statements
+is assumed, in each role.
+
+The described features of template code can present a source of various kinds of errors,
+for instance:
+\begin{itemize}
+ \item A syntactic error found on the time, the template code is used first, and not before, when the code is created
+ \item The template code receives precise semantic meaning, only during instantiation, before the instantiation it is not known, and it can be understood wrongly,
+ when, for example, the template code is called somewhere, not being instantiated.
+ \item Assumptions put on the template parameter may conflict, when one template parameter is to be used with several template code fragments
+ \item The assumptions are hidden from the programmer being implicit requirements in the template code
+\end{itemize}
+
+In projectional editing, constraints are required, as they define, what can be constructed in principle, \ref{mpsconstraints}.
+This contradicts with the ``unconstrained'' nature of template parameters. For instance, when a template parameter represents a 
+class-like type, any method can be called on an object of the type. However, in the projectional editor, only methods, previously
+defined, can be called on a class type. This demonstrates an example of contradiction in nature of templates in C++ and the projectional
+editing with constraints in general.
+
+\pcppsolution
+
+As a way to support templates in \pcpp\ we introduce a term of C++ concepts. This term is not to be confused with \rgp{concept} in 
+projectional editing.
+
+A C++ concept explicitly describes an assumptions put on a template parameter. A template code is required to declare, which 
+C++ concept a template parameter belongs to, before the parameter can be used. The C++ concept defines the way a template 
+parameter could be used in the template code.
+
+\gr{templates}{Template Code Sample in \pcpp}{0.1}
+
+The \fig{templates} demonstrates how a template code can be composed with the use of C++ concepts.
+
+At first \cc{Comparable} concept is declared. It puts a requirement on a type to have a function 
+\cc{compare()} in its public section.
+
+Next, a class \cc{NumberWrapper} is declared to \cc{realise} the \cc{Comparable} concept. The
+editor will check the class upon the requirement.
+
+A template class \cc{OrderedList} declares a template parameter \cc{T} and specifies that it 
+satisfies the \cc{Comparable} concept. This makes an object of type \cc{T} usable as if it was 
+satisfying the requirements as declared by \cc{Comparable}. This is demonstrated in the \cc{OrderedList::compare()}
+function.
+
+When instantiating a template, it is checked if either the parameter given realizes the needed 
+C++ concept, or, more flexibly, if it satisfies the C++ concept requirements, without declaring
+the realization explicitly.
+
+The support for templates by the \pcpp\ is, of-course, limited, when compared to traditional C++ facilities.
+It is evaluated in the \rsec{templatesevaluation}.
