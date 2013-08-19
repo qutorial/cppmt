@@ -403,64 +403,80 @@ After an analysis has been initiated, the running phase comes. Some analyses can
 as they can require external tools running, like SMT solvers, for example, \cite{2012_ratiu_modular_dsls_and_analyses},
 or involve themselves complex algorithms.
 
+
 As an example of a computationally intensive analysis, the \rg{preventiveanalysis} for \rg{abstract} classes 
 instantiation can be taken, \ref{preventiveabstract}. At first, the amount of nodes of an \rg{ast} is high,
 as they include local variable declarations, function parameters, function return types, class member variables
 and more. Each of the nodes is checked like this: at first the type is extracted, then the type is checked to be 
 a \mpsid{ClassType}. When an instance of the \mpsid{ClassType} is found, the \mpsid{Class} is checked on being abstract.
 For this all of its method declarations are checked on being \rg{purevirtual}, and then all the base classes are 
-checked on being abstract. If we take a reasonably big code base, like, for example the Qt library, which contains about one thousand
+checked on being abstract. If we take a reasonably big code base, like, for example the Qt library, which contains about 1000
 classes\footnote{989 classes in Qt 5.1}, the amount of nodes to check and the associated computations can be immense\footnote{If we assume,
 that each class out of 1000 classes in a library has 1 parent, 3 member fields, 3 methods, each with 1 parameter, 1 return type, and 1 local variable,
 we get up to 100 000 nodes to be addressed by the check.}.
+
+Another example of a computationally intensive analysis could be received, if \mpsid{CppNamingConventions} \rg{concept} would
+be implemented for all named objects, and in a complex way, including regular expressions, as described in \ref{remarksonnamingconventions}.
 
 As analyses can be started automatically, the computational load on an \rg{ide} can be increased as some analyses
 may start in parallel. 
 
 This all may present a performance problem, and a certain support from the \jbmps\ is needed to handle the task
-of efficient analysis development.
+of efficient analysis development:
 
-First, as discussed in the previous subsection, it should be possible to control, when \rgp{selfrunninganalysis} start,
+\begin{itemize}
+ \item As discussed in the previous subsection, it should be possible to control, when \rgp{selfrunninganalysis} start,
 and the scope of their work. 
 
-Second, some value caching is needed, to store the information figured out by the analyses. For example, for each
+
+\item A value caching is needed, to store the information figured out by the analyses. For example, for each
 class, it could be saved, if it was found to be an \rg{abstract} class, and the cached value should be valid, until
 the event to re-run the analysis is detected. It may be necessary, to retain the values after the \rg{ide} restart,
 
-Third, as an analysis may take some time to execute, there has to be a way, to inform the user on the background process
+ \item As an analysis may take some time to execute, there has to be a way, to inform the user on the background process
 running, so that the user interface is more clear about analyses and their run time. Currently, \jbmps\ does not inform
 the user about it.
 
-Fourth, there has to be a way to limit and prioritize the analyses running at the same time. For example, \rgp{preventiveanalysis}
+\item There has to be a way to limit and prioritize the analyses running at the same time. For example, \rgp{preventiveanalysis}
 can be preferred over \rgp{informativeanalysis}, and the total amount of analyses running in parallel could be limited 
 to some number.
 
+\end{itemize}
 
-
-Fourth, as a change in one node may cause changes in other nodes, there has to be a
-
-
-%TODO continue here
-
+The task of providing a better support for analyses in \jbmps\ represents a challenge which lies out of scope for this work.
+However, this work demonstrates by example the need in such analyses-specific support.
 
 \subsection{Reporting the Results of an Analysis}
 \label{reportinganalysis}
 
-Non type system rules - not able to do a lot - mark a node in the project explorer...
+Reporting a result after an analysis has completed is very important, since it has to convey the 
+information to the user in a right way, so that the user can take all corresponding actions when needed.
 
-Take one analysis, research its complexity, figure out runtimes, MPS things
+For the time being three forms of reporting have been used in \jbmps:
 
- Analysis can go on the syntax tree
+\begin{itemize}
+ \item Error or warning markup by non-type-system checks, \ref{mpsnontschecks}.
+ \item \Rg{informativeanalysis} hinting in the editor, as for \rg{abstract} classes, for example, \ref{abstractclasses}.
+ \item Plug-in created with a custom user interface for an \rg{analysisondemand}, as described in \cite{2012_ratiu_modular_dsls_and_analyses}.
+\end{itemize}
 
- Which analysis can be needed in general
- 
- The analysis can take time, online running complexity
- 
- Naming conventions and regular expressions
+A problem wit non-type-system checks is that an error could appear in a root node \cc{A} after a modification of a node \cc{B}. For example, if \cc{B} is a class,
+changed to be \rg{abstract}, and \cc{A} is an implementation module, where the class \cc{B} was instantiated. \cc{A} must turn to be invalid, but the error
+is not going to be seen to the programmer, as he/she is working in another root node, in one, where the \cc{B} class is defined.
 
+\jbmps\ needs to provide some support which will allow to modify the way, root nodes look in the project explorer\footnote{See left window panel on the \fig{mpsif}},
+if an error is found in a node.
 
- Analysis for abstract classes instantiation can happen very often, and is complex.
- 
- 
- 
- RegExes for naming conventions - hard
+Alternatively, some user interface element may be provided to output analysis messages in some form to the user, like a log window with hyper references to the error nodes.
+
+An \rg{informativeanalysis} analysis, as for example copyability and assignability analysis, \ref{classcopying}, is integrated with the editor concept for the 
+class\footnote{See \ref{mpseditor} for editor concept or editor view}. This makes the editor and the analysis being built in dependence on each other.
+This, in turn, makes the code more complex. Instead, some methods to decorate nodes could be provided, separately from editor implementation. This 
+would allow to control the way, how \rg{informativeanalysis} results are displayed to the user separately.
+
+Finally, when creating plug-in analyses, the user interface for them has to be created in standard Java libraries for the user interface. Some patterns 
+could be figured out, and offered as a \jbmps\ \rg{api} for the user, which would allow, for example, a parallel execution of the analysis code or an external tool,
+presenting the results in some commonly met form (table, diagram, decorations for code), and invalidating the results of the analysis, when needed.
+
+These all are suggestions to improve \jbmps\ based on the experience gained during working on this \MT, they can be proposed as a future work or improvements 
+to the \jbmps\ developer team.
