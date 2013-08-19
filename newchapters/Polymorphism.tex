@@ -6,16 +6,15 @@ in the notion of the polymorphism also functions overloading and operator overlo
 \emph{ad hoc} polymorphism, polymorphism for concrete one purpose. 
 Occasionally various operations with \cc{void*} type are also classified as a polymorphic programming.
 
-In this section I am writing only about the class-related virtual functions polymorphism, and the way it is 
+In this section we are writing only about the class-related virtual functions polymorphism, and the way it is 
 implemented in \pcpp.
 
 \subsubsection{Virtual Functions Polymorphism in C++}
 \label{cpppolydefs}
 
-Starting the description of the projectional implementation, I find it good to spend some time describing
-the way, the polymorphism is implemented in the \cpppl\ itself, pointing out the places, where it could be improved.
+At first, we describe the polymorphism, as it is implemented in the \cpppl, pointing out the places, where it could be improved.
 
-Dislike many other popular object-oriented programming languages in the C++ there is no pure notion of
+Dislike many other popular object-oriented programming languages, e.g. in Java, in the C++ there is no pure notion of
 an interface. Instead, a base class, its public part, is used as an interface declaration for the descendants. 
 Functions designated to be a part of the interface must be declared \cc{virtual} and they can be overloaded in
 the subclasses.
@@ -42,31 +41,31 @@ declared new function in the descendant is an override of an existing in the bas
 of an entirely new function in the descendant class. 
 
 This knowledge affects the changing process greatly, as the override should change from the interface, 
-together with all the implementations. The absence of a clear, explicit override syntax I call here an ``\rg{ovsa}''.
+together with all the implementations. The absence of a clear, explicit override syntax we call here an ``\rg{ovsa}''.
 
 Whenever a class and all of its ancestors do not provide an implementation of a certain virtual function,
 created as a pure virtual in the declaring class, the class is called an \rg{abstract} class. It is not possible
-to construct instances of an \rg{abstract} class. C++ however does not have any special syntax to explicitly decalre a 
+to construct instances of an \rg{abstract} class. C++ however does not have any special syntax to explicitly declare a 
 class \rg{abstract},  \rl{purevirtual}.
 The programmer usually has to be aware (from documentation, implementation, or, the worst case, compilation
-errors) whether a given class is \rg{abstract}. I will call this phenomenon an ``\rg{acsa}''.
+errors) whether a given class is \rg{abstract}. We will call this phenomenon an ``\rg{acsa}''.
 
 Overriding a function is an active action of the programmer, and it is initiated by the 
-programmer. I.e. the programmer want to state, that the new funciton is designed to override an exiting one, and 
-which is the overriden function. The abstract property of a class, oppositely, is not a quality a programmer directly
+programmer. I.e. the programmer want to state, that the new function is designed to override an exiting one, and 
+which is the overridden function. The abstract property of a class, oppositely, is not a quality a programmer directly
 gives to a class. It can be rather deduced from the analysis on the base classes automatically, by editor. So in this case
 no actions are needed from the programmer side. Because of this two similar absence of syntax phenomena are resolved or
-or have to be improvved on differently from the \pcpp\ point of view.
+have to be improved on differently from the \pcpp\ point of view.
 
 In order to use an interface, declared in some class, the using code has to get a pointer to an instance
-of any inheriting the interface descendant class instance. Thus typing system has to allow a pointer
+of any inheriting the interface descendant class instance. Thus type system has to allow a pointer
 to the descendant to be treated in the way as a pointer to the base class would be. The same should hold, 
 normally, for the reference types, but it is not used very often on practice, and is omitted in the implementation.
 
-As this typing rule represents the core of polymorphic behavior, I will start from it, describing further the
+As this typing rule represents the core of polymorphic behavior, we will start from it below, describing further the
 polymorphism in the \pcpp\ implementation.
 
-\subsubsection{Pointer to Class Special Typing}
+\subsubsection{Special Typing for a Pointer to Class}
 \label{pointertoclasstyping}
 
 The problem solved here is enabling the usage of pointers to descendants instead of pointers to ancestors,
@@ -86,12 +85,12 @@ The type system of the pointer language will try to check the compatibility of t
 fail to do so, as the \mbdr\ languages are not aware of the \pcpp\ extensions\footnote{\mpsid{Class} \rg{concept} in this case} 
 by design.
 
-When none of the existing type system rules can resolve the given situation, the so-called replacement
-rule can be invoked in \jbmps. The \pcpp\ provides such a replacement rule for pointer type, which checks, whether a
-class pointed to, is a passing descendant of the class required by an expression, where the pointer was
-used.
 
-In the \rsec{extensibility} I discuss more on the approach taken here, its limitations and 
+In a case like this a replacement rule can be used, see \ref{mpsts}. The \pcpp\ provides such a replacement rule for the 
+pointer type, which checks, whether a class pointed to, is a passing descendant of the class required by an expression, 
+where the pointer was used, and performs the necessary typing.
+
+In the \rsec{extensibility} we discuss more on the approach taken here, its limitations and 
 the potential ways to overcome them.
 
 \subsubsection{Overriding a Virtual Function}
@@ -104,8 +103,8 @@ in the class \cc{Circle}. The \rl{override} demonstrates as well the \rg{ovsa} i
 \cpp{Example of an Overridden Function - Text Code}{override}
 
 In the \fig{override} the same example is demonstrated, but in the \pcpp\ implementation.
-Indeed, the \rl{override} is the generation result (part) from the demonstrated projectional sample in
-the \fig{override}.
+In fact, the code shown in the \rl{override} can be generated 
+from the demonstrated projectional sample in the \fig{override}, by invoking all \Rgp{textgen} in \jbmps.
 
 When a method declaration is created, it can be set to be an override of a method in a base class.
 Right after an empty method declaration is created, it can be set to be an override, so that the only
@@ -115,7 +114,7 @@ set. This is yet another work saver for the programmer.
 
 After the override has been linked to the overridden method, the projectional editor checks, if 
 the override full signature stays precisely the same as the one of the overridden method. Thus if the 
-latter changes, it is going to be indicatted in the former.
+latter changes, it is going to be indicated in the former.
 The overridden method is shown next to the override declaration \fig{override}, which 
 compensates on the \rg{ovsa}.
 
@@ -157,7 +156,7 @@ The result of the intention work in projection can be seen in the \fig{purevirtu
 \ms{purevirtual}{Example of a Pure Virtual Method - Projection}
 
 The word \cc{pure} is added by the projectional editor. This makes the reading of the code easy and natural.
-The \cc{ = 0} part is preserved for the C++ programmer with habbits, used to the original C++ syntax. And, as in many other cases, 
+The \cc{ = 0} part is preserved for the C++ programmer with habits, used to the original C++ syntax. And, as in many other cases, 
 the semicolon is omitted as it is nothing but syntactic help to the compiler, which does not have to appear 
 in the projection. 
 
@@ -173,13 +172,13 @@ or inside the class itself, the class is called an \rg{abstract} class. It is no
 
 The programmer has to know which classes are \rg{abstract},
 and are intended for inheritance and further implementation only. One of the reason for this, is to not to try instantiation of
-the abstract class. Another reason is to exaclty identify \rg{abstract} classes, designed to serve as extension points.
+the abstract class. Another reason is to exactly identify \rg{abstract} classes, designed to serve as extension points.
 
-Above I discuss the \rg{acsa} in C++. It leads to the need for the programmer to determine somehow him/herself 
+Above we discuss the \rg{acsa} in C++. It leads to the need for the programmer to determine somehow him/herself 
 if a given class is \rg{abstract}, the source code representation of a class does not give any information on it, 
 unless some naming conventions require \rg{abstract} classes to be named specially.
 
-And improvement to this situation whould be a behavior, when an editor can perform an analysis and 
+An improvement to this situation would be a behavior, when an editor can perform an analysis and 
 determine if a class is \rg{abstract}, hinting on it to the user. In the case of the projectional
 editor, this analysis is especially computationally efficient\footnote{in comparison to textual editors, with the need to 
 parse, see the \rsec{comparison} on comparison to the textual approach, and \rsec{analysesandcomplexity} on complexity of analyses}, 
@@ -199,7 +198,7 @@ later.
 The projectional editor, however, checks on the fly, if a certain class is abstract, adding a special \cc{abstract} word 
 in front of its declaration. This makes the reading easier, and allows for quicker understanding of the code. 
 
-This example demostrates a general principle, see  the \rsec{genprinciples}, of a advised practice to 
+This example demonstrates a general principle, see  the \rsec{genprinciples}, of a advised practice to 
 perform quick analyses and inform the user.
 
 Additionally, the creation and usage of abstract class instances is checked, and forbidden by type analysis. This is 

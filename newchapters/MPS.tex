@@ -1,12 +1,12 @@
 \declsec{Jetbains MPS}{mps}
 
-\jbmps\ stands for Jetbrains Meta Programming System. In this \Rg{ide}-like software it is possible to develop \Rgp{dsl}.
+\jbmps\ stands for JetBrains Meta Programming System. In this \Rg{ide}-like software it is possible to develop \Rgp{dsl}.
 The approach taken in the \jbmps\ is rather unique, and it is considered to be advantageous in many ways, \cite{Voelter:MoDELS:2010}.
 
 % No way to extend mbeddr otherwise
 % Thus \jbmps\ is a good suitable technology for the practical implementation of the \MT\ goal.
 
-In general, the way the language is describe in \jbmps\ coresponds to the way, described in the \rsec{modularlang}.
+In general, the way the language is describe in \jbmps\ corresponds to the way, described in the \rsec{modularlang}.
 Here we will describe the process in practical details, as it is crucial for understanding the practical part of this \MT.
 
 In this section we will go through a definition of one \rg{concept}, describing the facilities, \jbmps\ provides to support
@@ -17,7 +17,7 @@ it. Each \rg{concept} is described by several views on it.
 Among such views there are \rg{concept} declaration (or language structure) view, editor view, behavior view, constraints view, type system view,
 generator view and few more views. As a language consists mostly of the included in it concepts, 
 the whole language is presented by the mentioned views as well, where each view on the language contains all views of the kind on each language \rg{concept}. 
-Left part of the \fig{mpsif} demonstates the views on the \mpslang{statements} language.
+Left part of the \fig{mpsif} demonstrates the views on the \mpslang{statements} language.
 
 % The representation of a new language created in concepts and views to them, present a seamless approach to creating 
 % a new language with a projectional editor for it.
@@ -127,7 +127,11 @@ It is possible to create a pure Java class withing an \jbmps\ language, and use 
 In the \mpsid{IIdentifierNamedConcept} \rg{interfaceconcept} constraints the \cc{CIdentifierHelper} class was used to check the
 name property on collision with the C language keywords.
 
+Constraints play an important role for the editor work. A programmer is presented with a list of choices, when inputting
+a new node on an \rg{ast}. The choice of nodes is \emph{defined} with the constraints.
+
 \subsection{Type System View}
+\label{mpsts}
 \jbmps\ has a special support for creation of typed languages. Types are mainly used in expressions. An expressions may count on 
 a certain sub-expression to have a given type, or a type, compatible with it. Whenever the expectation does not meet the reality,
 a warning or error can be displayed to a programmer. 
@@ -140,6 +144,25 @@ Moreover, the type system language can be used to infer a type for a given node,
 
 The \fig{mpsternaryts}, demonstrates the use of the \jbmps\ type system language to infer a type of the \mpsid{TernaryExpression} \Rg{concept}
 node. The syntax is on the one hand self-explanatory when reading, but on the other hand could be rather confusing when crafting.
+
+When none of the existing type system rules can resolve a given typing problem, the so-called replacement
+rule can be invoked in \jbmps. Replacement rules are defined for a given \rg{concept}. A snippet of Java-like
+code must be given to explicitly analyze a node and assign a type to it.
+
+
+\subsection{Non-Type-System Checks}
+
+Additional to type system and constraints limitations on an \rg{ast} structure can be put via implementing 
+non-type-system rules. In this work we often call them simply ``checks''.
+
+For a given \rg{concept} a code snippet can be given, to check all nodes of the \rg{concept}. After the 
+check is performed, there is a chance to mark a node as an error node, or create a warning on the node.
+It is possible to provide some textual hint for a language user, to identify the reason of the error or warning, 
+see the \fig{abstractinstance} for an example.
+
+Non-type-system rules are used in this work to create \rgp{preventiveanalysis}, and are discussed additionally in \ref{reportinganalysis}.
+
+Extensibility for the checks is evaluated as an extensibility for analyses, \ref{analysesext}.
 
 \subsection{TextGen View}
 
@@ -178,7 +201,7 @@ The \fig{mpsconstintention} demonstrates an intention, used to modify the \cc{co
 For an \rg{intention} to be defined, one has to name it, specify a \rg{concept}, to which the \rg{intention} is applicable,
 provide a textual description for it, and finally specify the desired effect. 
 
-There is also a special kind of \rgp{intention}, called ``error intensions''. They are not anyhow fundamentally different 
+There is also a special kind of \rgp{intention}, called ``error intentions''. They are not anyhow fundamentally different 
 from the usual \rgp{intention}, except their special purpose to fix an error, when one occur. 
 
 Error \rgp{intention} are visualized using a red bulb icon in \jbmps.
@@ -195,5 +218,8 @@ a useful mechanism to support a programmer with various automations, including a
 \Rgp{action} are used to automate node deletions or editing. For example, deleting an array indexing expression, could be made
 to provide a substitution, an array expression itself. Such behavior may seem more natural to a programmer, used to text editing.
 
-\jbmps\ provides a special support for refactorrings. Special code snippets in the Java-like language can automate routine operations.
+\jbmps\ provides a special support for refactorings. Special code snippets in the Java-like language can automate routine operations.
 As an example, factoring out a local variable from an expression can be taken.
+
+Additionally, it is possible to extend the functionality of an editor under construction via creating special \jbmps\ plug-ins. 
+It can be in particular useful to implement some complex \rgp{analysisondemand}.

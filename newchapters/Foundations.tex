@@ -89,7 +89,8 @@ Projectional editors have to display the \rg{ast} to the developer, in order for
 of an \rg{ast} is called ``projection'', giving a name to the editor class.
 
 The model of code is stored as an \rg{ast} in the projectional editor. As in the Model-View-Controller pattern the view for
-the model can be implemented separately, \cite{GOF95}. Thus the code may be presented in a number of different ways to the user. For example, the \rg{ast} can be visualized as a graph, similar to control flow graph. This visualization, however, is not always advantageous being sometimes not compact and
+the model can be implemented separately, \cite{GOF95}. Thus the code may be presented in a number of different ways to the user. For example, 
+the \rg{ast} can be visualized as a graph, similar to control flow graph. This visualization, however, is not always advantageous being sometimes not compact and
 complicated to overview.
 
 \ms{constructor}{Example projection of an \rg{ast}, ``source code'' view}
@@ -174,10 +175,10 @@ The process of defining a modular language in the \jbmps\ environment is describ
 
 As \rgp{concept} feature inheritance, it is possible\footnote{to some extent, the extensibility is described separately in one of the following chapters} 
 to use a child concept at a place where a parent concept could be used. This creates a great opportunity for language extensibility. In order to 
-extend a language at some point, just a passing base \rg{concept} hast to be determined and inheritted from, by a new \rg{concept} which is meant
+extend a language at some point, just a passing base \rg{concept} hast to be determined and inherited from, by a new \rg{concept} which is meant
 to provide the language extension. The new concept is immediately able to be used in place of the base concept. As an example, one could think 
 of extending statements of the language. The only new statement is needed, a \rg{concept} has to be created, which represents the new statement, 
-and enabling the new statement concsist of just inheritting it from the base statement concept, which exists in the language extended, \fig{LanguageModularity}.
+and enabling the new statement consist of just inheriting it from the base statement concept, which exists in the language extended, \fig{LanguageModularity}.
 
 \gr{LanguageModularity}{An Example of Modular Language Reuse and Extension}{0.6}
 

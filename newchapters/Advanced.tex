@@ -1,12 +1,13 @@
-\declsec{Advanced Editor Functionality}{advanced}
+\declsec{Advanced IDE Functionality}{advanced}
 
 As the projectional editor works directly with an  \rg{ast}, it is possible to provide some programming on the 
-\rg{ast} to improve the user experience. I call this additional programming as an advanced editor functionality, and 
+\rg{ast} to improve the user experience. we call this additional programming as an advanced editor functionality, and 
 discuss it in this section.
 
-\subsection{Renaming Refactoring}
+\subsection{Primitive Renaming Refactoring}
 Directly from the nature of the projectional editor, without any additional effort, comes a feature to 
-perform the renaming refactorings.
+perform primitive renaming refactorings\footnote{More complex renaming, like renaming a function \emph{together with} all its overrides,
+are not coverred by the default behavior of a projectional editor}.
 
 If a node of an \rg{ast} gets to be referenced somewhere else, it is referenced by the use of its unique internal
 identifier. The name of the node is a property of the node, which is not playing any role in
@@ -76,7 +77,7 @@ They can include code formatting rules and naming rules.
 To some extent the formatting conventions are fixed by the way the projectional editor shows the 
 \rg{ast}, see, for example, \ref{visibilitysections}.
 
-The naming rules, however, should be additionally controlled. The naming rules, accepted in a project, I call 
+The naming rules, however, should be additionally controlled. The naming rules, accepted in a project, we call 
 naming conventions here.
 
 In order to perform the naming conventions controll a new \rg{concept} has been introduced, called \mpsid{CppNaming Conventions}, 
@@ -100,26 +101,7 @@ The \mpsid{CppNamingConventions} \rg{concept} was created to demonstrate some ne
 In this case the naming conventions can be seen as a part of project configuration, in a very common sense. This is generalized in the
 \rsec{genprinciples}.
 
-Few remarks are needed to explain potential changes to the \mpsid{CppNamingConventions} \rg{concept} and its difference from the similar functionality taken
-in the regular text editors.
-
-First, the marking of special variables or object, keywords or type names, can be performed by changing editors for them. The special
-naming will not be needed then. Such way would mean however no opportunity to introduce a project-dependent marking, as it starts to be
-common for all projects, being a part of the projectional C++ implementation.
-
-Second, the naming checks can be generalized to use compliance to regular expressions, instead of just prefixes. As an advantage comes the
-ability to adopt a much broader set of different naming conventions. Disadvantageous is the increase
-of the computational load in the projectional editor, this is discussed also in the \rsec{analysesandcomplexity}.
-
-Third, the \mpsid{CppNamingConventions} in p\pcpp\ is just a \rg{concept} in a \jbmps\ \rg{model}. It is no different from the \mpsid{CppImplementationModule}
-or the \mpsid{BuildConfiguration} \rgp{concept}. Dislike many conventional editors, which store such settings as a workspace, project or \rg{ide} configuration, the
-\pcpp\ makes it a part of the program code itself. It is advantageous, since all the programmers in a team have to follow the 
-same naming conventions set up \emph{once} in a project on the start phase, and no environment (re-)configuration is needed to work on the project by
-any of the joining developers. This principle is generalized in the \rsec{genprinciples}. 
-The projectional approach is also discussed and compared to the conventional one in the \rsec{comparison}.
-
-And last, the naming conventions can of-course be extended to incorporate class names, function names, additional naming for methods,
-like ``is''- prefix for the boolean return type. 
+Some remarks on the \mpsid{CppNamingConventions} \rg{concept} are given additionally in \ref{remarksonnamingconventions}.
 
 
 \subsection{Method Implemented Check}
@@ -148,17 +130,18 @@ fully define the class together with the most important methods, affecting the m
 \label{preventiveabstract}
 % Check for abstract classes construction
 
-In this work I have already defined the notion of \rg{abstract} classes in C++ and some related to them questions in \ref{abstractclasses} and
+In this work we have already defined the notion of \rg{abstract} classes in C++ and some related to them questions in \ref{abstractclasses} and
 in \ref{cpppolydefs}. Mainly the \rg{acsa} and the problem of determining \rg{abstract} classes were discussed.
 
 
-\msnozoom{abstractinstance}{The Abstract Class ConstructREal Zaj Zion Check Signaling an Error}
+\msnozoom{abstractinstance}{The Abstract Class Construction Check Signaling an Error}
 
 An opened question which stayed, however, is providing some help to the programmer in the usage of such classes. Namely, any instantiation
 of an \rg{abstract} class has to be forbidden. The \rg{abstract} class as a type, however, should stay, and the pointer type to it should not
 be anyhow affected by the fact that the class is \rg{abstract}.
 
-The decision was taken to check the places, where an instance of an \rg{abstract} class can appear, and deprecate such situations.
+The decision was taken to check the places, where an instance of an \rg{abstract} class can appear, and deprecate such situations, marking the 
+corresponding node as error nodes.
 \jbmps\ supports so-called non-type-system checks, which come useful in this situation. Any node on the \rg{ast} can be analyzed, and 
 if the error happens to be detected, there is a chance to associate it with the node and a textual error message, which will
 clarify the programmer, what exactly went wrong. 
@@ -182,8 +165,27 @@ for a single object be he operator \cc{new}, the second deallocates memory, allo
 of object by the operator \cc{new[]}.
 
 The C++ standard does no specify any concrete behavior for wrong deallocation of an array with 
-an operator \cc{delete} (without square brackets), describing
+an operator \cc{delete} (without square brackets), describing it as undefined, \cite{cpp11}.
+ 
+A simple check is performed, and array dealocation is marked, when is performed wrongly. 
 
+Of-course, a complete check for this can only be performed by a complex analysis of the data-flow.
+This is left for the future work.
+
+
+\subsectin{Suggestions for the Future Work}
+
+The advanced \rg{ide} fuctionality can be grown incrementally. 
+
+Among the necessary checks to increase the \pcpp\ quality one can find:
+\begin{itemize}
+ \item Detection of virtual class
+ \item Calculation of class-sizes
+ \item A check for virtual destructor in a virtual class
+ \item A check for a default contructor when an array of obejcts is created
+\end{itemize}
+
+And indeed many more. Such checks are left for the future work.
 
 %TODO Default constructable and arrays! Require constructor by default
 

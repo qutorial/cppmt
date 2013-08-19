@@ -35,13 +35,16 @@ following sections.
 \label{visibilitysections}
 
 
+
+\cppproblem
+
 Instead of declaring visibility type for individual class members (C\#, Java), visibility sections are created
 in C++. 
 
 The sections can be opened with a string \cc{private:}, \cc{protected:} or \cc{public:}
 within a class declaration, and closed when another section is opened or when the class declaration
 ends. This allows the user to open and close the same section multiple times and declare sections
-without any particular order. This can be errorprone and confusive.
+without any particular order. This can be error-prone and confusing.
 
 Various coding guidelines (\cite{cppclasslayout}, \cite{googlecppstyle}) exist to enforce some 
 restrictions on the visibility sections.
@@ -56,10 +59,14 @@ Another typical requirement in coding standards, is the order of the sections. U
 section is required to be first, for the class users to see immediately the (public) interface,
 the class provides.
 
+
+
+\pcppsolution
+
 \ms{webpage}{Sample class type declaration}
 
 
-The \fig{webpage}, shows an example class declaration implemented in the projectional editor.
+The \fig{webpage}, shows an example class declaration implemented in the \pcpp.
 The \mpsid{Class} \rg{concept} has the visibility sections as children. Each section is given a separate role 
 (see \ref{mpsconceptdeclaration}) and can appear 0 or 1 times. The editor for the \mpsid{Class} \rg{concept} 
 orders the visibility sections so, that the public section always comes first, if present, 
@@ -73,7 +80,7 @@ indenting the result.
 % Limitation
 A question arises on how to support another way to represent a class, so that it will reflect
 requirements from a different coding standard. And as a way to resolve it a definition of 
-another editor for a class concept can be offered, Unfortunately, the current version of \jbmps\ 2.5
+another editor for a class concept can be offered. Unfortunately, the current version of \jbmps\ 2.5
 does not support a definition of multiple editors for the same concepts. This limitation however
 is addressed in the newer 3.0 version, which was not tested completely with \mbdr\ on the time
 this work was made.
@@ -81,6 +88,8 @@ this work was made.
 
 \subsubsection{Constructors}
 \label{classconstructors}
+
+\cppproblem
 
 Constructors are special methods of a class, used to construct the class instances. 
 
@@ -103,6 +112,8 @@ To avoid similar situations, it is possible to deprecate participation
 of a constructor in type conversions, adding a word \cc{explicit} to the constructor
 declaration.
 
+\pcppsolution
+
 The described problematic motivated the following decision. When a new constructor is created with one argument, 
 it is by default declared to be explicit, the user must intentionally change it to get the type conversion 
 behavior. Such behavior is safer by default. This is an example improvement to classical C++ which makes
@@ -111,7 +122,9 @@ the code understood better by novices and safer for them.
 \subsubsection{Copying}
 \label{classcopying}
 
-In the \cpppl\ the programmer controls memory allocation fully on his/her own. This affects the way of copying fot the class
+\cppproblem
+
+In the \cpppl\ the programmer controls memory allocation fully on his/her own. This affects the way of copying for the class
 instances.
 In C++ a programmer should define two methods for a class: a copy constructor and an assignment operator.
 These two methods work when assignment like \cc{a = b} happens, when instances of a class are passed by value to a function, 
@@ -143,6 +156,8 @@ features to the language (copying or assignment deprecation in this case).
 Macros bear pure textual nature, and are processed by the pre-processor. Some negative effects may 
 come out: need to preprocess reduces the speed of compilation and hides the resulting code from a programmer. Macros lead
 to error prone programming, as no type checks are possible. And macros make code less analyzable by automatic analyzers.
+
+\pcppsolution
 
 \ms{copyable}{Hinting about Copyable and Assignable Class Properties}
 

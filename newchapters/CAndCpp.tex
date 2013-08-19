@@ -1,6 +1,6 @@
 \declsec{C and C++}{candcpp}
 
-Initially C++ appeared to be an extesnion to the C language, called ``C with Classes'' \cite{cwithclasses}. Till now the high degree
+Initially C++ appeared to be an extension to the C language, called ``C with Classes'' \cite{cwithclasses}. Till now the high degree
 of commonality can be found between the two languages. Mainly, the most of the C code is going to be valid C++ code. 
 
 Some differences exist however, I introduce them here, together with the way they are adopted in the \pcpp.
@@ -13,13 +13,13 @@ They are discussed in the following subsections.
 \subsubsection{Reference Type}
 
 The reference type is basically a new construction in C++ which represent the old notion of pointer in C with a different syntax.
-Infact behind the reference type stands a pointer to the base type, and it is dereferenced when needed. 
+In fact behind the reference type stands a pointer to the base type, and it is dereferenced when needed. 
 
 The syntax for a variable of type \cc{T} can be used with the variable of type reference to \cc{T}, or \cc{\&T} as it is designated in C++.
 Thus the programmer benefits from the shorter syntax in comparison to the pointer dereferencing.
 
 It comes especially handy when passing arguments to methods by reference, which avoids creating a copy of an object to pass by 
-value, and still preserves the short syntax without pointer dereferencing.
+value, and still preserves the short syntax without pointer dereferencing, when accessing the value.
 
 \cpp{Reference Type in a Copy Constructor}{copyconstructor}
 
@@ -27,7 +27,7 @@ The value of the reference type in C++ is bigger however, than just a new syntax
 has to be used in a constructor to give it a special meaning of the copy constructor for the class, as the \rl{copyconstructor} demonstrates.
 This changes the whole semantics of the class, making it copyable. It is discussed in detail in \ref{classcopying}.
 
-The reference type itself is implemented rather straightforward and similar to the pointer type of \mbdr. It iherits the \mpsid{Type} 
+The reference type itself is implemented rather straightforward and similar to the pointer type of \mbdr. It inherits the \mpsid{Type} 
 \rg{concept} of \mbdr\, as described in the \ref{expressionslang}, and has a base type as a child.
 
 
@@ -56,10 +56,10 @@ This ensures further the compatibility of the custom-written text code, which ma
 as the user \cc{bool} will be promoted.
 
 %Limitations
-Among limitations of this approach one can take as an example \cc{std::vectoor<bool>}. 
+Among limitations of the approach, when \cc{bool} is translated to \cc{int8\_t}, one can consider \cc{std::vector<bool>}. 
 Since the word ``bool'' itself is never generated, it is not possible to use the specialization 
-of the template, which ensures storage optimization, through, though, higher processing load when
-extracting a value from such a \cc{vector}.
+of the template, which ensures storage optimization, through higher processing load when
+extracting a value from such a \cc{vector} though.
 
 The \cc{bool} type from \mbdr\ is kept in the \pcpp. This decision is arguable, and can, of-course, be
 changed in the future.
@@ -107,9 +107,9 @@ in strong correspondence with the header. This work decrease in order to change 
 Namespaces are introduced in the \pcpp\ to avoid inter-modular name clashes, they work similar to 
 the namespaces in C++.
 
-As auto-completion works very effective in the projectional editor, the need in the \cc{using} directive does
-not emerge the same strong as in plain text editors. Long names of namespaces are appended to the end of method
-defintions for classes, to be exact about the namespace, but the declarations are kept looking short, with only 
+The need in the \cc{using} directive does not emerge the same strong as in plain text editors, because the inputting of namespace names is
+made effective within the projectional editor. Long names of namespaces are appended to the end of method
+definitions for classes, to be exact about the namespace, but the declarations are kept looking short, with only 
 the last namespace shown, \fig{namespaces}.
 
 \ms{namespaces}{Example of Nested Namespaces}
