@@ -485,14 +485,101 @@ to the \jbmps\ developer team.
 
 \declsec{Templates}{templatesevaluation}
 
-%completeness
-%primitive types
-%importing problem
+The support for templates, as described in the \rsec{templates}, presents some advantages and 
+disadvantages for the \pcpp\ usage. 
+
+Among the disadvantages are:
+\begin{itemize}
+ \item Incompleteness of the support for templates, thus it will not allow every construction
+ possible in textual C++.
+ \item The need to prepare C++ concepts before writing the template code, there questions of 
+ code duplication can appear, when declaring two C++ concepts with the same content.
+ \item Importing of native C++ code is made more complex, as C++ concepts have o be generated,
+ this involves parsing the template code and extracting requirements for the template parameters,
+ and checking existing classes for compatibility with the extracted C++ concepts.
+\end{itemize}
+
+
+Advantageous are the following points:
+\begin{itemize}
+ \item The requirements on the template parameter are made explicit for the programmer through the 
+ use of C++ concepts.
+ \item Checks for C++ concept compliance make the template code programming and usage more
+ predictable.
+\end{itemize}
+
+The challenges present above as disadvantages of the C++ concepts approach could be resolved
+in the future by improving on the C++ concepts through:
+\begin{itemize}
+ \item Making the template support with C++ concepts more complete
+ \item Developing techniques to auto-generate C++ concepts from a given code, 
+ preparing it to be generalized
+ \item Developing a special importer, which will figure the concept definitions out of
+ the existing textual C++ code.
+\end{itemize}
+
+Alternatively, other ways to support C++ templates in the \pcpp\ could be researched.
 
 \declsec{\pcpp Future}{cppcompleteness}
 
-% templates need full support
-% STL has to be recreated
-% User has to be found 
-% Extensions have to be written
-% MPS support when improved can add a lot of value
+Here we briefly describe the way, \pcpp\ could be developed in the future.
+
+\subsection{Full Language Support}
+
+One of the main target for \pcpp\ in the future has to be developing 
+all of the original C++ features. This is needed both for the convenience of 
+a \pcpp\ user, and for the ability to import an existing code base, which 
+can use all the constructions, possible in C++.
+
+One of the big challenges for the language completeness is a development 
+of full templates support.
+
+A very important part of the \cpppl, is undoubtedly  the \rg{stl}. In order to acquire
+all language capabilities as is usual for a C++ programmer, after supporting all features
+of the language itself, the \rg{stl} has to be implemented in the \pcpp. Alternatively , if a powerful
+importer is developed first, the \rg{stl} could be potentially imported. 
+
+\subsection{Language Practice Tests}
+
+In order o continue the \pcpp\ development a user has to be found for the \pcpp, who
+will use the language on practice. This will allow to figure out in the fastest way,
+which language features left are the most desirable on practice, which new features,
+similar to those described in the \rsec{advanced}, can be developed and so on.
+
+No matter the \cpppl\ is not completely supported by the \pcpp, the ability to use the
+object-oriented programming paradigm in \mbdr\ represents a qualitative improvement over
+the existing C language in \mbdr. This fact represents an advantage, which can
+attract any \mbdr\ user towards the \pcpp\ even before the \cpppl\ is entirely supported.
+
+\subsection{Extending \pcpp}
+
+Following one of the goals to create \pcpp\ extensions for it could be created in a 
+modular fashion.
+
+As examples of such extensions could be:
+\begin{itemize}
+ \item Language constructions emulated by preprocessor and templates as in \cite{alexandrescumeta}.
+ \item Classes extensions to support messaging as in Objective-C, or signals and slots as in the Qt project.
+ \item Object-oriented design patterns could be research for the ability to support them on the 
+ language level
+ \item Development of higher-level models, which would generate to classes together with semantic analyses for them
+\end{itemize}
+
+Other \pcpp\ extensions can be invented, including specific extensions for various domains.
+
+
+\subsection{\pcpp\ Importer and Other Tools}
+An importer for the \pcpp\ could be developed, which would allow to reuse in the \pcpp\ the
+existing textual code base. One of the special challenges to develop such an importer would 
+be a conversion from regular C++ templates into the \pcpp\ templates with C++ concepts.
+
+A debugger of \mbdr\ could be extended in order to support the \pcpp.
+
+
+\subsection{\jbmps\ Evolution}
+
+This work suggests some improvements for \jbmps\ itself, see the \rsec{extensibility} and the 
+\rsec{analysesandcomplexity} for example.
+
+If \jbmps\ gets updated, taking some of the mentioned potential improvements into consideration,
+the \pcpp\ could be improved by taking advantage of the new \jbmps\ features.
