@@ -93,6 +93,63 @@ where the pointer was used, and performs the necessary typing.
 In the \rsec{extensibility} we discuss more on the approach taken here, its limitations and 
 the potential ways to overcome them.
 
+\subsection{Safer Casting for a Pointer to Class}
+\label{safecasting}
+
+\cppproblem
+
+The type casting for class types in C++ has a number of disadvantages.
+\begin{itemize}
+ \item The \cc{const\_cast} is usually a signal of a design error, since the 
+ declared \cc{const} property of a value is taken away.
+ 
+ \item The \cc{static\_cast} allows for wrong conversions from a base class to a derived class,
+ which could cause a failure in the run-time, as no checks are performed.
+ 
+ \item The \cc{reinterpret\_cast} allows to ignore the possibility of  
+  a completely meaningless conversion, which can lead to a run-time crashes, neither run-time nor 
+  compile-time checks are performed.
+ 
+ \item The \cc{dynamic\_cast} has usually low compile-time support, and relies on the run-time type
+  information to perform checks on the run-time. This information may not be available, being,
+  for example omitted for performance gains.
+\end{itemize}
+
+
+\pcppsolution
+
+A new construction for type conversions is introduced, which can be considered a slight improvement
+over the existing in C++ casts. The \mpsid{as} construction translates to the C++ \cc{dynamic\_cast}.
+Additionally, checks are added to improve the security of the construction.
+
+\ms{nonpolycasting}{Casting Example}
+
+The \fig{nonpolycasting} demonstrates some of the introduced in \pcpp\ features related to class type conversions.
+
+The new \mpsid{as} construction is being checked in the coding-time. For example, the cast from \cc{parent} to 
+\cc{NPChild\*} is signaled as an error, since these class hierarchy is not polymorphic, and the \cc{dynamic\_cast}
+in the basis of \mpsid{as} would not work on it.
+
+The next cast from \cc{parent} to \cc{NonPoly\*} is signaled with warning, because the \cc{parent} pointer does 
+already have the requested type. Such casting may signal a lack of understanding by the programmer while coding.
+
+The \cc{as} construction returns \cc{0} at run-time when conversion fails. Thus a good programming style
+should include the check for it in the run-time.
+
+When \mpsid{as} is used to cast a polymorphic class, it checks, whether the cast makes sense.
+For this the related classes must be in the same class hierarchy. When a zero result is possible,
+the node is highlighted with warning, for the programmer to take an action of checking. Casting 
+between unrelated classes is presented as an error.
+
+Some implicit type conversions are always meaningful, thus a conversion from a pointer to 
+a child class to a pointer to a parent class is recognized by \pcpp and is allowed, as 
+described in \ref{pointertoclasstyping}.
+
+The casting can be further improved through introducing new analysis. At first, a fast type of cast, 
+like \cc{static\_cast} or even \cc{reinterpret\_cast} can be used in translation, when a data-flow analysis
+can prove, that the conversion is always meaningful. Secondly, unnecessary casts can be eliminated in this way.
+
+
 \subsubsection{Overriding a Virtual Function}
 \label{overridefunction}
 

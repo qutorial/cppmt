@@ -1,3 +1,62 @@
-\declchap{Conclusion - not started yet}{concl}
+\declchap{Conclusion}{concl}
 
-Would appreciate some ideas here...
+In this work we were extending \mbdr\ with the \cpppl. 
+
+A new \rg{ide} for C++ has been created, which supports projectional editing for 
+a subset of the C++ programming language. The new \rg{ide} has been designed with several goals 
+in mind.
+
+First, the \pcpp\ should serve as a modular basis for the future extensions to C++. The 
+potentially possible extensions have been figured out and proposed as a future 
+work.
+
+Second, the experience of the \pcpp\ programming has to be more safe and informative,
+when compared to the regular C++ programming. Various pitfalls, usual for C++ programming,
+have been explained in this work, and tools have been introduced withing the new \rg{ide},
+designed to compensate on the pitfalls.
+
+While improving on the C++ programming experience, an application of analyses has been
+found to be useful. Various analyses have been applied in \pcpp. The analyses have been
+classified orthogonally by the purpose to \rgp{informativeanalysis} and \rgp{preventiveanalysis},
+and by the running type to \rgp{analysisondemand} and \rgp{selfrunninganalysis}.
+
+
+A method to support to some extent a project coding guidelines, precisely, naming conventions,
+has been proposed in this work. The idea to store the project related information together 
+with the source code has been formulated, its advantages have been listed.
+
+The projectional approach to create an \rg{ide} has been compared to a traditional textual approach.
+The advantages of the projectional approach have been listed. The potential problems while developing,
+using and evolving a projectional \rg{ide} and a code produced by it, have been identified.
+
+The \pcpp\ as a language has been designed, to represent in the end a complete enough subset 
+of the \cpppl\ for the \rg{stl} to be recreated in it in the future. The creation of a 
+projectional \rg{stl} copy was out of scope for this work, however.
+The completeness of the \pcpp\ language was described in this work, and
+the future work was proposed, which is going to be needed in order to support \rg{stl}.
+
+
+Generalized principles of language re-engineering in a projectional \rg{ide} have been
+discovered and formulated. The principles can be reused when creating an \rg{ide} for 
+a language, to make the language more readable, more expressive, higher cross-platform,
+and safer and more convenient to use for the programmer. 
+
+Various language modularity and extensibility problems have been considered on 
+practice while developing the \mbdr\ C++ extension. The \pcpp\ has been developed in 
+such a way, that the \mbdp\ languages do not have a dependency on \pcpp, which
+allows for, to a certain degree, separate development of the projects.
+
+In parallel  while extending \mbdr\ to build a new C++ \rg{ide} the facilities 
+for extensibility, provided be \jbmps\ were researched. Extensibility has been 
+analyzed separately for each view on the language. Whenever the degree of extensibility 
+was not considered to be high, workaround and future \jbmps\ improvements were proposed.
+for \jbmps.
+
+The question of building analyses in \jbmps\ for a new language has been discussed.
+Three phases of analysis running were identified, and for each phase potential problems
+were highlighted. \jbmps\ improvements have been proposed to make the analysis creation 
+more productive.
+
+Finally the potential future work has been described, including the ways to get the full C++ language 
+support, the need to test the new \rg{ide} on practice, the problem to create an importer for the
+textual C++ code and its potential complications have been described.
