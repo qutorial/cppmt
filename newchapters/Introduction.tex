@@ -9,7 +9,7 @@ By changing  the language itself, together with a tool set for it, it is possibl
 for a dedicated domain, for example, specifically for embedded programming. There are two known approaches to change
 the language itself.
 
-\subsection{Taking a Subset of a Language}
+\paragraph{Taking a Subset of a Language}
 
 The first possible approach is dropping some language features, to get the language, which is simpler. 
 As an example, a subset of C++, called \Rg{emcpp} can be brought, \cite{emcpp}. The approach taken in \Rg{emcpp} is 
@@ -25,7 +25,7 @@ limited language to take advantage of the C++ \rg{stl}, which requires the C++ l
 \Rg{emcpp}, \cite{stremcpp}. As a response for it IAR Systew have developed \rg{exemcpp}, which includes many of the language features,
 omitted by \Rg{emcpp}, and a memory-aware version of \rg{stl}, \cite{extendedembeddedcpp}.
 
-\subsection{Extending a Language}
+\paragraph{Extending a Language}
 
 The second approach to modify a language in order to get it more suitable for embedded development consists of extending 
 the language with constructions, specific to the domain. The authors of the \mbdp\ has taken such approach, to improve on
@@ -36,7 +36,7 @@ a state table or  a state machine diagram in a specification may describe behavi
 programmer control. A language developer can incorporate such notions as a sate machine into a language, \fig{dectabtaken}\footnote{Illustration is taken from \cite{2012_ratiu_modular_dsls_and_analyses} }, 
 providing a higher abstraction level, when compared to the existing language constructs. 
 
-\gr{dectabtaken}{Example of a Decision Table, Added to C Language}{1.0}
+\gr{dectabtaken}{Example of a Decision Table, Added to C Language}{0.8}
 
 Moreover, higher level extensions induce some higher level semantics. An \rg{ide} under construction could check 
 this higher level semantics for correctness on the programming stage. For example, an \rg{ide} can check a given decision table 
@@ -51,7 +51,7 @@ and returns a new \cc{mode} value as determined by the input parameters. A caref
 is not taken into account, and the default value \cc{FAIL} is going to be returned. A programmer could invoke analysis\footnote{Described in detail 
 in  \cite{2012_ratiu_modular_dsls_and_analyses}}, to find out that the table is not covering itself the whole choice space.
 
-\subsection{\jbmps, \mbdr and Language Modularity}
+\subsection{\mbdr: a Language Engineering Project with \jbmps}
 
 The \mbdr\ development team have used a special language engineering environment, \Rg{mps}, to support modular and incremental 
 language development.  A programmer using \jbmps\ splits a language under development into special class-like items, 
@@ -85,9 +85,7 @@ syntax to the further tool chains as an outcome. Thus the general purpose progra
 remaining compatible with all the existing tools to process it further.
 
 Additionally to the language modification itself, an \rg{ide} can be improved to support the domain specific 
-development. 
-
-Various analyses\footnote{analyses not only for extensions, but for the base language itself} 
+development. Various analyses\footnote{analyses not only for extensions, but for the base language itself} 
 can be built in into the code editor in order to detect inconsistencies, or, simply, ``dangerous'' constructs, 
 and inform the programmer. Certain code formatting, or standard requirements could be enforced as well. 
 The \rg{ide} can be enhanced with various automations, like support for code generation and refactorings. 
@@ -98,7 +96,10 @@ analysis, generation, or transformation, there is no need to invoke parsers for 
 \section{Problem}
 
 Being a powerful tool for an embedded systems developer, \mbdr\ does not support the \cpppl. Supporting C++ would be an
-advantageous argument for \mbdr, as C++ empowers the developer with additional paradigms of programming, including 
+advantageous argument for \mbdr, as C++ empowers the developer with additional paradigms\footnote{C++ represents 
+a multi-paradigm programming language, as functional programming or programming with templates can be seen as 
+distinct paradigms. C is a single-paradigm language, with the only one procedure-oriented paradigm supported.}
+of programming, including 
 object-oriented programming. Thus a problem appears, to support C++ within \mbdr. As \mbdr\ is itself built upon
 \jbmps\ and language modularity principles, these principles have to be taken into account while extending \mbdr.
 This means, the \cpppl\ has to be developed as a modular extension for the C language provided by \mbdr.
@@ -117,22 +118,16 @@ and even more general, for later extension, to specialize the common base C++ la
 together with a new C++ language flavor, which supports the C++ programmer.
 
 During the creation of the \cpppl\ in the way described, the language modularity in general is analyzed, and caveats of it
-are described together with the ways to avoid them.
-
-The newly created \rg{ide} features analyses. The question of their computational complexity for such analyses 
-is raised in general, together with the practical outcomes of it.
-
-The new language together with the new \rg{ide} can later serve as a basis for extending the C++ programming 
+are described together with the ways to avoid them. The newly created \rg{ide} features analyses. The question of their computational complexity for such analyses 
+is raised in general, together with the practical outcomes of it. The new language together with the new \rg{ide} can later serve as a basis for extending the C++ programming 
 language with domain specific constructs for embedded programming. Creation of these extensions lies out of scope
-for this Master Thesis, and is left for further research.
+for this \MT, and is left for further research.
 
 
 The approach taken in this work goes further into exploring the language modularity on the basis of \jbmps. While building 
 the \cpppl\ itself  with the goal of embedded domain specific extensions in mind, the C++ itself is being built itself as 
 an extension to the C programming language, provided by the \rg{mbeddr}. The C++ implemented in \jbmps\ and discussed in this 
-work we call the \pcpp.
-
-Although C++ is a separate from C language, the high degree of similarity allows to make use of the C programming language,
+work we call the \pcpp. Although C++ is a separate from C language, the high degree of similarity allows to make use of the C programming language,
 implemented by the \rg{mbeddr} as a foundation. Not only reuse of the basic C is achieved, but also the embedded extensions from
 the \rg{mbeddr} are immediately supported by the newly built C++.
 
@@ -145,42 +140,50 @@ on C++, making the C++ support an independent task.
 \section{Contribution}
 
 In this work we describe a \cpppl\ implementation\footnote{This implementation does not represent complete C++, and
-limitations are discussed along this work} on top of \mbdp.
+limitations are discussed along this work} on top of \mbdp. Our contributions towards it are listed below.
 
-The task of a one-side-aware only extension is a challenge for the whole language modularity concept, 
+
+ \paragraph{Pure modular extension for \mbdr.} The task of a one-side-aware only extension is a challenge for the whole language modularity concept, 
 provided by \jbmps. This work explores further the support, provided by \jbmps\ for the modular 
 language construction, c.f. \cite{2012_ratiu_modular_dsls_and_analyses}, and reviews it from the architectural point of view,
 summarizing in the end the support for it, provided by \jbmps.
 
-This work contributes the \cpppl\ with a number of automations and analyses for it. The automations include code 
+ \paragraph{Improved C++ programmer support.} This work contributes the \cpppl\ with a number of automations. The automations include code 
 generation and structuring. They are designed to compensate on some caveats of C++, or lack of support for 
 several aspects in the language itself, like coding style. 
 
-C++ is known for a number of pitfalls a programmer can be caught by. This work tries to improve on this situation by introducing analyses.
-The analyses are intended to increase the understanding of the constructed code by a novice to C++ programmer, 
-or to provide a quick information to an experienced C++ professional. Both analyses and automations are provided to 
+ \paragraph{Improving on C++ language itself.} C++ is known for a number of pitfalls a programmer can be caught by. This work tries to improve on this situation by introducing analyses.
+The analyses are intended to increase understanding of a constructed code by a novice to C++ programmer, 
+or to provide information to an experienced C++ professional. Both analyses and automations are provided to 
 achieve an improvement in quality, security and understanding of the pure C++ code. The automations and analyses 
 are mostly implemented as a programming on the \rg{ast} in a Java-like programming language.
 
-As analyses and automations grow in complexity and quantity, the question of their computational complexity arises.
+ \paragraph{Analyses run-time and complexity problem researched.} As analyses and automations grow in complexity and quantity, the question of their computational complexity arises.
 In the \jbmps\ \rg{api} it is not explicitly defined, when the analyses provided for the language take place, 
 how much of the computational resource they can take advantage of, and how the end user should be informed on the results and progress. 
 These aspects may affect the overall \rg{ide} behavior, including performance, as the analyses complexity may be high and the results of them could 
-be of a high value. 
-The question of analyses run-time, complexity and results presentation is raised and discussed in 
-this work in general and in particular, suggesting improvements to \jbmps \rg{api}.
+be of a high value. The question of analyses run-time, complexity and results presentation is raised and discussed in 
+this work in general and in particular, suggesting improvements to \jbmps\ \rg{api}.
 
-
-
+ \paragraph{General language recreation principles.} Generalized principles useful when recreating an existing language in a projectional environment were 
+ formulated, and supported by practical examples in this work.
+ 
+ \paragraph{Language extensibility in \jbmps\ researched} Being one of the largest extensions to a language ever constructed in \jbmps, \pcpp\ 
+ represents a good basis to discover general language extensibility support limitation of \jbmps. The support for extensibility in \jbmps\ is 
+ reviewed considering each view on the language, workarounds for current \jbmps\ version are offered, and improvements for future \jbmps\ development
+ are suggested.
+ 
+ \vspace{10 mm}
+ 
 Finally, it is fair to say, that the \mbdr\ team\footnote{especially Markus Voelter} have already grounded some practical foundations for the \pcpp, 
-before the start of this work. Some of them, were kept (reference type, templates partially) and just described and analyzed 
+before the start of this work. Some of them, were kept either as suitable (reference type) of for the further improvement (templates) and just described and analyzed 
 here, some of them were considerably reworked (classes, inheritance, encapsulation and polymorphism). 
 
-Couching from the \mbdr\ team made me changing some of the implementation aspects to be different from what we planned originally (namespaces,
+Couching from the \mbdr\ team made us changing some of the implementation aspects to be different from what we planned originally (namespaces,
 operator overloading partially). And, of-course, we built some parts new, from scratch, without any influence (at least at the moment of being) \mbdr\ team 
 at all (all analyses, construction and copying, some more). 
 
-The evaluation of the experience, gained by me during the practical implementation part, results into the extensibility analysis, 
+The evaluation of the experience, gained by us during the practical implementation part, results into the extensibility analysis, 
 research on complexity of checks and the run-time for them together with suggested \jbmps\ improvements, and general guidelines 
 for building projectional language implementation represent my own theoretical focus and commitment.
 

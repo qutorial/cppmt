@@ -30,7 +30,7 @@ In the \rl{strings} one can find 4 overloaded operators:
 \gr{operatoroverloaddecl}{Operator Overloading: Definition}{0.3}
 
 We will discuss the implementation of the operator overloading in \pcpp\ based on the 
-example. The \rl{operatoroverloaddecl} shows (partially) a definition of the \cc{Coords} class.
+example. The \fig{operatoroverloaddecl} shows (partially) a definition of the \cc{Coords} class.
 The class represents a vector in the two-dimensional space. Three operators are overloaded for it:
 \begin{itemize}
  \item \cc{operator +} performs the addition of two vectors,
@@ -92,7 +92,7 @@ the overloaded operators, helps to avoid code duplication, reprogramming the beh
 existing expressions in \mbdr. 
 
 Alternatively, the expressions in \mbdr\ could be inherited and changed. But the 
-degree of changes, possible through inheritance is limited, as described in \ref{extensibility},
+degree of changes, possible through inheritance is limited, as described in \rsec{extensibility},
 and creation of a second set of the same looking expressions could potentially confuse the
 programmer, when he or she is going to instantiate one of the many \cc{+} operators, for example.
 

@@ -1,6 +1,11 @@
 \declchap{Conclusion}{concl}
 
-In this work we were extending \mbdr\ with the \cpppl. 
+Here we briefly review the accomplished contributions and a future work possible.
+
+\declsec{Accomplished Contributions}{contrib}
+
+In this work we were extending \mbdr\ C language with programming constructs from the \cpppl, which 
+resulted in a software, we call here the \pcpp. 
 
 A new \rg{ide} for C++ has been created, which supports projectional editing for 
 a subset of the C++ programming language. The new \rg{ide} has been designed with several goals 
@@ -60,3 +65,67 @@ more productive.
 Finally the potential future work has been described, including the ways to get the full C++ language 
 support, the need to test the new \rg{ide} on practice, the problem to create an importer for the
 textual C++ code and its potential complications have been described.
+
+\declsec{Future Work}{cppcompleteness}
+
+Here we briefly describe the way, \pcpp\ could be developed in the future.
+
+\subsection{Full Language Support}
+
+One of the main target for \pcpp\ in the future has to be developing 
+all of the original C++ features. This is needed both for the convenience of 
+a \pcpp\ user, and for the ability to import an existing code base, which 
+can use all the constructions, possible in C++.
+
+One of the big challenges for the language completeness is a development 
+of full templates support.
+
+A very important part of the \cpppl, is undoubtedly  the \rg{stl}. In order to acquire
+all language capabilities as is usual for a C++ programmer, after supporting all features
+of the language itself, the \rg{stl} has to be implemented in the \pcpp. Alternatively , if a powerful
+importer is developed first, the \rg{stl} could be potentially imported. 
+
+\subsection{Investigating the Language Use}
+
+In order o continue the \pcpp\ development a user has to be found for the \pcpp, who
+will use the language on practice. This will allow to figure out in the fastest way,
+which language features left are the most desirable on practice, which new features,
+similar to those described in the \rsec{advanced}, can be developed and so on.
+
+No matter the \cpppl\ is not completely supported by the \pcpp, the ability to use the
+object-oriented programming paradigm in \mbdr\ represents a qualitative improvement over
+the existing C language in \mbdr. This fact represents an advantage, which can
+attract any \mbdr\ user towards the \pcpp\ even before the \cpppl\ is entirely supported.
+
+\subsection{Extending the Projectional C++}
+
+Following one of the goals to create \pcpp\ extensions for it could be created in a 
+modular fashion.
+
+As examples of such extensions could be:
+\begin{itemize}
+ \item Language constructions emulated by preprocessor and templates as in \cite{alexandrescumeta}.
+ \item Classes extensions to support messaging as in Objective-C, or signals and slots as in the Qt project.
+ \item Object-oriented design patterns could be research for the ability to support them on the 
+ language level
+ \item Development of higher-level models, which would generate to classes together with semantic analyses for them
+\end{itemize}
+
+Other \pcpp\ extensions can be invented, including specific extensions for various domains.
+
+
+\subsection{Projectional C++ Importer and Other Tools}
+An importer for the \pcpp\ could be developed, which would allow to reuse in the \pcpp\ the
+existing textual code base. One of the special challenges to develop such an importer would 
+be a conversion from regular C++ templates into the \pcpp\ templates with C++ concepts.
+
+A debugger of \mbdr\ could be extended in order to support the \pcpp.
+
+
+\subsection{JetBrains MPS Evolution}
+
+This work suggests some improvements for \jbmps\ itself, see the \rsec{extensibility} and the 
+\rsec{analysesandcomplexity} for example.
+
+If \jbmps\ gets updated, taking some of the mentioned potential improvements into consideration,
+the \pcpp\ could be improved by taking advantage of the new \jbmps\ features.
