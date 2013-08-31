@@ -3,7 +3,7 @@
 \section{Context}
 
 In embedded programming the C++ programming language is widely spread, \cite{embedlangs}. Being a general purpose 
-programming language, C++ does not provide, however, any special support for embedded systems programmers. 
+programming language, C++ does not provide, however, any special support for preogrammers of embedded systems. 
 
 By changing  the language itself, together with a tool set for it, it is possible to get a better environment 
 for a dedicated domain, for example, specifically for embedded programming. There are two known approaches to change
@@ -11,49 +11,55 @@ the language itself.
 
 \paragraph{Taking a Subset of a Language}
 
-The first possible approach is dropping some language features, to get the language, which is simpler. 
+The first possible approach resembles dropping some language features, to get the language, which is simpler. 
 As an example, a subset of C++, called \Rg{emcpp} can be brought, \cite{emcpp}. The approach taken in \Rg{emcpp} is 
-omitting very many core features of C++ like virtual base classes, exceptions, namespaces and templates. 
-It allows for a higher degree of optimizations by compiler possible. 
+omitting very many core features of C++: virtual base classes, exceptions, namespaces and templates. 
+It allows for a higher degree of optimizations by compiler possible and makes the language much less sophisticated
+in general.
 
-\Rg{emcpp} was intended to ensure higher software quality through better understanding of the limited 
-C++ by programmers, higher quality of compilers, through simplicity, better suitability for the embedded domain, through
+\Rg{emcpp} was intended to ensure higher software quality through better understanding of the language
+by programmers; higher quality of compilers, through simplicity; better suitability for the embedded domain, through
 memory consumption considerations \cite{stripepp}. 
 
 The C++ community has criticized the approach taken in \Rg{emcpp}, specifically for the inability of the 
 limited language to take advantage of the C++ \rg{stl}, which requires the C++ language features, absent in 
-\Rg{emcpp}, \cite{stremcpp}. As a response for it IAR Systew have developed \rg{exemcpp}, which includes many of the language features,
-omitted by \Rg{emcpp}, and a memory-aware version of \rg{stl}, \cite{extendedembeddedcpp}.
+\Rg{emcpp}, \cite{stremcpp}. As a response to it IAR Systems have developed \rg{exemcpp}, which includes many of the language features,
+omitted by \Rg{emcpp}, and a memory-aware version of \rg{stl}, extending not only \rg{emcpp}, but C++ in general \cite{extendedembeddedcpp}.
 
 \paragraph{Extending a Language}
 
-The second approach to modify a language in order to get it more suitable for embedded development consists of extending 
-the language with constructions, specific to the domain. The authors of the \mbdp\ has taken such approach, to improve on
+The second approach to modify a language in order to get it more suitable for a specific domain\footnote{Here we consider an 
+improvement to a language to get a better suitability to any given domain, and not necessarily just embedded development.
+However, we have in mind the embedded domain as first to support, as \mbdr\ targets it directly.} consists of extending 
+the language with constructions, specific to the domain. The authors of the \mbdp\ have taken such approach, to improve on
 the C programming language, \cite{2012_voelter_mbeddr_extensible_c_based_language_and_ide_for_embedded}. 
 
-Specific extensions may represent some often met idioms in the domain, for example, 
-a state table or  a state machine diagram in a specification may describe behavior of a device under the 
-programmer control. A language developer can incorporate such notions as a sate machine into a language, \fig{dectabtaken}\footnote{Illustration is taken from \cite{2012_ratiu_modular_dsls_and_analyses} }, 
-providing a higher abstraction level, when compared to the existing language constructs. 
+Specific extensions may represent some often met idioms in the domain. For example, in embedded development a 
+specification for a device might be given. The goal of the programmer could be to develop a software, which 
+interacts with the device. The device specification may contain a state table or  a state machine diagram,
+describing the device behavior or the way to control the device. A language developer could incorporate such 
+originating from the domain of interest notions into the language.
+
+For example, the \fig{dectabtaken}
+demonstrates\footnote{The illustration is taken from \cite{2012_ratiu_modular_dsls_and_analyses} }, 
+how a decision table is built in into an \mbdr\ C code. The decision table provides a higher abstraction level, 
+when compared to the existing initially C language constructs. 
 
 \gr{dectabtaken}{Example of a Decision Table, Added to C Language}{0.8}
 
-Moreover, higher level extensions induce some higher level semantics. An \rg{ide} under construction could check 
-this higher level semantics for correctness on the programming stage. For example, an \rg{ide} can check a given decision table 
-for completeness of choices and their consistency, \cite{2012_ratiu_modular_dsls_and_analyses}. Such checks can improve 
-quality of the software under development. 
+Moreover, higher-level extensions could induce some higher-level semantics. An \rg{ide} under construction could check 
+the higher-level semantics for correctness on the programming stage. Such checks could improve 
+quality of the software under development. For example, a \mbdr\ checks a given decision table for completeness of choices 
+and their consistency, \cite{2012_ratiu_modular_dsls_and_analyses}. The \fig{dectabtaken} demonstrates a decision table. 
+The decision table takes \cc{mode} and \cc{speed} as input parameters and returns a new \cc{mode} value as determined by the 
+input parameters. A careful reader could see, that the exact value \cc{30} of \cc{speed}
+is not taken into account, and the default value \cc{FAIL} is going to be returned. A programmer could invoke an
+analysis\footnote{The analysis is described in detail in  \cite{2012_ratiu_modular_dsls_and_analyses}}, to find out that the 
+table is not covering the whole choice space.
 
-Extensions to C language developed in \rg{mbeddr} include state machines and decision tables, together with analyses
-for them.
+\subsection{\mbdr: a Language Engineering Project with JetBrains MPS}
 
-For example, the \fig{dectabtaken} demonstrates a decision table. The decision table takes \cc{mode} and \cc{speed} as input parameters
-and returns a new \cc{mode} value as determined by the input parameters. A careful reader can see, that the exact value \cc{30} of \cc{speed}
-is not taken into account, and the default value \cc{FAIL} is going to be returned. A programmer could invoke analysis\footnote{Described in detail 
-in  \cite{2012_ratiu_modular_dsls_and_analyses}}, to find out that the table is not covering itself the whole choice space.
-
-\subsection{\mbdr: a Language Engineering Project with \jbmps}
-
-The \mbdr\ development team have used a special language engineering environment, \Rg{mps}, to support modular and incremental 
+The \mbdr\ development team has used a special language engineering environment, \Rg{mps}, to support modular and incremental 
 language development.  A programmer using \jbmps\ splits a language under development into special class-like items, 
 called \rgp{concept}. Concepts represent the \rg{ast} node types. 
 
@@ -63,114 +69,118 @@ and enabling polymorphism, in a way when any descendant can be used instead of i
 binary minus expression can be used wherever an expression (any expression) is required. 
 After various expression types were described to the language engineering environment as \rgp{concept}, 
 the environment provides a chance to instantiate concrete expressions and edit them, acting as an editor for 
-the language created.
+the language. The created editor serves as a key component in the \rg{ide} under construction. This editor
+contains the code for automations and analyses, if provided for the language. It works with text code generators, 
+a compiler, a debugger and all other tools connected to the language. Thus we often use the term ``editor'' and 
+the term ``\rg{ide}'' interchangeably.
 
-Over the inheritance mechanisms, it is possible to extend languages, providing new concepts as descendants of 
-the existing ones. For example, expression concept can be extended to support new sort of expressions, like decision tables.
-Thus language modularity is achieved and incremental development is made to be possible.
+Over the inheritance mechanisms, it is possible to extend languages, providing new \rgp{concept} as descendants of 
+the existing ones. For example, the expression \rg{concept} can be extended to support a new sort of expressions, like decision tables.
+Thus, language modularity is achieved and incremental development is made to be possible.
 
-Modularity is achieved as well, when one language is enabled to interact with another one. For example, expressions,
-described independently as a language, can be reused in any language, which has a need in expressions, like language with
+Modularity is achieved as well, since one language is enabled to interact with another one. For example, expressions,
+described independently as a language, can be reused in any language, which has a need in expressions, like a language with
 statements of a programming language, because statements include expressions naturally.
 
 Having in mind the opportunities, the language modularity in \jbmps\ brings, it makes sense to recreate a general 
 purpose programming language in \jbmps. Building the general purpose programming language brings a basis to develop 
 domain specific extensions to the well-known general purpose language. The editor for the general purpose language comes 
-almost ``for free'', as a side product. 
+almost ``for free'', as a side product, after the language is split into \rgp{concept}.
 
 Later, from the code in the implemented general purpose language a text code can be generated for further processing, 
 compiling, deployment. The language extensions, of-course, are not known to the existing tools which process the language.
-But they usually can be reduced to the base general purpose programming language statements, presenting a regular 
-syntax to the further tool chains as an outcome. Thus the general purpose programming language is getting enhanced,
-remaining compatible with all the existing tools to process it further.
+But they usually can be reduced to the base general purpose programming language statements, presenting the regular 
+syntax of the taken general purpose language to the further tool chains, which expect only the basic language constructions, 
+as an outcome.  Thus the general purpose programming language is getting enhanced, remaining compatible with all the 
+existing tools to process it. The developed editor forms a key component of a new \rg{ide}, as described above.
 
 Additionally to the language modification itself, an \rg{ide} can be improved to support the domain specific 
 development. Various analyses\footnote{analyses not only for extensions, but for the base language itself} 
 can be built in into the code editor in order to detect inconsistencies, or, simply, ``dangerous'' constructs, 
 and inform the programmer. Certain code formatting, or standard requirements could be enforced as well. 
-The \rg{ide} can be enhanced with various automations, like support for code generation and refactorings. 
+The \rg{ide} could be enhanced with various automations, like support for code generation and refactorings. 
 
-As the new \rg{ide} works internally with \rg{ast} described through the node types, or \rgp{concept}, in order to perform code
-analysis, generation, or transformation, there is no need to invoke parsers for the code, which is advantageous.
+As the new \rg{ide} works internally with an \rg{ast}, described through the node types, or \rgp{concept}, in order to perform a code
+analysis, a generation, or a transformation, there is no need to invoke parsers for the code, which is advantageous.
 
 \section{Problem}
 
-Being a powerful tool for an embedded systems developer, \mbdr\ does not support the \cpppl. Supporting C++ would be an
+Being a powerful extensible tool for an embedded systems developer, \mbdr\ does not support the \cpppl. Supporting C++ would be an
 advantageous argument for \mbdr, as C++ empowers the developer with additional paradigms\footnote{C++ represents 
 a multi-paradigm programming language, as functional programming or programming with templates can be seen as 
-distinct paradigms. C is a single-paradigm language, with the only one procedure-oriented paradigm supported.}
-of programming, including 
-object-oriented programming. Thus a problem appears, to support C++ within \mbdr. As \mbdr\ is itself built upon
+distinct paradigms. C, in comparison, is a single-paradigm language, with the only one procedure-oriented paradigm supported.}
+of programming, mainly the object-oriented programming. Thus a problem appears, to support C++ within \mbdr. As \mbdr\ is built itself  upon
 \jbmps\ and language modularity principles, these principles have to be taken into account while extending \mbdr.
-This means, the \cpppl\ has to be developed as a modular extension for the C language provided by \mbdr.
+This means, that the \cpppl\ has to be developed as a modular extension for the C language provided by \mbdr.
 
 
 \declsec{Approach}{approach}
 
 
-Above we describe the two approaches to making a language more suitable for a particular domain. In this work we use a mixture of 
-the two approaches in an  attempt to achieve a modular C++ language. On the one hand, we limit C++, trying to hide its ``dangerous'' sides 
-from the developer. On the other hand, we built C++ itself as an extension to C and as a modular base for further extending. While limiting 
-C++ we try to keep all the necessary features in it, to not to face the same problems as \Rg{emcpp} had.
+Above we describe the two approaches used to make a language more suitable for a particular domain. 
+In this work we use a mixture of the two approaches in an  attempt to achieve a modular C++ language, 
+which can later on serve as a basis to target some domain of interest. We try to modify the C++ language 
+for it to be, on the one hand more, user-friendly, and, on the other hand, for it to be prepared to become 
+a better embedded systems development tool, being safer, clearer and, in the future, including specific
+for the domain extensions. We built C++ itself as an extension to C and as a modular base for further extending. While limiting 
+C++, we try to keep all the core features in it, to not to face the same problems as \Rg{emcpp} had.
 
 We built C++ as a suitable base for the further language engineering, including the specialization  of C++ for embedded development, 
-and even more general, for later extension, to specialize the common base C++ language to any domain of choice. A special \rg{ide} is created 
-together with a new C++ language flavor, which supports the C++ programmer.
+and even more general, for any domain of choice. A special \rg{ide} is created together with a new C++ language flavor, which supports 
+a C++ programmer.
 
 During the creation of the \cpppl\ in the way described, the language modularity in general is analyzed, and caveats of it
-are described together with the ways to avoid them. The newly created \rg{ide} features analyses. The question of their computational complexity for such analyses 
-is raised in general, together with the practical outcomes of it. The new language together with the new \rg{ide} can later serve as a basis for extending the C++ programming 
-language with domain specific constructs for embedded programming. Creation of these extensions lies out of scope
-for this \MT, and is left for further research.
-
+are described together with the ways to avoid them. The newly created \rg{ide} features analyses. The question of their
+computational complexity is raised in general, together with the practical outcomes of it.
 
 The approach taken in this work goes further into exploring the language modularity on the basis of \jbmps. While building 
-the \cpppl\ itself  with the goal of embedded domain specific extensions in mind, the C++ itself is being built itself as 
-an extension to the C programming language, provided by the \rg{mbeddr}. The C++ implemented in \jbmps\ and discussed in this 
-work we call the \pcpp. Although C++ is a separate from C language, the high degree of similarity allows to make use of the C programming language,
+the \cpppl\ itself  with the goal of embedded domain specific extensions in mind, the C++ itself is being built as 
+an extension to the C programming language, provided by \rg{mbeddr}. The C++ flavor implemented in \jbmps\ and discussed in this 
+work we call \pcpp. Although C++ is a separate from C language, the high degree of similarity allows to make use of the C programming language,
 implemented by the \rg{mbeddr} as a foundation. Not only reuse of the basic C is achieved, but also the embedded extensions from
 the \rg{mbeddr} are immediately supported by the newly built C++.
 
 The ultimate goal during the reuse of \mbdr\ as a base for C++ is keeping \rg{mbeddr}
-not modified towards the \cpppl\ only, but instead, making, when needed, \mbeddr\  more extensible in general, 
+  not modified towards the \cpppl\ \emph{only}, but instead, making, when needed, \mbeddr\  more extensible \emph{in general}, 
 so that both resulting C++ and the base for it, \mbdr,  can develop further being disjoint to a high degree.
-This independence of \mbdr\ on C++ extension ensures, that the \mbdp\ can develop further without looking back 
-on C++, making the C++ support an independent task.
+This independence of \mbdr\ from the C++ extension ensures, that the \mbdp\ can develop further without looking back 
+on C++, making the \pcpp\ support an independent task.
 
 \section{Contribution}
 
 In this work we describe a \cpppl\ implementation\footnote{This implementation does not represent complete C++, and
-limitations are discussed along this work} on top of \mbdp. Our contributions towards it are listed below.
+limitations are discussed along this work.} on top of \mbdp. Our contributions towards it are listed below.
 
 
  \paragraph{Pure modular extension for \mbdr.} The task of a one-side-aware only extension is a challenge for the whole language modularity concept, 
 provided by \jbmps. This work explores further the support, provided by \jbmps\ for the modular 
 language construction, c.f. \cite{2012_ratiu_modular_dsls_and_analyses}, and reviews it from the architectural point of view,
-summarizing in the end the support for it, provided by \jbmps.
+summarizing finally the support for it, provided by \jbmps.
 
  \paragraph{Improved C++ programmer support.} This work contributes the \cpppl\ with a number of automations. The automations include code 
 generation and structuring. They are designed to compensate on some caveats of C++, or lack of support for 
-several aspects in the language itself, like coding style. 
+several aspects in the language itself, like a support for a coding style. 
 
- \paragraph{Improving on C++ language itself.} C++ is known for a number of pitfalls a programmer can be caught by. This work tries to improve on this situation by introducing analyses.
-The analyses are intended to increase understanding of a constructed code by a novice to C++ programmer, 
-or to provide information to an experienced C++ professional. Both analyses and automations are provided to 
+ \paragraph{Improving on C++ language itself.} C++ is known for a number of pitfalls, 
+ a programmer can be caught by. This work tries to improve on this situation by introducing analyses.
+The analyses are intended to increase understanding of a constructed code by a novice programmer, 
+or to provide information to an experienced C++ professional. Analyses together with automations are provided to 
 achieve an improvement in quality, security and understanding of the pure C++ code. The automations and analyses 
-are mostly implemented as a programming on the \rg{ast} in a Java-like programming language.
+are mostly implemented as a programming on an \rg{ast} in a Java-like programming language.
 
  \paragraph{Analyses run-time and complexity problem researched.} As analyses and automations grow in complexity and quantity, the question of their computational complexity arises.
-In the \jbmps\ \rg{api} it is not explicitly defined, when the analyses provided for the language take place, 
-how much of the computational resource they can take advantage of, and how the end user should be informed on the results and progress. 
+In the \jbmps\ \rg{api} it is not explicitly defined, when analyses provided for a language take place, 
+how much of a computational resource they can take advantage of, and how an end user should be informed on results and a progress. 
 These aspects may affect the overall \rg{ide} behavior, including performance, as the analyses complexity may be high and the results of them could 
 be of a high value. The question of analyses run-time, complexity and results presentation is raised and discussed in 
 this work in general and in particular, suggesting improvements to \jbmps\ \rg{api}.
 
- \paragraph{General language recreation principles.} Generalized principles useful when recreating an existing language in a projectional environment were 
- formulated, and supported by practical examples in this work.
+ \paragraph{General language recreation principles.} Generalized principles, useful when recreating an existing language in a projectional 
+ environment, were formulated and supported by practical examples in this work.
  
  \paragraph{Language extensibility in \jbmps\ researched} Being one of the largest extensions to a language ever constructed in \jbmps, \pcpp\ 
- represents a good basis to discover general language extensibility support limitation of \jbmps. The support for extensibility in \jbmps\ is 
- reviewed considering each view on the language, workarounds for current \jbmps\ version are offered, and improvements for future \jbmps\ development
+ represents a good basis to discover general language extensibility support limitations of \jbmps. The support for extensibility in \jbmps\ is 
+ reviewed considering each view on a language, workarounds for current \jbmps\ version are offered, and improvements for future \jbmps\ development
  are suggested.
  
  \vspace{10 mm}
@@ -190,7 +200,7 @@ for building projectional language implementation represent my own theoretical f
 \section{Structure of the \MT}
 
 In the \rchap{found} we describe in general two approaches, \rg{ide} developers can take when
-building a new \rg{ide} for a language, together with the language itself. we describe the traditional 
+building a new \rg{ide} for a language, together with the language itself. We describe the traditional 
 textual approach followed by the newer \rg{projectionalapproach} used in this work. The language 
 modularity and the way a language is described in a projectional environment are discussed. Finally,
 we shortly touch the problem of importing an existing code base into a projectional \rg{ide}.
@@ -207,6 +217,11 @@ object-oriented programming, and their implementation in the \pcpp. After that, 
 of operator overloading and templates, as advanced C++ features. And finally advanced \rg{ide} functionality
 is described, including analyses and checks, supporting the C++ development.
 
-In the \rchap{eval} at first we compare the \rg{projectionalapproach} and the textual approach.
+In the \rchap{eval} at first we compare the \rg{projectionalapproach} and the textual approach. Then we list and describe
+the generalized principles, which could be used, when creating a projectional \rg{ide} for an existing language. Next, the 
+\jbmps\ support for language extensibility is reviewed. Later, we discuss analyses and their development problems, in a light of 
+their computational complexity. Finally, briefly the outcomes of C++ concepts approach to C++ templates is evaluated.
+
+The \rchap{concl} concludes the \MT\ and suggests the potential future work.
 
 

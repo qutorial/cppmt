@@ -143,13 +143,13 @@ like ``is''- prefix for the boolean return type.
 
  
 
-\declsec{Generalized Principles of the Projectional Approach}{genprinciples}
+\declsec{Rebuilding a Language in Projection}{genprinciples}
 
 In this chapter we formulate some of the general principles, which can be taken into
 account when designing new languages in the projectional editors, which are meant to represent, especially,
 the existing already text languages.
 
-\subsection{Targeting Semantics}
+\subsection{Target Semantics}
 
  When implementing a language for projectional editor, one should target semantics of it, rather than an existing syntax.
 For example, extensions can be provided, which raise the abstraction level to be closer to the application of the language.
@@ -293,7 +293,7 @@ In the future, a research could be made, how \jbmps\ could be improved to allow 
 Behavior is very similar to Java classes and their methods. It is easy to extend behavior of a \rg{concept} in \jbmps\
 as all the object oriented methods for polymorphism can be involved in the very same way as for Java classes.
 
-\subsection{TextGen Extensibility}
+\subsection{TextGens Extensibility}
 
 \Rgp{textgen} are also very well extensible. When generating a text for a \rg{concept}, the children are output with 
 the textgen \mpsid{append} command, without specifying, how exactly it should be done. Polymorphically the 
@@ -398,7 +398,7 @@ A work flow of an analysis can be split into three major steps: initiation, runn
 On each of the steps the environment (\jbmps\ in this case) can provide certain support for the analysis, making the 
 development of it easier. Below we discuss it step-by-step.
 
-\subsection{Analysis Initiation}
+\subsection{Initiating an Analysis}
 
 It can be beneficial for the overall \rg{ide} performance to implement all computationally heavy analyses 
 as \rgp{analysisondemand}. Thus the user invokes them when needed, and the question of initiation is solved.
@@ -420,7 +420,7 @@ Thus the analysis will never run when changes made do not require it, and will a
 it has to, and only on the affected nodes.
 
 
-\subsection{Analysis Running}
+\subsection{Running an Analisys}
 
 After an analysis has been initiated, the running phase comes. Some analyses can be computationally complex,
 as they can require external tools running, like SMT solvers, for example, \cite{2012_ratiu_modular_dsls_and_analyses},
