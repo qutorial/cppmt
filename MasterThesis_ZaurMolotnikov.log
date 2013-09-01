@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  1 SEP 2013 20:27
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  1 SEP 2013 20:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1711,13 +1711,7 @@ Overfull \hbox (0.51387pt too wide) in paragraph at lines 63--66
 
 ]
 Chapter 6.
-[75]
-Overfull \hbox (4.42174pt too wide) in paragraph at lines 92--96
-\OT1/ppl/m/it/10.95 jec-tional C++[]\OT1/ppl/m/n/10.95 , the abil-ity to use th
-e object-oriented pro-gram-ming paradigm in [][]\OT1/ppl/m/it/10.95 mbeddr[]
- []
-
-[76]) [77] [78
+[75] [76]) [77] [78
 
 ]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
@@ -1829,10 +1823,10 @@ e1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw
 /palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/palati
 no/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/palatino/uplr
 i8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (100 pages, 2138803 bytes).
+Output written on MasterThesis_ZaurMolotnikov.pdf (100 pages, 2138887 bytes).
 PDF statistics:
- 3049 PDF objects out of 3580 (max. 8388607)
- 2580 compressed objects within 26 object streams
+ 3048 PDF objects out of 3580 (max. 8388607)
+ 2579 compressed objects within 26 object streams
  474 named destinations out of 1000 (max. 500000)
  939 words of extra memory for PDF output out of 10000 (max. 10000000)
 
