@@ -4,20 +4,20 @@ Here we briefly review the accomplished contributions and a future work possible
 
 \declsec{Overview of the Work Performed}{contrib}
 
-In this work we were extending \mbdr\ C language with programming constructs from the \cpppl, which 
-resulted in a software, we call here the \pcpp. 
+In this work we were extending the \mbdr\ C language with programming constructs from the \cpppl, which 
+resulted in a software, we call here  \pcpp. 
 
 A new \rg{ide} for C++ has been created, which supports projectional editing for 
 a subset of the C++ programming language. The new \rg{ide} has been designed with several goals 
 in mind.
 
-First, the \pcpp\ should serve as a modular basis for the future extensions to C++. The 
-potentially possible extensions have been figured out and proposed as a future 
+First,  \pcpp\ should serve as a modular basis for the future extensions to C++. The 
+potentially possible extensions are figured out and proposed as a future 
 work.
 
 Second, the experience of the \pcpp\ programming has to be more safe and informative,
 when compared to the regular C++ programming. Various pitfalls, usual for C++ programming,
-have been explained in this work, and tools have been introduced withing the new \rg{ide},
+have been explained in this work, and tools have been introduced within the new \rg{ide},
 designed to compensate on the pitfalls.
 
 While improving on the C++ programming experience, an application of analyses has been
@@ -26,7 +26,7 @@ classified orthogonally by the purpose to \rgp{informativeanalysis} and \rgp{pre
 and by the running type to \rgp{analysisondemand} and \rgp{selfrunninganalysis}.
 
 
-A method to support to some extent a project coding guidelines, precisely, naming conventions,
+A method to support, to some extent, a code project guidelines, precisely, naming conventions,
 has been proposed in this work. The idea to store the project related information together 
 with the source code has been formulated, its advantages have been listed.
 
@@ -34,28 +34,26 @@ The projectional approach to create an \rg{ide} has been compared to a tradition
 The advantages of the projectional approach have been listed. The potential problems while developing,
 using and evolving a projectional \rg{ide} and a code produced by it, have been identified.
 
-The \pcpp\ as a language has been designed, to represent in the end a complete enough subset 
-of the \cpppl\ for the \rg{stl} to be recreated in it in the future. The creation of a 
+\pcpp\ as a language has been designed, to represent, in the end, a complete enough subset 
+of the \cpppl\ for  \rg{stl} to be recreated in it in the future. The creation of a 
 projectional \rg{stl} copy was out of scope for this work, however.
 The completeness of the \pcpp\ language was described in this work, and
 the future work was proposed, which is going to be needed in order to support \rg{stl}.
 
-
 Generalized principles of language re-engineering in a projectional \rg{ide} have been
 discovered and formulated. The principles can be reused when creating an \rg{ide} for 
 a language, to make the language more readable, more expressive, higher cross-platform,
-and safer and more convenient to use for the programmer. 
+and safer and more convenient to use for a programmer. 
 
 Various language modularity and extensibility problems have been considered on 
-practice while developing the \mbdr\ C++ extension. The \pcpp\ has been developed in 
+practice while developing the \mbdr\ C++ extension. \pcpp\ has been developed in 
 such a way, that the \mbdp\ languages do not have a dependency on \pcpp, which
 allows for, to a certain degree, separate development of the projects.
 
-In parallel  while extending \mbdr\ to build a new C++ \rg{ide} the facilities 
-for extensibility, provided be \jbmps\ were researched. Extensibility has been 
-analyzed separately for each view on the language. Whenever the degree of extensibility 
-was not considered to be high, workaround and future \jbmps\ improvements were proposed.
-for \jbmps.
+In parallel,  while extending \mbdr\ to build a new C++ \rg{ide}, the facilities 
+for extensibility, provided by \jbmps\ were researched. Extensibility has been 
+analyzed separately for each view on a language. Whenever the degree of extensibility 
+was not considered to be high, workarounds and future \jbmps\ improvements were proposed.
 
 The question of building analyses in \jbmps\ for a new language has been discussed.
 Three phases of analysis running were identified, and for each phase potential problems
@@ -79,46 +77,44 @@ can use all the constructions, possible in C++.
 
 One of the big challenges for the language completeness is a development 
 of full templates support.
-
-A very important part of the \cpppl, is undoubtedly  the \rg{stl}. In order to acquire
-all language capabilities as is usual for a C++ programmer, after supporting all features
-of the language itself, the \rg{stl} has to be implemented in the \pcpp. Alternatively , if a powerful
+A very important part of the \cpppl, is undoubtedly  \rg{stl}. In order to acquire
+all language capabilities, as it is usual for a C++ programmer, after supporting all features
+of the language itself, \rg{stl} has to be implemented in \pcpp. Alternatively , if a powerful
 importer is developed first, the \rg{stl} could be potentially imported. 
 
 \subsection{Investigating the Language Use}
 
-In order o continue the \pcpp\ development a user has to be found for the \pcpp, who
+In order to continue the \pcpp\ development a user has to be found for the \pcpp, who
 will use the language on practice. This will allow to figure out in the fastest way,
 which language features left are the most desirable on practice, which new features,
-similar to those described in the \rsec{advanced}, can be developed and so on.
+similar to those described in the \rsec{advanced}, could first be developed.
 
-No matter the \cpppl\ is not completely supported by the \pcpp, the ability to use the
+No matter the \cpppl\ is not completely supported by \pcpp, the ability to use the
 object-oriented programming paradigm in \mbdr\ represents a qualitative improvement over
 the existing C language in \mbdr. This fact represents an advantage, which can
-attract any \mbdr\ user towards the \pcpp\ even before the \cpppl\ is entirely supported.
+attract any \mbdr\ user towards  \pcpp\ even before the \cpppl\ is entirely supported.
 
 \subsection{Extending Projectional C++}
 
-Following one of the goals to create \pcpp\ extensions for it could be created in a 
+Following one of the goals to create \pcpp, extensions for it could be created in a 
 modular fashion.
 
 As examples of such extensions could be:
 \begin{itemize}
  \item Language constructions emulated by preprocessor and templates as in \cite{alexandrescu}.
  \item Classes extensions to support messaging as in Objective-C, or signals and slots as in the Qt project.
- \item Object-oriented design patterns could be research for the ability to support them on the 
- language level
- \item Development of higher-level models, which would generate to classes together with semantic analyses for them
+ \item Object-oriented design patterns could be researched for the ability to be supported on the 
+ language level.
+ \item Higher-level models, which would generate to classes together with semantic analyses for them.
 \end{itemize}
 
 Other \pcpp\ extensions can be invented, including specific extensions for various domains.
 
 
 \subsection{Projectional C++ Importer and Other Tools}
-An importer for the \pcpp\ could be developed, which would allow to reuse in the \pcpp\ the
+An importer for  \pcpp\ could be developed, which would allow to reuse in  \pcpp\ the
 existing textual code base. One of the special challenges to develop such an importer would 
 be a conversion from regular C++ templates into the \pcpp\ templates with C++ concepts.
-
 A debugger of \mbdr\ could be extended in order to support the \pcpp.
 
 
@@ -128,4 +124,4 @@ This work suggests some improvements for \jbmps\ itself, see the \rsec{extensibi
 \rsec{analysesandcomplexity} for example.
 
 If \jbmps\ gets updated, taking some of the mentioned potential improvements into consideration,
-the \pcpp\ could be improved by taking advantage of the new \jbmps\ features.
+ \pcpp\ could be improved benefiting from the new \jbmps\ features.

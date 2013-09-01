@@ -1,7 +1,7 @@
 \declchap{Lessons Learned}{eval}
 
 
-In this chapter we present the lessons, learned while building the \pcpp.
+In this chapter we present the lessons, learned while building \pcpp.
 
 
 \declsec{Comparison with Textual Approach}{comparison}
@@ -10,10 +10,10 @@ In this chapter we present the lessons, learned while building the \pcpp.
   textual approach. To the opinion of author the \rg{projectionalapproach} has a number of advantages, 
   which could make it more popular in the future, as well as, naturally, some disadvantages.
   
-  Below we present the advantageous aspects of projectional editing. We group them by the party, 
+  Below we present the advantageous aspects of the projectional editing. We group them by the party, 
   which benefits from the advantage.
   
-  Advantages for an end-user or a programmer, who uses a projectional \rg{ide}:
+  Advantages for an end-user, or a programmer, who uses a projectional \rg{ide}:
   
   \begin{itemize}
    \item In a projectional editor the programmer can potentially type less, as the editor is aware \emph{completely}
@@ -25,25 +25,22 @@ In this chapter we present the lessons, learned while building the \pcpp.
 
   
   \item As an \rg{ast} is readily available  in a projectional editor, there is no need to pre-parse the code in order to 
-  perform analysis on it to detect mistakes or for another purpose. In a textual editor before any analysis the program has to be 
+  perform an analysis on it to detect mistakes or for another purpose. In a textual editor before any analysis the program has to be 
   parsed first. Parsing is a computationally expensive operation. Repeating it after each time a piece of code is modified 
-  puts a high load on the developer's machine and can slow it down significantly. 
+  puts a high load on the developer machine and can slow it down significantly. 
   
   
   \item Different naming conventions and coding standards can be replaced by decorations and the way a projectional editor
-  projects the \rg{ast}. This can increase the code readability, and make some of the coding guidelines not necessary anymore,
+  projects an \rg{ast}. This can increase the code readability, and make some of coding guidelines not necessary anymore,
   reducing the amount of work, a programmer has to accomplish.
-  For example, a member variable, can be shown differently from a local variable in an method. This 
-  eliminates the need in many of the coding conventions. Naming conventions are, however, usual to programmers, and their are
-  implemented in a shape of analysis in the \pcpp\ (Sections \ref{namingconventions} and \ref{remarksonnamingconventions}).
+  For example, a member variable, can be shown differently from a local variable in an method.
   
-  
-  \item Nowadays, in \jbmps\ the approach of generating a text code is taken, before the projected \rg{ast} could be further processed.
+  \item Nowadays, in \jbmps\ the approach of generating a text code is taken, before a projected \rg{ast} could be further processed.
   For example, \mbdr\ is designed to at first generate a textual C code, before it can be compiled into an object code.
-  However, taken into account the fact, that an \rg{ast} in a projectional editor represents the same, or even more, information 
-  as an \rg{ast} resulting after parsing the text code generated, in future it is possible, to process the projected \rg{ast} itself,
-  without generating a text code at all. For example, produce object code from it directly. Thus, in future, the compilation/processing
-  of code from a projectional editor can be made much faster and effective when compared to the textual approach, where parsing takes place.
+  However, taking into account the fact, that an \rg{ast} in a projectional editor represents the same, or even more rich, information 
+  as an \rg{ast} resulting after parsing a text code, in the future it is possible, to process the projected \rg{ast} itself,
+  without generating a text code at all. For example, produce an object code from it directly. Thus, in the future, the compilation/processing
+  of a code from a projectional editor can be made much faster and effective when compared to the textual approach, where parsing takes place.
  
   
   \end{itemize}
@@ -53,8 +50,8 @@ In this chapter we present the lessons, learned while building the \pcpp.
   
   \begin{itemize}
   
-  \item In order to support refactorings an ultimate ``understanding'' of the code is required by the environment. 
-  It is not always possible, however, especially this problem is well-known with complicated languages like the \cpppl.
+  \item In order to support refactorings an ultimate ``understanding'' of a code is required by the environment. 
+  It is not always possible, however. Especially this problem is well-known with complicated languages like the \cpppl.
   The parsing problem, and various checks related to it distract the \rg{ide} creator, from focusing on the refactoring 
   implementation itself. As an \rg{ast} is available in a projectional \rg{ide}, the implementation  of refactorings represents
   a more straightforward task, disjoint from parsing.
@@ -64,7 +61,7 @@ In this chapter we present the lessons, learned while building the \pcpp.
 %     
   
   \item Projectional editors have a flexibility to adopt new language constructions. 
-  As a projectional editor allows for language modularity (Section \ref{modularity}), it is possible to extend a language, 
+  As a projectional editor allows for language modularity (see the Section \ref{modularity}), it is possible to extend a language, 
   without modifying an editor significantly, installing extensions for it or similar.
   
    
@@ -75,18 +72,20 @@ In this chapter we present the lessons, learned while building the \pcpp.
  user and developer:
  
  \begin{itemize}
-  \item A special problem with the projectional approach is moving the code around. As all nodes of the \rg{ast} get referenced by the use of their
+  \item A special problem with the projectional approach is moving a segment of code. As all nodes of an \rg{ast} get referenced by the use of their
   internal identifiers, and their names do not participate in it, after a piece of code has been moved to another location on the \rg{ast}, 
   a special processes of binding the nodes has to be executed. For example, if there was a variable \cc{x} in the code defined before the moved snippet,
   and in the new location for the snippet another variable with the same name \cc{x} is defined, the new \cc{x} will not get referenced by the 
   moved code snippet, as it references the old one (not available anymore) by its internal identifier. In \jbmps\ the manual process of rebinding is
   always required, i.e. the programmer will have to go over all nodes, which reference the old context, and input them again, to connect to the
   new context\footnote{Sometimes a special function to re-analyze and rebind nodes can be used in \jbmps, however it does not work flawlessly and 
-  represents in any case an additional concern and work}. In textual editors, there is no such problem, but another one exist - the moved code snippet can change its semantics in a wrong way
-  after being associated with a new context, and not checked entirely. For example, a reference to a variable can start to reference some another, 
-  locally defined, more close to the new code snippet location, variable with the same name as one, more global, used before. 
+  represents in any case an additional concern and work}. In textual editors, there is no such problem, but another one exists: the moved code snippet 
+  can change its semantics in a wrong way
+  after being associated with a new context. Fitting, however, immediately, it may cause a false confidence in correctness of the 
+  operation performed. For example, a reference to a variable can start to reference another, 
+  locally defined with a narrower scope.
   
-  \item  A very specific issue relevant to projectional editors is the format to store the projectional code and the version control for it.
+  \item  A very specific issue relevant to projectional editors is the format to store the projectional code and a version control for it.
   In \jbmps\ an \rg{ast} gets serialized as XML, and is stored in a file. The XML resulted, is, generally speaking, not a human-readable 
   code, despite the XML nature. The line-by line merging as employed in regular text-oriented version control systems (CVS, SVN, Git, Mercurial)
   does not apply, breaking the XML, or asking the user to merge, presenting with unreadable XML code. The approach taken in \jbmps\ is providing
@@ -98,8 +97,9 @@ In this chapter we present the lessons, learned while building the \pcpp.
   version number. When a second language is referencing the modified one, the version number is taken into account. The update for the first language
   then requires an update to the second, using the first,  language, as well as to all other languages, which use the updated one. If two updates happened
   at the same time for a language, then two \emph{different} versions with the same version number appear, which presents a problem for the 
-  referencing the changed language languages. All this version control issues are still up to be thoroughly though of, and are not yet 
-  implemented well enough.
+  referencing the changed language, as two different language versions get the same version signature. All these version control issues are still up to be 
+  thoroughly though of, and are not yet 
+  implemented well enough in \jbmps.
 
   \item  The question of language evolution and code in it is to be researched on.  When a language defined in a projectional editor is
   modified, the old code may turn to be not matching the language description anymore. For example, nodes may stop satisfying constraints,
@@ -121,21 +121,23 @@ In this chapter we present the lessons, learned while building the \pcpp.
   \begin{itemize}
    \item  The marking of special variables or object, keywords or type names, can be performed by changing editors for them. The special
 naming will not be needed then. Such way would mean however no opportunity to introduce a project-dependent marking, as it starts to be
-common for all projects, being a part of the projectional C++ implementation.
+common for all projects, being a part of the \pcpp\ implementation.
 
 \item The naming checks can be generalized to use compliance to regular expressions, instead of just prefixes. As an advantage comes the
-ability to adopt a much broader set of different naming conventions. Disadvantageous is the increase
-of the computational load in the projectional editor, this is discussed also in the \rsec{analysesandcomplexity}.
+ability to adopt a much broader set of different naming conventions. Disadvantageous is an increase
+of a computational load in the projectional editor, this is discussed also in the \rsec{analysesandcomplexity}.
 
-\item The \mpsid{CppNamingConventions} in \pcpp\ is just a \rg{concept} in a \jbmps\ \rg{model}. It represent a similar 
-\rg{concept} to the \mpsid{CppImplementationModule} or the \mpsid{BuildConfiguration} \rgp{concept}. 
-Dislike many conventional editors, which store such settings as a workspace, project or \rg{ide} configuration, the
-\pcpp\ makes it a part of the program code itself. It is advantageous, since all the programmers in a team have to follow the 
-same naming conventions set up \emph{once} in a project on the start phase, and no environment (re-)configuration is needed to work on the project by
-any of the joining developers. This principle is generalized in the \rsec{genprinciples}. 
-The projectional approach is also discussed and compared to the conventional one in the \rsec{comparison}.
+\item The \mpsid{CppNamingConventions} in \pcpp\ is just a \rg{concept} in a \jbmps\ \rg{model}. It is similar to
+the \mpsid{CppImplementationModule} or the \mpsid{BuildConfiguration} \rgp{concept}. 
+Dislike many conventional editors, which store such settings as a workspace, a project or an \rg{ide} configuration,
+\pcpp\ makes it a part of a program code itself. It is advantageous, since all  programmers in a team have to follow the 
+same naming conventions set up \emph{once} in a project on the start phase, and no environment 
+(re-)configuration is needed to work on the project by
+any of  joining developers. The principle to store a configuration data together with a code is generalized in the \rsec{genprinciples}. 
+The projectional approach is discussed and compared to the conventional one in the \rsec{comparison}.
 
-\item The naming conventions can of-course be extended to incorporate class names, function names, additional naming for methods,
+\item The \mpsid{CppNamingConventions} \rg{concept} can, of-course, be extended to incorporate class 
+names, function names, additional naming for methods,
 like ``is''- prefix for the boolean return type. 
 
 
@@ -146,215 +148,207 @@ like ``is''- prefix for the boolean return type.
 \declsec{Rebuilding a Language in Projection}{genprinciples}
 
 In this chapter we formulate some of the general principles, which can be taken into
-account when designing new languages in the projectional editors, which are meant to represent, especially,
+account when designing new languages in  projectional editors, which are meant to represent, especially,
 the existing already text languages.
 
 \subsection{Target Semantics}
 
- When implementing a language for projectional editor, one should target semantics of it, rather than an existing syntax.
+ When implementing a language for a projectional editor, one should target semantics of it, rather than an existing syntax.
 For example, extensions can be provided, which raise the abstraction level to be closer to the application of the language.
 The code in the target text language is generated then from the higher level constructions. 
 
-Another place to think of targeting semantics is, where the target language constructions are low-level and 
+Another place to think of when targeting semantics is, where the target language constructions are low-level and 
 full of compiler-helping syntax. These constructions can be cleaned out, helping the programmer to focus on their
-semantics, instead of typing and syntax. C++ brings various examples of it: \rg{purevirtual} methods declaration, 
+semantics, instead of typing and syntax. C++ brings various examples of it: \rg{purevirtual} method declaration, 
 pointer-to-method type usage, and similar.
 
 \subsection{Store More Information}
 
- The language in the projectional editor can, and often should, contain \emph{more} information as it is needed 
- to just generate a text in the target language. This information may be used to improve the generation results, or
- analysis. Example is the overridden method link in the override in the \pcpp (Section \ref{overridefunction}).
+ A language in a projectional editor can, and often should, contain \emph{more} information as it is needed 
+ to just generate a text in a target text language. This information may be used to improve the generation results, or
+ analysis. Example is the overridden method link in the override in \pcpp, see the Section \ref{overridefunction}.
  
- The disadvantage of this way can be a problem to extend the information, taken from an importer of the native text language (Section \ref{importers}).
+ A disadvantage of this way can be a problem to extend the information, taken from an importer of the native text 
+ language, see the Section \ref{importers}.
 
 \subsection{Configuration as a Part of Source Code}
- Usually a project consists not only of the source code, but of some configuration for it, like naming conventions, 
- generator configuration, build configuration, other specific to the project information.
+ Usually a code project consists not only of a source code, but of some configuration for it, like naming conventions, 
+ generator configuration, build configuration, another specific to the project information.
  
  It presents advantageous to store this configuration together with code as a part of it. This eliminates the need 
  to separately configure an environment of each developer before the development process may start.
 
  Usually editor preferences are not shared among users, like in Eclipse for example, stored in a individual for each 
  machine workspace part. This brings a need to configure each development environment separately, and maintain the similarity
- of configuration.
- 
- This should exclude, however, the pure developer-machine-specific configuration.
+ of configuration. Individually, separately from code, only the pure developer or machine specific configuration parts 
+ should be stored.
 
 \subsection{Hide Redundant Syntax}
 
- Usually, textual languages contain a lot of syntax, which helps parsers of the language to process the code. 
- In C-like languages these are semicolons, curly braces, braces and brackets.
+ Usually, text languages contain a lot of syntax, which helps parsers to process a code. 
+ In C-like languages these are semicolons, curly braces, braces and triangular brackets.
  
  This syntax has nothing to do usually with the code semantics, so it could be not projected at all, without changing
- the meaning of the code. Decreasing the amount of projected symbols the code can be made more readable.
+ the meaning of the code. Decreasing the amount of projected symbols, the code can be made more readable.
  
- Formatting\footnote{it is important for some languages, like Python, and less relevant to C as syntax complication} can also be considered the redundant syntax, and addressed by projection.
+ Formatting\footnote{Formatting is important for some languages, like Python, and less relevant to C, being just a not necessary syntax complication} 
+ can also be considered the redundant syntax, and addressed by projection.
 
 \subsection{Make Old Syntax Readable}
 
-  Whenever a syntax of the target language happened to be not well readable by itself, a projectional editor can 
-  change it. The amount of punctuation can be lowered and some phenomena named in a human language.
+  Whenever a syntax of a target language happened to be not well readable by itself, a projectional editor can 
+  change it. The amount of punctuation can be lowered and some syntactical constructions named in a human language.
   
-  As an example we are bringing here a \rg{purevirtual} method declaration (Section \ref{purevirtualfuncs}).
+  As an example we are bringing here a \rg{purevirtual} method declaration, see the Section \ref{purevirtualfuncs}.
 
 \subsection{Show the Core, Hint on Details}
 
-  Not necessarily all the information represents the core meaning of the language construction. The 
+  Not necessarily all information represents a core meaning of a language construction. The 
   most important information can be shown first, and the rest can be shown as a hint, especially when
   it can be figured out by the projectional editor automatically.
   
-  As an example we can consider a friend function declaration in the \pcpp\ (Section \ref{accessandfriends}).
+  As an example we can consider a friend function declaration in \pcpp, see the Section \ref{accessandfriends}, where the function full signature 
+  is hidden from the main construction, and is just hinted upon, 
+  for simplicity, since usually it is clear, which function is declared to be a friend function.
 
-\subsection{Perform Analyses and Inform the User}
+\subsection{Perform Analyses and Inform a User}
 \label{analysisprinciple}
 
-Performing various analyses on the \rg{ast} in the projectional editor, it is possible to improve the overall 
+Performing various analyses on an \rg{ast} in a projectional editor, it is possible to improve an overall 
 editing experience.
 
-We suggest the logical division of analyses on two types: \rg{informativeanalysis} and \rg{preventiveanalysis}.
+We suggest a logical division of analyses on two types: \rg{informativeanalysis} and \rg{preventiveanalysis}.
 
 An \rg{informativeanalysis} can be performed to find out more about the edited code. Various newly found properties
-can be shown as hints for the user. Abstract classes determination is an example of informative analysis (Section \ref{abstractclasses}). Another example
-is class copying and assignment analysis (Section \ref{classcopying}).
+can be shown as hints for a user. \Rg{abstract} classes determination is an example of an \rg{informativeanalysis}, see the Section \ref{abstractclasses}. Another example
+is a class copying and assignment analysis, see the Section \ref{classcopying}.
 
-A \rg{preventiveanalysis} can be performed to prevent programming mistakes. In general, this topic can go deep, and it is considered separately in, e.g.,
+A \rg{preventiveanalysis} can be performed to prevent programming mistakes. In general, this topic can go deep, and it is considered separately in, e.g. 
 \cite{2012_ratiu_modular_dsls_and_analyses}. In this work as an example of such an analysis for C++ the detection of abstract class instantiation
-attempts can serve (Section \ref{preventiveabstract}).
+attempts can serve, see the Section \ref{preventiveabstract}.
 
-When implementing analysis, one should mind the complexity of it, and take the decision, whether to implement it as a \rg{selfrunninganalysis}, or
+When implementing an analysis, one should mind the complexity of it, and take a decision, whether to implement it as a \rg{selfrunninganalysis}, or
 on as an \rg{analysisondemand}, see the \rsec{analysesandcomplexity}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 \declsec{Projectional Language Extensibility}{extensibility}
 
-In general the extensibility and modularity are very important concepts for projectional editing (Section \ref{modularity}).
+In general  extensibility and modularity are very important concepts for projectional editing, see the Section \ref{modularity}.
 
-In \jbmps\ the extensibility consists of creating a new language and there some new \rgp{concept}, which represent an extension.
-When creating \rgp{concept} in \jbmps\ one deals with several views of them, see \rsec{mps}. In this section we consider extensibility, and 
-the most important, how well it is possible in \jbmps, per view on the language.
+In \jbmps\  extensibility consists of creating a new language and there some new \rgp{concept}, which represent an extension.
+When creating \rgp{concept} in \jbmps\ one deals with several views on them, see the \rsec{mps}. In this section we consider extensibility, and 
+the most important, how well it is supported by \jbmps, per view on a language.
 
 \subsection{Structure Extensibility}
 
 This view is the same as the view on \rg{concept} declarations.
-
-Extensibility is implemented here by inheriting from the base \rg{concept}. It is rather straightforward, 
+Extensibility is implemented here by inheriting from a base \rg{concept}. It is rather straightforward, 
 since it is very similar to the object-oriented programming languages concept of inheritance, with one difference, 
-actually originated from the Java notion of interface, as there is one base \rg{concept}, but several \rgp{interfaceconcept}
+actually originating from the Java notion of an interface, as there is one base \rg{concept}, but several \rgp{interfaceconcept}
 which could be implemented.
 
 \subsection{Editor Extensibility} 
 
-It is hard to extend a language in terms of changing an editor concept (Section \ref{mpseditor}) for an existing \rg{concept} in \jbmps.
+It is hard to extend a language in terms of changing an editor concept (see the Section \ref{mpseditor}) for an existing \rg{concept} in \jbmps.
 Namely, there are no direct ways to perform inheritance there. 
-
 So, if the way a \rg{concept} is edited or displayed has to be 
 changed, one should take work around ways to achieve the needed behavior. 
-
 One way is inheritance from the \rg{concept}, and changing the editor concept for the descendant.
-
 Another way, is mixing some interface calls into the editor, and overriding the methods in the inheriting concept.
-This way limits the editor to the way it was originally programmed is limited.
+This way limits the editor to the way it was originally programmed.
+These both workarounds, however, do not change the way instances of the old \rg{concept} are presented.
 
-These both ways, however, do not change the way instances of the old \rg{concept} are presented.
-
-In the new 3.0 version of \jbmps\ an ability to have several editors for one \rg{concept} is present. It is 
-up to the future research, on how it will change the editor extensibility.
+In the new \jbmps\ 3.0  an ability to have several editors for one \rg{concept} is present. It is 
+up to the future research to learn, how and if it will change the editor extensibility.
 
 \subsection{Constraints Extensibility}
 
-Constraints, similar to the editor, does not extend well in \jbmps. Namely, there is no way to newly define the constraints
-for an existing \rg{concept}. When creating a new concept, there is no way to reuse constraints from existing one, as they 
-are not accessible.
+Constraints, similar to the editor concepts, do not extend well in \jbmps. Namely, there is no way to newly define constraints
+for an existing \rg{concept}. When creating a new \rg{concept}, there is no way to reuse constraints from an existing one, as they 
+are not accessible programmatically.
 
-As an example, when extending the \mbdr\ C to the \pcpp, the naming of identifiers had to be changed, so that C++ keywords
-are accounted as well. They naming rules for identifiers are constrained in the \mpsid{IIdentifierNamedConcept} in \mbdr.
+As an example, when extending the \mbdr\ C language to \pcpp, the naming of identifiers had to be changed, so that C++ keywords
+are accounted too. The naming rules for identifiers are defined in \mpsid{IIdentifierNamedConcept} in \mbdr.
 So in its constraints concept a limiting behavior is programmed. There is, however, no way to reuse it explicitly.
-
-Another example would be the reference constraints, where a variable declaration would be forbidden to use an \rg{abstract} class
+Another example would be the reference constraints concept, where a variable declaration would be forbidden to use an \rg{abstract} class
 as a type. It is not possible to redefine those constraints, just adding a language, and not editing the existing one directly.
 
 As a workaround two methods are proposed. First, the constraining behavior can be taken out into a separate code fragment in a Java-like class,
-the abstract factory pattern could be implemented, \cite{GOF95}, and the polymorphic behavior achieved in this way.  Second, is to 
+the abstract factory pattern, \cite{GOF95}, could be implemented and a polymorphic behavior achieved in this way.  Second, it is possible to 
 create a check, additionally constraining and marking as errors the places, where the new constraints have been violated.
 
 The first workaround is work intensive to implement originally in the base language. The second workaround does not allow for extending the 
-constraints, making them weaker, and lets the not allowed nodes in the code completion.
-
-
-Additionally, it is noteworthy to mention, that it is possible to redefine a constraint for a certain role, when inheriting 
-from a \rg{concept}.
-
-In the future, a research could be made, how \jbmps\ could be improved to allow for easier constraints extensibility.
+constraints, making them weaker, and lets the not allowed nodes stay in the code completion lists. Additionally, it is noteworthy to mention, that it is possible to redefine a constraint for a certain role, when inheriting 
+from a \rg{concept}. In the future, a research could be made, on how \jbmps\ could be improved to allow for easier constraints extensibility.
 
 \subsection{Behavior Extensibility}
 
-Behavior is very similar to Java classes and their methods. It is easy to extend behavior of a \rg{concept} in \jbmps\
+Behavior concepts are very similar to Java classes. It is easy to extend behavior of a \rg{concept} in \jbmps\
 as all the object-oriented methods for polymorphism can be involved in the very same way as for Java classes.
 
 \subsection{TextGens Extensibility}
 
-\Rgp{textgen} are also very well extensible. When generating a text for a \rg{concept}, the children are output with 
-the textgen \mpsid{append} command, without specifying, how exactly it should be done. Polymorphically the 
-matching \rgp{textgen} are invoked, and this extends the \rg{textgen} of the previously defined \rg{concept}.
+\Rgp{textgen} are very well extensible. When generating a text for a \rg{concept}, the children or the references are output with 
+the textgen \mpsid{append} command, without specifying, how exactly it should be done for each particular child or referenced \rg{concept}. 
+Polymorphically the  matching \rgp{textgen} are invoked, and this extends the \rg{textgen} of the previously defined \rg{concept}.
 
-For example, when generating a text for a function, each statement of the body is generated to text. 
-For each statement the \rg{textgen} of the statement itself is executed. Thus, if we add a new kind of statement,
+For example, when generating a text for a function, each statement of the body is generated to a text. 
+For each statement the \rg{textgen} of the statement itself is executed. Thus, if we add a new kind of statements,
 all we need is to define a \rg{textgen} for it, and it will be polymorphically invoked from the \rg{textgen} for the
 function. The text for the function will be generated correctly, without the need to change the function \rg{textgen}
 implementation anyhow.
 
 \subsection{Generators Extensibility}
 
-Generators perform language transformations in \jbmps\ (Section \ref{generators}). As this work does not directly 
-implement language transformations, it is left for future research, to investigate, how extensible the 
+Generators perform language transformations in \jbmps, see the Section \ref{generators}. As this work does not directly 
+implement language transformations, it is left for the future research, to investigate, how extensible the 
 generators are. 
 
 \subsection{Intentions Extensibility}
 
-\Rgp{intention} are described in the Section \ref{intentions}. 
-
-There may be a need to modify an \rg{intention} after extending the language. There is no direct way to do it 
+There may be a need to modify an \rg{intention} when extending a language. There is no direct way to do it 
 in \jbmps. 
-
-For example, there is explicit way to forbid an \rg{intention} to work on a newly defined \rg{concept}, no matter
+For example, there is no explicit way to forbid an \rg{intention} to work on a newly defined \rg{concept}, no matter
 it is based on some \rg{concept} for which the \rg{intention} is defined.
 
-As a workaround an injection of external polymorphic code from a Java-like class can be taken, similarly to the way it is 
-described above for constraints, with the same practical outcome of a high programming intensity when creating the base language.
+As a workaround an injection of an external polymorphic code from a Java-like class can be taken, similarly to the way it is 
+described above for constraints, with the same practical outcome of a high programming intensity when creating the base language to be extended.
 
 Alternatively, an \rg{intention} can delegate its function to the \rg{concept} under question, so that the whole manipulation is 
 made by the target \rg{concept} itself. This will lead, however in a necessity to define a general behavior in the base concept, which can
 be behaving wrong in one of the particular cases, or to the need to implement the polymorphic methods called in the \rg{intention} in 
-\emph{each} of the descendant \rgp{concept}.
+\emph{each} of the descendant \rgp{concept}. This problem is solved in general object-oriented programming, being well-known. 
 
 \subsection{Type System Extensibility}
 
-Type System in \jbmps\ is generally speaking another way of constraining. And exactly as in the situation with constraints 
+Type System in \jbmps\ is, generally speaking, another way of constraining. And exactly as in the situation with constraints 
 there is no direct way to change the type system behavior, when extending an existing language with a new one. For example, 
 when a new kind of expressions is added, which has to be typed differently, when used together with some existing expression type,
-and the existing expression ty[e system is determining the type, it is not possible to redefine this behavior or extend in
-naturally with some provided by \jbmps tools.
+and the existing expression type system is determining the type, it is not possible to redefine this behavior or extend it
+naturally with some provided by \jbmps\ tools.
 
-The workarounds consist from injecting polymorphic behavior in the type system calls, or from using \jbmps own workaround, like 
-the replacement rule, as for example in the Section \ref{pointertoclasstyping}.
+Workarounds consist of injecting a polymorphic behavior in the type system calls, or using \jbmps\ own workaround, like 
+the replacement rule, as for example in the Section \ref{pointertoclasstyping}. Using the replacement rule is acceptable, when it is used once.
+Later, if used multiple times, it can make the typing system behavior unobservable, as many fragments of code, spread in numerous languages,
+will decide in undefined order a type for a some expressions.
 
-Hopefully, in the future versions of \jbmps\ this is going to be taken care of, and some ways to extend naturally, by the 
+Hopefully, in  future versions of \jbmps\ this is going to be taken care of, and some ways to extend naturally, by the 
 means of the typing system itself will be present.
 
 \subsection{Analyses Extensibility}
 \label{analysesext}
 
-Analyses\footnote{Including but not limited to non-type-system rules. For example, a complex \rg{analysisondemand} can be implemented in a \jbmps\ plugin.} are also subjects to challenge the language extensibility. If an analysis is relying on the exact \rgp{concept}
-to work, and is not assuming that a new language could extend those, a problem happens.
+Analyses\footnote{Including but not limiting to non-type-system rules. For example, a complex \rg{analysisondemand} 
+can be implemented in a \jbmps\ plug-in.} are also subjects to challenge the language extensibility. If an analysis is relying on some concrete
+\rgp{concept} to work, and is not assuming that a new language could extend those, a problem happens.
+For example, \mbdr\ data flow analysis, can analyze a C++ code snippet. Being unaware of C++ statements and expressions, it fails,
+or presents to a user false-positive warnings and errors. 
 
-For example, \mbdr\ data flow analysis, can analyse a C++ code snippet, using some class \cc{Circle}, to instantiate it \cc{Circle c;}
-and produce an error, that the variable \cc{c} has not been initialized, which is not true in the case of a class with a constructor.
-Either the analysis should delegate some features to \rg{concept}, or employ some external polymorphic calls as possible workarounds.
+Either an analysis should delegate some features to \rg{concept}, or employ some external polymorphic calls as possible workarounds.
 In the first case the analysis stops to be a separate programming from the language itself, as delegated analysis methods are found now
-in the \rg{concept} behaviors. In the second case the development can get more complex initially, as the code should be written 
-in the very beginning polymorphic and abstract enough to allow non-invasive modification in future.
+in the \rgp{concept} themselves. In the second case the development can get more complex initially, as the code should be written 
+in the very beginning polymorphic and abstract enough to allow a non-invasive modification in the future.
 
 
 Again, some specific support for analyses from \jbmps\ itself could improve the situation, by providing some special means 
@@ -363,12 +357,12 @@ to develop extensible analyses.
 
 \subsection{Extensibility Overview}
 
-Here we summarize in a table the degree of extensibility in \jbmps, provided for languages, per view on a language,
-and the quality of known workarounds.
+Here we summarize in a table the degree of extensibility support in \jbmps, provided for languages, per view on a language,
+and a quality of workarounds, which are known till now.
 
 \begin{center}
 \begin{tabular}{l|c|c}
-\textbf{View} & \textbf{Extensibility} & \textbf{Workarounds Quality} \\
+\textbf{View} & \textbf{Extensibility Support} & \textbf{Workarounds Quality} \\
 \hline
 Structure & High & -\\
 Editor & No & Poor\\
@@ -385,42 +379,51 @@ Analyses & No & Medium
 
 As an outcome it appears, that \jbmps\ does not provide a high degree of extensibility, which would allow 
 a pure modular language engineering. The views, which are not extensibility aware could be improved, and the
-task of improvement can be no trivial\footnote{the author implies does from the absence of good workarounds currently}.
+task of improvement can be not trivial\footnote{The authors imply this statement from the absence of good workarounds currently.}.
+
+
+
+
+
+
+
+
+
 
 \declsec{Analyses and Complexity}{analysesandcomplexity}
 
-As it is stated before (Section \ref{analysisprinciple}) when constructing a language with an editor for it, 
-it makes sense to provide the language with some analyses. Two types of analysis by application are considered:
-\rg{informativeanalysis} and \rg{preventiveanalysis}. Two types of analysis by the way they are initiated are defined: 
-\rg{selfrunninganalysis} and \rg{analysisondemand}.
+As it is stated before (see the Section \ref{analysisprinciple}) when constructing a language with an editor for it, 
+it makes sense to provide the language with some analyses. Two types of analyses by application are considered: an
+\rg{informativeanalysis} and a \rg{preventiveanalysis}. Two types of analyses by the way they are initiated are defined: a
+\rg{selfrunninganalysis} and an \rg{analysisondemand}.
 
-A work flow of an analysis can be split into three major steps: initiation, running and reporting the result to the user.
+A work flow of an analysis can be split into three major steps: initiation, running and reporting the result to a user.
 On each of the steps the environment (\jbmps\ in this case) can provide certain support for the analysis, making the 
 development of it easier. Below we discuss it step-by-step.
 
 \subsection{Initiating an Analysis}
 
 It can be beneficial for the overall \rg{ide} performance to implement all computationally heavy analyses 
-as \rgp{analysisondemand}. Thus the user invokes them when needed, and the question of initiation is solved.
+as \rgp{analysisondemand}. Thus a user invokes them when needed, and the question of initiation is solved.
 
-For the \rgp{selfrunninganalysis} the question of automatic initiation is to be solved. In \jbmps\ there is no 
+For the \rgp{selfrunninganalysis} the question of automatic initiation is to be decided upon. In \jbmps\ there is no 
 way to define, when a certain check is to be run. Thus two problems occur: some checks run too often, and 
-decrease unnecessarily the system performance, or other checks do not happen often enough, and the user is not 
-informed on time on the results\footnote{There is a way to re-run \rgp{selfrunninganalysis} in \jbmps\ manually,
-by pressing F5}. 
+decrease unnecessarily the system performance, or other checks do not happen often enough\footnote{There is a way to re-run \rgp{selfrunninganalysis} in \jbmps\ manually,
+by pressing F5, but this is not an automatic solution, and thus is error-prone.}, and the user is not 
+informed on time on  some important changes in analyses results. 
 
-As a solution to this an \rg{api} extension for can be proposed: for each analysis it should be possible 
-to define an event, on which the analysis has to repeat, as well as which nodes of the \rg{ast} have to be covered.
+As a solution to this an \rg{api} extension for \jbmps\ can be proposed: for each analysis it should be possible 
+to define an event, on which the analysis has to repeat, as well as which nodes of an \rg{ast} have to be covered.
 
-For example, for the \rg{informativeanalysis} identifying \rg{abstract} classes (Section \ref{abstractclasses}) the running
-event can be defined through the declaration of a new method or a new inheritance relationship established. The 
-affected nodes of the \rg{ast} can be correspondingly described as the changed by the modification classes.
+For example, for the \rg{informativeanalysis} identifying \rg{abstract} classes (see the Section \ref{abstractclasses}) the running
+event can be defined through the declaration of a new method or a new inheritance relationship. The 
+affected nodes of an \rg{ast} can be correspondingly described as the classes, changed by the modification.
 
-Thus the analysis will never run when changes made do not require it, and will always be run when 
-it has to, and only on the affected nodes.
+Thus the analysis will never run when changes made do not require it, and will always run when 
+it has to, and only on the relevant nodes.
 
 
-\subsection{Running an Analisys}
+\subsection{Running an Analysis}
 
 After an analysis has been initiated, the running phase comes. Some analyses can be computationally complex,
 as they can require external tools running, like SMT solvers, for example, \cite{2012_ratiu_modular_dsls_and_analyses},
@@ -428,23 +431,23 @@ or involve themselves complex algorithms.
 
 
 As an example of a computationally intensive analysis, the \rg{preventiveanalysis} for \rg{abstract} classes 
-instantiation can be taken (Section \ref{preventiveabstract}). At first, the amount of nodes of an \rg{ast} is high,
+instantiation can be taken (see the Section \ref{preventiveabstract}). At first, the amount of nodes to analyze is high,
 as they include local variable declarations, function parameters, function return types, class member variables
 and more. Each of the nodes is checked like this: at first the type is extracted, then the type is checked to be 
 a \mpsid{ClassType}. When an instance of the \mpsid{ClassType} is found, the \mpsid{Class} is checked on being abstract.
 For this all of its method declarations are checked on being \rg{purevirtual}, and then all the base classes are 
-checked on being abstract. If we take a reasonably big code base, like, for example the Qt library, which contains about 1000
-classes\footnote{989 classes in Qt 5.1}, the amount of nodes to check and the associated computations can be immense\footnote{If we assume,
+checked on being abstract. If we take a reasonably big code base, like  the Qt library, which contains about 1000
+classes\footnote{There are 989 classes in Qt 5.1}, the amount of nodes to check and the associated computations can be immense\footnote{If we assume,
 that each class out of 1000 classes in a library has 1 parent, 3 member fields, 3 methods, each with 1 parameter, 1 return type, and 1 local variable,
-we get up to 100 000 nodes to be addressed by the check.}.
+we get up to 100 000 nodes to be addressed by a single check execution.}.
 
-Another example of a computationally intensive analysis could be received, if \mpsid{CppNamingConventions} \rg{concept} would
+Another example of a computationally intensive analysis could be brought, if \mpsid{CppNamingConventions} \rg{concept} would
 be implemented for all named objects, and in a complex way, including regular expressions, as described in the Section \ref{remarksonnamingconventions}.
 
 As analyses can be started automatically, the computational load on an \rg{ide} can be increased as some analyses
 may start in parallel. 
 
-This all may present a performance problem, and a certain support from the \jbmps\ is needed to handle the task
+This all together may present a performance problem, and a certain support from  \jbmps\ is needed to handle the task
 of efficient analysis development:
 
 \begin{itemize}
@@ -454,22 +457,22 @@ and the scope of their work.
 
 \item A value caching is needed, to store the information figured out by the analyses. For example, for each
 class, it could be saved, if it was found to be an \rg{abstract} class, and the cached value should be valid, until
-the event to re-run the analysis is detected. It may be necessary, to retain the values after the \rg{ide} restart,
+the event to re-run the analysis is detected. It may be necessary, to retain the values after the \rg{ide} stops.
 
- \item As an analysis may take some time to execute, there has to be a way, to inform the user on the background process
-running, so that the user interface is more clear about analyses and their run time. Currently, \jbmps\ does not inform
-the user about it.
+ \item As an analysis may take some time to execute, there has to be a way, to inform the user about a background process
+running, so that a user interface is more clear about analyses and their run time. Currently, \jbmps\ does not inform
+the user about checks, executed in the background.
 
-\item There has to be a way to limit and prioritize the analyses running at the same time. For example, \rgp{preventiveanalysis}
-can be preferred over \rgp{informativeanalysis}, and the total amount of analyses running in parallel could be limited 
+\item There has to be a way to limit and prioritize  analyses running at the same time. For example, \rgp{preventiveanalysis}
+could be preferred over \rgp{informativeanalysis}, and the total amount of analyses running in parallel could be limited 
 to some number.
 
 \end{itemize}
 
 The task of providing a better support for analyses in \jbmps\ represents a challenge which lies out of scope for this work.
-However, this work demonstrates by example the need in such analyses-specific support.
+However, this work demonstrates by example the need in such specific support in \jbmps.
 
-\subsection{Reporting the Results of an Analysis}
+\subsection{Reporting Results of an Analysis}
 \label{reportinganalysis}
 
 Reporting a result after an analysis has completed is very important, since it has to convey the 
@@ -478,55 +481,50 @@ information to the user in a right way, so that the user can take all correspond
 For the time being three forms of reporting have been used in \jbmps:
 
 \begin{itemize}
- \item Error or warning markup by non-type-system checks (Section \ref{mpsnontschecks}).
- \item \Rg{informativeanalysis} hinting in the editor, as for \rg{abstract} classes, for example, see the Section \ref{abstractclasses}.
- \item Plug-in created with a custom user interface for an \rg{analysisondemand}, as described in \cite{2012_ratiu_modular_dsls_and_analyses}.
+ \item An error or a warning markup by non-type-system checks, see the Section \ref{mpsnontschecks}.
+ \item An \rg{informativeanalysis} hinting in the editor, as for \rg{abstract} classes for example, see the Section \ref{abstractclasses}.
+ \item A plug-in created with a custom user interface for an \rg{analysisondemand}, as described in \cite{2012_ratiu_modular_dsls_and_analyses}.
 \end{itemize}
 
-A problem wit non-type-system checks is that an error could appear in a root node \cc{A} after a modification of a node \cc{B}. For example, if \cc{B} is a class,
+A problem with non-type-system checks is that an error could appear in a root node \cc{A} after a modification of a node \cc{B}. For example, if \cc{B} is a class,
 changed to be \rg{abstract}, and \cc{A} is an implementation module, where the class \cc{B} was instantiated. \cc{A} must turn to be invalid, but the error
 is not going to be seen to the programmer, as he/she is working in another root node, in one, where the \cc{B} class is defined.
 
-\jbmps\ needs to provide some support which will allow to modify the way, root nodes look in the project explorer\footnote{See left window panel on the \fig{mpsif}},
+\jbmps\ needs to provide some support which will allow to modify the way, root nodes look in the project explorer\footnote{See the left window panel on the \fig{mpsif}.},
 if an error is found in a node. For example, if a modification of one module, causes an error in another one, this capability is explicitly useful and should
-immediately come into action, to inform the programmer about a problem at the moment, the problem appears.
+immediately come into action, to inform the programmer about a problem at the moment, when the problem appears.
 
-Alternatively, some user interface element may be provided to output analysis messages in some form to the user, like a log window with hyper references to the error nodes.
+Alternatively, some user interface element may be provided to output analysis messages in some form to the user, like a log window with hyper references to error nodes.
 
-An \rg{informativeanalysis} analysis, as for example copyability and assignability analysis (Section \ref{classcopying}), is integrated with the editor concept for the 
-class\footnote{See the Section \ref{mpseditor} for editor concept or editor view}. This makes the editor and the analysis being built in dependence on each other.
-This, in turn, makes the code more complex. Instead, some methods to decorate nodes could be provided, separately from editor implementation. This 
+An \rg{informativeanalysis} analysis, as for example copyability and assignability analysis (see the Section \ref{classcopying}), is integrated with the editor for the 
+\mpsid{Class}\footnote{See the Section \ref{mpseditor} for editor concept or editor view} \rg{concept}. This makes the editor and the analysis being built in 
+dependence on each other.
+This, in turn, makes the code more complex. Instead, some methods to decorate nodes could be provided, separately from an editor implementation. This 
 would allow to control the way, how \rg{informativeanalysis} results are displayed to the user separately.
 
-Finally, when creating plug-in analyses, the user interface for them has to be created in standard Java libraries for the user interface. Some patterns 
-could be figured out, and offered as a \jbmps\ \rg{api} for the user, which would allow, for example, a parallel execution of the analysis code or an external tool,
-presenting the results in some commonly met form (table, diagram, decorations for code), and invalidating the results of the analysis, when needed.
-
-These all are suggestions to improve \jbmps\ based on the experience gained during working on this \MT, they can be proposed as a future work or improvements 
-to the \jbmps\ developer team.
-
-
+Finally, when creating plug-in analyses, the user interface for them has to be created in standard Java libraries for a user interface creation. Some patterns 
+could be figured out, and offered as a \jbmps\ \rg{api} for a language developer, which would allow, for example, a parallel execution of the analysis code or an external tool,
+presenting the results in some commonly met form (as a table, a diagram or decorations for code), and invalidating the results of the analysis, when needed.
 
 \declsec{Templates}{templatesevaluation}
 
-The support for templates, as described in the \rsec{templates}, presents some advantages and 
-disadvantages for the \pcpp\ usage. 
+The support for templates, as described in the \rsec{templates}, presents some pro- and contra- arguments to a potential \pcpp\ user. 
 
 Among the disadvantages are:
 \begin{itemize}
- \item Incompleteness of the support for templates, thus it will not allow every construction
+ \item Incompleteness of the support for templates, thus it will not allow every construction,
  possible in textual C++.
  \item The need to prepare C++ concepts before writing the template code, there questions of 
  code duplication can appear, when declaring two C++ concepts with the same content.
- \item Importing of native C++ code is made more complex, as C++ concepts have o be generated,
+ \item Importing of native C++ code is made more complex, as C++ concepts have to be generated,
  this involves parsing the template code and extracting requirements for the template parameters,
- and checking existing classes for compatibility with the extracted C++ concepts.
+ and establishing existing classes to be compatible with the extracted C++ concepts.
 \end{itemize}
 
 
 Advantageous are the following points:
 \begin{itemize}
- \item The requirements on the template parameter are made explicit for the programmer through the 
+ \item The requirements on a template parameter are made explicit for a programmer through the 
  use of C++ concepts.
  \item Checks for C++ concept compliance make the template code programming and usage more
  predictable.
@@ -535,9 +533,9 @@ Advantageous are the following points:
 The challenges present above as disadvantages of the C++ concepts approach could be resolved
 in the future by improving on the C++ concepts through:
 \begin{itemize}
- \item Making the template support with C++ concepts more complete
+ \item Making the template support with C++ concepts more complete.
  \item Developing techniques to auto-generate C++ concepts from a given code, 
- preparing it to be generalized
+ preparing it to be generalized.
  \item Developing a special importer, which will figure the concept definitions out of
  the existing textual C++ code.
 \end{itemize}
@@ -545,6 +543,3 @@ in the future by improving on the C++ concepts through:
 Additionally, it could be of a practical interest to impose not only syntactical, but semantic assumptions
 on a template parameter with the use of the C++ concept. The way to describe the semantic constraints, and
 to check them later on, can represent a challenging task.
-
-Alternative ways to support C++ templates in the \pcpp\ could be researched as well.
-
