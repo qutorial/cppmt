@@ -1,31 +1,34 @@
 \declsec{Other C++ Language Features}{othercppfeatures}
 
+There are some C++ languages features, which are to be worked on with \pcpp.
+In this section we briefly mention them.
+
 \subsection{Exceptions}
 
-Exceptions are not yet supported by the \pcpp. The primitive support could be 
-easily achieved by implementing \cc{try{} catch} and \cc{throw} statements.
+Exceptions are not yet supported by \pcpp. The primitive support could be 
+easily achieved by implementing \cc{try\{\}catch()} and \cc{throw} statements.
 
 However, it represents a special task for the future, to make a special, improved over 
 original C++, exceptions support. This may include:
 
 \begin{itemize}
- \item Analysis for the exceptions to be caught always, including an analysis for 
+ \item An analysis for exceptions to be caught always, including a check for 
  correct exception typing.
- \item \Rg{informativeanalysis} to tell the user, which functions can generate
- exceptions, and the types of the exceptions.
+ \item An \rg{informativeanalysis} to tell a user, which functions could generate
+ exceptions, and the types of the exceptions should be expected.
 \end{itemize}
 
 
 
 \subsection{Standard Output Stub}
 
-Since the \rg{stl} is not yet supported by the \pcpp. There is no way to 
+Since \rg{stl} is not yet supported by \pcpp. There is no way to 
 use the C++ standard output, which is very common for various C++ programs.
 
-A special statement has been developed to provide a primitive support for 
+A special statement has been developed to provide a primitive support for the standard output stream
 \cc{std::cout}. The \mpsid{cout << x} statement is capable of having every 
 \jbmps\ \rg{concept} instead of \mpsid{x}. This reflects the high flexibility
 of the \cc{std::cout} shift operator overloads.
 
-This facility is designed to be replaces later by a proper calls to \rg{stl}
+This facility is designed to be replaced later by a proper calls to \rg{stl}
 version for \pcpp.

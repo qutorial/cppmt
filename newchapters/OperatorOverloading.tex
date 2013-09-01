@@ -1,18 +1,19 @@
 \declsec{Operator Overloading}{operatoroverloading}
 
+\cpp{String Concatenation with Overloaded Operator +}{strings}
+
 \cppproblem
 
 The operator overloading feature in C++ allows to redefine semantics for a given operator when used 
-with certain types. Indeed, this represents a language engineering methods, when some language construction 
+with certain types. Indeed, this represents a language engineering methods, when some language constructions
 (operators) are extended to support new features (work with new types). The projectional way to support such
-needs would be extending the language with new construction. However, moving towards the \rg{stl} support, 
+needs would be extending the language with new constructions. However, moving towards the \rg{stl} support, 
 it is good to provide the operator overloading usual for C++.
 
 Most often, the operator overloading feature is used together with class types. A very common examples are iterators with 
 their increment, equality and dereferencing; standard input and output streams with stream operators \cc{<<} and \cc{>>}; and \cc{std::string}
 concatenation with operator \cc{+}.
 
-\cpp{String Concatenation with Overloaded Operator +}{strings}
 
 In the \rl{strings} one can find 4 overloaded operators: 
 \begin{itemize}
@@ -27,35 +28,39 @@ In the \rl{strings} one can find 4 overloaded operators:
 \pcppsolution
 
 
-\gr{operatoroverloaddecl}{Operator Overloading: Definition}{0.3}
-
 We will discuss the implementation of the operator overloading in \pcpp\ based on the 
 example. The \fig{operatoroverloaddecl} shows (partially) a definition of the \cc{Coords} class.
-The class represents a vector in the two-dimensional space. Three operators are overloaded for it:
+
+\gr{operatoroverloaddecl}{Operator Overloading: Definition}{0.3}
+
+The class represents a vector in a two-dimensional space. Three operators are overloaded for it:
 \begin{itemize}
  \item \cc{operator +} performs the addition of two vectors,
- \item \cc{operator +} subtracts one vector from another one,
- \item \cc{operator []} allows to reference x and y coordinates of the vector in the array fashion.
+ \item \cc{operator -} subtracts one vector from another one,
+ \item \cc{operator []} allows to reference the x and the y coordinates of a vector in the array fashion.
 \end{itemize}
+
+
 
 Other members of the \cc{Coords} class should be self-describing, given the vector semantics.
 
 Inside the class the overloaded operators get declared. A reader can notice a high degree of
 similarity between an operator overload declaration and a method declaration, as both 
 have a return type and arguments. Thus a common base \rg{concept} was created, 
-\mpsid{AbstractImplementableAsMethod}. It allows to link implementation to it, or a method
+\mpsid{AbstractImplementableAsMethod}. It allows to link an implementation to it, or a method
 definition, in C++ terminology.
 
-The difference between a method declaration and an overload declaration, is that the
-overload declaration has an operator designator instead of a name. An abstract \rg{concept}
+The difference between a method declaration and an overloaded operator declaration, is that the
+overloaded operator declaration has an operator designator instead of a name. An abstract \rg{concept}
 \mpsid{OperatorDesignator} has been created to serve as a base for all possible operator designators
 for overloading, like \cc{+}, \cc{-}, \cc{[]} in this example and more.
 
-Creating a concrete operator designator, and inheriting it from the abstract \mpsid{OperatorDesignator},
+Creating a concrete operator designator, and inheriting it from the abstract \rg{concept} 
+\mpsid{OperatorDesignator},
 makes it possible to define a new operator for overloading. Thus declaration and 
 definition of an operator overload task is resolved in a modular way.
 
-Left, stays the way, overloaded operators can be incorporated into the existing
+Left stays the way, overloaded operators can be incorporated into the existing
 hierarchy of expressions.
 
 \ms{operatoroverloadingusage}{Operator Overloading: Usage}
@@ -64,67 +69,60 @@ The \fig{operatoroverloadingusage} demonstrates, how the defined operator overlo
 be used. The \cc{assert} statements are taken from the special \mbdr\ language designed to
 create test cases. They test the condition and if it is \cc{false} the execution stops.
 
-At first, in the example two \cc{Coords} objects are created. Next, a third object is created 
+At first, in the example two \cc{Coords} objects are created. Next, the third object is created 
 as their sum. The \cc{+} operator used is nothing else but an instance of the \mpsid{PlusBinaryExpression} from 
 \mbdr. Next, the newly created \cc{v3} object gets tested. After that, the \cc{v4} object is
-created as a difference between \cc{v2} and \cc{v1}. Again, the operator \cc{-} used to calculate 
-the difference is an instance of the \mpsid{MinusBinaryExpression} in \mbdr. Then, \cc{v4} values get tested. 
+created as a difference between \cc{v2} and \cc{v1}. Again, the operator \cc{-}, used to calculate 
+the difference, is an instance of  \mpsid{MinusBinaryExpression} in \mbdr. Then, \cc{v4} values get tested. 
 And finally, the \cc{[]} operator is used with \cc{v4} to get its second coordinate. The operator
 used is an instance of the reused from \mbdr\ \mpsid{ArrayAccessExpression} \rg{concept}.
 
 The reuse of existing expressions from \mbdr\ is highly beneficial. 
-
 For example,  the \mpsid{ArrayAccessExpression} features a complex behavior. At first the indexed 
-object is typed as an expression. After that, after \cc{[} gets typed by the programmer,
+object is typed as an expression. After \cc{[} gets typed by the programmer,
 the indexed object is transformed into an instance of the \mpsid{ArrayAccessExpression}
 \rg{concept}. The \mpsid{ArrayAccessExpression} has two children. First is the expression
-which corresponds to array. The indexed object is moved to be a child of the new \mpsid{ArrayAccessExpression}.
+which corresponds to the array. The indexed object is moved to be a child of the new \mpsid{ArrayAccessExpression}.
 The second child is an expression, which represents the index. It gets the input focus,
-after the replacement discussed above happens.
-
-Next, if the indexed expression is about to be deleted, a special action\footnote{See \ref{othermpsinstruments}}
-takes place, which replaces the \mpsid{ArrayAccessExpression} with its child with the role\footnote{See \ref{mpsconceptdeclaration}}
+after the replacement happens.
+Next, if the indexed expression is about to be deleted, a special action\footnote{See the Section \ref{othermpsinstruments}}
+takes place, which replaces the \mpsid{ArrayAccessExpression} with its child with the role\footnote{See the Section \ref{mpsconceptdeclaration}}
 \cc{array}. Thus the deleting of index resembles the usual behavior as in text editors, where
-just the index disappears, not the whole expression together with the indexed object.
+just the index disappears, not the whole expression together with the indexed object, as it would happen in
+projection without the action provided.
 
 The decision to not to create special expressions, which would represent the usage of
 the overloaded operators, helps to avoid code duplication, reprogramming the behavior of
-existing expressions in \mbdr. 
+the existing expressions in \mbdr. 
 
 Alternatively, the expressions in \mbdr\ could be inherited and changed. But the 
-degree of changes, possible through inheritance is limited, as described in \rsec{extensibility},
-and creation of a second set of the same looking expressions could potentially confuse the
-programmer, when he or she is going to instantiate one of the many \cc{+} operators, for example.
+degree of changes, possible through inheritance is limited, as described in the \rsec{extensibility},
+and creation of the second set of the same-looking expressions could potentially confuse a
+programmer, when he/she is going to instantiate one of the many \cc{+} operators, for example.
 
-The existing expressions could not be reused as-is, however. Their type system, specified
+The existing expressions could not be reused as they were, however. Their type system, specified
 in \mbdr, is not aware of the \mpsid{ClassType}, introduced by \pcpp. Thus the class
 objects would get rejected by the type system, as the type for the resulting expression
-would not be figured out be \mbdr.
+would not be figured out by \mbdr.
 
 Changing the \mbdr\ type system, hard coding the necessary behavior for classes, would 
 introduce a dependency of \mbdr\ code on the \pcpp\ code. The goal of this work, however,
 is to avoid such situations, as described in the \rsec{approach}.
-
-The need to extend \mbdr\ in order to allow correct typing for the \mpsid{ClassType} in
-existing behavior was necessary.
-
-The solution for this problem was found to be as follows. For each of the expression kind 
-in \mbdr\ an \rg{interfaceconcept} could be introduced, which will participate in the 
-type system for the expression, and, if found to be one of the expression parts, 
+The solution for this problem was found to be as follows. For each of the expression kinds 
+in \mbdr\ an \rg{interfaceconcept} could be introduced, which would participate in the 
+type system for the expression, and, if found to be one of the expression parts, could 
 be delegated with the task of the type calculation. Then, the \mpsid{ClassType} is changed
-to implement the newly create \rgp{interfaceconcept}, and the code is added to it, to 
+to implement the newly created \rgp{interfaceconcept}, and the code is added to it, to 
 compute the typing. The \mpsid{ClassType} looks up the corresponding \mpsid{Class} for 
 the presence of overloads, and if an overload for the operation in question is found, 
 the overloaded operator return type is taken as the result, otherwise an error is reported.
 
 For example, the \mpsid{ClassType} implements a newly created in \mbdr\ concept, 
-\rg{interfaceconcept} \mpsid{ISelfTypingInBinaryExpression}.
-The \mpsid{ClassType} implements this \rg{interfaceconcept}. Thus, when a type of a 
+\rg{interfaceconcept} \mpsid{ISelfTypingInBinaryExpression}. Thus, when a type of a 
 binary expression is calculated, the \mpsid{ClassType} is delegated with the task to 
 determine the possibility to be involved in the binary operation under question, 
 and to calculate the resulting type.
-
-In the \fig{operatoroverloadingusage} when calculating \cc{v3}, for example, the 
+In the \fig{operatoroverloadingusage} when calculating \cc{v3}, the 
 \mpsid{PlusBinaryExpression} delegates to the \mpsid{ClassType} corresponding to \cc{Coords} 
 class, to figure out, if the operation is possible. According to the declarations in the
 \fig{operatoroverloaddecl} the \cc{Coords} class has an overload for the \cc{+} operator,
@@ -133,10 +131,10 @@ and the return type of the operator, namely \cc{Coords} class, is taken as the r
 type for the \mpsid{PlusBinaryExpression}.
 
 As the \mpsid{ISelfTypingInBinaryExpression} \rg{interfaceconcept} is declared in
-\mbdr, the only dependency created by using it, is the existing dependency of the \pcpp\
-on \mbdr, keeping \mbdr\ development separate from the \pcpp.
+the \mbdp\ code, the only dependency created by using it, is the existing dependency of \pcpp\
+on \mbdr, keeping \mbdr\ development separate from \pcpp.
 
-The current \pcpp\ implementation has some limitation in the operator overloading:
+The current \pcpp\ implementation has some limitations in the operator overloading:
 \begin{itemize}
  \item Not every operator is ready for overloading, and \mbdr\ has to be further extended 
  to support it, this is, however, not an entirely new task, but rather repetitive application

@@ -98,7 +98,7 @@ has been defined for the \rg{concept} \mpsid{X} in the editor view for it. In th
 ``editor for the \rg{concept} \mpsid{X}''. Similar terminology applies to all the following views related to a single \rg{concept}.
 
 The editor for a \rg{concept} defines a visual representation for a node of the \rg{concept}, using special syntax. For example, the 
-\fig{mpsifeditor} defines an editor for \mpsid{IfStatement}. At first the ``constant'' non-changeable by a programmer text is given, which is ``if'' and ``(''. Then
+\fig{mpsifeditor} defines an editor concept for \mpsid{IfStatement}. At first the ``constant'' non-changeable by a programmer text is given, which is ``if'' and ``(''. Then
 the child \mpsid{condition} is referenced, so that after the ``if('' a user will be able to input an expression for the condition of the \cc{if} statement.
 The editor can be configured to show or hide some parts of a node, depending on some condition, e.g. hiding \cc{else} part of the \cc{if} statement, if it 
 is not defined. An editor concept is also responsible for all the interaction, a user experiences, when editing a node of the \rg{concept}, 
@@ -140,7 +140,11 @@ The \fig{mpsidnameconstr} demonstrates a use of the \cc{CIdentifierHelper} class
 \mpsid{IIdentifierNamedConcept} to check a name property value on collisions with the C language keywords.
 
 Constraints play an important role for the editor work. A programmer is presented with a list of choices, when inputting
-a new node on an \rg{ast}. The choice of nodes is \emph{defined} with the constraints.
+a new node on an \rg{ast}. The choice of nodes is \emph{defined} with the constraints. Such constrains are called ``scoping constrains'' in 
+\jbmps. A scope can be defined for a child or a reference of a \rg{concept}. It is represented by a procedure, which takes a node 
+in a context, and returns a list of possible children/referents after analyzing the given context. 
+Exactly the resulting list is going to be presented to the programmer, as an options list for auto-completion, when building 
+a child or a referent for the node.
 
 \subsection{Type System View}
 \label{mpsts}

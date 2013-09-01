@@ -19,6 +19,8 @@ an interface. Instead, a base class, its public part, is used as an interface de
 Functions, designated to be a part of the interface, must be declared \cc{virtual} and they can be overloaded in
 the subclasses.
 
+\cpp{Pure Virtual Function Syntax Example}{purevirtual}
+
 The virtual functions in the base-interface class can be implemented as well, providing some ``default'',
 common enough behavior. Otherwise they are left \rg{purevirtual}, meaning that no implementation is provided
 and the pointer to the function in the table of pointers to virtual functions is zeroed. The syntax
@@ -26,7 +28,6 @@ for \rg{purevirtual} functions is rather not obvious\footnote{Especially when no
 and a bit cumbersome requiring to type one reserved word, one punctuation sign and one digit to 
 express a simple fact of pure virtuality or, simply, absence of implementation, see the \rl{purevirtual}.
 
-\cpp{Pure Virtual Function Syntax Example}{purevirtual}
 
 The approach of classes with virtual functions as interfaces is more flexible compared to languages with the notion 
 of an interface directly introduced.
@@ -43,31 +44,31 @@ override should change from the interface, together with all the implementations
 explicit override syntax we call here an ``\rg{ovsa}''.
 
 Whenever a class and all of its ancestors do not provide an implementation of a certain virtual function,
-created as a pure virtual in the declaring class, the class is called an \rg{abstract} class. It is not possible
+created as a \rg{purevirtual} in the declaring class, the class is called an \rg{abstract} class. It is not possible
 to construct instances of an \rg{abstract} class. C++ however does not have any special syntax to explicitly declare a 
-class \rg{abstract},  \rl{purevirtual}.
+class \rg{abstract},  see the \rl{purevirtual}.
 The programmer usually has to be aware (from documentation, implementation, or, the worst case, compilation
 errors) whether a given class is \rg{abstract}. We will call this phenomenon an ``\rg{acsa}''.
 
 Overriding a function is an active action of the programmer, and it is initiated by the 
-programmer. I.e. the programmer want to state, that the new function is designed to override an exiting one, and 
+programmer. I.e. the programmer wants to state, that a new function is designed to override an existing one, and 
 which is the overridden function. The abstract property of a class, oppositely, is not a quality a programmer directly
-gives to a class. It can be rather deduced from the analysis on the base classes automatically, by editor. So in this case
-no actions are needed from the programmer side. Because of this two similar absence of syntax phenomena are resolved or
-have to be improved on differently from the \pcpp\ point of view.
+gives to a class in C++. It can be rather deduced from the analysis on the base classes automatically, by editor. So in this case
+no actions are needed from the programmer side. Because of this, the two similar, at the first glance, absence of syntax 
+phenomena are resolved or differently from in the \pcpp\ implementation.
 
 In order to use an interface, declared in some class, the using code has to get a pointer to an instance
-of any inheriting the interface descendant class instance. Thus type system has to allow a pointer
+of any inheriting the interface descendant class instance. Thus, the type system has to allow a pointer
 to the descendant to be treated in the way as a pointer to the base class would be. The same should hold, 
-normally, for the reference types, but it is not used very often on practice, and is omitted in the implementation.
+normally, for the reference types, but it is not used very often in practice, and is omitted in the implementation.
 
 As this typing rule represents the core of polymorphic behavior, we will start from it below, describing further the
 polymorphism in the \pcpp\ implementation.
 
-\subsubsection{Special Typing for a Pointer to Class}
+\subsubsection{Special Typing for a Pointer to a Class}
 \label{pointertoclasstyping}
 
-The problem solved here is enabling the usage of pointers to descendants instead of pointers to ancestors,
+The problem solved here is enabling the usage of pointers to descendants instead of pointers to ancestors, see the
 \rl{polycall}.
 
 \cpp{Example Usage of a Pointer to Descendant Class}{polycall}
@@ -75,22 +76,18 @@ The problem solved here is enabling the usage of pointers to descendants instead
 The \mpsid{PointerType} \rg{concept} is implemented in the \mpslang{pointers} language in \mbdr. 
 Following the goal of non-invasive changes to \mbeddr\ the \pcpp\ implementation needs to add the 
 typing rules for pointers \emph{to classes} without changing the  \mpslang{pointers}  \mbdr\ language, where the 
-typing system for pointer type is defined.
+typing system for the pointer type is defined.
 
 In the case when a type of a pointer to a base class is expected, a pointer to a subclass should also be accepted, like
-in the \rl{polycall}.
-
-The type system of the pointer language will try to check the compatibility of the two pointer types. It will
-fail to do so, as the \mbdr\ languages are not aware of the \pcpp\ extensions\footnote{\mpsid{Class} \rg{concept} in this case} 
+in the \rl{polycall}. The type system of the pointer language will try to check the compatibility of the two pointer types. It will
+fail to do so, as the \mbdr\ languages are not aware of the \pcpp\ extensions\footnote{The \mpsid{ClassType} \rg{concept} in this case.} 
 by design.
 
-
-In a case like this a replacement rule can be used, see \ref{mpsts}. The \pcpp\ provides such a replacement rule for the 
+In a case like this a replacement rule can be used, see the Section \ref{mpsts}. \pcpp\ provides such a replacement rule for the 
 pointer type, which checks, whether a class pointed to, is a passing descendant of the class required by an expression, 
 where the pointer was used, and performs the necessary typing.
 
-In the \rsec{extensibility} we discuss more on the approach taken here, its limitations and 
-the potential ways to overcome them.
+In the \rsec{extensibility} we discuss more on the approach taken here, and its limitations.
 
 \subsection{Safer Casting for a Pointer to Class}
 \label{safecasting}
@@ -106,12 +103,12 @@ The type casting for class types in C++ has a number of disadvantages.
  which could cause a failure in the run-time, as no checks are performed.
  
  \item The \cc{reinterpret\_cast} allows to ignore the possibility of  
-  a completely meaningless conversion, which can lead to a run-time crashes, neither run-time nor 
+  a completely meaningless conversion, which can lead to run-time crashes, neither run-time nor 
   compile-time checks are performed.
  
  \item The \cc{dynamic\_cast} has usually low compile-time support, and relies on the run-time type
-  information to perform checks on the run-time. This information may not be available, being,
-  for example omitted for performance gains.
+  information to perform checks at the run-time. This information may not be available, being,
+  for example omitted for the sake of performance gains.
 \end{itemize}
 
 
@@ -121,19 +118,18 @@ A new construction for type conversions is introduced, which can be considered a
 over the existing in C++ casts. The \mpsid{as} construction translates to the C++ \cc{dynamic\_cast}.
 Additionally, checks are added to improve the security of the construction.
 
-\ms{nonpolycasting}{Casting Example}
+\ms{nonpolycasting}{Example of the \mpsid{as} Construction}
 
-The \fig{nonpolycasting} demonstrates some of the introduced in \pcpp\ features related to class type conversions.
+The \fig{nonpolycasting} demonstrates some of the introduced in \pcpp\ features related to the class type conversions.
 
 The new \mpsid{as} construction is being checked in the coding-time. For example, the cast from \cc{parent} to 
 \cc{NPChild\*} is signaled as an error, since these class hierarchy is not polymorphic, and the \cc{dynamic\_cast}
 in the basis of \mpsid{as} would not work on it.
 
 The next cast from \cc{parent} to \cc{NonPoly\*} is signaled with warning, because the \cc{parent} pointer does 
-already have the requested type. Such casting may signal a lack of understanding by the programmer while coding.
-
-The \cc{as} construction returns \cc{0} at run-time when conversion fails. Thus a good programming style
-should include the check for it in the run-time.
+\emph{already} have the requested type. Such casting may signal a lack of understanding by the programmer while coding.
+The \mpsid{as} construction returns \cc{0} at the run-time when conversion fails. Thus a good programming style
+should include a check for it at the run-time.
 
 When \mpsid{as} is used to cast a polymorphic class, it checks, whether the cast makes sense.
 For this the related classes must be in the same class hierarchy. When a zero result is possible,
@@ -141,10 +137,10 @@ the node is highlighted with warning, for the programmer to take an action of ch
 between unrelated classes is presented as an error.
 
 Some implicit type conversions are always meaningful, thus a conversion from a pointer to 
-a child class to a pointer to a parent class is recognized by \pcpp and is allowed, as 
-described in \ref{pointertoclasstyping}.
+a child class to a pointer to a parent class is recognized by \pcpp\ and is allowed, as 
+described in the Section \ref{pointertoclasstyping}.
 
-The casting can be further improved through introducing new analysis. At first, a fast type of cast, 
+The casting can be further improved through introducing new analyses. At first, a fast type of cast, 
 like \cc{static\_cast} or even \cc{reinterpret\_cast} can be used in translation, when a data-flow analysis
 can prove, that the conversion is always meaningful. Secondly, unnecessary casts can be eliminated in this way.
 
@@ -158,7 +154,7 @@ in the class \cc{Circle}. The \rl{override} demonstrates as well the \rg{ovsa} i
 
 \cpp{Example of an Overridden Function - Text Code}{override}
 
-In the \fig{override} the same example is demonstrated, but in the \pcpp\ implementation.
+In the \fig{override} the same example is demonstrated, but in \pcpp.
 In fact, the code shown in the \rl{override} can be generated 
 from the demonstrated projectional sample in the \fig{override}, by invoking all \Rgp{textgen} in \jbmps.
 
@@ -166,20 +162,20 @@ When a method declaration is created, it can be set to be an override of a metho
 Right after an empty method declaration is created, it can be set to be an override, so that the only
 thing which stays, is to pick a method from a base class to be overridden. The override is automatically
 named, the parameters and the return type are set accordingly, the \cc{virtual} property is immediately
-set. This is yet another work saver for the programmer.
+set. This is yet another work saver for a programmer.
 
 After the override has been linked to the overridden method, the projectional editor checks, if 
 the override full signature stays precisely the same as the one of the overridden method. Thus if the 
 latter changes, it is going to be indicated in the former.
-The overridden method is shown next to the override declaration \fig{override}, which 
+The overridden method is shown next to the override declaration, see the \fig{override}, which 
 compensates on the \rg{ovsa}.
 
-\ms{override}{Example of an Overridden Function - Projection}
+\ms{override}{Example of an Overridden Function - \pcpp}
 
-The additional, out of C++, visual syntax in the \pcpp, should not confuse the reader. It is only 
-present in the projectional editor, and, when an \rg{ast} is generated into a text code, the regular
-C++ syntax is achieved. However in this case the \rg{ast} stores \emph{more} than needed to 
-generate and compile the C++ code. 
+The additional, not belonging to C++, syntax in \pcpp, should not confuse the reader. It is only 
+present in the projectional editor, and, when an \rg{ast} is generated into a text code, a regular
+C++ syntax is achieved. However in this case an \rg{ast} stores \emph{more} than needed to 
+generate and compile a C++ code. 
 
 This subsection is one of the examples, that storing more information can be useful,
 it is generalized in the \rsec{genprinciples}.
@@ -188,74 +184,67 @@ it is generalized in the \rsec{genprinciples}.
 \subsubsection{Pure Virtual Functions}
 \label{purevirtualfuncs}
 
-In the example above, \rl{override}, one improvement to the code can be made. As the \cc{getArea()} for a random shape can not 
+In the example code in the \rl{override} one improvement to could be made. As the \cc{getArea()} for a random shape can not 
 be determined, it makes sense to make the \cc{getArea()} function \rg{purevirtual}. As said before, a \rg{purevirtual} 
 function has no implementation in the declaring class, and serves only the overriding purpose. Semantically in C++ it sets the 
-pointer in \cc{vptr} to 0 and thus has reflecting it syntax, see the similar example in the \rl{purevirtual}.
-
+pointer in \cc{vptr} table to 0 and thus has reflecting the zeroing syntax, see the similar example in the \rl{purevirtual}.
 This syntax can be seen as not obvious, as it reflects more the under-the-hood implementation of the mechanism,
-rather then the original programmer intention to built a basis for an overrides chain, while taking advantage of 
+rather than the original programmer intention to built a basis for an override chain, while taking the advantage of 
 polymorphism.
-
 Additionally, as discussed above, declaring a \rg{purevirtual} function requires a significant amount of the syntactical
 overhead. 
+These were the disadvantages of the \cpppl, \pcpp\ tries to improve on.
 
-These were the disadvantages of the \cpppl\ the \pcpp\ tries to improve on.
-
-In the \pcpp implementation, one \rg{intention} is reserved to make a function \rg{purevirtual}. The \rg{intention} automatically
+In the \pcpp\ implementation, one \rg{intention} is reserved to make a function \rg{purevirtual}. The \rg{intention} automatically
 sets the needed pure virtual and virtual flags of the function declaration, and the projection changes. That is why out of the 
-statement \cc{virtual double getArea() = 0;} the programmer has to input only the name \cc{getArea}, pick the type \cc{double}, and
-toggle the pure virtual intention for the declaration in the \cc{Shape} class.
+statement ``\cc{virtual double getArea() = 0;}'' a programmer has to input only the name \cc{getArea}, pick the type \cc{double}, and
+toggle the ``Make pure virtual'' intention for the declaration in the \cc{Shape} class.
+The result of the intention work can be seen in the \fig{purevirtual}.
 
-The result of the intention work in projection can be seen in the \fig{purevirtual}.
-
-\ms{purevirtual}{Example of a Pure Virtual Method - Projection}
+\ms{purevirtual}{Example of a Pure Virtual Method - \pcpp}
 
 The word \cc{pure} is added by the projectional editor. This makes the reading of the code easy and natural.
-The \cc{ = 0} part is preserved for the C++ programmer with habits, used to the original C++ syntax. And, as in many other cases, 
+The ``\cc{ = 0}'' part is preserved for the C++ programmer with habits, used to the original C++ syntax. And, as in many other cases, 
 the semicolon is omitted as it is nothing but syntactic help to the compiler, which does not have to appear 
-in the projection. 
+in the projection at all.
 
-This example demostrates, how the lower level syntax can be made more readable. The general principle on it is formulated in
+This example demostrates, how the lower-level syntax can be made more readable. The general principle on it is formulated in
 the \rsec{genprinciples}.
 
 \subsubsection{Abstract Classes}
 \label{abstractclasses}
 
-If any of the \rg{purevirtual} functions, in the inheritance chain leading to a class, is not implemented by this chain, 
+If any of  \rg{purevirtual} functions, in an inheritance chain, leading to a class, is not implemented by this chain, 
 or inside the class itself, the class is called an \rg{abstract} class. It is not possible to construct an instance of an
 \rg{abstract} class, as such classes have not implemented methods.
 
-The programmer has to know which classes are \rg{abstract},
-and are intended for inheritance and further implementation only. One of the reason for this, is to not to try instantiation of
-the abstract class. Another reason is to exactly identify \rg{abstract} classes, designed to serve as extension points.
-
+A programmer has to know which classes are \rg{abstract},
+and are intended for inheritance and further implementation only. One of the reasons for this, is to not to try instantiation of
+an \rg{abstract} class. Another reason is to exactly identify \rg{abstract} classes, designed to serve as extension points.
 Above we discuss the \rg{acsa} in C++. It leads to the need for the programmer to determine somehow him/herself 
 if a given class is \rg{abstract}, the source code representation of a class does not give any information on it, 
 unless some naming conventions require \rg{abstract} classes to be named specially.
-
 An improvement to this situation would be a behavior, when an editor can perform an analysis and 
 determine if a class is \rg{abstract}, hinting on it to the user. In the case of the projectional
-editor, this analysis is especially computationally efficient\footnote{in comparison to textual editors, with the need to 
-parse, see the \rsec{comparison} on comparison to the textual approach, and \rsec{analysesandcomplexity} on complexity of analyses}, 
-as the \rg{ast} is readily available, and the quick  analysis can be performed by a simple recursive algorithm on the inheritance chains.
+editor, this analysis is especially computationally efficient\footnote{In comparison to textual editors, with the need to 
+parse, see the Section \rsec{comparison} on comparison to the textual approach, and \rsec{analysesandcomplexity} on complexity of analyses.}, 
+as an \rg{ast} is readily available, and a quick  analysis can be performed by a simple recursive algorithm on inheritance chains.
 %TODO Make an appendix with the algorithm and reference it
 
 After an \rg{abstract} class has been determined, it is possible to modify the editor representation for it, 
-and show that it is abstract, \fig{abstract}.
-
+and show that it is \rg{abstract}, see the \fig{abstract}.
 In this example a typical class hierarchy is created to support user interface programming. A user of this \rg{api}, when 
 searching for a button, could try using the \cc{Button} class, which is designed to be \rg{abstract}, and serve as a 
 base for the further implementations, e.g. \cc{PushButton} in the example, or check boxes, radio buttons and similar,
-later.
+which could be alternatively created.
 
 \ms{abstract}{Determining Abstract Classes}
 
-The projectional editor, however, checks on the fly, if a certain class is abstract, adding a special \cc{abstract} word 
-in front of its declaration. This makes the reading easier, and allows for quicker understanding of the code. 
+The projectional editor, however, checks on the fly, if a certain class is \rg{abstract}, adding a special \cc{abstract} word 
+in front of its declaration. This makes the reading easier, and allows for quicker understanding of a code. 
 
-This example demonstrates a general principle, see  the \rsec{genprinciples}, of a advised practice to 
+This example demonstrates a general principle, see  the \rsec{genprinciples}, of an advised practice to 
 perform quick analyses and inform the user.
 
-Additionally, the creation and usage of abstract class instances is checked, and forbidden by type analysis. This is 
+Additionally, the creation and usage of \rg{abstract} class instances is checked, and forbidden by type analysis. This is 
 described separately in the \rsec{advanced}.
