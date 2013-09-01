@@ -145,37 +145,39 @@ when the approach is used to recreate an existing language in projection.
 \declsec{Modular Language Engineering}{modularlang}
 
 \subsection{Describing a Language in Projection}
+\label{langaspects}
 
 When  building a projectional editor for a language, the language must be given as a certain description of a possible \Rg{ast} in the language.
 As an \rg{ast} represents a graph, the nodes and edges types, as well as their possible relationships must be described\footnote{Compare this
 with the textual approach, where a grammar for the language must be built, which is generally speaking complex, and some times even not a
 possible task, which leads to the increasing parser complexity, known problem in particular in the C++ area}. 
 
-The nodes of an
-\rg{ast} are described through giving their types. The node type in projectional editing is called a \rg{concept}. \Rgp{concept} are very
-similar to classes in object oriented programming languages. They feature inheritance, they can implement interfaces, they can have internal data, similar
+Nodes of an \rg{ast} are described through defining their types. The node type in projectional editing is called a \rg{concept}. \Rgp{concept} are very
+similar to classes in object-oriented programming languages. They feature inheritance, they can implement interfaces, they can have internal data, similar
 to member fields, and they can feature behavior, similar to member functions. The difference with classes, however, is that the member fields are not 
 usually encapsulated.
 
-The edges of the \rg{ast} are not described on their own, but instead as a properties of nodes. A node can have children, or can reference other nodes.
-An example of child relationship, can be a condition expression of the \cc{if} statement. An example of reference relationship can be a local variable usage,
-referencing the declaration of the local variable. Child and reference relationships can have different cardinality, with minimal border from 0 or 1, to the 
+Edges of an \rg{ast} are not described on their own, but instead as properties of nodes. A node can have children, or can reference other nodes.
+An example of a child relationship, can be a condition expression of the \cc{if} statement. An example of a reference relationship can be a 
+local variable usage, referencing the declaration of the local variable. 
+The child and the reference relationships can have different cardinality, with minimal border from 0 or 1, to the 
 maximal border of 1 or N, where N stands for just ``many'', or several.
 
-The cardinality itself, is not usually enough, to restrict as desirable node relationships. Special constraints can be added and checked for 
-each relationship, which describe precisely, or provide procedure to check, the validity of a relationship being established. The projectional editor
-must inform the user, every time, the constraint was not satisfied, so that the user has a chance to correct the code, to match a valid \Rg{ast} description.
+The cardinality itself is not usually enough to restrict as desired node relationships. Special constraints can be added and checked for 
+each relationship, which describe precisely, or provide a procedure to check, the validity of the relationship being established. A projectional editor
+must inform a user, every time, a constraint has not been satisfied, so that the user has a chance to 
+correct the code, to match a description of a valid \Rg{ast}.
 
-For the user to be able to manipulate the \rg{ast} for each node \rg{concept} an editor has to be created. The editor defines, how a node of a given \rg{concept}
+For a user to be able to manipulate an \rg{ast}, for each  \rg{concept} an editor has to be created. The editor defines, how a node of a given \rg{concept}
 should be represented to the user, which editing operations, and how, the user may perform on the node.
 
-The minimal set of data was described above, which has to be defined for a language, to enable the projectional editing for it.
+A minimal set of data was described above, which has to be defined for a language, to enable the projectional editing for it.
 
 Additionally, constraints may be refined, involving some usual for typed languages type restrictions and checks. Generators can be added to 
 transform \Rgp{ast} given in a language. Text generators can be defined to generate a text code from an \rg{ast}.
 
-Behavior can be defined for a concept, to provide some method-like functionality to it. Additionally, some user-invokable functions can be described, to
-perform manipulations with the \Rg{ast}.
+Behavior can be defined for a \rg{concept}, to provide some method-like functionality to nodes of the \rg{concept}. 
+Additionally, some user-invokable functions can be described, to perform manipulations with an \Rg{ast}.
 
 The process of defining a modular language in the \jbmps\ environment is described additionally with practical details in the \rsec{mps}.
 
@@ -183,47 +185,57 @@ The process of defining a modular language in the \jbmps\ environment is describ
 \label{modularity}
 
 As \rgp{concept} feature inheritance, it is possible\footnote{to some extent, the extensibility is described separately in one of the following chapters} 
-to use a child concept at a place where a parent concept could be used. This creates a great opportunity for language extensibility. In order to 
-extend a language at some point, just a passing base \rg{concept} hast to be determined and inherited from, by a new \rg{concept} which is meant
-to provide the language extension. The new concept is immediately able to be used in place of the base concept. As an example, one could think 
-of extending statements of the language. The only new statement is needed, a \rg{concept} has to be created, which represents the new statement, 
-and enabling the new statement consist of just inheriting it from the base statement concept, which exists in the language extended, \fig{LanguageModularity}.
+to use a child \rg{concept} node at a place where a parent \rg{concept} node could be used. This creates a great opportunity for language extensibility. In order to 
+extend a language at some point, just a passing base \rg{concept} has to be determined and inherited from by a new \rg{concept} which is meant
+to provide the language extension. It is possible to use the new \rg{concept} immediately  in a place of the base \rg{concept}. 
+As an example, one could think  of extending statements of a language. The only a new statement is needed, a \rg{concept} has to be created, 
+which represents the new statement. Enabling the new statement consists of just inheriting it from the base statement \rg{concept}, 
+which exists in the extended statements language, \fig{LanguageModularity}.
 
-\gr{LanguageModularity}{An Example of Modular Language Reuse and Extension}{0.6}
+\gr{LanguageModularity}{An Example of a Modular Language Reuse and Extension}{0.6}
 
-The inheritance works over the language borders, allowing to create the child concept
-in a language L2, separate from the language L1, where the original parent concept has been described. Thus the language L2 can be seen as a modular extension to the
+Inheritance works over language borders, allowing to create a child \rg{concept}
+in a language L2, separate from a language L1, where the original parent \rg{concept} has been described. Thus the language L2 can be seen as a modular extension to the
 language L1. 
 
-The modular \Rg{dsl} creation is discussed in \cite{1998_hudak_modular_dsl_and_tools}, \cite{2006_wyk_modular_dsl_extensions}. 
-The language modularity, in a context of \jbmps\ is described in \cite{2012_ratiu_modular_dsls_and_analyses}, \cite{Voelter2011}.
+Modular \Rg{dsl} creation is discussed in \cite{1998_hudak_modular_dsl_and_tools} and \cite{2006_wyk_modular_dsl_extensions}. 
+The language modularity, in a context of \jbmps\ is described in \cite{2012_ratiu_modular_dsls_and_analyses} and \cite{Voelter2011}.
 
-The main focus of this work is a construction of the \cpppl\ on top of the \mbdr\ C implementation. Thus the modularity in the language engineering 
-plays a key role in the work.
+The main focus of this work is the construction of the \cpppl\ on top of the \mbdr\ C language implementation. 
+Thus, modularity in language engineering plays a key role in the work.
 
-While extending the C language of the \mbdr\ with C++ specific \rgp{concept}, all the aspects of the language description (see previous subsection) have
-to be extended. The newly introduced \rgp{concept} for nodes of the \rg{ast}, typical for C++, must inherit from some \rgp{concept} of the original 
-\mbp\ C language. Not only new nodes and edges are introduced, but also constraints and other language description aspects have to be made incorporating the
-newly introduced concepts. The practical side of the language modularity and extensibility is discussed throughout this work.
+While extending the C language of \mbdr\ with C++ specific \rgp{concept}, all the aspects of the language description,
+as described in the Section \ref{langaspects}, have
+to be extended. The newly introduced \rgp{concept} for nodes of an \rg{ast}, typical for C++, must inherit from some \rgp{concept} of the original 
+\mbp\ C language. Not only new node and edge types are introduced, but also constraints and other language description aspects have to be made 
+incorporating them. The practical side of the language modularity and extensibility is discussed throughout this work.
 
 % TODO
 %Quote more papers, bring an illustration
 
-\subsection{Text Language Importers}
+\subsection{Text Code Importers}
 \label{importers}
 
-When recreating an existing text language in projection, it is natural to support some libraries with it. The libraries, or a code 
-base in another form, is present however not in the projectional form, but in the native for the language text code. Thus, for the 
-user of the language, to be able to use the code base, it has to be \emph{imported} to the projectional editor. 
-
-The import process consists of parsing the text code getting an \rg{ast} and converting the \rg{ast} in an \rg{ast}, as can
+When recreating an existing in a text form language in projection, it is natural to support some usual for language users code base. 
+An example could be a standard library for the language. This code base is going to be present in a text form, as the language constructed
+has a textual nature. Thus, for a user of the language, to be able to use the code base, it has to be \emph{imported} to 
+the projectional editor created.
+The import process consists of parsing the text code, getting an \rg{ast}, and converting the \rg{ast} in an \rg{ast}, as can
 be described by the language in projection.
 
-The task of import contains usually several principal challenges. At first, the native text language can have more 
-constructions, than the version described in the projection. This happens, due to the intentions to omit some of them
-in projection\footnote{dangerous constructions, like \cc{reinterpret\_cast}}, absence of them due to the simplicity of projectional 
+The task of importing contains usually several principal challenges:
+
+\begin{itemize}
+ \item The native text language can have more 
+constructions, than the version, described in the projection. This happens, due to intentions to omit some of them
+in projection\footnote{For example, dangerous constructions, like \cc{reinterpret\_cast} in C++.}, absence of them due to the simplicity of projectional 
 implementation of the language, no need for them in projection, because the constructions are only specific to the textual nature of 
-the code\footnote{for example, preprocessor directives}. Second, the projectional language can contain more information about the nodes,
+the code\footnote{For example, preprocessor directives in C.}. 
+
+ \item The projectional language can contain more information about  nodes,
 than is present in the textual language, thus the information has to be generated or manually added later.
 
-Additionally the technical work to create an importer can be considered significant, especially for complex languages, like the \cpppl.
+  \item The technical work to create an importer can be considered significant, especially for complex languages, like the \cpppl, as parsing
+  front-ends may have complex \rgp{api}, or not be present at all.
+
+\end{itemize}

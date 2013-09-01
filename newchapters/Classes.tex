@@ -3,19 +3,19 @@
 The \cpppl\ is a multi-paradigm programming language. The ability to support the object-oriented programming,
 is incorporated via classes support. 
 
-A class represents a new type in the \cpppl. Each class may have data in the 
-form of fields, and behavior in the form of methods. Two types of methods are special for
+A class represents a new type in the \cpppl. Each class may have data in a 
+form of fields, and behavior in a form of methods. Two types of methods are special for
 C++ - constructors and destructors, they have special meaning and syntax.
 
 Encapsulation is enabled via governing access permissions to fields and methods of a class.
-The access control is governed with the creation of \cc{public}, \cc{protected} and \cc{private}
+The access control is governed with a creation of \cc{public}, \cc{protected} and \cc{private}
 class sections.
 
-Inheritance is implemented in C++ via allowing for each class to have one, or even many base classes.
+Inheritance is implemented in C++ via allowing each class to have one, or even many base classes.
 Inheritance from a base class is performed under a certain access control modifier. There is no pure notion 
-of an interface, but rather abstract classes are introduced.
+of an interface, but rather \rg{abstract} classes are introduced.
 
-Polymorphism is implemented via pointer-to-class type compatibility over inheritance-connected classes.
+Polymorphism is implemented via a pointer-to-class type compatibility over inheritance-connected classes.
 
 The implementation of these C++ features in a projectional editor environment is discussed in the
 following sections.
@@ -38,51 +38,45 @@ following sections.
 
 \cppproblem
 
-Instead of declaring visibility type for individual class members (C\#, Java), visibility sections are created
-in C++. 
-
-The sections can be opened with a string \cc{private:}, \cc{protected:} or \cc{public:}
+Instead of declaring visibility a modifier for individual class members (C\#, Java), visibility sections are created
+in C++. The sections can be opened with a string \cc{private:}, \cc{protected:} or \cc{public:}
 within a class declaration, and closed when another section is opened or when the class declaration
-ends. This allows the user to open and close the same section multiple times and declare sections
+ends. This allows a user to open and close the same section multiple times and declare sections
 without any particular order. This can be error-prone and confusing.
 
 Various coding guidelines (\cite{cppclasslayout}, \cite{googlecppstyle}) exist to enforce some 
-restrictions on the visibility sections.
-
-In particular, the sections are allowed to be opened only once. This ensures, the
-reader of the code will see the interface of the class (public section) in one place,
+restrictions on the visibility sections. In particular, the sections are allowed to be opened only once. This ensures, that a
+reader of the code will see an interface of a class (public section) in one place,
 ``contents'' of the class (private section) in one place, and opportunities to access members in
-an inheriting class (protected section) in one place, without the need to search through
+an inheriting class (protected section) in one place, without a need to search through
 the whole class declaration.
 
 Another typical requirement in coding standards, is the order of the sections. Usually the public 
-section is required to be first, for the class users to see immediately the (public) interface,
+section is required to be the first, for the class users to see immediately the (public) interface,
 the class provides.
-
-
 
 \pcppsolution
 
-\ms{webpage}{Sample class type declaration}
+\ms{webpage}{Sample Class Type Declaration}
 
 
-The \fig{webpage}, shows an example class declaration implemented in the \pcpp.
+The \fig{webpage}, shows an example class declaration implemented in \pcpp.
 The \mpsid{Class} \rg{concept} has the visibility sections as children. Each section is given a separate role 
-(see \ref{mpsconceptdeclaration}) and can appear 0 or 1 times. The editor for the \mpsid{Class} \rg{concept} 
+(see the Section \ref{mpsconceptdeclaration}) and can appear 0 or 1 time. The editor for the \mpsid{Class} \rg{concept} 
 orders the visibility sections so, that the public section always comes first, if present, 
-followed by the private and protected sections.
+followed by the private and finally the protected sections, when present.
 
-The creation of a section is made with the use of \rgp{intention}. The user
-uses \emph{Alt+Enter} combination on the class declaration to create visibility sections.
-It should be more practical and fast for the user, compared to typing the keyword, colon and
+The creation of a section is made with the a of \rgp{intention}. The user
+uses \emph{Alt+Enter} combination on a class declaration to create visibility sections.
+It should be more practical and fast for the user, compared to typing a keyword, a colon and
 indenting the result.
 
 % Limitation
 A question arises on how to support another way to represent a class, so that it will reflect
 requirements from a different coding standard. And as a way to resolve it a definition of 
-another editor for a class concept can be offered. Unfortunately, the current version of \jbmps\ 2.5
-does not support a definition of multiple editors for the same concepts. This limitation however
-is addressed in the newer 3.0 version, which was not tested completely with \mbdr\ on the time
+another editor for the \mpsid{Class} \rg{concept} can be offered. Unfortunately, the current version of \jbmps\ 2.5
+does not support a definition of multiple editors for the same concept. This limitation however
+is addressed in the newer \jbmps\ 3.0 version, which was not tested completely with \mbdr\ by the time
 this work was made.
 
 
@@ -91,21 +85,21 @@ this work was made.
 
 \cppproblem
 
-Constructors are special methods of a class, used to construct the class instances. 
+Constructors of a class are special methods of a class, used to construct the class instances. 
 
-Constructors have special syntax and no return type, being similar to class methods. Additional 
-value, however, the constructors gain, when participating in type transformations. Namely, when
+Constructors have special syntax and no return type, being similar to class methods otherwise. Constructors gain an additional 
+value, however, when participating in type transformations. Namely, when
 a constructor of a class \cc{B} exist from a type \cc{T}, instances of the type \cc{T} can be used whenever
 the \cc{B} class instance is required. The constructor will be \emph{implicitly} called and a temporary object
 of class \cc{B} is going to be created as a mediator. 
 
 Thus constructors extend the type system of the C++ language, adding conversion rules to it. 
-Since this type extension can not be easily observed, it is highly possible to get various 
-\emph{run-time} errors or unexpected behavior. 
+Since this type extension can not be easily observed, as multiple consequent implicit conversions can take place, 
+it is highly possible to get various \emph{run-time} errors or unexpected behavior. 
 
 \cpp{Example of an Implicit Constructor Error}{implicit}
 
-The \rl{implicit} demonstrates a simplified use case where the function \cc{print()} is invoked on \cc{int} without 
+The \rl{implicit} demonstrates a simplified use case where the \cc{printPerimeter()} function is invoked on \cc{int} without 
 any compiler error, and the resulting behavior is unexpected.
 
 To avoid similar situations, it is possible to deprecate participation 
@@ -115,47 +109,53 @@ declaration.
 \pcppsolution
 
 The described problematic motivated the following decision. When a new constructor is created with one argument, 
-it is by default declared to be explicit, the user must intentionally change it to get the type conversion 
-behavior. Such behavior is safer by default. This is an example improvement to classical C++ which makes
-the code understood better by novices and safer for them.
+it is by default declared to be explicit, a user must intentionally change it to get the type conversion 
+behavior. Declaring a one argument constructor explicit is  a safer \rg{ide} behavior by default. 
+This is an example improvement to classical C++ which makes
+a code understood better by novices and safer for them.
 
 \subsubsection{Copying}
 \label{classcopying}
 
 \cppproblem
 
-In the \cpppl\ the programmer controls memory allocation fully on his/her own. This affects the way of copying for the class
+In the \cpppl\ a programmer controls memory allocation fully on his/her own. This affects the way of copying for  class
 instances.
-In C++ a programmer should define two methods for a class: a copy constructor and an assignment operator.
-These two methods work when assignment like \cc{a = b} happens, when instances of a class are passed by value to a function, 
+In C++ the programmer should define two methods for a class: a copy constructor and an assignment operator.
+These two methods work when an assignment like \cc{a = b} happens, when instances of the class are passed by value to a function, 
 when one object is initialized with a value of another object and so on.
 
 C++ serves here sometimes dangerously generating default copy constructor and assignment operator, which by default represent
 a bitwise cloning of an object. This can lead to problems. For example, if a pointer value is getting copied bitwise in a second
-instance and is deallocated twice in destructors.
+instance and is deallocated twice in the following destructor calls.
 
-\cpp{Need in a Custom Copy constructor}{copydeath}
+\cpp{Need in a Custom Copy Constructor}{copydeath}
 
 The \rl{copydeath} demonstrates a program which crashes upon execution as destructors of \cc{a} and \cc{b} are deallocating 
 memory with the same address, after default copy-constructor copies the address from \cc{a} into \cc{b}.
 
-To avoid the described problem, the programmer has to either define a proper copy-constructor or forbid copying of the objects for
+To avoid the described problem, a programmer has to either define a proper copy-constructor or forbid copying of the objects for
 the class. The same applies to the assignment operator. Many standards require the two functions to be implemented in sync, i.e. 
-implementing the same semantic behavior, \cite{ooocpp}. This can be performed in an elegant way by implementing the assignment 
-operator first and reusing it in  the copy-constructor.
+implementing the same semantic behavior, \cite{ooocpp}. This can be performed in an elegant way by implementing an assignment 
+operator first and reusing it in  a copy-constructor.
 
-When not providing the copying behavior it comes logical to disable also the assignment behavior. 
-This is done by a trick of declaring the corresponding functions in the private ares, without implementing them
-(as they never get called). To visually explain such design and make it handier to implement, specialized known macros exist in 
-various libraries, for example \cc{DISALLOW\_COPY\_AND\_ASSIGN} or \cc{Q\_DISABLE\_COPY}, \cite{googlecppstyle}, \cite{qobjref}.
-An alternative approach is the use of \cc{boost::noncopyable} from the 
+When not providing any copying behavior it comes logical to disable also the assignment behavior. 
+This is done by a trick of declaring the corresponding functions in a \cc{private} section of a class, without implementing them
+(as they never get called). To visually improve on such design, specialized macros exist in 
+various libraries. For example the \cc{DISALLOW\_COPY\_AND\_ASSIGN} or the \cc{Q\_DISABLE\_COPY} macros are described in 
+\cite{googlecppstyle} and \cite{qobjref}. An alternative to macros approach is a use of \cc{boost::noncopyable} from the 
 boost library, \cite{boost}.
 
-The use of macros in C++ appears often in similar cases, in order to perform some language-engineering tasks to add the missing
-features to the language (copying or assignment deprecation in this case). 
-Macros bear pure textual nature, and are processed by the pre-processor. Some negative effects may 
-come out: need to preprocess reduces the speed of compilation and hides the resulting code from a programmer. Macros lead
-to error prone programming, as no type checks are possible. And macros make code less analyzable by automatic analyzers.
+The use of macros in C++ appears often in similar cases, in order to perform some language-engineering tasks to add missing
+features to the language (copying or assignment deprecation in this case). Macros bear a pure textual nature, and are processed by the pre-processor. Some negative effects may 
+come out:
+\begin{itemize}
+ 
+ \item A need to preprocess reduces the speed of compilation and hides the resulting code from a programmer.
+ \item Macros lead to error prone programming, as no type checks are possible.
+ \item Macros make code less analyzable by automatic analyzers in general.
+
+\end{itemize}
 
 \pcppsolution
 
@@ -163,29 +163,29 @@ to error prone programming, as no type checks are possible. And macros make code
 
 
 The projectional editor allows for another solution, different from macros, or the use of a new library.  
-In order to provide some support for the  programmer regarding the copying issue, the \pcpp\ hints on the class declaration its 
-assignable and copyable properties, \fig{copyable}, and generates by default the declarations of copy-constructor and assignment operator 
-declarations, when the class is created.
+In order to provide some support for a  programmer regarding the copying issue, \pcpp\ hints on a class declaration its 
+assignable and copyable properties, see the \fig{copyable}, and generates by default declarations of copy-constructor and assignment operator,
+when a class is created.
 
-The copy constructor and the assignment operator are recognized by the \pcpp. Two \rgp{intention} are provided on the 
+The copy constructor and the assignment operator are recognized by \pcpp. Two \rgp{intention} are provided on the 
 \mpsid{Class} \rg{concept} to forbid or allow copying. The forbidding \rg{intention} imitates the macros mentioned 
-above, but displaying and explaining the implementation to the user\fig{notcopyable}. The implementation of the intention 
+above, but displaying and explaining the implementation to a user, see the \fig{notcopyable}. The implementation of the intention 
 consists of moving the declarations of two functions to the private section of the class. The allowing \rg{intention} moves
-the declaration back to the public section, or creates them. The check for implementation provided for a method flags
-the two declarations appropriately, \ref{implementedcheck}, to finish the process.
+the declarations back to the public section, or creates them. The check for implementation, provided for all methods, flags
+the two declarations appropriately to finish the correct class declaration creation process, see the Section \ref{implementedcheck}.
 
 \ms{notcopyable}{Class Made not Copyable by the \emph{Forbid Copying} Intention}
 
-The \jbmps\ supports the \pcpp\ implementation by providing read-only model accesses, special parts of the editor concept,
- \ref{mpseditor}, by which the hinting is implemented. The \rgp{intention} allowed manipulations on the \mpsid{Class} \rg{concept}, 
+\jbmps\ supports the \pcpp\ implementation by providing read-only model accesses, special parts of the editor concept,
+ see the Section \ref{mpseditor}, by which the hinting is implemented. The \rgp{intention} enabled manipulations on the \mpsid{Class} \rg{concept}, 
 which made it possible to  automate the allowing or forbidding of copying/assignment, making the implementation clear 
 to the user, without the use of macros or libraries. 
 
-The whole work the programmer needs to perform to forbid copying and assignment contains of a call to an \rg{intention}, 
+The whole work, a programmer needs to perform to forbid copying and assignment, consists of a call to an \rg{intention}, 
 one key-stroke. There is no need to include a header file with macros, and look up the documentation for them, using 
-them in a right way afterward (symmetric macro requires exactly one parameter - the class name, and it has to go in 
-the private class section). The boost library, \cite{boost}, providing functionality to disable copying is often considered to be to
-heavy-weight to include, when it goes about little tasks, like the one described in this section.
+them in a right way after (the corresponding macro requires exactly one parameter - the class name, and it has to go in 
+the private class section). The boost library, \cite{boost}, providing functionality to disable copying is often considered to be too
+heavy-weight to include, when it goes about compact development tasks, like the one described in this section.
 
 \input{newchapters/Encapsulation}
 

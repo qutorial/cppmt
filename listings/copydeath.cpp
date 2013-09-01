@@ -4,13 +4,18 @@ public:
   Resource(){
     r = new int(0);
   }
-  ~Resource(){
+ 
+ ~Resource(){
     delete r;
   }    
 };
 
 int main(){
   Resource a;  
-  Resource b = a; // b.r is the same address as a.r  
+  
+  // Pointers b.r and a.r are equal now.
+  Resource b = a; 
   return 0;
+  // Here the two constructor calls happen.
+  // The second call crashes the program.
 }

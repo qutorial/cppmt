@@ -1,9 +1,9 @@
 \declsec{C and C++}{candcpp}
 
-Initially C++ appeared to be an extension to the C language, called ``C with Classes'' \cite{cwithclasses}. Till now the high degree
-of commonality can be found between the two languages. Mainly, the most of the C code is going to be valid C++ code. 
+Initially C++ appeared to be an extension to the C language, called ``C with Classes'' \cite{cwithclasses}. Till now a high degree
+of commonality can be found between the two languages. Mainly, the most of a C code is going to be a valid C++ code. 
 
-Some differences exist however, I introduce them here, together with the way they are adopted in the \pcpp.
+Some differences exist however, I introduce them here, together with the way they are adopted in \pcpp.
 
 \subsection{Reference Type and Boolean Type}
 
@@ -13,22 +13,21 @@ They are discussed in the following subsections.
 \subsubsection{Reference Type}
 
 The reference type is basically a new construction in C++ which represent the old notion of pointer in C with a different syntax.
-In fact behind the reference type stands a pointer to the base type, and it is dereferenced when needed. 
+In fact, behind the reference type stands a pointer to a base type, and it is dereferenced when needed. 
 
-The syntax for a variable of type \cc{T} can be used with the variable of type reference to \cc{T}, or \cc{\&T} as it is designated in C++.
-Thus the programmer benefits from the shorter syntax in comparison to the pointer dereferencing.
-
-It comes especially handy when passing arguments to methods by reference, which avoids creating a copy of an object to pass by 
+The syntax for a variable of a type \cc{T} can be used with a variable of a type reference to \cc{T}, or \cc{\&T} as it is designated in C++.
+Thus the programmer benefits from a shorter syntax in comparison to a pointer dereferencing. It comes especially handy when passing arguments to methods by reference, which avoids creating a copy of an object to pass by 
 value, and still preserves the short syntax without pointer dereferencing, when accessing the value.
 
 \cpp{Reference Type in a Copy Constructor}{copyconstructor}
 
-The value of the reference type in C++ is bigger however, than just a new syntax for pointers. A constant reference to a class object 
-has to be used in a constructor to give it a special meaning of the copy constructor for the class, as the \rl{copyconstructor} demonstrates.
-This changes the whole semantics of the class, making it copyable. It is discussed in detail in \ref{classcopying}.
+A value of the reference type in C++ is bigger however, than just a new syntax for pointers. A constant reference to a class object 
+has to be used in a constructor to give it a special meaning of a copy constructor for the class, as the \rl{copyconstructor} demonstrates.
+This changes the whole semantics of the class, making it copyable with a given semantics. 
+It is discussed in detail in the Section \ref{classcopying}.
 
 The reference type itself is implemented rather straightforward and similar to the pointer type of \mbdr. It inherits the \mpsid{Type} 
-\rg{concept} of \mbdr\, as described in the \ref{expressionslang}, and has a base type as a child.
+\rg{concept} of \mbdr\, as described in the Section \ref{expressionslang}, and has a base type as a child.
 
 
 \subsubsection{Boolean Type}
@@ -37,7 +36,7 @@ The reference type itself is implemented rather straightforward and similar to t
 The \cpppl\ has a special \cc{bool} type to represent the two logical values. There is no such type in C.
 
 %Implementation
-No matter, the \cc{bool} type is not present in C, for the convenience of the user the \mb\ C implementation introduced a type \cc{bool},
+No matter, the \cc{bool} type is not present in C, for the convenience of a user the \mb\ C implementation introduced a type \cc{bool},
 which is translated to \cc{int8\_t}, together with \cc{true} and \cc{false} values, converting to \cc{1} and \cc{0} respectively.
 This implementation can arguably be considered better than the original C++ \cc{bool} type present in the generated code, because the \cpppl\ standard
 does not define explicitly the size of the \cc{bool} type \cite{cpp11}. This can be suitable for the embedded domain better, conforming to the
@@ -45,10 +44,10 @@ does not define explicitly the size of the \cc{bool} type \cite{cpp11}. This can
 
 %TODO No Goal 1
 In the context of embedded systems, which \mbdr\ targets, it is often very important to 
-know precisely, with which type the user is operating, as the limited resources
+know precisely, with which type the user is operating, as limited resources
 are important to consider. Substituting the \cc{bool} type with the \cc{int8\_t} type ensures that the size of 
-the \cc{bool} variables is known. Also, it can be changed as needed in the 
-\mpsid{TypeSizeConfiguration} in each model created with \mb\ separately, see \ref{mbdrmodules}.
+the \cc{bool} variables is known. Also, it can be changed as needed in a 
+\mpsid{TypeSizeConfiguration} node in each model, created with \mb, separately, see the Section \ref{mbdrmodules}.
 
 The C++ standard explicitly allows the \cc{bool} type to participate in integer promotions. 
 This ensures further the compatibility of the custom-written text code, which may use actual 
@@ -57,11 +56,11 @@ as the user \cc{bool} will be promoted.
 
 %Limitations
 Among limitations of the approach, when \cc{bool} is translated to \cc{int8\_t}, one can consider \cc{std::vector<bool>}. 
-Since the word ``bool'' itself is never generated, it is not possible to use the specialization 
+Since the word ``bool'' itself is never generated to a text, it is not possible to use the specialization 
 of the template, which ensures storage optimization, through higher processing load when
 extracting a value from such a \cc{vector} though.
 
-The \cc{bool} type from \mbdr\ is kept in the \pcpp. This decision is arguable, and can, of-course, be
+The \cc{bool} type from \mbdr\ is kept in \pcpp. This decision is arguable, and can, of-course, be
 changed in the future.
 
 \subsection{Modules and C++}
@@ -79,33 +78,34 @@ changed in the future.
 % when generated to the C text code. Thus the object with the same name but from different modules do
 % not cause a name clash.
 
-The \cpppl\ is an improvement over the C language by itself. There is, however, no concept of a module,
+The \cpppl\ is an improvement over the C language by itself. There is, however, no notion of a module,
 which can bring certain advantages and disadvantages. As a disadvantage can be named a potential disorder
-in placing implementations for classes and functions, as the language itself does not enforce a clear
-one place for them. Potential name clashes are also disadvantageous. 
+in placing implementations for classes and functions, as the language itself does not enforce a clearly defined
+place for them. Potential name clashes are also disadvantageous. 
 As an advantage, conditional compilation can be used in C++ to include different files
-with different implementations, which is often used to create cross-platform code. Additionally, classes
-can be used analogously to modules.
+with different implementations for one declaration, which is often used to create a cross-platform C++
+code. Additionally, classes can be used analogously to modules.
 
-The name clash problem is solved in C++ by introducing the namespaces. The programmer defines a namespace 
-and then places there all the exported code. The nodes with equal names from different namespaces do not clash.
+The name clash problem is solved in C++ by introducing namespaces. A programmer defines a namespace 
+and then places there all the exported code. Nodes with equal names from different namespaces do not clash.
 
-C++ however does not elaborate on the disadvantage of having declarations and implementation not organized in 
-one place, and being fully disjoint. \mbdr\ compensates on it, \ref{mbdrmodules}.
+C++, however, does not elaborate on the disadvantage of having declarations and implementation not organized in 
+one place, and being fully disjoint. \mbdr\ compensates on it, see the Section \ref{mbdrmodules}.
 
-After comparing the two approaches of \mbdr\ and of the \cpppl\ to improve on C, the hybrid approach
-has been picked. Firstly, the C++ implementation modules have been introduced. And secondly, the namespaces
-can be defined and used.
+After comparing the two approaches of \mbdr\ and of the \cpppl\ to improve on C, a hybrid approach
+has been taken. Firstly, C++ modules have been introduced. And secondly, namespaces
+can be defined and used in \pcpp.
 
 In \pcpp\ modules are program modular elements, where a programmer declares and implements C++ classes,
-and the .h and .cpp files are automatically generated from them. This eliminates the need to 
+and .h and .cpp files are automatically generated from them. This eliminates the need to 
 create and control two files for each logical program element, like a class, and keep them synchronized with
-each other. For example, changing an interface of a class would require at first opening the header file, 
-and introducing the changes in the declaration, and then rewriting the corresponding part of the .cpp file 
-in strong correspondence with the header. This work decrease in order to change an interface can improve productivity.
+each other. For example, changing an interface of a class would require at first opening a header file, 
+and introducing the changes in a declaration, and then rewriting a corresponding part of a .cpp file 
+in strong correspondence with the header. The work decrease in order to change an interface can improve
+productivity of a programmer.
 
-Namespaces are introduced in the \pcpp\ to avoid inter-modular name clashes, they work similar to 
-the namespaces in C++.
+Namespaces are introduced in \pcpp\ to avoid inter-modular name clashes, they work similar to 
+namespaces in C++.
 
 The need in the \cc{using} directive does not emerge the same strong as in plain text editors, because the inputting of namespace names is
 made effective within the projectional editor. Long names of namespaces are appended to the end of method
@@ -114,21 +114,18 @@ the last namespace shown, \fig{namespaces}.
 
 \ms{namespaces}{Example of Nested Namespaces}
 
-In general, the generator is responsible in generating correct namespace 
-resolution, and the projectional C++ programmer can benefit from short and clear namespace
+The TextGen is responsible for correct namespace  resolution, and a \pcpp\ programmer can benefit from short and clear namespace
 presentations, which are also quite handy to input.
 
 
 \subsection{Memory Allocation}
 
-In the C programming language memory (de-)allocation on the heap is happening via calls to the dedicated library functions. 
-C++ instead introduces separate language construction for memory allocation and de-allocation. 
-
-The \cc{new} and \cc{delete} together with their array versions are simply an expression and a statement correspondingly,
-which perform the required operations.
+In the C programming language memory (de-)allocation on the heap is happening via calls to  dedicated library functions. 
+C++ instead introduces separate language constructions for memory allocation and de-allocation.  The \cc{new} and \cc{delete} 
+keywords together with their array versions are simply an expression and a statement correspondingly, which perform the required operations.
 
 Creating them is relatively easily possible by inheriting from the \mpsid{Expression} and \mpsid{Statement} \rgp{concept},
-and introducing the corresponding typing for the \cc{new} expression, as described in \ref{expressionslang}.
+and introducing a corresponding typing for the \cc{new} expression, as described in the Section \ref{expressionslang}.
 
 When a segment of memory is allocated as an array, it has to be de-allocated as an array either.
 As it is stated in the C++ standard (\cite{cpp11}) the behavior of simple de-allocation of an 

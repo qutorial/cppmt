@@ -3,8 +3,8 @@
 % what to support in C++
 
 Encapsulation and inheritance are considered here together, because from the language-engineering point of view, 
-they just decide the access to class members. In other words, the \pcpp\ implementation has to track
-encapsulation and inheritance related definitions and provide access to the class members accordingly.
+they just decide an access to class members. In other words, the \pcpp\ implementation has to track
+encapsulation and inheritance related definitions and provide access to class members accordingly.
 
 % Problem
 
@@ -13,15 +13,13 @@ encapsulation and inheritance related definitions and provide access to the clas
 
 \cppproblem
 
-In the \cpppl\ a number of ways to govern access control to class members exists. Before discussing 
-the implementation of them in a projectional C++, we briefly review them with an example.
+In the \cpppl\ a number of ways to govern the access control to class members exists. Before discussing 
+the implementation of them in \pcpp, we briefly review them with an example.
 
 All members, a class has, are either declared in the class, or inherited from its base classes. 
-
-The members can be accessed in a number of different locations in the code, which differ by the level of access they have
+The members can be accessed in a number of different locations in a code, which differ by the level of access they have
 to the class members. Among these locations are the class methods, friend functions of the class, and
-external to the class code. 
-
+an external to the class code. 
 Each member can be declared with a certain visibility/access type, and the inheritance
 of the base class can happen with one of the three inheritance modifiers. 
 
@@ -30,15 +28,15 @@ of the base class can happen with one of the three inheritance modifiers.
 
 \pcppsolution
 
-\ms{inhdecl}{Declaration of two classes with a friend function}
+\ms{inhdecl}{Declaration of Two Classes with a Friend Function}
 
 The \fig{inhdecl} shows a declaration of two classes. The class \cc{A} has all three
 public, protected and private fields. A function \cc{compare()} is declared to be a
 friend function of  the class \cc{A}. 
 
-This example demonstrate how showing only the central information, \cc{friend} keyword and the
-friend function name, and just hinting on the details (the complete friend signature), can make 
-the syntax more appealing. This is an example of the ``Hide Redundant Syntax'' principle, as in the \rsec{genprinciples}.
+This example demonstrates how, showing only the central information (the keyword \cc{friend} and the
+friend function name) and just hinting on the details (the complete friend signature), can make 
+the syntax more appealing. This is an example of the ``Hide Redundant Syntax'' principle, described in the \rsec{genprinciples}.
 
 The visibility plays no role for the friend function 
 declarations themselves. That is why a decision was made to create a special 
@@ -50,19 +48,19 @@ The class \cc{B} in the \fig{inhdecl} is inheriting publicly from the class \cc{
 that public members of \cc{A} remain being public in \cc{B}. The class \cc{B} declares
 a copy constructor.
 
-Such declaration can be utilized as shown in the figure \fig{inhusage}.
+Such declaration can be utilized as shown in the \fig{inhusage}.
 
-\ms{inhusage}{Visibility resolution}
+\ms{inhusage}{Visibility Resolution}
 
 In the copy-constructor the visibility resolution happens after \cc{this} pointer
 and after the \cc{original} object. Arrow expression and dot expression are used for
-this. The first and second lines are making use of public and protected fields of 
+this. The first and the second lines are making use of the public and protected fields of 
 the base class \cc{A}. The use of the private field is however not possible, since
-private fields of a class are only accessible to methods of the same class and
+private fields of a class are only accessible to methods of the same class and its
 friend functions. 
 
 It is even not possible to input the not-allowed member, as the projectional editor
-does not bind the text to anything, and it remains red. This means, no node in the \rg{ast}
+does not bind the text to anything, and it remains red. This means, no node in an \rg{ast}
 is created and the code is in incomplete erroneous state.
 
 
@@ -70,13 +68,13 @@ The \cc{compare()} function is declared in advance (\fig{inhdecl}) to be a frien
 function of the class \cc{A}. Thus, it is not a problem for this function to access
 even private fields of \cc{A}, for comparison purposes in this example case.
 
-The function \cc{printOut()} is not related anyhow to classes declared. Thus,
-it represent ``external'' for the class \cc{B} code. Only public members
-are accessible, but not protected or private. The attempt to input them, simply
-fails, they are highlighted red, and are not bound to anything.
+The function \cc{printOut()} is not related anyhow to the classes declared. Thus,
+it represents ``external'' for the class \cc{B} code. Only the public members of the class
+are accessible, but not the protected or the private members. The attempt to input them simply
+fails, they are highlighted red and are not bound to anything.
 
-In this way the \pcpp\ gives for the programmer only a chance to input correct from the encapsulation
-point of view constructions. As the members, accessible in each place of code, are provided by the 
+In this way \pcpp\ gives for a programmer only a chance to input correct from the encapsulation
+point of view constructions. As members, accessible in each place of code, are provided by  
 \pcpp, instead of typing the member name, the programmer usually will have a choice from a short drop-down
 list of options.
 
@@ -87,18 +85,19 @@ list of options.
 Members are usually accessed relatively to some object. The object can be designated as an expression of type class or a pointer to class,
 in particular, \cc{this} expression. The resulting access represents nothing else, but an expression itself.
 
-Thanks to  \rg{concept} inheritance in \jbmps\ , \ref{modularity}, \ref{mpsconceptdeclaration}, the creation of a new expression 
-is reduced to inheriting from the existing one, and this is almost all what has to be done to implement object oriented member access expressions. 
-Inheriting the \mpsid{OoDotOrArrowExpression} \rg{concept} from the \mpslang{Expression} 
+Thanks to  \rg{concept} inheritance in \jbmps\ , see the Sections \ref{modularity} and \ref{mpsconceptdeclaration},  creation of a new expression 
+is reduced to inheriting from an existing one, and this is almost all what has to be done to implement object-oriented member access expressions. 
+Inheriting the \mpsid{OoDotOrArrowExpression} \rg{concept} from the \mpsid{Expression} 
 \rg{concept}, we get the ability to use the expression, designed for member access, wherever an expression in general can be used. 
 
-The abstract \rg{concept} \mpsid{OoDotOrArrowExpression} serves as a parent for \mpsid{OoDotExpression} and \mpsid{OoArrowExpression}.
+The abstract \rg{concept} \mpsid{OoDotOrArrowExpression} serves as a parent for the two \rgp{concept}:
+\mpsid{OoDotExpression} and \mpsid{OoArrowExpression}.
 The commonality between the two, is that an object is accessed in the left part, and a member is selected in the right part, 
 as well as the way to decide the access to members. The access is defined then, which left part is going to be possible in such expressions.
 
+Within  class methods it is also possible in C++ to address class members as local variables. In the projectional implementation
+described, it is implemented as well. The member references are highlighted blue. This is made so do differentiate the members from 
+any other local variables. This can be a subject for coding guidelines, similar to naming conventions as described in the 
+Section \ref{namingconventions}.
 
-% Limitation
-Within the class methods it is also possible in C++ to address class members as local variables. In the projectional implementation
-described, it is not possible. Instead, \cc{this} expression has to be used. It makes inputting slower, but allows to
-easily distinguish between members of the class and other variables or functions. For an example, please, see the implementation of the 
-copy-constructor in the \fig{inhusage}. Instead of \mpsid{this->val} syntax, simply \cc{val} could be used in C++ text.
+

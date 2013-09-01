@@ -1,9 +1,9 @@
 \declchap{Technologies in Use}{techno}
 
-The C++ programming language developed through out this \MT\ is based on two technologies, which are 
+The C++ programming language, developed through out this \MT, is based on two technologies, which are 
 introduced in this chapter. The first technology is the \jbmps\ language engineering environment, which 
-provides the core foundations and means for incremental language construction. The second technology is
-the \mbdp. 
+provides core foundations and means for incremental language construction. The second technology is
+the \mbdp. These technologies are discussed in this chapter.
 
 \input{newchapters/MPS}
 
@@ -14,23 +14,23 @@ the \mbdp.
 \declsec{C++ Language}{cpplangitself}
 
 This work is basically an implementation of the \cpppl\ in \jbmps. No matter, the whole work 
-is about the C++ implementation, it is infeasible to describe the language in detail itself
-here. Thus we give a references to literature about the language in this chapter only. Certain 
+is about the C++ implementation, it is infeasible to describe in detail the language 
+here. Thus, we only give references to literature about the language in this chapter. Certain 
 aspects of C++ are explained in depth during the description of the C++ implementation in \jbmps\ itself in 
 the \rchap{cpp}.
 
 Various literature is available, to get acquainted with the language closer. The most complete
-guide to the language, covering \rg{stl} as well is \cite{stroustrupcpp2000}. The more 
+guide to the language, covering \rg{stl} as well is \cite{stroustrupcpp2000}. A more 
 easy-to-read and more suitable for beginners book on C++ is \cite{schildtcpp}. A newer book,
-oriented towards intermediate level C++ programmers and updated to the recent C++11 standard, \cite{cpp11}, and describing 
-\rg{stl} as well, \cite{pratacpp}.
+oriented towards intermediate level C++ programmers and updated to the recent C++ 11 standard (referenced as \cite{cpp11}) and describing 
+\rg{stl} as well is \cite{pratacpp}.
 
-The collection of techniques to get more effective C++ programs is \cite{meyerseffcpp}. Templates are explained in 
-detail in \cite{josuttistemplates}. The book dedicated to ad hoc polymorphism and advanced template meta programming can be 
-also of interest as an approach to language engineering in a certain sense, \cite{alexandrescumeta}.
+A collection of techniques to get more effective C++ programs is gathered in \cite{meyerseffcpp}. Templates are explained in 
+detail in \cite{josuttistemplates}. A book dedicated to ad hoc polymorphism and advanced template meta programming can be 
+also of interest as an approach to language engineering on top of C++ in a certain sense, \cite{alexandrescu}.
 
 The \cpppl\ is a mature language, with long traditions, and high flexibility, \cite{alexandrescu} can serve as an example. 
-It will not be possible to simplify language, removing features from it, which will restrict the language use, 
+It would not be possible to simplify the language, removing features from it, which would restrict the language use, 
 most importantly the \rg{stl} support. Thus in this work we try to research, how the editor can be more supportive 
-for the user of the \emph{existing} complex language, to eliminate usual mistakes made while programming, as 
-well as provide help in structuring the code.
+for a user of the \emph{existing} complex language, how to eliminate usual mistakes made while programming, as 
+well as how to provide help in a code structuring.

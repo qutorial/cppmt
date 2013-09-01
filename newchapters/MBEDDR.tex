@@ -1,35 +1,32 @@
 \declsec{mbeddr Project}{mbeddr}
 
-The \mbdp\ is a software built with the use of \jbmps.
-
-The \mbdrp\ represent mainly an implementation of the C programming language in the \jbmps\ environment. Having embedded systems
-and software for them as the main focus, \mbdr\ provides certain language extensions to empower the programmer in the mentioned domain \cite{mbeddr-wave}, 
+The \mbdp\ is a software built with the use of \jbmps. Mainly, it represents an implementation of the C programming language in the \jbmps\ environment. Having embedded systems
+and software for them as the main focus, \mbdr\ provides certain language extensions to empower the programmer in 
+embedded domain \cite{mbeddr-wave}, 
 \cite{Voelter:MoDELS:2010}. 
 
-Being a different language the \cpppl\ shares a lot of commonality with the C programming language. 
-As \jbmps\ allows, to some extent, see \ref{modularity}, incremental language construction, the \mbdrp\ represents 
+Being a different from C language, the \cpppl\ shares a lot of commonality with C. 
+As \jbmps\ allows, to some extent, see the Section \ref{modularity}, an incremental language construction, the \mbdrp\ represents 
 a suitable basis for the \cpppl\ implementation in \jbmps\ . 
 
 We could not  extend \mbdr\ with C++ pure incrementally. We had to perform some changes to \mbdr\ itself. 
 The changes were introduced however, in a way to make \mbdr\ more extensible in general. Compare this to creating 
 a separate branch of \mbdr\ designed only for C++. After such forking a separate team would have to support a newly
-created \mbdr\ version for C++. By making \mbdr\ more extensible, and by building C++ as a pure extension we keep
-only one \mbdr\ version, and reduce the maintenance needed in future, to keep C++ supported be \mbdr.
+created \mbdr\ version for C++. By making \mbdr\ more extensible, and by building C++ as a pure extension, we keep
+only one \mbdr\ version, and reduce the maintenance needed in the future, to keep C++ supported by \mbdr.
 
-
-In this section we describe the \mbdp, as the current work is based on it.
-
-No matter the \mbdp\ has  (one) C language with extensions as an outcome, internally, as a \jbmps\ software
+No matter the \mbdp\ has  (one) C language with extensions as an outcome, internally, as a \jbmps\ software, 
 it is represented as several \jbmps\ languages.
 
-All \mbdr\ languages are named starting from \mpslang{com.mbeddr.} name part. In this document we usually omit it,
-keeping the last word of the name only. E.g. \mpslang{com.mbeddr.expressions} is called simply \mpslang{expressions} here.
+All \mbdr\ languages are named starting from ``\mpslang{com.mbeddr.}'' string. In this document we usually omit it,
+keeping the last word of the name only. For example, instead of \mpslang{com.mbeddr.expressions} we call the language 
+simply \mpslang{expressions} here.
 
 \subsection{mbeddr Expressions Language}
 \label{expressionslang}
 
 The \mpslang{expressions} language contains definitions for all expressions, possible in the \mbdr\ C language.
-As in object oriented programming languages \rgp{concept} of the \cc{expressions} language form inheritance hierarchies. 
+As in object-oriented programming languages, \rgp{concept} of the \cc{expressions} language form inheritance hierarchies. 
 \jbmps\ is capable of showing a given \rg{concept} in a hierarchy. 
 
 \msnozoom{minushierarchy}{\Rg{concept} Hierarchy Example}
@@ -41,63 +38,63 @@ Whenever there is a need in the \cpppl\ to extend the C programming language wit
 object member reference, \mpslang{new} expression and so on, a point of inheritance has to be found in the 
 \mbdr\ \mpslang{expressions} language to base a new \rg{concept} on it.
 
-Additionally, the \mpslang{expressions} language defines  C language types. 
 
 \msnozoom{typehierarchy}{\mbdr\ Type Hierarchy Example}
 
+Additionally, the \mpslang{expressions} language defines  C language types. 
 All \rgp{concept} corresponding to C types are based (directly or indirectly) on the \mpsid{Type} \rg{concept}.
-For example, the hierarchy of \mpsid{IntType} \rg{concept} is demonstrated in \fig{typehierarchy}. 
+For example, the hierarchy of the \mpsid{IntType} \rg{concept} is demonstrated in \fig{typehierarchy}. 
 
-In order to add a type to \mbdr\ C language, one should inherit from the \mpsid{Type} \rg{concept} as well.
+In order to add a type to the \mbdr\ C language, one should inherit from the \mpsid{Type} \rg{concept} as well.
 Such inheritance automatically allows the new type to appear at all places, where a type in general can be found
 in the C language or its extensions.
 
 
 \subsection{mbeddr Statements Language}
 
-\mbdr\ \mpslang{statements} language contains definitions for C language statements. The \mpsid{Statement} \rg{concept} serves as the
-base for inheritance, and represent by itself an empty line, or no-statement.
+The \mbdr\ \mpslang{statements} language contains definitions for the C language statements. The \mpsid{Statement} \rg{concept} serves as a
+base for inheritance, and represents by itself an empty line, or no-statement.
 
 In order to create a new statement, like \cc{delete} statement in C++, the inheritance should start from the \mpsid{Statement} \rg{concept}.
 
 \ms{stexprmarked}{Example of Multiple Languages Used Together}
 
-The \mpslang{statements} language actively uses the \mpslang{expressions} language, \fig{stexprmarked}. In the \mbdr\ code snippet
-the nodes coming from \mpslang{statements} language are marked green, and the nodes, coming from \mpslang{expressions} language are
-marked yellow\footnote{not marked with color is an instance of the \mpslang{Function} concept, which comes from the \mpslang{modules} language}. As the example shows, 
+The \mpslang{statements} language actively uses the \mpslang{expressions} language, see the \fig{stexprmarked}. In an \mbdr\ code snippet
+the nodes, coming from \mpslang{statements} language, are marked green, and the nodes, coming from \mpslang{expressions} language are
+marked yellow\footnote{Not marked with color is an instance of the \mpslang{Function} concept, which comes from the \mpslang{modules} language.}. As the example shows, 
 \mpsid{if} statement and \mpsid{return} statement are coming from the \mpslang{statements} language,
-but inside they contain as children expressions. This is an example of language modularity in \jbmps, used by \mbdr.
+but inside they contain, as children, expressions. This is an example of language modularity in \jbmps, used by \mbdr.
 
 \subsection{Modules in mbeddr}
 \label{mbdrmodules}
 
-In C (and in C++ as well) there is no clear concept of a module. The \mbp\ improves on it, defining 
-modules, \cite{Voelter:MoDELS:2010}. A C module is a \rg{concept}, from which the header and the .c files are generated in mbeddr.
-Flagging an object (function, variable, structure, etc.) in a module as \cc{exported} causes the declaration of the object to appear
-in the header, and thus the object starts to be accessible by other modules.
+In C (and in C++ as well) there is no clear notion of a module. The \mbp\ improves on it, defining 
+modules, \cite{Voelter:MoDELS:2010}. A C module is a \rg{concept}, from which a header and a .c files are generated in \mbdr.
+Flagging an object (function, variable, structure, etc.) in a module as \cc{exported} causes a declaration of the object to appear
+in the header file, and thus the object starts to be accessible by other modules or an external textual C code.
 
 An issue with the C programming language is that there is one and only global namespace. The \mbp\ improves on it 
-by introducing so-called name mangling. All names of the module contents are prefixed with the module name,
-when generated to the C text code. Thus the object with the same name but from different modules do
-not cause a name clash.
+by introducing a so-called name mangling. All names of module contents are prefixed with a module name,
+when generated to a C text code. Thus two objects with a same name but from different modules do
+not cause a name clash when generated to a C text code.
 
-The implementation of modules in \mbdr\ can be found in the \mpslang{modules} language. Functions are described there as well,
-for the \mpsid{Function} concept example, see the \fig{stexprmarked}, not marked with colors part.
+The implementation of modules in \mbdr\ can be found in the \mpslang{modules} language. Functions are described there as well.
+For the \mpsid{Function} concept example, see the \fig{stexprmarked}, the not marked with colors part.
 
-Modules are further included into \jbmps\ \rgp{model}, which correspond to one single \jbmps\ file unit.
-After a programmer finishes the code in the projectional editor, \jbmps\ generates textual C code, 
-according to the rules, given by \mbdr. Each model is generated into a set of textual C files.
-After the files has been generated, \mbdr\ launches a compiler to get an object code.
+Modules are further included into \jbmps\ \rgp{model}. \Rgp{model} correspond to one single \jbmps\ file unit.
+After a programmer finishes a code in a projectional editor, \jbmps\ generates a textual C code, 
+according to the rules, given by \mbdr. Each model is generated into a set of text C files.
+After the files have been generated, \mbdr\ launches a compiler to get an object code.
 
 For the purpose of the code generation and compilation, every model should have a node of \mpsid{TypeSizeConfiguration} 
 and \mpsid{BuildConfiguration} \rgp{concept}. In the former, the programmer should specify all sizes for C language types, 
-in the latter, the programmer should specify, how the \mbdr\ has to invoke the compiler.
+in the latter, the programmer should specify, how  \mbdr\ has to invoke the compiler.
 
 \subsection{Pointers and Arrays in mbeddr}
 
-In the \mpslang{pointers} language array access and pointer dereferencing expressions are defined as \rgp{concept}.
-Similar syntax to them have overloaded operators with classes. Thus this language could also be extended by the \pcpp,
-if some reuse is possible there as well. This is discussed in detail in the \rsec{operatoroverloading}.
+In the \mpslang{pointers} language an array access and a pointer dereferencing expressions are defined as \rgp{concept}.
+A similar syntax to them have overloaded operators with classes. Thus this language is also extended by \pcpp,
+as some reuse is possible there as well. This is discussed in detail in the \rsec{operatoroverloading}.
 
 
 
