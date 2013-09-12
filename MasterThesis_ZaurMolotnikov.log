@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  11 SEP 2013 11:22
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.11.14)  11 SEP 2013 15:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -896,7 +896,7 @@ File: styles/informat.png Graphic file (type png)
 <use styles/informat.png>
 Package pdftex.def Info: styles/informat.png used on input line 57.
 (pdftex.def)             Requested size: 113.81102pt x 113.81012pt.
-) (./components/disclaimer.tex [3] [4
+) (./components/disclaimer_en.tex [3] [4
 
 ] [5])
 (./components/acknowledgements.tex [6
@@ -1802,12 +1802,12 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 131.
 Package rerunfilecheck Info: File `MasterThesis_ZaurMolotnikov.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: 52C97F22153128D1F861EF3AFBAC2E8A;6928.
+(rerunfilecheck)             Checksum: 2544BAADEE0D420EB7DAA711AB29F2EF;6930.
  ) 
 Here is how much of TeX's memory you used:
  15446 strings out of 493629
- 236709 string characters out of 3143343
- 395258 words of memory out of 3000000
+ 236727 string characters out of 3143343
+ 395263 words of memory out of 3000000
  17810 multiletter control sequences out of 15000+200000
  35524 words of font info for 91 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
@@ -1823,7 +1823,7 @@ e1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw
 /palatino/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/palati
 no/uplr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/palatino/uplr
 i8a.pfb>
-Output written on MasterThesis_ZaurMolotnikov.pdf (100 pages, 2139968 bytes).
+Output written on MasterThesis_ZaurMolotnikov.pdf (100 pages, 2140102 bytes).
 PDF statistics:
  3049 PDF objects out of 3580 (max. 8388607)
  2580 compressed objects within 26 object streams
