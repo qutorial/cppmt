@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="241.07188"
-     inkscape:cy="620.32643"
+     inkscape:zoom="2.8"
+     inkscape:cx="344.37786"
+     inkscape:cy="628.61322"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -46,7 +46,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,11 +55,11 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:#2dd1ff;fill-opacity:1;stroke:#000000;stroke-width:1.89999998000000003;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dashoffset:9.69000023999999982;stroke-opacity:1"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.89999998000000003;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dashoffset:9.69000023999999982;stroke-opacity:1"
        d="M 201.875 260.65625 C 201.12369 260.65625 200.53125 261.17512 200.53125 261.8125 L 200.53125 362.375 C 200.53125 363.01237 201.12369 363.5 201.875 363.5 L 416.0625 363.5 L 416.0625 469.5625 C 416.0625 470.26894 416.24467 470.84375 416.46875 470.84375 L 507.25 470.84375 C 507.47408 470.84375 507.65625 470.26894 507.65625 469.5625 L 507.65625 362.375 L 507.65625 358.09375 L 507.65625 261.8125 C 507.65625 261.17512 507.06382 260.65625 506.3125 260.65625 L 201.875 260.65625 z "
        id="rect3788" />
     <rect
-       style="fill:#fffd2d;fill-opacity:1;stroke:#000000;stroke-width:1.89999998;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:9.69000024"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.89999998000000003;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:9.69000023999999982"
        id="rect2985"
        width="307.14285"
        height="102.85714"
@@ -102,7 +102,7 @@
        height="102.85714"
        width="210.19495"
        id="rect3765"
-       style="fill:#54ff2d;fill-opacity:1;stroke:#000000;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:9.69000023999999982" />
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.89999999999999991;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:9.69000023999999982" />
     <text
        xml:space="preserve"
        style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -123,18 +123,18 @@
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="305.00372"
+       x="305.51154"
        y="434.31195"
        id="text3790-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3792-4"
-         x="307.5506"
-         y="434.31195">C language dialect, </tspan><tspan
+         x="308.05841"
+         y="434.31195">C language (dialect), </tspan><tspan
          sodipodi:role="line"
-         x="305.00372"
+         x="305.51154"
          y="454.31195"
-         id="tspan3815">some extenstions</tspan></text>
+         id="tspan3815">with some extenstions</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3878"
@@ -173,10 +173,10 @@
          id="tspan3892"
          y="328.31195"
          x="354.90234"
-         sodipodi:role="line">This Master's Thesis Object,</tspan><tspan
+         sodipodi:role="line">this Master's Thesis object,</tspan><tspan
          y="348.31195"
          x="354.90234"
          sodipodi:role="line"
-         id="tspan3896">C++ language dialect</tspan></text>
+         id="tspan3896">C++ language (dialect)</tspan></text>
   </g>
 </svg>
