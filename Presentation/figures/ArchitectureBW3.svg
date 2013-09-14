@@ -14,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="ArchitectureBW.svg"
-   inkscape:export-filename="/home/zaur/Documents/Studies/MasterThesis/Presentation/figures/ArchitectureBW.png"
+   sodipodi:docname="ArchitectureBW3.svg"
+   inkscape:export-filename="/home/zaur/Documents/Studies/MasterThesis/Presentation/figures/ArchitectureBW3.png"
    inkscape:export-xdpi="247.42268"
    inkscape:export-ydpi="247.42268">
   <defs
@@ -28,8 +28,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="242.05643"
-     inkscape:cy="622.5418"
+     inkscape:cx="182.235"
+     inkscape:cy="619.50609"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -55,7 +55,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:1.89999998000000003;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dashoffset:9.69000023999999982;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;stroke:#ffc5c5;stroke-width:1.89999999999999991;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dashoffset:9.69000023999999982;stroke-opacity:1;stroke-dasharray:none"
        d="M 201.875 260.65625 C 201.12369 260.65625 200.53125 261.17512 200.53125 261.8125 L 200.53125 362.375 C 200.53125 363.01237 201.12369 363.5 201.875 363.5 L 416.0625 363.5 L 416.0625 469.5625 C 416.0625 470.26894 416.24467 470.84375 416.46875 470.84375 L 507.25 470.84375 C 507.47408 470.84375 507.65625 470.26894 507.65625 469.5625 L 507.65625 362.375 L 507.65625 358.09375 L 507.65625 261.8125 C 507.65625 261.17512 507.06382 260.65625 506.3125 260.65625 L 201.875 260.65625 z "
        id="rect3788" />
     <rect

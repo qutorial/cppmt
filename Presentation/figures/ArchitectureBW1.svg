@@ -14,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="ArchitectureBW.svg"
-   inkscape:export-filename="/home/zaur/Documents/Studies/MasterThesis/Presentation/figures/ArchitectureBW.png"
+   sodipodi:docname="ArchitectureBW2.svg"
+   inkscape:export-filename="/home/zaur/Documents/Studies/MasterThesis/Presentation/figures/ArchitectureBW1.png"
    inkscape:export-xdpi="247.42268"
    inkscape:export-ydpi="247.42268">
   <defs
@@ -29,7 +29,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
      inkscape:cx="242.05643"
-     inkscape:cy="622.5418"
+     inkscape:cy="619.50609"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -46,7 +46,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
