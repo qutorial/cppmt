@@ -14,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="ArchitectureBW2.svg"
-   inkscape:export-filename="/home/zaur/Documents/Studies/MasterThesis/Presentation/figures/ArchitectureBW1.png"
+   sodipodi:docname="ArchitectureBW1.svg"
+   inkscape:export-filename="/home/zaur/Documents/Studies/MasterThesis/Presentation/figures/ArchitectureBW3.png"
    inkscape:export-xdpi="247.42268"
    inkscape:export-ydpi="247.42268">
   <defs
@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="242.05643"
-     inkscape:cy="619.50609"
+     inkscape:zoom="1.979899"
+     inkscape:cx="149.48865"
+     inkscape:cy="622.25709"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -54,8 +54,17 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.89999998000000003;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect5580"
+       width="318.70312"
+       height="327.79449"
+       x="195.96959"
+       y="253.83659"
+       rx="0.92809904"
+       ry="1.1504918" />
     <path
-       style="fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:1.89999998000000003;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dashoffset:9.69000023999999982;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;stroke:#ffc5c5;stroke-width:1.89999999999999991;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dashoffset:9.69000023999999982;stroke-opacity:1;stroke-dasharray:none"
        d="M 201.875 260.65625 C 201.12369 260.65625 200.53125 261.17512 200.53125 261.8125 L 200.53125 362.375 C 200.53125 363.01237 201.12369 363.5 201.875 363.5 L 416.0625 363.5 L 416.0625 469.5625 C 416.0625 470.26894 416.24467 470.84375 416.46875 470.84375 L 507.25 470.84375 C 507.47408 470.84375 507.65625 470.26894 507.65625 469.5625 L 507.65625 362.375 L 507.65625 358.09375 L 507.65625 261.8125 C 507.65625 261.17512 507.06382 260.65625 506.3125 260.65625 L 201.875 260.65625 z "
        id="rect3788" />
     <rect
@@ -114,7 +123,7 @@
          id="tspan3776"
          x="304.19513"
          y="409.04074"
-         style="text-align:center;text-anchor:middle">mbeddr</tspan><tspan
+         style="text-align:center;text-anchor:middle">mbeddr core</tspan><tspan
          sodipodi:role="line"
          x="304.19513"
          y="444.04074"
@@ -128,13 +137,9 @@
        id="text3790-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan3792-4"
-         x="308.05841"
-         y="434.31195">C language (dialect), </tspan><tspan
-         sodipodi:role="line"
          x="305.51154"
-         y="454.31195"
-         id="tspan3815">with some extenstions</tspan></text>
+         y="434.31195"
+         id="tspan3815">C language dialect</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3878"
@@ -177,6 +182,6 @@
          y="348.31195"
          x="354.66406"
          sodipodi:role="line"
-         id="tspan3896">C++ language (dialect)</tspan></text>
+         id="tspan3896">C++ language dialect</tspan></text>
   </g>
 </svg>
